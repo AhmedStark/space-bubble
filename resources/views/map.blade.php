@@ -14,7 +14,7 @@
 <body>
 
 <div id="app">
-<example-component></example-component>
+<area-map ></area-map>
 </div>
 
 </body>
