@@ -17,3 +17,8 @@ Route::get('/', function () {
 Route::get('/map',function(){
     return view('map');
 });
+
+Route::get('/admin/dashboard',function(){
+    return view('admin.dashboard');
+});
+
