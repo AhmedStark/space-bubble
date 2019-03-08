@@ -8,6 +8,13 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+import 'vuetify/dist/vuetify.min.css' ;
+window.Vue = require('vue');
+
+
+import Vuetify from 'vuetify';
+
+Vue.use(Vuetify);
 
 /**
  * The following block of code may be used to automatically register your
@@ -22,6 +29,7 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('area-map', require('./components/AreaMap.vue').default);
+Vue.component('nav-bar', require('./components/NavBar.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
