@@ -1,11 +1,7 @@
-<template>
-    <div class="my-2">
-        <v-container>
-            <v-layout row wrap>
-                <v-flex xs12 md8>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 
 <svg
-   xmlns:html="http://www.w3.org/1999/html"
+   xmlns:xhtml="http://www.w3.org/1999/xhtml"
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -104,16 +100,16 @@
            height="12"
            requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
           
-<div
+<xhtml:div
              style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 44px; white-space: nowrap; overflow-wrap: normal; text-align: center;">
             
-<div
+<xhtml:div
                style="display:inline-block;text-align:inherit;text-decoration:inherit;">Room 2
-<br />
+<xhtml:br />
 
-</div>
+</xhtml:div>
           
-</div>
+</xhtml:div>
         
 </foreignObject>
         
@@ -153,16 +149,16 @@
            height="12"
            requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
           
-<div
+<xhtml:div
              style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 44px; white-space: nowrap; overflow-wrap: normal; text-align: center;">
             
-<div
+<xhtml:div
                style="display:inline-block;text-align:inherit;text-decoration:inherit;">Room 1
-<br />
+<xhtml:br />
 
-</div>
+</xhtml:div>
           
-</div>
+</xhtml:div>
         
 </foreignObject>
         
@@ -185,10 +181,8 @@
        height="100"
        pointer-events="none"
        id="3"
-       fill="white"
-       stroke="black"
-       inkscape:label="#rect4838" 
-       />
+       style="fill:#ffffff;stroke:#000000"
+       inkscape:label="#rect4838" />
     
 <g
        transform="translate(690.67083,319.204)"
@@ -204,16 +198,16 @@
            height="12"
            requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
           
-<div
+<xhtml:div
              style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 44px; white-space: nowrap; overflow-wrap: normal; text-align: center;">
             
-<div
+<xhtml:div
                style="display:inline-block;text-align:inherit;text-decoration:inherit;">Room 3
-<br />
+<xhtml:br />
 
-</div>
+</xhtml:div>
           
-</div>
+</xhtml:div>
         
 </foreignObject>
         
@@ -253,16 +247,16 @@
            height="12"
            requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
           
-<div
+<xhtml:div
              style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 44px; white-space: nowrap; overflow-wrap: normal; text-align: center;">
             
-<div
+<xhtml:div
                style="display:inline-block;text-align:inherit;text-decoration:inherit;">Room 4
-<br />
+<xhtml:br />
 
-</div>
+</xhtml:div>
           
-</div>
+</xhtml:div>
         
 </foreignObject>
         
@@ -302,16 +296,16 @@
            height="12"
            requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
           
-<div
+<xhtml:div
              style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 44px; white-space: nowrap; overflow-wrap: normal; text-align: center;">
             
-<div
+<xhtml:div
                style="display:inline-block;text-align:inherit;text-decoration:inherit;">Room 5
-<br />
+<xhtml:br />
 
-</div>
+</xhtml:div>
           
-</div>
+</xhtml:div>
         
 </foreignObject>
         
@@ -351,14 +345,14 @@
            height="12"
            requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
           
-<div
+<xhtml:div
              style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 44px; white-space: nowrap; overflow-wrap: normal; text-align: center;">
             
-<div
+<xhtml:div
                style="display:inline-block;text-align:inherit;text-decoration:inherit;">Room 6
-</div>
+</xhtml:div>
           
-</div>
+</xhtml:div>
         
 </foreignObject>
         
@@ -404,14 +398,14 @@
            height="12"
            requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
           
-<div
+<xhtml:div
              style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 44px; white-space: nowrap; overflow-wrap: normal; text-align: center;">
             
-<div
+<xhtml:div
                style="display:inline-block;text-align:inherit;text-decoration:inherit;">Room 7
-</div>
+</xhtml:div>
           
-</div>
+</xhtml:div>
         
 </foreignObject>
         
@@ -451,14 +445,14 @@
            height="12"
            requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
           
-<div
+<xhtml:div
              style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 44px; white-space: nowrap; overflow-wrap: normal; text-align: center;">
             
-<div
+<xhtml:div
                style="display:inline-block;text-align:inherit;text-decoration:inherit;">Room 8
-</div>
+</xhtml:div>
           
-</div>
+</xhtml:div>
         
 </foreignObject>
         
@@ -498,14 +492,14 @@
            height="12"
            requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
           
-<div
+<xhtml:div
              style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 44px; white-space: nowrap; overflow-wrap: normal; text-align: center;">
             
-<div
+<xhtml:div
                style="display:inline-block;text-align:inherit;text-decoration:inherit;">Room 9
-</div>
+</xhtml:div>
           
-</div>
+</xhtml:div>
         
 </foreignObject>
         
@@ -525,95 +519,3 @@
 
 </svg>
 
-                </v-flex>
-
-                <v-flex xs12 md4>
-
-                    <v-card>
-                        <v-card-title><h3 class="title">Areas :-</h3></v-card-title>
-                        <v-card-text>
-                            <v-card>
-                                <v-card-text>
-                                    Room 701 : full : 10/10
-                                </v-card-text>
-                            </v-card>
-                            <v-card>
-                                <v-card-text>
-                                    Room 701 : Crowded :7/10
-                                </v-card-text>
-                            </v-card>
-                            <v-card>
-                                <v-card-text>
-                                    Room 701 : empty : 0/11
-                                </v-card-text>
-                            </v-card>
-                        </v-card-text>
-                    </v-card>
-
-                </v-flex>
-            </v-layout>
-        </v-container>
-        <ul>
-            <li v-for="(area,index) in areas" :key="index">{{status[areaStatus(area.taken_desks,area.desks)]}}</li>
-        </ul>
-    </div>
-</template>
-
-<script>
-const axios = require('axios');
-    export default {
-        
-        data:function(){
-            return{
-                areas:[],
-                status:["Full","Crowded","Normal","Good","Empty"],
-                statusColors:["Full","Crowded","Normal","Good","Empty"],
-                FULL:0,
-                colTest:["red","white","black"],
-                CROWDED:1,
-                NORMAL:2,
-                GOOD:3,
-                EMPTY:4,
-                t:0
-            }
-        },methods:{
-            changeColorTest:function () {
-                
-              var el=document.getElementById("1");
-              el.style="fill: "+this.colTest[this.t]+"; stroke: rgb(0, 0, 0);";
-                if(this.t==2){
-                    this.t=0;
-                }
-                this.t=this.t+1;
-            },
-            getAreas:function () {
-                this.changeColorTest();
-                axios.get('/areas').then((response)=> {
-                this.areas=response.data;
-            }).catch(function(error){
-            }).then((response)=> {
-            });
-            },areaStatus(takenDesks,desks){
-                if(takenDesks===desks){
-                    return this.FULL;
-                }else if(takenDesks===0){
-                    return this.EMPTY;
-                }else if (takenDesks/desks>0.6){
-                    return this.CROWDED;
-                }else if (takenDesks/desks>0.4){
-                    return this.NORMAL
-                }else if (takenDesks/desks>0){
-                    return this.GOOD;
-                }
-            }
-        },
-        mounted() {
-            this.getAreas();
-        }
-        ,created () {
-            setInterval(() => {
-                this.getAreas();
-            }, 2000)
-        }
-    }
-</script>
