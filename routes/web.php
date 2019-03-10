@@ -32,3 +32,21 @@ Route::get('/areas',function(){
     ];
 });
 
+Route::get('/areas/{id}',function($id){
+    
+    return  [
+        'areas'=>[
+        ['name'=>"Lab 6",'id'=>1,'desks'=>20,'takenDesks'=>12],
+        ['id'=>2,'desks'=>20,'takenDesks'=>20],
+        ['id'=>3,'desks'=>30,'takenDesks'=>28],
+        ['id'=>4,'desks'=>20,'takenDesks'=>07],
+        ['id'=>5,'desks'=>26,'takenDesks'=>20],
+        ['id'=>6,'desks'=>25,'takenDesks'=>20],
+        ['id'=>7,'desks'=>30,'takenDesks'=>15],
+        ['id'=>8,'desks'=>20,'takenDesks'=>0],
+        ['id'=>9,'desks'=>20,'takenDesks'=>2],
+        ],
+        'id'=>$id
+    ];
+});
+

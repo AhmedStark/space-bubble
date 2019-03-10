@@ -1812,552 +1812,44 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    v: {
+      type: Boolean,
+      default: false
+    }
+  },
   data: function data() {
     return {
+      id: 1,
       areas: [],
       status: ["Full", "Crowded", "Normal", "Good", "Empty"],
-      statusColors: ["Full", "Crowded", "Normal", "Good", "Empty"],
+      areaColors: ["#ff3939", "#ffa238", "#b4d65e", "#42f4a7", "#5bcfef"],
       FULL: 0,
-      colTest: ["red", "white", "black"],
       CROWDED: 1,
       NORMAL: 2,
       GOOD: 3,
       EMPTY: 4,
+      fullV: this.v,
       t: 0
     };
   },
   methods: {
-    changeColorTest: function changeColorTest() {
-      var el = document.getElementById("1");
-      el.style = "fill: " + this.colTest[this.t] + "; stroke: rgb(0, 0, 0);";
-
-      if (this.t == 2) {
-        this.t = 0;
+    changeColor: function changeColor() {
+      for (var i = 0; i < this.areas.length; i++) {
+        var area = this.areas[i];
+        var el = document.getElementById(area.id);
+        el.style = "fill: " + this.getColorForArea(area.takenDesks, area.desks) + "; stroke: rgb(0, 0, 0);";
       }
-
-      this.t = this.t + 1;
     },
     getAreas: function getAreas() {
       var _this = this;
 
-      this.changeColorTest();
-      axios.get('/areas').then(function (response) {
-        _this.areas = response.data;
+      this.fullV ? this.changeColor() : null;
+      axios.get('/areas/' + this.id).then(function (response) {
+        _this.areas = response.data.areas;
       }).catch(function (error) {}).then(function (response) {});
     },
     areaStatus: function areaStatus(takenDesks, desks) {
@@ -2372,6 +1864,9 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
       } else if (takenDesks / desks > 0) {
         return this.GOOD;
       }
+    },
+    getColorForArea: function getColorForArea(takenDesks, desks) {
+      return this.areaColors[this.areaStatus(takenDesks, desks)];
     }
   },
   mounted: function mounted() {
@@ -38172,989 +37667,74 @@ var render = function() {
             "v-layout",
             { attrs: { row: "", wrap: "" } },
             [
-              _c("v-flex", { attrs: { xs12: "", md8: "" } }, [
-                _c(
-                  "svg",
-                  {
-                    staticStyle: { "background-color": "rgb(255, 255, 255)" },
-                    attrs: {
-                      "xmlns:html": "http://www.w3.org/1999/html",
-                      "xmlns:dc": "http://purl.org/dc/elements/1.1/",
-                      "xmlns:cc": "http://creativecommons.org/ns#",
-                      "xmlns:rdf":
-                        "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-                      "xmlns:svg": "http://www.w3.org/2000/svg",
-                      xmlns: "http://www.w3.org/2000/svg",
-                      "xmlns:sodipodi":
-                        "http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd",
-                      "xmlns:inkscape":
-                        "http://www.inkscape.org/namespaces/inkscape",
-                      version: "1.1",
-                      width: "651px",
-                      height: "341px",
-                      viewBox: "-0.5 -0.5 651 341",
-                      content:
-                        '<mxfile modified="2019-03-09T04:07:26.017Z" host="www.draw.io" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.109 Safari/537.36" etag="fTxi6ysoBqPUOJk1kAf4" version="10.3.9"><diagram id="D_3sgdsVZuajwdmtaeQN" name="Page-1">zddBT4MwGAbgX8NRQ1ta4Lo5NcYlxh12rlCBBOjSdQL+eouUbQzq5oGNE+VtKfThg4CF5ln5JOgmXvKQpRa0w9JCDxaEAEFXbeqkahLP9pogEkmoBx2CVfLNdGjrdJeEbNsZKDlPZbLphgHPcxbITkaF4EV32CdPu2fd0Ij1glVA0366TkIZ61W0y6rzZ5ZEcXtmQPymJ6PtYL2SbUxDXhxFaGGhueBcNq2snLO0xmtdmuMeDb37CxMsl5ccgNcV9Mtl8PZKAifavYBtntzpWb5outML1hcrq1ZA8F0esnoS20KzIk4kW21oUPcW6p6rLJZZqvaAaurpmJCsNF4n2K9elQ3jGZOiUkP0AZ4ukKotIe1XHPgJ1ll8RI8cHVJ9y6P91AcV1dAw/0CCPaR3zjOVqJSk6vSzD6FakdwDTIcPuX0+gGGfD9hj8SETH5g+31D1XZnPMfGhCfLh9m33V/n5V/XDJj9ngn4EXVB/9sDbD+Cx/IjJD0/QDwH7vJ8/4EfG4nNNfOTmWNDD3YfVHsCCQ8XmjqXlmbTcm2thdL60PDKAhfBIWL4Jy7s5lnOCBT33Hl9WXKM9ie2roe/l39zr5LNDfeGOhqV2Dz8dv31Hv25o8QM=</diagram></mxfile>',
-                      id: "svg4896",
-                      "sodipodi:docname": "map.svg",
-                      "inkscape:version": "0.92.4 (33fec40, 2019-01-16)"
-                    }
-                  },
-                  [
-                    _c(
-                      "metadata",
-                      { attrs: { id: "metadata4900" } },
-                      [
-                        _c(
-                          "rdf:RDF",
-                          [
-                            _c(
-                              "cc:Work",
-                              { attrs: { "rdf:about": "" } },
-                              [
-                                _c("dc:format", [_vm._v("image/svg+xml\n")]),
-                                _vm._v(" "),
-                                _c("dc:type", {
-                                  attrs: {
-                                    "rdf:resource":
-                                      "http://purl.org/dc/dcmitype/StillImage"
-                                  }
-                                })
-                              ],
-                              1
-                            )
-                          ],
-                          1
-                        )
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c("sodipodi:namedview", {
-                      attrs: {
-                        pagecolor: "#ffffff",
-                        bordercolor: "#666666",
-                        borderopacity: "1",
-                        objecttolerance: "10",
-                        gridtolerance: "10",
-                        guidetolerance: "10",
-                        "inkscape:pageopacity": "0",
-                        "inkscape:pageshadow": "2",
-                        "inkscape:window-width": "1853",
-                        "inkscape:window-height": "1025",
-                        id: "namedview4898",
-                        showgrid: "false",
-                        "inkscape:zoom": "1.5684519",
-                        "inkscape:cx": "147.57969",
-                        "inkscape:cy": "223.49626",
-                        "inkscape:window-x": "67",
-                        "inkscape:window-y": "27",
-                        "inkscape:window-maximized": "1",
-                        "inkscape:current-layer": "g4894"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("defs", { attrs: { id: "defs4818" } }),
-                    _vm._v(" "),
-                    _c(
-                      "g",
-                      {
-                        attrs: {
-                          id: "g4894",
-                          transform: "translate(-184.89569,-35.703996)"
-                        }
-                      },
-                      [
-                        _c("rect", {
-                          staticStyle: { fill: "#ffffff", stroke: "#000000" },
-                          attrs: {
-                            x: "184.17084",
-                            y: "35.703995",
-                            width: "650",
-                            height: "340",
-                            "pointer-events": "none",
-                            id: "rect4820"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c("rect", {
-                          staticStyle: { fill: "#ffffff", stroke: "#000000" },
-                          attrs: {
-                            x: "184.17084",
-                            y: "275.70401",
-                            width: "152",
-                            height: "100",
-                            "pointer-events": "none",
-                            id: "2",
-                            "inkscape:label": "#rect4822"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "g",
-                          {
-                            attrs: {
-                              transform: "translate(238.67083,319.204)",
-                              id: "g4828"
-                            }
-                          },
-                          [
-                            _c(
-                              "switch",
-                              { attrs: { id: "switch4826" } },
-                              [
-                                _c(
-                                  "foreignObject",
-                                  {
-                                    staticStyle: { overflow: "visible" },
-                                    attrs: {
-                                      "pointer-events": "all",
-                                      width: "42",
-                                      height: "12",
-                                      requiredFeatures:
-                                        "http://www.w3.org/TR/SVG11/feature#Extensibility"
-                                    }
-                                  },
-                                  [
-                                    _c(
-                                      "div",
-                                      {
-                                        staticStyle: {
-                                          display: "inline-block",
-                                          "font-size": "12px",
-                                          "font-family": "Helvetica",
-                                          color: "rgb(0, 0, 0)",
-                                          "line-height": "1.2",
-                                          "vertical-align": "top",
-                                          width: "44px",
-                                          "white-space": "nowrap",
-                                          "overflow-wrap": "normal",
-                                          "text-align": "center"
-                                        }
-                                      },
-                                      [
-                                        _c(
-                                          "div",
-                                          {
-                                            staticStyle: {
-                                              display: "inline-block",
-                                              "text-align": "inherit",
-                                              "text-decoration": "inherit"
-                                            }
-                                          },
-                                          [_vm._v("Room 2\n"), _c("br")]
-                                        )
-                                      ]
-                                    )
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "text",
-                                  {
-                                    staticStyle: {
-                                      "font-size": "12px",
-                                      "font-family": "Helvetica",
-                                      "text-anchor": "middle",
-                                      fill: "#000000"
-                                    },
-                                    attrs: {
-                                      x: "21",
-                                      y: "12",
-                                      "font-size": "12px",
-                                      id: "text4824"
-                                    }
-                                  },
-                                  [_vm._v("Room 2<br>\n")]
-                                )
-                              ],
-                              1
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c("rect", {
-                          staticStyle: { fill: "#ffffff", stroke: "#000000" },
-                          attrs: {
-                            x: "184.17084",
-                            y: "35.703995",
-                            width: "152",
-                            height: "100",
-                            "pointer-events": "none",
-                            id: "1",
-                            "inkscape:label": "#rect4830"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "g",
-                          {
-                            attrs: {
-                              transform: "translate(238.67083,79.203996)",
-                              id: "g4836"
-                            }
-                          },
-                          [
-                            _c(
-                              "switch",
-                              { attrs: { id: "switch4834" } },
-                              [
-                                _c(
-                                  "foreignObject",
-                                  {
-                                    staticStyle: { overflow: "visible" },
-                                    attrs: {
-                                      "pointer-events": "all",
-                                      width: "42",
-                                      height: "12",
-                                      requiredFeatures:
-                                        "http://www.w3.org/TR/SVG11/feature#Extensibility"
-                                    }
-                                  },
-                                  [
-                                    _c(
-                                      "div",
-                                      {
-                                        staticStyle: {
-                                          display: "inline-block",
-                                          "font-size": "12px",
-                                          "font-family": "Helvetica",
-                                          color: "rgb(0, 0, 0)",
-                                          "line-height": "1.2",
-                                          "vertical-align": "top",
-                                          width: "44px",
-                                          "white-space": "nowrap",
-                                          "overflow-wrap": "normal",
-                                          "text-align": "center"
-                                        }
-                                      },
-                                      [
-                                        _c(
-                                          "div",
-                                          {
-                                            staticStyle: {
-                                              display: "inline-block",
-                                              "text-align": "inherit",
-                                              "text-decoration": "inherit"
-                                            }
-                                          },
-                                          [_vm._v("Room 1\n"), _c("br")]
-                                        )
-                                      ]
-                                    )
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "text",
-                                  {
-                                    staticStyle: {
-                                      "font-size": "12px",
-                                      "font-family": "Helvetica",
-                                      "text-anchor": "middle",
-                                      fill: "#000000"
-                                    },
-                                    attrs: {
-                                      x: "21",
-                                      y: "12",
-                                      "font-size": "12px",
-                                      id: "text4832"
-                                    }
-                                  },
-                                  [_vm._v("Room 1<br>\n")]
-                                )
-                              ],
-                              1
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c("rect", {
-                          attrs: {
-                            x: "616.17084",
-                            y: "275.70401",
-                            width: "192",
-                            height: "100",
-                            "pointer-events": "none",
-                            id: "3",
-                            fill: "white",
-                            stroke: "black",
-                            "inkscape:label": "#rect4838"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "g",
-                          {
-                            attrs: {
-                              transform: "translate(690.67083,319.204)",
-                              id: "g4844"
-                            }
-                          },
-                          [
-                            _c(
-                              "switch",
-                              { attrs: { id: "switch4842" } },
-                              [
-                                _c(
-                                  "foreignObject",
-                                  {
-                                    staticStyle: { overflow: "visible" },
-                                    attrs: {
-                                      "pointer-events": "all",
-                                      width: "42",
-                                      height: "12",
-                                      requiredFeatures:
-                                        "http://www.w3.org/TR/SVG11/feature#Extensibility"
-                                    }
-                                  },
-                                  [
-                                    _c(
-                                      "div",
-                                      {
-                                        staticStyle: {
-                                          display: "inline-block",
-                                          "font-size": "12px",
-                                          "font-family": "Helvetica",
-                                          color: "rgb(0, 0, 0)",
-                                          "line-height": "1.2",
-                                          "vertical-align": "top",
-                                          width: "44px",
-                                          "white-space": "nowrap",
-                                          "overflow-wrap": "normal",
-                                          "text-align": "center"
-                                        }
-                                      },
-                                      [
-                                        _c(
-                                          "div",
-                                          {
-                                            staticStyle: {
-                                              display: "inline-block",
-                                              "text-align": "inherit",
-                                              "text-decoration": "inherit"
-                                            }
-                                          },
-                                          [_vm._v("Room 3\n"), _c("br")]
-                                        )
-                                      ]
-                                    )
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "text",
-                                  {
-                                    staticStyle: {
-                                      "font-size": "12px",
-                                      "font-family": "Helvetica",
-                                      "text-anchor": "middle",
-                                      fill: "#000000"
-                                    },
-                                    attrs: {
-                                      x: "21",
-                                      y: "12",
-                                      "font-size": "12px",
-                                      id: "text4840"
-                                    }
-                                  },
-                                  [_vm._v("Room 3<br>\n")]
-                                )
-                              ],
-                              1
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c("rect", {
-                          staticStyle: { fill: "#ffffff", stroke: "#000000" },
-                          attrs: {
-                            x: "734.17084",
-                            y: "35.703995",
-                            width: "100",
-                            height: "150",
-                            "pointer-events": "none",
-                            id: "4",
-                            "inkscape:label": "#rect4846"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "g",
-                          {
-                            attrs: {
-                              transform: "translate(762.67083,104.204)",
-                              id: "g4852"
-                            }
-                          },
-                          [
-                            _c(
-                              "switch",
-                              { attrs: { id: "switch4850" } },
-                              [
-                                _c(
-                                  "foreignObject",
-                                  {
-                                    staticStyle: { overflow: "visible" },
-                                    attrs: {
-                                      "pointer-events": "all",
-                                      width: "42",
-                                      height: "12",
-                                      requiredFeatures:
-                                        "http://www.w3.org/TR/SVG11/feature#Extensibility"
-                                    }
-                                  },
-                                  [
-                                    _c(
-                                      "div",
-                                      {
-                                        staticStyle: {
-                                          display: "inline-block",
-                                          "font-size": "12px",
-                                          "font-family": "Helvetica",
-                                          color: "rgb(0, 0, 0)",
-                                          "line-height": "1.2",
-                                          "vertical-align": "top",
-                                          width: "44px",
-                                          "white-space": "nowrap",
-                                          "overflow-wrap": "normal",
-                                          "text-align": "center"
-                                        }
-                                      },
-                                      [
-                                        _c(
-                                          "div",
-                                          {
-                                            staticStyle: {
-                                              display: "inline-block",
-                                              "text-align": "inherit",
-                                              "text-decoration": "inherit"
-                                            }
-                                          },
-                                          [_vm._v("Room 4\n"), _c("br")]
-                                        )
-                                      ]
-                                    )
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "text",
-                                  {
-                                    staticStyle: {
-                                      "font-size": "12px",
-                                      "font-family": "Helvetica",
-                                      "text-anchor": "middle",
-                                      fill: "#000000"
-                                    },
-                                    attrs: {
-                                      x: "21",
-                                      y: "12",
-                                      "font-size": "12px",
-                                      id: "text4848"
-                                    }
-                                  },
-                                  [_vm._v("Room 4<br>\n")]
-                                )
-                              ],
-                              1
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c("rect", {
-                          staticStyle: { fill: "#ffffff", stroke: "#000000" },
-                          attrs: {
-                            x: "406.17084",
-                            y: "35.703995",
-                            width: "190",
-                            height: "60",
-                            "pointer-events": "none",
-                            id: "5",
-                            "inkscape:label": "#rect4854"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "g",
-                          {
-                            attrs: {
-                              transform: "translate(479.67083,59.203996)",
-                              id: "g4860"
-                            }
-                          },
-                          [
-                            _c(
-                              "switch",
-                              { attrs: { id: "switch4858" } },
-                              [
-                                _c(
-                                  "foreignObject",
-                                  {
-                                    staticStyle: { overflow: "visible" },
-                                    attrs: {
-                                      "pointer-events": "all",
-                                      width: "42",
-                                      height: "12",
-                                      requiredFeatures:
-                                        "http://www.w3.org/TR/SVG11/feature#Extensibility"
-                                    }
-                                  },
-                                  [
-                                    _c(
-                                      "div",
-                                      {
-                                        staticStyle: {
-                                          display: "inline-block",
-                                          "font-size": "12px",
-                                          "font-family": "Helvetica",
-                                          color: "rgb(0, 0, 0)",
-                                          "line-height": "1.2",
-                                          "vertical-align": "top",
-                                          width: "44px",
-                                          "white-space": "nowrap",
-                                          "overflow-wrap": "normal",
-                                          "text-align": "center"
-                                        }
-                                      },
-                                      [
-                                        _c(
-                                          "div",
-                                          {
-                                            staticStyle: {
-                                              display: "inline-block",
-                                              "text-align": "inherit",
-                                              "text-decoration": "inherit"
-                                            }
-                                          },
-                                          [_vm._v("Room 5\n"), _c("br")]
-                                        )
-                                      ]
-                                    )
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "text",
-                                  {
-                                    staticStyle: {
-                                      "font-size": "12px",
-                                      "font-family": "Helvetica",
-                                      "text-anchor": "middle",
-                                      fill: "#000000"
-                                    },
-                                    attrs: {
-                                      x: "21",
-                                      y: "12",
-                                      "font-size": "12px",
-                                      id: "text4856"
-                                    }
-                                  },
-                                  [_vm._v("Room 5<br>\n")]
-                                )
-                              ],
-                              1
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c("rect", {
-                          staticStyle: { fill: "#ffffff", stroke: "#000000" },
-                          attrs: {
-                            x: "381.17084",
-                            y: "205.70399",
-                            width: "120",
-                            height: "170",
-                            "pointer-events": "none",
-                            id: "6",
-                            "inkscape:label": "#rect4862"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "g",
-                          {
-                            attrs: {
-                              transform: "translate(419.67083,284.204)",
-                              id: "g4868"
-                            }
-                          },
-                          [
-                            _c(
-                              "switch",
-                              { attrs: { id: "switch4866" } },
-                              [
-                                _c(
-                                  "foreignObject",
-                                  {
-                                    staticStyle: { overflow: "visible" },
-                                    attrs: {
-                                      "pointer-events": "all",
-                                      width: "42",
-                                      height: "12",
-                                      requiredFeatures:
-                                        "http://www.w3.org/TR/SVG11/feature#Extensibility"
-                                    }
-                                  },
-                                  [
-                                    _c(
-                                      "div",
-                                      {
-                                        staticStyle: {
-                                          display: "inline-block",
-                                          "font-size": "12px",
-                                          "font-family": "Helvetica",
-                                          color: "rgb(0, 0, 0)",
-                                          "line-height": "1.2",
-                                          "vertical-align": "top",
-                                          width: "44px",
-                                          "white-space": "nowrap",
-                                          "overflow-wrap": "normal",
-                                          "text-align": "center"
-                                        }
-                                      },
-                                      [
-                                        _c(
-                                          "div",
-                                          {
-                                            staticStyle: {
-                                              display: "inline-block",
-                                              "text-align": "inherit",
-                                              "text-decoration": "inherit"
-                                            }
-                                          },
-                                          [_vm._v("Room 6\n")]
-                                        )
-                                      ]
-                                    )
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "text",
-                                  {
-                                    staticStyle: {
-                                      "font-size": "12px",
-                                      "font-family": "Helvetica",
-                                      "text-anchor": "middle",
-                                      fill: "#000000"
-                                    },
-                                    attrs: {
-                                      x: "21",
-                                      y: "12",
-                                      "font-size": "12px",
-                                      id: "text4864"
-                                    }
-                                  },
-                                  [_vm._v("Room 6\n")]
-                                )
-                              ],
-                              1
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "rect",
-                          {
-                            staticStyle: { fill: "#ffffff", stroke: "#000000" },
-                            attrs: {
-                              x: "626.17084",
-                              y: "35.703995",
-                              width: "86",
-                              height: "135",
-                              "pointer-events": "none",
-                              id: "7",
-                              "inkscape:label": "#rect4870"
-                            }
-                          },
-                          [
-                            _c("title", { attrs: { id: "title4902" } }, [
-                              _vm._v("sss\n")
-                            ])
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "g",
-                          {
-                            attrs: {
-                              transform: "translate(647.67083,97.203996)",
-                              id: "g4876"
-                            }
-                          },
-                          [
-                            _c(
-                              "switch",
-                              { attrs: { id: "switch4874" } },
-                              [
-                                _c(
-                                  "foreignObject",
-                                  {
-                                    staticStyle: { overflow: "visible" },
-                                    attrs: {
-                                      "pointer-events": "all",
-                                      width: "42",
-                                      height: "12",
-                                      requiredFeatures:
-                                        "http://www.w3.org/TR/SVG11/feature#Extensibility"
-                                    }
-                                  },
-                                  [
-                                    _c(
-                                      "div",
-                                      {
-                                        staticStyle: {
-                                          display: "inline-block",
-                                          "font-size": "12px",
-                                          "font-family": "Helvetica",
-                                          color: "rgb(0, 0, 0)",
-                                          "line-height": "1.2",
-                                          "vertical-align": "top",
-                                          width: "44px",
-                                          "white-space": "nowrap",
-                                          "overflow-wrap": "normal",
-                                          "text-align": "center"
-                                        }
-                                      },
-                                      [
-                                        _c(
-                                          "div",
-                                          {
-                                            staticStyle: {
-                                              display: "inline-block",
-                                              "text-align": "inherit",
-                                              "text-decoration": "inherit"
-                                            }
-                                          },
-                                          [_vm._v("Room 7\n")]
-                                        )
-                                      ]
-                                    )
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "text",
-                                  {
-                                    staticStyle: {
-                                      "font-size": "12px",
-                                      "font-family": "Helvetica",
-                                      "text-anchor": "middle",
-                                      fill: "#000000"
-                                    },
-                                    attrs: {
-                                      x: "21",
-                                      y: "12",
-                                      "font-size": "12px",
-                                      id: "text4872"
-                                    }
-                                  },
-                                  [_vm._v("Room 7\n")]
-                                )
-                              ],
-                              1
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c("rect", {
-                          staticStyle: { fill: "#ffffff", stroke: "#000000" },
-                          attrs: {
-                            x: "526.17084",
-                            y: "193.20399",
-                            width: "120",
-                            height: "60",
-                            "pointer-events": "none",
-                            id: "8",
-                            "inkscape:label": "#rect4878"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "g",
-                          {
-                            attrs: {
-                              transform: "translate(564.67083,217.204)",
-                              id: "g4884"
-                            }
-                          },
-                          [
-                            _c(
-                              "switch",
-                              { attrs: { id: "switch4882" } },
-                              [
-                                _c(
-                                  "foreignObject",
-                                  {
-                                    staticStyle: { overflow: "visible" },
-                                    attrs: {
-                                      "pointer-events": "all",
-                                      width: "42",
-                                      height: "12",
-                                      requiredFeatures:
-                                        "http://www.w3.org/TR/SVG11/feature#Extensibility"
-                                    }
-                                  },
-                                  [
-                                    _c(
-                                      "div",
-                                      {
-                                        staticStyle: {
-                                          display: "inline-block",
-                                          "font-size": "12px",
-                                          "font-family": "Helvetica",
-                                          color: "rgb(0, 0, 0)",
-                                          "line-height": "1.2",
-                                          "vertical-align": "top",
-                                          width: "44px",
-                                          "white-space": "nowrap",
-                                          "overflow-wrap": "normal",
-                                          "text-align": "center"
-                                        }
-                                      },
-                                      [
-                                        _c(
-                                          "div",
-                                          {
-                                            staticStyle: {
-                                              display: "inline-block",
-                                              "text-align": "inherit",
-                                              "text-decoration": "inherit"
-                                            }
-                                          },
-                                          [_vm._v("Room 8\n")]
-                                        )
-                                      ]
-                                    )
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "text",
-                                  {
-                                    staticStyle: {
-                                      "font-size": "12px",
-                                      "font-family": "Helvetica",
-                                      "text-anchor": "middle",
-                                      fill: "#000000"
-                                    },
-                                    attrs: {
-                                      x: "21",
-                                      y: "12",
-                                      "font-size": "12px",
-                                      id: "text4880"
-                                    }
-                                  },
-                                  [_vm._v("Room 8\n")]
-                                )
-                              ],
-                              1
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c("rect", {
-                          staticStyle: { fill: "#ffffff", stroke: "#000000" },
-                          attrs: {
-                            x: "184.17084",
-                            y: "170.70399",
-                            width: "120",
-                            height: "60",
-                            "pointer-events": "none",
-                            id: "9",
-                            "inkscape:label": "#rect4886"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "g",
-                          {
-                            attrs: {
-                              transform: "translate(222.67083,194.204)",
-                              id: "g4892"
-                            }
-                          },
-                          [
-                            _c(
-                              "switch",
-                              { attrs: { id: "switch4890" } },
-                              [
-                                _c(
-                                  "foreignObject",
-                                  {
-                                    staticStyle: { overflow: "visible" },
-                                    attrs: {
-                                      "pointer-events": "all",
-                                      width: "42",
-                                      height: "12",
-                                      requiredFeatures:
-                                        "http://www.w3.org/TR/SVG11/feature#Extensibility"
-                                    }
-                                  },
-                                  [
-                                    _c(
-                                      "div",
-                                      {
-                                        staticStyle: {
-                                          display: "inline-block",
-                                          "font-size": "12px",
-                                          "font-family": "Helvetica",
-                                          color: "rgb(0, 0, 0)",
-                                          "line-height": "1.2",
-                                          "vertical-align": "top",
-                                          width: "44px",
-                                          "white-space": "nowrap",
-                                          "overflow-wrap": "normal",
-                                          "text-align": "center"
-                                        }
-                                      },
-                                      [
-                                        _c(
-                                          "div",
-                                          {
-                                            staticStyle: {
-                                              display: "inline-block",
-                                              "text-align": "inherit",
-                                              "text-decoration": "inherit"
-                                            }
-                                          },
-                                          [_vm._v("Room 9\n")]
-                                        )
-                                      ]
-                                    )
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "text",
-                                  {
-                                    staticStyle: {
-                                      "font-size": "12px",
-                                      "font-family": "Helvetica",
-                                      "text-anchor": "middle",
-                                      fill: "#000000"
-                                    },
-                                    attrs: {
-                                      x: "21",
-                                      y: "12",
-                                      "font-size": "12px",
-                                      id: "text4888"
-                                    }
-                                  },
-                                  [_vm._v("Room 9\n")]
-                                )
-                              ],
-                              1
-                            )
-                          ]
-                        )
-                      ]
-                    )
-                  ],
-                  1
-                )
-              ]),
+              _c(
+                "v-flex",
+                { attrs: { xs12: "", md8: "" } },
+                [
+                  _vm._t("map"),
+                  _vm._v(" "),
+                  _c(
+                    "v-card",
+                    [
+                      _vm.fullV
+                        ? _c(
+                            "v-card-text",
+                            { staticClass: "mx-4 px-4" },
+                            [
+                              _c(
+                                "v-chip",
+                                {
+                                  staticClass: "white--text",
+                                  attrs: { color: _vm.areaColors[_vm.FULL] }
+                                },
+                                [_vm._v("Full")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-chip",
+                                {
+                                  staticClass: "white--text",
+                                  attrs: { color: _vm.areaColors[_vm.CROWDED] }
+                                },
+                                [_vm._v("Crowded")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-chip",
+                                {
+                                  staticClass: "white--text",
+                                  attrs: { color: _vm.areaColors[_vm.NORMAL] }
+                                },
+                                [_vm._v("Normal")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-chip",
+                                {
+                                  staticClass: "white--text",
+                                  attrs: { color: _vm.areaColors[_vm.GOOD] }
+                                },
+                                [_vm._v("Good")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-chip",
+                                {
+                                  staticClass: "white--text",
+                                  attrs: { color: _vm.areaColors[_vm.EMPTY] }
+                                },
+                                [_vm._v("Empty")]
+                              )
+                            ],
+                            1
+                          )
+                        : _vm._e()
+                    ],
+                    1
+                  )
+                ],
+                2
+              ),
               _vm._v(" "),
               _c(
                 "v-flex",
@@ -39169,43 +37749,74 @@ var render = function() {
                       _vm._v(" "),
                       _c(
                         "v-card-text",
-                        [
-                          _c(
+                        _vm._l(_vm.areas, function(area) {
+                          return _c(
                             "v-card",
+                            { key: area.id },
                             [
-                              _c("v-card-text", [
-                                _vm._v(
-                                  "\n                                    Room 701 : full : 10/10\n                                "
-                                )
-                              ])
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-card",
-                            [
-                              _c("v-card-text", [
-                                _vm._v(
-                                  "\n                                    Room 701 : Crowded :7/10\n                                "
-                                )
-                              ])
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-card",
-                            [
-                              _c("v-card-text", [
-                                _vm._v(
-                                  "\n                                    Room 701 : empty : 0/11\n                                "
-                                )
-                              ])
+                              _c(
+                                "v-card-text",
+                                [
+                                  _c(
+                                    "v-layout",
+                                    { attrs: { row: "" } },
+                                    [
+                                      _c("v-flex", { attrs: { xs4: "" } }, [
+                                        _vm._v(
+                                          "\n                                            Area-" +
+                                            _vm._s(area.id) +
+                                            " " +
+                                            _vm._s(area.takenDesks) +
+                                            "/" +
+                                            _vm._s(area.desks) +
+                                            " \n                                        "
+                                        )
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("v-spacer"),
+                                      _vm._v(" "),
+                                      _c(
+                                        "v-flex",
+                                        { attrs: { xs3: "" } },
+                                        [
+                                          _c(
+                                            "v-chip",
+                                            {
+                                              staticClass: "white--text",
+                                              attrs: {
+                                                small: "",
+                                                color: _vm.getColorForArea(
+                                                  area.takenDesks,
+                                                  area.desks
+                                                )
+                                              }
+                                            },
+                                            [
+                                              _vm._v(
+                                                _vm._s(
+                                                  _vm.status[
+                                                    _vm.areaStatus(
+                                                      area.takenDesks,
+                                                      area.desks
+                                                    )
+                                                  ]
+                                                )
+                                              )
+                                            ]
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              )
                             ],
                             1
                           )
-                        ],
+                        }),
                         1
                       )
                     ],
@@ -39219,18 +37830,6 @@ var render = function() {
           )
         ],
         1
-      ),
-      _vm._v(" "),
-      _c(
-        "ul",
-        _vm._l(_vm.areas, function(area, index) {
-          return _c("li", { key: index }, [
-            _vm._v(
-              _vm._s(_vm.status[_vm.areaStatus(area.taken_desks, area.desks)])
-            )
-          ])
-        }),
-        0
       )
     ],
     1
@@ -77418,7 +76017,7 @@ Vue.use(vuetify__WEBPACK_IMPORTED_MODULE_1___default.a);
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
-Vue.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue").default);
+Vue.component('map-1', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue").default);
 Vue.component('area-map', __webpack_require__(/*! ./components/AreaMap.vue */ "./resources/js/components/AreaMap.vue").default);
 Vue.component('nav-bar', __webpack_require__(/*! ./components/NavBar.vue */ "./resources/js/components/NavBar.vue").default);
 /**
