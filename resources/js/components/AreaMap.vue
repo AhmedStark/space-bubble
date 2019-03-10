@@ -4,7 +4,7 @@
             <v-layout row wrap>
                 <v-flex xs12 lg8 md8>
 
-<slot name="map"></slot>
+<slot name="map" class="svg-container"></slot>
                 <v-card>
                     
                     <v-card-text class="mx-4 px-4" v-if="fullV">
@@ -17,7 +17,7 @@
                 </v-card>
                 </v-flex>
                 <v-spacer></v-spacer>
-                <v-flex xs12 lg4 md6>
+                <v-flex xs12 lg3 md6>
 
                     <v-card>
                         <v-card-title><h3 class="title">Areas :-</h3></v-card-title>
@@ -113,3 +113,19 @@ const axios = require('axios');
         }
     }
 </script>
+<style>
+.svg-container {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+    vertical-align: top;
+    overflow: hidden;
+}
+.svg-content {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+</style>

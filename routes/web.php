@@ -49,4 +49,16 @@ Route::get('/areas/{id}',function($id){
         'id'=>$id
     ];
 });
+Route::get("do-it",function(){
+   $compenet = fopen(base_path("resources/js/components/")."map-2.vue", "w"); 
+   fwrite($compenet, 
+"<template>
+    <div slot=\"map\">
+                        
+        <!--put your svg code here-->
+                    
+    </div>
+</template>");
+fclose($compenet);
+});
 
