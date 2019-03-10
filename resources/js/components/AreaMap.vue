@@ -2,7 +2,7 @@
     <div class="my-2">
         <v-container>
             <v-layout row wrap>
-                <v-flex xs12 md8>
+                <v-flex xs12 lg8 md8>
 
 <slot name="map"></slot>
                 <v-card>
@@ -16,8 +16,8 @@
                     </v-card-text>
                 </v-card>
                 </v-flex>
-
-                <v-flex xs12 md4>
+                <v-spacer></v-spacer>
+                <v-flex xs12 lg4 md6>
 
                     <v-card>
                         <v-card-title><h3 class="title">Areas :-</h3></v-card-title>
@@ -71,8 +71,11 @@ const axios = require('axios');
             changeColor:function () {
                 for(var i = 0 ;i<this.areas.length;i++){
                     var area = this.areas[i];
-                    var el=document.getElementById(area.id);
-                    el.style="fill: "+this.getColorForArea(area.takenDesks,area.desks)+"; stroke: rgb(0, 0, 0);";
+                    var el=document.getElementById("area-"+area.id);
+                    var elText=document.getElementById("text-"+area.id);
+                    el===null ? console.warn("error id 10 not found in the map"):el.style="fill: "+this.getColorForArea(area.takenDesks,area.desks)+"; stroke: rgb(0, 0, 0);";
+                    elText===null ? console.warn("error id text-"+area.id+" not found in the map"):null;
+                    elText.innerHTML=area.name+"( "+area.takenDesks+" / "+area.desks+" )";
                 }
             },
             getAreas:function () {

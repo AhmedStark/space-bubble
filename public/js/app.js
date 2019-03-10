@@ -1840,8 +1840,11 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
     changeColor: function changeColor() {
       for (var i = 0; i < this.areas.length; i++) {
         var area = this.areas[i];
-        var el = document.getElementById(area.id);
-        el.style = "fill: " + this.getColorForArea(area.takenDesks, area.desks) + "; stroke: rgb(0, 0, 0);";
+        var el = document.getElementById("area-" + area.id);
+        var elText = document.getElementById("text-" + area.id);
+        el === null ? console.warn("error id 10 not found in the map") : el.style = "fill: " + this.getColorForArea(area.takenDesks, area.desks) + "; stroke: rgb(0, 0, 0);";
+        elText === null ? console.warn("error id text-" + area.id + " not found in the map") : null;
+        elText.innerHTML = area.name + "( " + area.takenDesks + " / " + area.desks + " )";
       }
     },
     getAreas: function getAreas() {
@@ -37669,7 +37672,7 @@ var render = function() {
             [
               _c(
                 "v-flex",
-                { attrs: { xs12: "", md8: "" } },
+                { attrs: { xs12: "", lg8: "", md8: "" } },
                 [
                   _vm._t("map"),
                   _vm._v(" "),
@@ -37736,9 +37739,11 @@ var render = function() {
                 2
               ),
               _vm._v(" "),
+              _c("v-spacer"),
+              _vm._v(" "),
               _c(
                 "v-flex",
-                { attrs: { xs12: "", md4: "" } },
+                { attrs: { xs12: "", lg4: "", md6: "" } },
                 [
                   _c(
                     "v-card",

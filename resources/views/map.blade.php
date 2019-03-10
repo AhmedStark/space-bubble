@@ -16,12 +16,16 @@
 <div id="app">
 <nav-bar></nav-bar>
 <area-map 
- 
+ v
 >
 <div slot="map">
-  
+
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+
 <svg
-   xmlns:html="http://www.w3.org/1999/html"
+   preserveAspectRatio="xMinYMin meet"
+   xmlns:osb="http://www.openswatchbook.org/uri/2009/osb"
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -29,18 +33,49 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="250mm"
+   height="140mm"
+   viewBox="0 0 250 140"
    version="1.1"
-   width="651px"
-   height="341px"
-   viewBox="-0.5 -0.5 651 341"
-   content="&lt;mxfile modified=&quot;2019-03-09T04:07:26.017Z&quot; host=&quot;www.draw.io&quot; agent=&quot;Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.109 Safari/537.36&quot; etag=&quot;fTxi6ysoBqPUOJk1kAf4&quot; version=&quot;10.3.9&quot;&gt;&lt;diagram id=&quot;D_3sgdsVZuajwdmtaeQN&quot; name=&quot;Page-1&quot;&gt;zddBT4MwGAbgX8NRQ1ta4Lo5NcYlxh12rlCBBOjSdQL+eouUbQzq5oGNE+VtKfThg4CF5ln5JOgmXvKQpRa0w9JCDxaEAEFXbeqkahLP9pogEkmoBx2CVfLNdGjrdJeEbNsZKDlPZbLphgHPcxbITkaF4EV32CdPu2fd0Ij1glVA0366TkIZ61W0y6rzZ5ZEcXtmQPymJ6PtYL2SbUxDXhxFaGGhueBcNq2snLO0xmtdmuMeDb37CxMsl5ccgNcV9Mtl8PZKAifavYBtntzpWb5outML1hcrq1ZA8F0esnoS20KzIk4kW21oUPcW6p6rLJZZqvaAaurpmJCsNF4n2K9elQ3jGZOiUkP0AZ4ukKotIe1XHPgJ1ll8RI8cHVJ9y6P91AcV1dAw/0CCPaR3zjOVqJSk6vSzD6FakdwDTIcPuX0+gGGfD9hj8SETH5g+31D1XZnPMfGhCfLh9m33V/n5V/XDJj9ngn4EXVB/9sDbD+Cx/IjJD0/QDwH7vJ8/4EfG4nNNfOTmWNDD3YfVHsCCQ8XmjqXlmbTcm2thdL60PDKAhfBIWL4Jy7s5lnOCBT33Hl9WXKM9ie2roe/l39zr5LNDfeGOhqV2Dz8dv31Hv25o8QM=&lt;/diagram&gt;&lt;/mxfile&gt;"
-   style="background-color: rgb(255, 255, 255);"
-   id="svg4896"
-   sodipodi:docname="map.svg"
-   inkscape:version="0.92.4 (33fec40, 2019-01-16)">
+   id="svg5249"
+   inkscape:version="0.92.4 (33fec40, 2019-01-16)"
+   sodipodi:docname="map23.svg">
+   
+    
+   <linearGradient
+       id="linearGradient7240"
+       osb:paint="solid">
+      
+<stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop7238" />
+    
+</linearGradient>
+  
+</defs>
+  
+<sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.35"
+     inkscape:cx="-74.285714"
+     inkscape:cy="560"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1853"
+     inkscape:window-height="1025"
+     inkscape:window-x="67"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1" />
   
 <metadata
-     id="metadata4900">
+     id="metadata5246">
     
 <rdf:RDF>
       
@@ -52,6 +87,9 @@
         
 <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        
+<dc:title>
+</dc:title>
       
 </cc:Work>
     
@@ -59,491 +97,261 @@
   
 </metadata>
   
-<sodipodi:namedview
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1"
-     objecttolerance="10"
-     gridtolerance="10"
-     guidetolerance="10"
-     inkscape:pageopacity="0"
-     inkscape:pageshadow="2"
-     inkscape:window-width="1853"
-     inkscape:window-height="1025"
-     id="namedview4898"
-     showgrid="false"
-     inkscape:zoom="1.5684519"
-     inkscape:cx="147.57969"
-     inkscape:cy="223.49626"
-     inkscape:window-x="67"
-     inkscape:window-y="27"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="g4894" />
-  
-<defs
-     id="defs4818" />
-  
 <g
-     id="g4894"
-     transform="translate(-184.89569,-35.703996)">
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,3)">
     
 <rect
-       x="184.17084"
-       y="35.703995"
-       width="650"
-       height="340"
-       pointer-events="none"
-       id="rect4820"
-       style="fill:#ffffff;stroke:#000000" />
+       style="opacity:1;fill:#f9f9f9;fill-opacity:1;stroke:#000000;stroke-width:0.35993013;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect5794"
+       width="185.92601"
+       height="84.630684"
+       x="29.159283"
+       y="19.248093" />
     
 <rect
-       x="184.17084"
-       y="275.70401"
-       width="152"
-       height="100"
-       pointer-events="none"
-       id="2"
-       style="fill:#ffffff;stroke:#000000"
-       inkscape:label="#rect4822" />
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.33102149;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="area-7"
+       width="46.402084"
+       height="25.49407"
+       x="29.159283"
+       y="19.248093"
+       inkscape:label="#rect7244" />
     
-<g
-       transform="translate(238.67083,319.204)"
-       id="g4828">
-      
-<switch
-         id="switch4826">
-        
-<foreignObject
-           style="overflow:visible;"
-           pointer-events="all"
-           width="42"
-           height="12"
-           requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
-          
-<div
-             style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 44px; white-space: nowrap; overflow-wrap: normal; text-align: center;">
-            
-<div
-               style="display:inline-block;text-align:inherit;text-decoration:inherit;">Room 2
-<br />
-
-</div>
-          
-</div>
-        
-</foreignObject>
-        
+<rect
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.33102149;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="area-1"
+       width="46.402084"
+       height="25.49407"
+       x="29.159283"
+       y="78.384705"
+       inkscape:label="#rect7244-6" />
+    
+<rect
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.33102149;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="area-8"
+       width="46.402084"
+       height="25.49407"
+       x="29.159283"
+       y="47.974487"
+       inkscape:label="#rect7244-6-1" />
+    
+<rect
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.48492032;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="area-9"
+       width="77.837105"
+       height="32.615074"
+       x="137.22139"
+       y="71.243011"
+       inkscape:label="#rect7244-6-8" />
+    
+<rect
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.34890896;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="area-4"
+       width="89.38295"
+       height="14.70394"
+       x="92.808739"
+       y="19.249599"
+       inkscape:label="#rect7244-6-7" />
+    
+<rect
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.28946683;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="area-6"
+       width="51.773407"
+       height="17.472502"
+       x="162.87323"
+       y="50.314125"
+       inkscape:label="#rect7244-6-9" />
+    
+<rect
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.33102149;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="area-3"
+       width="46.402084"
+       height="25.49407"
+       x="93.368118"
+       y="40.130905"
+       inkscape:label="#rect7244-6-2" />
+    
+<rect
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.27071545;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="area-2"
+       width="46.402084"
+       height="17.051117"
+       x="84.255272"
+       y="86.834015"
+       inkscape:label="#rect7244-6-0" />
+    
+<rect
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.21229447;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="area-5"
+       width="21.19211"
+       height="22.959764"
+       x="193.8932"
+       y="19.248093"
+       inkscape:label="#rect7244-6-23" />
+    
 <text
-           x="21"
-           y="12"
-           font-size="12px"
-           id="text4824"
-           style="font-size:12px;font-family:Helvetica;text-anchor:middle;fill:#000000">Room 2&lt;br&gt;
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:3.50331068px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.08758277"
+       x="31.864086"
+       y="32.400356"
+       id="text-7"
+       inkscape:label="#text7314"
+       transform="scale(1.1380286,0.87871252)">
+<tspan
+         sodipodi:role="line"
+         id="tspan7312"
+         x="31.864086"
+         y="32.400356"
+         style="stroke-width:0.08758277">Room 7
+</tspan>
 </text>
-      
-</switch>
     
-</g>
-    
-<rect
-       x="184.17084"
-       y="35.703995"
-       width="152"
-       height="100"
-       pointer-events="none"
-       id="1"
-       style="fill:#ffffff;stroke:#000000"
-       inkscape:label="#rect4830" />
-    
-<g
-       transform="translate(238.67083,79.203996)"
-       id="g4836">
-      
-<switch
-         id="switch4834">
-        
-<foreignObject
-           style="overflow:visible;"
-           pointer-events="all"
-           width="42"
-           height="12"
-           requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
-          
-<div
-             style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 44px; white-space: nowrap; overflow-wrap: normal; text-align: center;">
-            
-<div
-               style="display:inline-block;text-align:inherit;text-decoration:inherit;">Room 1
-<br />
-
-</div>
-          
-</div>
-        
-</foreignObject>
-        
 <text
-           x="21"
-           y="12"
-           font-size="12px"
-           id="text4832"
-           style="font-size:12px;font-family:Helvetica;text-anchor:middle;fill:#000000">Room 1&lt;br&gt;
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:3.50331068px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.08758277"
+       x="36.118107"
+       y="69.685593"
+       id="text-8"
+       inkscape:label="#text7318"
+       transform="scale(1.1380286,0.87871252)">
+<tspan
+         sodipodi:role="line"
+         id="tspan7316"
+         x="36.118107"
+         y="69.685593"
+         style="stroke-width:0.08758277">Room 8
+</tspan>
 </text>
-      
-</switch>
     
-</g>
-    
-<rect
-       x="616.17084"
-       y="275.70401"
-       width="192"
-       height="100"
-       pointer-events="none"
-       id="3"
-       fill="white"
-       stroke="black"
-       inkscape:label="#rect4838" 
-       />
-    
-<g
-       transform="translate(690.67083,319.204)"
-       id="g4844">
-      
-<switch
-         id="switch4842">
-        
-<foreignObject
-           style="overflow:visible;"
-           pointer-events="all"
-           width="42"
-           height="12"
-           requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
-          
-<div
-             style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 44px; white-space: nowrap; overflow-wrap: normal; text-align: center;">
-            
-<div
-               style="display:inline-block;text-align:inherit;text-decoration:inherit;">Room 3
-<br />
-
-</div>
-          
-</div>
-        
-</foreignObject>
-        
 <text
-           x="21"
-           y="12"
-           font-size="12px"
-           id="text4840"
-           style="font-size:12px;font-family:Helvetica;text-anchor:middle;fill:#000000">Room 3&lt;br&gt;
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:3.50331068px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.08758277"
+       x="34.866924"
+       y="104.46847"
+       id="text-1"
+       inkscape:label="#text7322"
+       transform="scale(1.1380286,0.87871252)">
+<tspan
+         sodipodi:role="line"
+         id="tspan7320"
+         x="34.866924"
+         y="104.46847"
+         style="stroke-width:0.08758277">Room 1
+</tspan>
 </text>
-      
-</switch>
     
-</g>
-    
-<rect
-       x="734.17084"
-       y="35.703995"
-       width="100"
-       height="150"
-       pointer-events="none"
-       id="4"
-       style="fill:#ffffff;stroke:#000000"
-       inkscape:label="#rect4846" />
-    
-<g
-       transform="translate(762.67083,104.204)"
-       id="g4852">
-      
-<switch
-         id="switch4850">
-        
-<foreignObject
-           style="overflow:visible;"
-           pointer-events="all"
-           width="42"
-           height="12"
-           requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
-          
-<div
-             style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 44px; white-space: nowrap; overflow-wrap: normal; text-align: center;">
-            
-<div
-               style="display:inline-block;text-align:inherit;text-decoration:inherit;">Room 4
-<br />
-
-</div>
-          
-</div>
-        
-</foreignObject>
-        
 <text
-           x="21"
-           y="12"
-           font-size="12px"
-           id="text4848"
-           style="font-size:12px;font-family:Helvetica;text-anchor:middle;fill:#000000">Room 4&lt;br&gt;
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:3.50331068px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.08758277"
+       x="152.97853"
+       y="106.22013"
+       id="text-9"
+       inkscape:label="#text7326"
+       transform="scale(1.1380286,0.87871252)">
+<tspan
+         sodipodi:role="line"
+         id="tspan7324"
+         x="152.97853"
+         y="106.22013"
+         style="stroke-width:0.08758277">Room 9
+</tspan>
 </text>
-      
-</switch>
     
-</g>
-    
-<rect
-       x="406.17084"
-       y="35.703995"
-       width="190"
-       height="60"
-       pointer-events="none"
-       id="5"
-       style="fill:#ffffff;stroke:#000000"
-       inkscape:label="#rect4854" />
-    
-<g
-       transform="translate(479.67083,59.203996)"
-       id="g4860">
-      
-<switch
-         id="switch4858">
-        
-<foreignObject
-           style="overflow:visible;"
-           pointer-events="all"
-           width="42"
-           height="12"
-           requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
-          
-<div
-             style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 44px; white-space: nowrap; overflow-wrap: normal; text-align: center;">
-            
-<div
-               style="display:inline-block;text-align:inherit;text-decoration:inherit;">Room 5
-<br />
-
-</div>
-          
-</div>
-        
-</foreignObject>
-        
 <text
-           x="21"
-           y="12"
-           font-size="12px"
-           id="text4856"
-           style="font-size:12px;font-family:Helvetica;text-anchor:middle;fill:#000000">Room 5&lt;br&gt;
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:3.50331068px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.08758277"
+       x="91.420372"
+       y="111.22485"
+       id="text-2"
+       inkscape:label="#text7330"
+       transform="scale(1.1380286,0.87871252)">
+<tspan
+         sodipodi:role="line"
+         id="tspan7328"
+         x="91.420372"
+         y="111.22485"
+         style="stroke-width:0.08758277">Room 2
+</tspan>
 </text>
-      
-</switch>
     
-</g>
-    
-<rect
-       x="381.17084"
-       y="205.70399"
-       width="120"
-       height="170"
-       pointer-events="none"
-       id="6"
-       style="fill:#ffffff;stroke:#000000"
-       inkscape:label="#rect4862" />
-    
-<g
-       transform="translate(419.67083,284.204)"
-       id="g4868">
-      
-<switch
-         id="switch4866">
-        
-<foreignObject
-           style="overflow:visible;"
-           pointer-events="all"
-           width="42"
-           height="12"
-           requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
-          
-<div
-             style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 44px; white-space: nowrap; overflow-wrap: normal; text-align: center;">
-            
-<div
-               style="display:inline-block;text-align:inherit;text-decoration:inherit;">Room 6
-</div>
-          
-</div>
-        
-</foreignObject>
-        
 <text
-           x="21"
-           y="12"
-           font-size="12px"
-           id="text4864"
-           style="font-size:12px;font-family:Helvetica;text-anchor:middle;fill:#000000">Room 6
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:3.50331068px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.08758277"
+       x="92.921791"
+       y="59.4259"
+       id="text-3"
+       inkscape:label="#text7334"
+       transform="scale(1.1380286,0.87871252)">
+<tspan
+         sodipodi:role="line"
+         id="tspan7332"
+         x="92.921791"
+         y="59.4259"
+         style="stroke-width:0.08758277">Room 3
+</tspan>
 </text>
-      
-</switch>
     
-</g>
-    
-<rect
-       x="626.17084"
-       y="35.703995"
-       width="86"
-       height="135"
-       pointer-events="none"
-       id="7"
-       style="fill:#ffffff;stroke:#000000"
-       inkscape:label="#rect4870">
-      
-<title
-         id="title4902">sss
-</title>
-    
-</rect>
-    
-<g
-       transform="translate(647.67083,97.203996)"
-       id="g4876">
-      
-<switch
-         id="switch4874">
-        
-<foreignObject
-           style="overflow:visible;"
-           pointer-events="all"
-           width="42"
-           height="12"
-           requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
-          
-<div
-             style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 44px; white-space: nowrap; overflow-wrap: normal; text-align: center;">
-            
-<div
-               style="display:inline-block;text-align:inherit;text-decoration:inherit;">Room 7
-</div>
-          
-</div>
-        
-</foreignObject>
-        
 <text
-           x="21"
-           y="12"
-           font-size="12px"
-           id="text4872"
-           style="font-size:12px;font-family:Helvetica;text-anchor:middle;fill:#000000">Room 7
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:3.50331068px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.08758277"
+       x="100.17864"
+       y="29.647757"
+       id="text-4"
+       inkscape:label="#text7338"
+       transform="scale(1.1380286,0.87871252)">
+<tspan
+         sodipodi:role="line"
+         id="tspan7336"
+         x="100.17864"
+         y="29.647757"
+         style="stroke-width:0.08758277">Room 4
+</tspan>
 </text>
-      
-</switch>
     
-</g>
-    
-<rect
-       x="526.17084"
-       y="193.20399"
-       width="120"
-       height="60"
-       pointer-events="none"
-       id="8"
-       style="fill:#ffffff;stroke:#000000"
-       inkscape:label="#rect4878" />
-    
-<g
-       transform="translate(564.67083,217.204)"
-       id="g4884">
-      
-<switch
-         id="switch4882">
-        
-<foreignObject
-           style="overflow:visible;"
-           pointer-events="all"
-           width="42"
-           height="12"
-           requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
-          
-<div
-             style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 44px; white-space: nowrap; overflow-wrap: normal; text-align: center;">
-            
-<div
-               style="display:inline-block;text-align:inherit;text-decoration:inherit;">Room 8
-</div>
-          
-</div>
-        
-</foreignObject>
-        
 <text
-           x="21"
-           y="12"
-           font-size="12px"
-           id="text4880"
-           style="font-size:12px;font-family:Helvetica;text-anchor:middle;fill:#000000">Room 8
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:3.50331068px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.08758277"
+       x="153.72926"
+       y="66.432526"
+       id="text-6"
+       inkscape:label="#text7342"
+       transform="scale(1.1380286,0.87871252)">
+<tspan
+         sodipodi:role="line"
+         id="tspan7340"
+         x="153.72926"
+         y="66.432526"
+         style="stroke-width:0.08758277">Room 6
+</tspan>
 </text>
-      
-</switch>
     
-</g>
-    
-<rect
-       x="184.17084"
-       y="170.70399"
-       width="120"
-       height="60"
-       pointer-events="none"
-       id="9"
-       style="fill:#ffffff;stroke:#000000"
-       inkscape:label="#rect4886" />
-    
-<g
-       transform="translate(222.67083,194.204)"
-       id="g4892">
-      
-<switch
-         id="switch4890">
-        
-<foreignObject
-           style="overflow:visible;"
-           pointer-events="all"
-           width="42"
-           height="12"
-           requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
-          
-<div
-             style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 44px; white-space: nowrap; overflow-wrap: normal; text-align: center;">
-            
-<div
-               style="display:inline-block;text-align:inherit;text-decoration:inherit;">Room 9
-</div>
-          
-</div>
-        
-</foreignObject>
-        
 <text
-           x="21"
-           y="12"
-           font-size="12px"
-           id="text4888"
-           style="font-size:12px;font-family:Helvetica;text-anchor:middle;fill:#000000">Room 9
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:3.50331068px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.08758277"
+       x="170.99557"
+       y="30.898939"
+       id="text-5"
+       inkscape:label="#text7346"
+       transform="scale(1.1380286,0.87871252)">
+<tspan
+         sodipodi:role="line"
+         id="tspan7344"
+         x="170.99557"
+         y="30.898939"
+         style="stroke-width:0.08758277">Room 5
+</tspan>
 </text>
-      
-</switch>
-    
-</g>
   
 </g>
 
 </svg>
-</div>
-</area-map>
-</div>
 
+
+</div>
+</div>
 </body>
 
 <script src="{{ asset('js/app.js') }}"></script>
