@@ -44,21 +44,9 @@ Route::get('/areas/{id}',function($id){
         ['name'=>"Lab 6",'id'=>6,'desks'=>25,'takenDesks'=>20],
         ['name'=>"Lab 7",'id'=>7,'desks'=>30,'takenDesks'=>15],
         ['name'=>"Lab 8",'id'=>8,'desks'=>20,'takenDesks'=>0],
-        ['name'=>"Lab 9",'id'=>9,'desks'=>20,'takenDesks'=>2],
+        ['name'=>"Lab 9",'id'=>9,'desks'=>20,'takenDesks'=>20],
         ],
         'id'=>$id
     ];
-});
-Route::get("do-it",function(){
-   $compenet = fopen(base_path("resources/js/components/")."map-2.vue", "w"); 
-   fwrite($compenet, 
-"<template>
-    <div slot=\"map\">
-                        
-        <!--put your svg code here-->
-                    
-    </div>
-</template>");
-fclose($compenet);
 });
 

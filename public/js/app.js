@@ -1812,6 +1812,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -1873,6 +1875,7 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
     }
   },
   mounted: function mounted() {
+    console.log("Heyy");
     this.getAreas();
   },
   created: function created() {
@@ -37723,7 +37726,7 @@ var render = function() {
                 "v-flex",
                 { attrs: { xs12: "", lg8: "", md8: "" } },
                 [
-                  _vm._t("map"),
+                  _c("v-container", [_vm._t("map")], 2),
                   _vm._v(" "),
                   _c(
                     "v-card",
@@ -37785,7 +37788,7 @@ var render = function() {
                     1
                   )
                 ],
-                2
+                1
               ),
               _vm._v(" "),
               _c("v-spacer"),
@@ -37817,13 +37820,13 @@ var render = function() {
                                     [
                                       _c("v-flex", { attrs: { xs4: "" } }, [
                                         _vm._v(
-                                          "\n                                            Area-" +
+                                          "\n                                        Area-" +
                                             _vm._s(area.id) +
                                             " " +
                                             _vm._s(area.takenDesks) +
                                             "/" +
                                             _vm._s(area.desks) +
-                                            " \n                                        "
+                                            " \n                                    "
                                         )
                                       ]),
                                       _vm._v(" "),
@@ -37978,6 +37981,733 @@ var render = function() {
     ],
     1
   )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/map-22.vue?vue&type=template&id=4c17fddc&":
+/*!*********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/map-22.vue?vue&type=template&id=4c17fddc& ***!
+  \*********************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("area-map", { attrs: { v: "" } }, [
+    _c("div", { attrs: { slot: "map" }, slot: "map" }, [
+      _c(
+        "svg",
+        {
+          attrs: {
+            "xmlns:osb": "http://www.openswatchbook.org/uri/2009/osb",
+            "xmlns:dc": "http://purl.org/dc/elements/1.1/",
+            "xmlns:cc": "http://creativecommons.org/ns#",
+            "xmlns:rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+            "xmlns:svg": "http://www.w3.org/2000/svg",
+            xmlns: "http://www.w3.org/2000/svg",
+            "xmlns:sodipodi":
+              "http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd",
+            "xmlns:inkscape": "http://www.inkscape.org/namespaces/inkscape",
+            width: "500mm",
+            height: "300mm",
+            viewBox: "0 0 500 300",
+            version: "1.1",
+            id: "svg5249",
+            "inkscape:version": "0.92.4 (33fec40, 2019-01-16)",
+            "sodipodi:docname": "map23.svg"
+          }
+        },
+        [
+          _c(
+            "defs",
+            { attrs: { id: "defs5243" } },
+            [
+              _c(
+                "linearGradient",
+                { attrs: { id: "linearGradient7240", "osb:paint": "solid" } },
+                [
+                  _c("stop", {
+                    staticStyle: {
+                      "stop-color": "#000000",
+                      "stop-opacity": "1"
+                    },
+                    attrs: { offset: "0", id: "stop7238" }
+                  })
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("sodipodi:namedview", {
+            attrs: {
+              id: "base",
+              pagecolor: "#ffffff",
+              bordercolor: "#666666",
+              borderopacity: "1.0",
+              "inkscape:pageopacity": "0.0",
+              "inkscape:pageshadow": "2",
+              "inkscape:zoom": "0.35",
+              "inkscape:cx": "-74.285714",
+              "inkscape:cy": "560",
+              "inkscape:document-units": "mm",
+              "inkscape:current-layer": "layer1",
+              showgrid: "false",
+              "inkscape:window-width": "1853",
+              "inkscape:window-height": "1025",
+              "inkscape:window-x": "67",
+              "inkscape:window-y": "27",
+              "inkscape:window-maximized": "1"
+            }
+          }),
+          _vm._v(" "),
+          _c(
+            "metadata",
+            { attrs: { id: "metadata5246" } },
+            [
+              _c(
+                "rdf:RDF",
+                [
+                  _c(
+                    "cc:Work",
+                    { attrs: { "rdf:about": "" } },
+                    [
+                      _c("dc:format", [_vm._v("image/svg+xml")]),
+                      _vm._v(" "),
+                      _c("dc:type", {
+                        attrs: {
+                          "rdf:resource":
+                            "http://purl.org/dc/dcmitype/StillImage"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("dc:title")
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "g",
+            {
+              attrs: {
+                "inkscape:label": "Layer 1",
+                "inkscape:groupmode": "layer",
+                id: "layer1",
+                transform: "translate(0,3)"
+              }
+            },
+            [
+              _c("rect", {
+                staticStyle: {
+                  opacity: "1",
+                  fill: "#f9f9f9",
+                  "fill-opacity": "1",
+                  stroke: "#000000",
+                  "stroke-width": "0.35993013",
+                  "stroke-miterlimit": "4",
+                  "stroke-dasharray": "none",
+                  "stroke-opacity": "1"
+                },
+                attrs: {
+                  id: "rect5794",
+                  width: "185.92601",
+                  height: "84.630684",
+                  x: "29.159283",
+                  y: "19.248093"
+                }
+              }),
+              _vm._v(" "),
+              _c("rect", {
+                staticStyle: {
+                  opacity: "1",
+                  fill: "#ffffff",
+                  "fill-opacity": "1",
+                  stroke: "#000000",
+                  "stroke-width": "0.33102149",
+                  "stroke-miterlimit": "4",
+                  "stroke-dasharray": "none",
+                  "stroke-opacity": "1"
+                },
+                attrs: {
+                  id: "area-7",
+                  width: "46.402084",
+                  height: "25.49407",
+                  x: "29.159283",
+                  y: "19.248093",
+                  "inkscape:label": "#rect7244"
+                }
+              }),
+              _vm._v(" "),
+              _c("rect", {
+                staticStyle: {
+                  opacity: "1",
+                  fill: "#ffffff",
+                  "fill-opacity": "1",
+                  stroke: "#000000",
+                  "stroke-width": "0.33102149",
+                  "stroke-miterlimit": "4",
+                  "stroke-dasharray": "none",
+                  "stroke-opacity": "1"
+                },
+                attrs: {
+                  id: "area-1",
+                  width: "46.402084",
+                  height: "25.49407",
+                  x: "29.159283",
+                  y: "78.384705",
+                  "inkscape:label": "#rect7244-6"
+                }
+              }),
+              _vm._v(" "),
+              _c("rect", {
+                staticStyle: {
+                  opacity: "1",
+                  fill: "#ffffff",
+                  "fill-opacity": "1",
+                  stroke: "#000000",
+                  "stroke-width": "0.33102149",
+                  "stroke-miterlimit": "4",
+                  "stroke-dasharray": "none",
+                  "stroke-opacity": "1"
+                },
+                attrs: {
+                  id: "area-8",
+                  width: "46.402084",
+                  height: "25.49407",
+                  x: "29.159283",
+                  y: "47.974487",
+                  "inkscape:label": "#rect7244-6-1"
+                }
+              }),
+              _vm._v(" "),
+              _c("rect", {
+                staticStyle: {
+                  opacity: "1",
+                  fill: "#ffffff",
+                  "fill-opacity": "1",
+                  stroke: "#000000",
+                  "stroke-width": "0.48492032",
+                  "stroke-miterlimit": "4",
+                  "stroke-dasharray": "none",
+                  "stroke-opacity": "1"
+                },
+                attrs: {
+                  id: "area-9",
+                  width: "77.837105",
+                  height: "32.615074",
+                  x: "137.22139",
+                  y: "71.243011",
+                  "inkscape:label": "#rect7244-6-8"
+                }
+              }),
+              _vm._v(" "),
+              _c("rect", {
+                staticStyle: {
+                  opacity: "1",
+                  fill: "#ffffff",
+                  "fill-opacity": "1",
+                  stroke: "#000000",
+                  "stroke-width": "0.34890896",
+                  "stroke-miterlimit": "4",
+                  "stroke-dasharray": "none",
+                  "stroke-opacity": "1"
+                },
+                attrs: {
+                  id: "area-4",
+                  width: "89.38295",
+                  height: "14.70394",
+                  x: "92.808739",
+                  y: "19.249599",
+                  "inkscape:label": "#rect7244-6-7"
+                }
+              }),
+              _vm._v(" "),
+              _c("rect", {
+                staticStyle: {
+                  opacity: "1",
+                  fill: "#ffffff",
+                  "fill-opacity": "1",
+                  stroke: "#000000",
+                  "stroke-width": "0.28946683",
+                  "stroke-miterlimit": "4",
+                  "stroke-dasharray": "none",
+                  "stroke-opacity": "1"
+                },
+                attrs: {
+                  id: "area-6",
+                  width: "51.773407",
+                  height: "17.472502",
+                  x: "162.87323",
+                  y: "50.314125",
+                  "inkscape:label": "#rect7244-6-9"
+                }
+              }),
+              _vm._v(" "),
+              _c("rect", {
+                staticStyle: {
+                  opacity: "1",
+                  fill: "#ffffff",
+                  "fill-opacity": "1",
+                  stroke: "#000000",
+                  "stroke-width": "0.33102149",
+                  "stroke-miterlimit": "4",
+                  "stroke-dasharray": "none",
+                  "stroke-opacity": "1"
+                },
+                attrs: {
+                  id: "area-3",
+                  width: "46.402084",
+                  height: "25.49407",
+                  x: "93.368118",
+                  y: "40.130905",
+                  "inkscape:label": "#rect7244-6-2"
+                }
+              }),
+              _vm._v(" "),
+              _c("rect", {
+                staticStyle: {
+                  opacity: "1",
+                  fill: "#ffffff",
+                  "fill-opacity": "1",
+                  stroke: "#000000",
+                  "stroke-width": "0.27071545",
+                  "stroke-miterlimit": "4",
+                  "stroke-dasharray": "none",
+                  "stroke-opacity": "1"
+                },
+                attrs: {
+                  id: "area-2",
+                  width: "46.402084",
+                  height: "17.051117",
+                  x: "84.255272",
+                  y: "86.834015",
+                  "inkscape:label": "#rect7244-6-0"
+                }
+              }),
+              _vm._v(" "),
+              _c("rect", {
+                staticStyle: {
+                  opacity: "1",
+                  fill: "#ffffff",
+                  "fill-opacity": "1",
+                  stroke: "#000000",
+                  "stroke-width": "0.21229447",
+                  "stroke-miterlimit": "4",
+                  "stroke-dasharray": "none",
+                  "stroke-opacity": "1"
+                },
+                attrs: {
+                  id: "area-5",
+                  width: "21.19211",
+                  height: "22.959764",
+                  x: "193.8932",
+                  y: "19.248093",
+                  "inkscape:label": "#rect7244-6-23"
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "text",
+                {
+                  staticStyle: {
+                    "font-style": "normal",
+                    "font-weight": "normal",
+                    "font-size": "3.50331068px",
+                    "line-height": "1.25",
+                    "font-family": "sans-serif",
+                    "letter-spacing": "0px",
+                    "word-spacing": "0px",
+                    fill: "#000000",
+                    "fill-opacity": "1",
+                    stroke: "none",
+                    "stroke-width": "0.08758277"
+                  },
+                  attrs: {
+                    "xml:space": "preserve",
+                    x: "31.864086",
+                    y: "32.400356",
+                    id: "text-7",
+                    "inkscape:label": "#text7314",
+                    transform: "scale(1.1380286,0.87871252)"
+                  }
+                },
+                [
+                  _c(
+                    "tspan",
+                    {
+                      staticStyle: { "stroke-width": "0.08758277" },
+                      attrs: {
+                        "sodipodi:role": "line",
+                        id: "tspan7312",
+                        x: "31.864086",
+                        y: "32.400356"
+                      }
+                    },
+                    [_vm._v("Room 7")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "text",
+                {
+                  staticStyle: {
+                    "font-style": "normal",
+                    "font-weight": "normal",
+                    "font-size": "3.50331068px",
+                    "line-height": "1.25",
+                    "font-family": "sans-serif",
+                    "letter-spacing": "0px",
+                    "word-spacing": "0px",
+                    fill: "#000000",
+                    "fill-opacity": "1",
+                    stroke: "none",
+                    "stroke-width": "0.08758277"
+                  },
+                  attrs: {
+                    "xml:space": "preserve",
+                    x: "36.118107",
+                    y: "69.685593",
+                    id: "text-8",
+                    "inkscape:label": "#text7318",
+                    transform: "scale(1.1380286,0.87871252)"
+                  }
+                },
+                [
+                  _c(
+                    "tspan",
+                    {
+                      staticStyle: { "stroke-width": "0.08758277" },
+                      attrs: {
+                        "sodipodi:role": "line",
+                        id: "tspan7316",
+                        x: "36.118107",
+                        y: "69.685593"
+                      }
+                    },
+                    [_vm._v("Room 8")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "text",
+                {
+                  staticStyle: {
+                    "font-style": "normal",
+                    "font-weight": "normal",
+                    "font-size": "3.50331068px",
+                    "line-height": "1.25",
+                    "font-family": "sans-serif",
+                    "letter-spacing": "0px",
+                    "word-spacing": "0px",
+                    fill: "#000000",
+                    "fill-opacity": "1",
+                    stroke: "none",
+                    "stroke-width": "0.08758277"
+                  },
+                  attrs: {
+                    "xml:space": "preserve",
+                    x: "34.866924",
+                    y: "104.46847",
+                    id: "text-1",
+                    "inkscape:label": "#text7322",
+                    transform: "scale(1.1380286,0.87871252)"
+                  }
+                },
+                [
+                  _c(
+                    "tspan",
+                    {
+                      staticStyle: { "stroke-width": "0.08758277" },
+                      attrs: {
+                        "sodipodi:role": "line",
+                        id: "tspan7320",
+                        x: "34.866924",
+                        y: "104.46847"
+                      }
+                    },
+                    [_vm._v("Room 1")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "text",
+                {
+                  staticStyle: {
+                    "font-style": "normal",
+                    "font-weight": "normal",
+                    "font-size": "3.50331068px",
+                    "line-height": "1.25",
+                    "font-family": "sans-serif",
+                    "letter-spacing": "0px",
+                    "word-spacing": "0px",
+                    fill: "#000000",
+                    "fill-opacity": "1",
+                    stroke: "none",
+                    "stroke-width": "0.08758277"
+                  },
+                  attrs: {
+                    "xml:space": "preserve",
+                    x: "152.97853",
+                    y: "106.22013",
+                    id: "text-9",
+                    "inkscape:label": "#text7326",
+                    transform: "scale(1.1380286,0.87871252)"
+                  }
+                },
+                [
+                  _c(
+                    "tspan",
+                    {
+                      staticStyle: { "stroke-width": "0.08758277" },
+                      attrs: {
+                        "sodipodi:role": "line",
+                        id: "tspan7324",
+                        x: "152.97853",
+                        y: "106.22013"
+                      }
+                    },
+                    [_vm._v("Room 9")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "text",
+                {
+                  staticStyle: {
+                    "font-style": "normal",
+                    "font-weight": "normal",
+                    "font-size": "3.50331068px",
+                    "line-height": "1.25",
+                    "font-family": "sans-serif",
+                    "letter-spacing": "0px",
+                    "word-spacing": "0px",
+                    fill: "#000000",
+                    "fill-opacity": "1",
+                    stroke: "none",
+                    "stroke-width": "0.08758277"
+                  },
+                  attrs: {
+                    "xml:space": "preserve",
+                    x: "91.420372",
+                    y: "111.22485",
+                    id: "text-2",
+                    "inkscape:label": "#text7330",
+                    transform: "scale(1.1380286,0.87871252)"
+                  }
+                },
+                [
+                  _c(
+                    "tspan",
+                    {
+                      staticStyle: { "stroke-width": "0.08758277" },
+                      attrs: {
+                        "sodipodi:role": "line",
+                        id: "tspan7328",
+                        x: "91.420372",
+                        y: "111.22485"
+                      }
+                    },
+                    [_vm._v("Room 2")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "text",
+                {
+                  staticStyle: {
+                    "font-style": "normal",
+                    "font-weight": "normal",
+                    "font-size": "3.50331068px",
+                    "line-height": "1.25",
+                    "font-family": "sans-serif",
+                    "letter-spacing": "0px",
+                    "word-spacing": "0px",
+                    fill: "#000000",
+                    "fill-opacity": "1",
+                    stroke: "none",
+                    "stroke-width": "0.08758277"
+                  },
+                  attrs: {
+                    "xml:space": "preserve",
+                    x: "92.921791",
+                    y: "59.4259",
+                    id: "text-3",
+                    "inkscape:label": "#text7334",
+                    transform: "scale(1.1380286,0.87871252)"
+                  }
+                },
+                [
+                  _c(
+                    "tspan",
+                    {
+                      staticStyle: { "stroke-width": "0.08758277" },
+                      attrs: {
+                        "sodipodi:role": "line",
+                        id: "tspan7332",
+                        x: "92.921791",
+                        y: "59.4259"
+                      }
+                    },
+                    [_vm._v("Room 3")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "text",
+                {
+                  staticStyle: {
+                    "font-style": "normal",
+                    "font-weight": "normal",
+                    "font-size": "3.50331068px",
+                    "line-height": "1.25",
+                    "font-family": "sans-serif",
+                    "letter-spacing": "0px",
+                    "word-spacing": "0px",
+                    fill: "#000000",
+                    "fill-opacity": "1",
+                    stroke: "none",
+                    "stroke-width": "0.08758277"
+                  },
+                  attrs: {
+                    "xml:space": "preserve",
+                    x: "100.17864",
+                    y: "29.647757",
+                    id: "text-4",
+                    "inkscape:label": "#text7338",
+                    transform: "scale(1.1380286,0.87871252)"
+                  }
+                },
+                [
+                  _c(
+                    "tspan",
+                    {
+                      staticStyle: { "stroke-width": "0.08758277" },
+                      attrs: {
+                        "sodipodi:role": "line",
+                        id: "tspan7336",
+                        x: "100.17864",
+                        y: "29.647757"
+                      }
+                    },
+                    [_vm._v("Room 4")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "text",
+                {
+                  staticStyle: {
+                    "font-style": "normal",
+                    "font-weight": "normal",
+                    "font-size": "3.50331068px",
+                    "line-height": "1.25",
+                    "font-family": "sans-serif",
+                    "letter-spacing": "0px",
+                    "word-spacing": "0px",
+                    fill: "#000000",
+                    "fill-opacity": "1",
+                    stroke: "none",
+                    "stroke-width": "0.08758277"
+                  },
+                  attrs: {
+                    "xml:space": "preserve",
+                    x: "153.72926",
+                    y: "66.432526",
+                    id: "text-6",
+                    "inkscape:label": "#text7342",
+                    transform: "scale(1.1380286,0.87871252)"
+                  }
+                },
+                [
+                  _c(
+                    "tspan",
+                    {
+                      staticStyle: { "stroke-width": "0.08758277" },
+                      attrs: {
+                        "sodipodi:role": "line",
+                        id: "tspan7340",
+                        x: "153.72926",
+                        y: "66.432526"
+                      }
+                    },
+                    [_vm._v("Room 6")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "text",
+                {
+                  staticStyle: {
+                    "font-style": "normal",
+                    "font-weight": "normal",
+                    "font-size": "3.50331068px",
+                    "line-height": "1.25",
+                    "font-family": "sans-serif",
+                    "letter-spacing": "0px",
+                    "word-spacing": "0px",
+                    fill: "#000000",
+                    "fill-opacity": "1",
+                    stroke: "none",
+                    "stroke-width": "0.08758277"
+                  },
+                  attrs: {
+                    "xml:space": "preserve",
+                    x: "170.99557",
+                    y: "30.898939",
+                    id: "text-5",
+                    "inkscape:label": "#text7346",
+                    transform: "scale(1.1380286,0.87871252)"
+                  }
+                },
+                [
+                  _c(
+                    "tspan",
+                    {
+                      staticStyle: { "stroke-width": "0.08758277" },
+                      attrs: {
+                        "sodipodi:role": "line",
+                        id: "tspan7344",
+                        x: "170.99557",
+                        y: "30.898939"
+                      }
+                    },
+                    [_vm._v("Room 5")]
+                  )
+                ]
+              )
+            ]
+          )
+        ],
+        1
+      )
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -76070,7 +76800,8 @@ Vue.use(vuetify__WEBPACK_IMPORTED_MODULE_1___default.a);
  */
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
-//--------------------
+
+Vue.component('map-22', __webpack_require__(/*! ./components/map-22.vue */ "./resources/js/components/map-22.vue").default); //--------------------
 
 Vue.component('map-1', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue").default);
 Vue.component('area-map', __webpack_require__(/*! ./components/AreaMap.vue */ "./resources/js/components/AreaMap.vue").default);
@@ -76383,6 +77114,59 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NavBar_vue_vue_type_template_id_5dd24bca_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NavBar_vue_vue_type_template_id_5dd24bca_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/map-22.vue":
+/*!********************************************!*\
+  !*** ./resources/js/components/map-22.vue ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _map_22_vue_vue_type_template_id_4c17fddc___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./map-22.vue?vue&type=template&id=4c17fddc& */ "./resources/js/components/map-22.vue?vue&type=template&id=4c17fddc&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+var script = {}
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
+  script,
+  _map_22_vue_vue_type_template_id_4c17fddc___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _map_22_vue_vue_type_template_id_4c17fddc___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/map-22.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/map-22.vue?vue&type=template&id=4c17fddc&":
+/*!***************************************************************************!*\
+  !*** ./resources/js/components/map-22.vue?vue&type=template&id=4c17fddc& ***!
+  \***************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_map_22_vue_vue_type_template_id_4c17fddc___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./map-22.vue?vue&type=template&id=4c17fddc& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/map-22.vue?vue&type=template&id=4c17fddc&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_map_22_vue_vue_type_template_id_4c17fddc___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_map_22_vue_vue_type_template_id_4c17fddc___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

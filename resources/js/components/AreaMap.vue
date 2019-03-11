@@ -3,8 +3,10 @@
         <v-container>
             <v-layout row wrap>
                 <v-flex xs12 lg8 md8>
-
-<slot name="map" class="svg-container"></slot>
+                    <v-container>
+                        <slot name="map" class="svg-container"></slot>
+                        </v-container>
+                
                 <v-card>
                     
                     <v-card-text class="mx-4 px-4" v-if="fullV">
@@ -104,6 +106,7 @@ const axios = require('axios');
             }
         },
         mounted() {
+            console.log("Heyy")
             this.getAreas();
         }
         ,created () {

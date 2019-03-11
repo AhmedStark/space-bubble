@@ -44,7 +44,7 @@ class CreateMap extends Command
         if($checkMapID){
             $compenet = fopen(base_path("resources/js/components/")."map-".$mapID.".vue", "w"); 
             fwrite($compenet, 
-"<template>\n    <div slot=\"map\">\n\n         <!--put your svg code here-->\n\n    </div>\n</template>");
+"<template>\n<area-map v>\n    <div slot=\"map\">\n\n         <!--put your svg code here-->\n\n    </div>\n</area-map></template>");
             fclose($compenet);
         }
     }
