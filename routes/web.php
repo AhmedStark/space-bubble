@@ -50,3 +50,7 @@ Route::get('/areas/{id}',function($id){
     ];
 });
 
+Route::get('big-map',function(){
+    return view('big-map');
+});
+
