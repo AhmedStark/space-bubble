@@ -78,6 +78,13 @@ const axios = require('axios');
                     el===null ? console.warn("error id 10 not found in the map"):el.style="fill: "+this.getColorForArea(area.takenDesks,area.desks)+"; stroke: rgb(0, 0, 0);";
                     elText===null ? console.warn("error id text-"+area.id+" not found in the map"):null;
                     elText.innerHTML=area.name+"( "+area.takenDesks+" / "+area.desks+" )";
+                    if(area.direct!==null){
+                        el.direct=area.direct;
+                        el.addEventListener("click",this.clickMapEvent);
+                        el.style.cursor ="pointer"
+                    }
+                    
+                    
                 }
             },
             getAreas:function () {
@@ -103,7 +110,9 @@ const axios = require('axios');
                 }
             },getColorForArea:function (takenDesks,desks) {
                 return this.areaColors[this.areaStatus(takenDesks,desks)];
-            }
+            },clickMapEvent:function(evt){
+                window.location = 'http://localhost:8000/map/'+evt.target.direct;
+            },
         },
         mounted() {
             console.log("Heyy")
