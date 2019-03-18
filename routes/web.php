@@ -72,3 +72,7 @@ Route::post('/main','buildingController@showLevels');
 
 Route::post('/level','levelController@showAreas');
 Route::post('/area','areaController@showTables');
+
+Route::get('/count',"areaController@totalTables");
+
+Route::get('/countTaken',"areaController@totalTakenTables");

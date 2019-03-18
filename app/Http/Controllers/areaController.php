@@ -53,5 +53,15 @@ class areaController extends Controller
         return $tables;
     }
 
-    
+
+    public function totalTables(Request $request){
+        $area_id=$request->area_id;
+        $count=Area::find($area_id)->tables()->count();
+        return $count;
+    }
+    public function totalTakenTables(Request $request){
+        $area_id=$request->area_id;
+        $count=Area::find($area_id)->tables()->where('taken','=',1)->count(); 
+        return $count;
+    }
 }
