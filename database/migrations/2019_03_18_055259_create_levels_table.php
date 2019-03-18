@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDesksTable extends Migration
+class CreateLevelsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateDesksTable extends Migration
      */
     public function up()
     {
-        Schema::create('desks', function (Blueprint $table) {
+        Schema::create('levels', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('area_id');
-            $table->string('token');
+            $table->integer('building_id');
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateDesksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('desks');
+        Schema::dropIfExists('levels');
     }
 }

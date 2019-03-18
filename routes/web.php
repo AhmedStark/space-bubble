@@ -22,6 +22,16 @@ Route::get('/admin/dashboard',function(){
     
     return view('admin.dashboard');
 });
+Route::get('admin/create','adminController@create');
+Route::post('admin/create','adminController@store');
+
+Route::get('admin/login','adminController@login');
+Route::post('admin/login','adminController@checklogin');
+
+
+
+Route::get('admin/control','adminController@control');
+
 Route::get('/areas',function(){
     
     return  [
@@ -31,6 +41,8 @@ Route::get('/areas',function(){
         ['desks'=>20,'taken_desks'=>11],
     ];
 });
+
+
 
 Route::get('/areas/{id}',function($id){
     

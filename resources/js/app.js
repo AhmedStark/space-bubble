@@ -27,6 +27,8 @@ Vue.use(Vuetify);
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 Vue.component('map-22', require('./components/map-22.vue').default);
+
+Vue.component('map-12', require('./components/map-12.vue').default);
 //--------------------
 Vue.component('map-1', require('./components/ExampleComponent.vue').default);
 Vue.component('area-map', require('./components/AreaMap.vue').default);
