@@ -69,3 +69,6 @@ Route::get('big-map',function(){
 Route::get('/main','buildingController@buildings');
 
 Route::post('/main','buildingController@showLevels');
+
+Route::post('/level','levelController@showAreas');
+Route::post('/area','areaController@showTables');

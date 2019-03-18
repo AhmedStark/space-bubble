@@ -6,10 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Level extends Model
 {
-    public function area(){
-        return $this->hasMany(Area::class);
+    public function areas(){
+        return $this->hasMany("App\Area");
     }
+
     public function building(){
-        return $this->belongsTo(Building::class);
+        return $this->belongsTo('App\Building');
     }
 }

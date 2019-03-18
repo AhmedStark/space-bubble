@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Area;
 class areaController extends Controller
 {
     /**
@@ -34,7 +34,7 @@ class areaController extends Controller
      */
     public function store(Request $request)
     {
-        $area=new App\Area;
+        $area=new Area;
 
         $area->level_id= $request->level_id;
         $area->name=$request->name;
@@ -42,48 +42,16 @@ class areaController extends Controller
         $area->save();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+    public function showAreas(){
+        return view('areas.index');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+    public function showTables(Request $request){
+        $area_id=$request->area_id;
+        
+        $tables=Area::find($area_id)->tables()->get();
+        return $tables;
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+    
 }

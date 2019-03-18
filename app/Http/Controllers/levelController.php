@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Level;
 class levelController extends Controller
 {
     /**
@@ -25,16 +25,22 @@ class levelController extends Controller
     {
         return view('level.create');
     }
+    public function showLevels(){
+        return view('levels.index');
+    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    public function showAreas(Request $request){
+        $level_id=$request->level_id;
+        
+        $areas=Level::find($level_id)->areas()->get();
+        return $areas;
+    }
+    
+
+
     public function store(Request $request)
     {
-        $level=new App\Level;
+        $level=new Level;
 
         $level->building_id= $request->building_id;
         $level->name=$request->name;
@@ -42,48 +48,5 @@ class levelController extends Controller
         $level->save();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+    
 }

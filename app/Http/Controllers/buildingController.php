@@ -18,7 +18,7 @@ class buildingController extends Controller
 
     public function showLevels(Request $request){
         $building_id=$request->building_id;
-        echo $building_id;
+        
         $levels=Building::find($building_id)->levels()->get();
         return $levels;
     }

@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Area extends Model
 {
     public function tables(){
-        return $this->hasMany(Table::class);
+        return $this->hasMany("App\Table");
     }
 
-    public function level(){
-        return $this->belongsTo(Level::class);
+    public function levels(){
+        return $this->belongsTo("App\Level");
     }
 }
  
