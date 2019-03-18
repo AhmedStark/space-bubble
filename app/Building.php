@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Building extends Model
 {
-    public function level(){
-        $this->hasMany(Level::class);
+    public function levels(){
+        return $this->hasMany('App\Level');
     }
 }

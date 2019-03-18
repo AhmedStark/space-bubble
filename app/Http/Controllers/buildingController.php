@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Building;
 use Illuminate\Http\Request;
 
 class buildingController extends Controller
@@ -11,10 +11,18 @@ class buildingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        
+
+    public function showBuildings(){
+        return view('buildings.index');
     }
+
+    public function showLevels(Request $request){
+        $building_id=$request->building_id;
+        echo $building_id;
+        $levels=Building::find($building_id)->levels()->get();
+        return $levels;
+    }
+    
 
     /**
      * Show the form for creating a new resource.

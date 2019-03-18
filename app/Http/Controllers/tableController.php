@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use DB;
 use Illuminate\Http\Request;
-
+use App\Table;
 class tableController extends Controller
 {
     /**
@@ -34,12 +34,12 @@ class tableController extends Controller
      */
     public function store(Request $request)
     {
-        $table=new App\Table;
+        $table=new Table;
 
         $table->area_id= $request->area_id;
         $table->token=str_random(5);
         $table->taken=0;
-        
+
         $table->save();
     }
 
@@ -74,7 +74,7 @@ class tableController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
     }
 
     /**
@@ -87,4 +87,18 @@ class tableController extends Controller
     {
         //
     }
+    public function statusUpdate(Request $request){
+        
+        DB::table('tables')
+            ->where('token', $request->token)
+            ->update(['taken' => $request->status]);
+
+        
+                
+    }
+
+    function refresh_area($id){
+        echo'hello';
+    }
+
 }
