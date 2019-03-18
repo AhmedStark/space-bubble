@@ -42,7 +42,7 @@ class buildingController extends Controller
      */
     public function store(Request $request)
     {
-        $building=new App\Building;
+        $building=new Building;
 
         $building->name=$request->name;
         
