@@ -26,6 +26,16 @@ Route::get('/admin/dashboard',function(){
     return view('admin.dashboard');
 });
 //don't use this structure
+Route::get('admin/create','adminController@create');
+Route::post('admin/create','adminController@store');
+
+Route::get('admin/login','adminController@login');
+Route::post('admin/login','adminController@checklogin');
+
+
+
+Route::get('admin/control','adminController@control');
+
 Route::get('/areas',function(){
 
     return  [
@@ -35,6 +45,8 @@ Route::get('/areas',function(){
         ['desks'=>20,'taken_desks'=>11],
     ];
 });
+
+
 
 Route::get('/areas/{id}',function($id){
 
@@ -57,3 +69,13 @@ Route::get('/areas/{id}',function($id){
 Route::get('big-map',function(){
     return view('big-map');
 });
+Route::get('/main','buildingController@buildings');
+
+Route::post('/main','buildingController@showLevels');
+
+Route::post('/level','levelController@showAreas');
+Route::post('/area','areaController@showTables');
+
+Route::get('/count',"areaController@totalTables");
+
+Route::get('/countTaken',"areaController@totalTakenTables");

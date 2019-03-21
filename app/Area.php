@@ -6,7 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Area extends Model
 {
-    public function desks(){
-        return $this->hasMany(Desk::class);
+    public function tables(){
+        return $this->hasMany("App\Table");
+    }
+
+    public function levels(){
+        return $this->belongsTo("App\Level");
     }
 }
+ 
