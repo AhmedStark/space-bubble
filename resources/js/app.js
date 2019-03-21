@@ -32,6 +32,7 @@ Vue.component('map-1', require('./components/ExampleComponent.vue').default);
 Vue.component('area-map', require('./components/AreaMap.vue').default);
 Vue.component('nav-bar', require('./components/NavBar.vue').default);
 Vue.component('navigation-map', require('./components/NavigationMap.vue').default);
+Vue.component('main-map', require('./components/MainMap.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

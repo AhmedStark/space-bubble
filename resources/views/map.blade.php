@@ -15,7 +15,8 @@
 
 <div id="app">
 <nav-bar></nav-bar>
-<map-22></map-22>
+
+<map-{{"22"}}></map-22>
 
 </div>
 </body>
