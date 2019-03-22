@@ -1,7 +1,5 @@
-<form action="/admi/dashboard">
-<label for="name">name</label>
-    <input type="text" name="name" placeholder="name" id="name">
-    {{csrf_field()}}
-    <button>Add</button>
-    Fill the name
-</form>
+@extends('main-template')
+@section('content')
+<nav-bar></nav-bar>
+<admin-dashboard></admin-dashboard>
+@endSection

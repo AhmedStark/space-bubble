@@ -11,7 +11,9 @@ window.Vue = require('vue');
 import 'vuetify/dist/vuetify.min.css' ;
 window.Vue = require('vue');
 
-
+import VueCytoscape from 'vue-cytoscape'
+import 'vue-cytoscape/dist/vue-cytoscape.css'
+Vue.use(VueCytoscape)
 import Vuetify from 'vuetify';
 
 Vue.use(Vuetify);
@@ -32,6 +34,7 @@ Vue.component('area-map', require('./components/AreaMap.vue').default);
 Vue.component('nav-bar', require('./components/NavBar.vue').default);
 Vue.component('navigation-map', require('./components/NavigationMap.vue').default);
 Vue.component('main-map', require('./components/MainMap.vue').default);
+Vue.component('admin-dashboard', require('./components/admin/AdminDashboard.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

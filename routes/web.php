@@ -65,6 +65,31 @@ Route::get('/areas/{id}',function($id){
         'id'=>$id
     ];
 });
+Route::get('/buildings/{id}/levels',function(){
+    return ['levels'=>[
+        ['name'=>"Basement",'id'=>1],
+        ['name'=>"Ground",'id'=>2],
+        ['name'=>"Level 1",'id'=>3],
+        ['name'=>"Level 2",'id'=>4],
+    ]];
+});
+Route::get('/levels/{id}/areas',function(){
+    return ['areas'=>[
+        ['name'=>"South",'id'=>1],
+        ['name'=>"North",'id'=>2],
+        ['name'=>"West",'id'=>3],
+    ]];
+});
+
+Route::get('/buildings',function(){
+    return [
+        'buildings'=>[
+        ['name'=>"WS",'id'=>1],
+        ['name'=>"WG",'id'=>2],
+        ['name'=>"WL",'id'=>3],
+    ]];
+});
+
 
 Route::get('big-map',function(){
     return view('big-map');
