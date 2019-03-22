@@ -1814,6 +1814,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -1835,7 +1838,8 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
       GOOD: 3,
       EMPTY: 4,
       fullV: this.v,
-      t: 0
+      t: 0,
+      holdIdZoom: 0
     };
   },
   methods: {
@@ -1854,6 +1858,9 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
           el.style.cursor = "pointer";
         }
       }
+    },
+    selectArea: function selectArea(id) {
+      this.$refs.main_map.selectArea(id);
     },
     getAreas: function getAreas() {
       var _this = this;
@@ -1898,10 +1905,10 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js&":
-/*!***************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js& ***!
-  \***************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MainMap.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/MainMap.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1913,19 +1920,39 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  mounted: function mounted() {
-    console.log('Component mounted.');
+  props: {
+    enable_selecting: {
+      default: false,
+      type: Boolean
+    },
+    areas: {
+      type: Array
+    }
+  },
+  methods: {
+    selectArea: function selectArea(id) {
+      if (!this.enable_selecting) {
+        return;
+      }
+
+      console.log("not Happenning");
+      console.log("it is here " + id);
+      var el = document.getElementById("area-" + id);
+      console.log(el.getAttribute('width'));
+
+      for (var i = 0; i < this.areas.length; i++) {
+        var area = this.areas[i];
+
+        if (id === area.id) {
+          document.getElementById("area-" + area.id).style.opacity = 1.25;
+          continue;
+        }
+
+        var el = document.getElementById("area-" + area.id);
+        el.style.opacity = 0.5;
+      }
+    }
   }
 });
 
@@ -2419,60 +2446,64 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       areas: [{
         id: "w",
-        direct: "ss"
+        direct: "1"
       }, {
         id: "n",
-        direct: "ss"
+        direct: "1"
       }, {
         id: "z",
-        direct: "ss"
+        direct: "1"
       }, {
         id: "s",
-        direct: "ss"
+        direct: "1"
       }, {
         id: "m",
-        direct: "ss"
+        direct: "1"
       }, {
         id: "o",
-        direct: "ss"
+        direct: "1"
       }, {
         id: "p",
-        direct: "sssss"
+        direct: "1"
       }, {
         id: "d"
       }, {
         id: "e"
       }, {
         id: "u",
-        direct: "ss"
+        direct: "1"
       }, {
         id: "c",
-        direct: "ss4171"
+        direct: "1"
       }, {
         id: "b"
       }, {
         id: "e"
       }, {
         id: "a",
-        direct: "ss555"
+        direct: "1"
       }, {
         id: "g",
-        direct: "ss000"
+        direct: "1"
       }, {
         id: "f"
       }, {
         id: "y"
       }, {
         id: "t",
-        direct: "ss"
+        direct: "1"
       }, {
         id: "h",
-        direct: "ssss"
+        direct: "1"
       }, {
         id: "r"
       }]
@@ -2482,10 +2513,10 @@ __webpack_require__.r(__webpack_exports__);
     changeColor: function changeColor() {
       for (var i = 0; i < this.areas.length; i++) {
         var area = this.areas[i];
-        var el = document.getElementById(area.id);
+        var el = document.getElementById("area-" + area.id);
         el.addEventListener("mouseover", this.mouseOverMapEvent);
         el.addEventListener("mouseout", this.mouseOutMapEvent);
-        el.areaID = area.id;
+        el.areaID = "area-" + area.id;
         el.areaIndex = i;
         this.areas[i].color = el.style.fill;
 
@@ -2499,7 +2530,6 @@ __webpack_require__.r(__webpack_exports__);
     mouseOverMapEvent: function mouseOverMapEvent(evt) {
       var el = document.getElementById(evt.target.areaID);
       el.style.fill = "blue";
-      console.log(evt.target.areaID + "red");
     },
     mouseOutMapEvent: function mouseOutMapEvent(evt) {
       var el = document.getElementById(evt.target.areaID);
@@ -2507,6 +2537,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     clickMapEvent: function clickMapEvent(evt) {
       window.location = 'http://localhost:8000/map/' + evt.target.direct;
+    },
+    selectArea: function selectArea(id) {
+      this.$refs.main_map.selectArea(id);
     }
   },
   mounted: function mounted() {
@@ -38271,186 +38304,199 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "my-2" },
-    [
-      _c(
-        "v-container",
-        [
-          _c(
-            "v-layout",
-            { attrs: { row: "", wrap: "" } },
-            [
-              _c(
-                "v-flex",
-                { attrs: { xs12: "", lg8: "", md8: "" } },
-                [
-                  _c("v-container", [_vm._t("map")], 2),
-                  _vm._v(" "),
-                  _c(
-                    "v-card",
-                    [
-                      _vm.fullV
-                        ? _c(
-                            "v-card-text",
-                            { staticClass: "mx-4 px-4" },
-                            [
-                              _c(
-                                "v-chip",
-                                {
-                                  staticClass: "white--text",
-                                  attrs: { color: _vm.areaColors[_vm.FULL] }
-                                },
-                                [_vm._v("Full")]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "v-chip",
-                                {
-                                  staticClass: "white--text",
-                                  attrs: { color: _vm.areaColors[_vm.CROWDED] }
-                                },
-                                [_vm._v("Crowded")]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "v-chip",
-                                {
-                                  staticClass: "white--text",
-                                  attrs: { color: _vm.areaColors[_vm.NORMAL] }
-                                },
-                                [_vm._v("Normal")]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "v-chip",
-                                {
-                                  staticClass: "white--text",
-                                  attrs: { color: _vm.areaColors[_vm.GOOD] }
-                                },
-                                [_vm._v("Good")]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "v-chip",
-                                {
-                                  staticClass: "white--text",
-                                  attrs: { color: _vm.areaColors[_vm.EMPTY] }
-                                },
-                                [_vm._v("Empty")]
-                              )
-                            ],
-                            1
-                          )
-                        : _vm._e()
-                    ],
-                    1
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c("v-spacer"),
-              _vm._v(" "),
-              _c(
-                "v-flex",
-                { attrs: { xs12: "", lg3: "", md6: "" } },
-                [
-                  _c(
-                    "v-card",
-                    [
-                      _c("v-card-title", [
-                        _c("h3", { staticClass: "title" }, [_vm._v("Areas :-")])
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "v-card-text",
-                        _vm._l(_vm.areas, function(area) {
-                          return _c(
-                            "v-card",
-                            { key: area.id },
-                            [
-                              _c(
-                                "v-card-text",
-                                [
-                                  _c(
-                                    "v-layout",
-                                    { attrs: { row: "" } },
-                                    [
-                                      _c("v-flex", { attrs: { xs4: "" } }, [
-                                        _vm._v(
-                                          "\n                                        Area-" +
-                                            _vm._s(area.id) +
-                                            " " +
-                                            _vm._s(area.takenDesks) +
-                                            "/" +
-                                            _vm._s(area.desks) +
-                                            " \n                                    "
-                                        )
-                                      ]),
-                                      _vm._v(" "),
-                                      _c("v-spacer"),
-                                      _vm._v(" "),
-                                      _c(
-                                        "v-flex",
-                                        { attrs: { xs3: "" } },
-                                        [
-                                          _c(
-                                            "v-chip",
-                                            {
-                                              staticClass: "white--text",
-                                              attrs: {
-                                                small: "",
-                                                color: _vm.getColorForArea(
-                                                  area.takenDesks,
-                                                  area.desks
-                                                )
-                                              }
-                                            },
-                                            [
-                                              _vm._v(
-                                                _vm._s(
-                                                  _vm.status[
-                                                    _vm.areaStatus(
-                                                      area.takenDesks,
-                                                      area.desks
-                                                    )
-                                                  ]
-                                                )
-                                              )
-                                            ]
+  return _c("main-map", { ref: "main_map", attrs: { areas: _vm.areas } }, [
+    _c(
+      "div",
+      { staticClass: "my-2", attrs: { slot: "child-map" }, slot: "child-map" },
+      [
+        _c(
+          "v-container",
+          [
+            _c(
+              "v-layout",
+              { attrs: { row: "", wrap: "" } },
+              [
+                _c(
+                  "v-flex",
+                  { attrs: { xs12: "", lg8: "", md8: "" } },
+                  [
+                    _c("v-container", [_vm._t("map")], 2),
+                    _vm._v(" "),
+                    _c(
+                      "v-card",
+                      [
+                        _vm.fullV
+                          ? _c(
+                              "v-card-text",
+                              { staticClass: "mx-4 px-4" },
+                              [
+                                _c(
+                                  "v-chip",
+                                  {
+                                    staticClass: "white--text",
+                                    attrs: { color: _vm.areaColors[_vm.FULL] }
+                                  },
+                                  [_vm._v("Full")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "v-chip",
+                                  {
+                                    staticClass: "white--text",
+                                    attrs: {
+                                      color: _vm.areaColors[_vm.CROWDED]
+                                    }
+                                  },
+                                  [_vm._v("Crowded")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "v-chip",
+                                  {
+                                    staticClass: "white--text",
+                                    attrs: { color: _vm.areaColors[_vm.NORMAL] }
+                                  },
+                                  [_vm._v("Normal")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "v-chip",
+                                  {
+                                    staticClass: "white--text",
+                                    attrs: { color: _vm.areaColors[_vm.GOOD] }
+                                  },
+                                  [_vm._v("Good")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "v-chip",
+                                  {
+                                    staticClass: "white--text",
+                                    attrs: { color: _vm.areaColors[_vm.EMPTY] }
+                                  },
+                                  [_vm._v("Empty")]
+                                )
+                              ],
+                              1
+                            )
+                          : _vm._e()
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c("v-spacer"),
+                _vm._v(" "),
+                _c(
+                  "v-flex",
+                  { attrs: { xs12: "", lg4: "", md6: "" } },
+                  [
+                    _c(
+                      "v-card",
+                      [
+                        _c("v-card-title", [
+                          _c("h3", { staticClass: "title" }, [
+                            _vm._v("Areas :-")
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "v-card-text",
+                          _vm._l(_vm.areas, function(area) {
+                            return _c(
+                              "v-card",
+                              {
+                                key: area.id,
+                                on: {
+                                  click: function($event) {
+                                    return _vm.selectArea(area.id)
+                                  }
+                                }
+                              },
+                              [
+                                _c(
+                                  "v-card-text",
+                                  [
+                                    _c(
+                                      "v-layout",
+                                      { attrs: { row: "" } },
+                                      [
+                                        _c("v-flex", { attrs: { xs4: "" } }, [
+                                          _vm._v(
+                                            "\n                                        Area-" +
+                                              _vm._s(area.id) +
+                                              " " +
+                                              _vm._s(area.takenDesks) +
+                                              "/" +
+                                              _vm._s(area.desks) +
+                                              " \n                                    "
                                           )
-                                        ],
-                                        1
-                                      )
-                                    ],
-                                    1
-                                  )
-                                ],
-                                1
-                              )
-                            ],
-                            1
-                          )
-                        }),
-                        1
-                      )
-                    ],
-                    1
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          )
-        ],
-        1
-      )
-    ],
-    1
-  )
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("v-spacer"),
+                                        _vm._v(" "),
+                                        _c(
+                                          "v-flex",
+                                          { attrs: { xs3: "" } },
+                                          [
+                                            _c(
+                                              "v-chip",
+                                              {
+                                                staticClass: "white--text",
+                                                attrs: {
+                                                  small: "",
+                                                  color: _vm.getColorForArea(
+                                                    area.takenDesks,
+                                                    area.desks
+                                                  )
+                                                }
+                                              },
+                                              [
+                                                _vm._v(
+                                                  _vm._s(
+                                                    _vm.status[
+                                                      _vm.areaStatus(
+                                                        area.takenDesks,
+                                                        area.desks
+                                                      )
+                                                    ]
+                                                  )
+                                                )
+                                              ]
+                                            )
+                                          ],
+                                          1
+                                        )
+                                      ],
+                                      1
+                                    )
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            )
+                          }),
+                          1
+                        )
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                )
+              ],
+              1
+            )
+          ],
+          1
+        )
+      ],
+      1
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -38459,10 +38505,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e&":
-/*!*******************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e& ***!
-  \*******************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MainMap.vue?vue&type=template&id=56c7be70&":
+/*!**********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/MainMap.vue?vue&type=template&id=56c7be70& ***!
+  \**********************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -38474,32 +38520,9 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [_vm._t("child-map")], 2)
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row justify-content-center" }, [
-        _c("div", { staticClass: "col-md-8" }, [
-          _c("div", { staticClass: "card" }, [
-            _c("div", { staticClass: "card-header" }, [
-              _vm._v("Example Component")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _vm._v(
-                "\n                    I'm an example component.\n                "
-              )
-            ])
-          ])
-        ])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -38564,1402 +38587,1408 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "svg",
-    {
-      attrs: {
-        "xmlns:dc": "http://purl.org/dc/elements/1.1/",
-        "xmlns:cc": "http://creativecommons.org/ns#",
-        "xmlns:rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-        "xmlns:svg": "http://www.w3.org/2000/svg",
-        xmlns: "http://www.w3.org/2000/svg",
-        "xmlns:sodipodi": "http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd",
-        "xmlns:inkscape": "http://www.inkscape.org/namespaces/inkscape",
-        width: "200mm",
-        height: "160mm",
-        viewBox: "0 0 200 160",
-        version: "1.1",
-        id: "svg8",
-        "inkscape:version": "0.92.4 (33fec40, 2019-01-16)",
-        "sodipodi:docname": "AUT_NORTH_MAP.svg"
-      }
-    },
-    [
-      _c("defs", { attrs: { id: "defs2" } }),
-      _vm._v(" "),
-      _c("sodipodi:namedview", {
-        attrs: {
-          id: "base",
-          pagecolor: "#ffffff",
-          bordercolor: "#666666",
-          borderopacity: "1.0",
-          "inkscape:pageopacity": "0.0",
-          "inkscape:pageshadow": "2",
-          "inkscape:zoom": "0.7",
-          "inkscape:cx": "390.87496",
-          "inkscape:cy": "337.91379",
-          "inkscape:document-units": "mm",
-          "inkscape:current-layer": "layer2",
-          showgrid: "false",
-          "inkscape:object-paths": "true",
-          "inkscape:snap-center": "true",
-          "inkscape:window-width": "1853",
-          "inkscape:window-height": "1025",
-          "inkscape:window-x": "67",
-          "inkscape:window-y": "27",
-          "inkscape:window-maximized": "1"
-        }
-      }),
-      _vm._v(" "),
+  return _c("main-map", { ref: "main_map", attrs: { areas: _vm.areas } }, [
+    _c("div", { attrs: { slot: "child-map" }, slot: "child-map" }, [
       _c(
-        "metadata",
-        { attrs: { id: "metadata5" } },
+        "svg",
+        {
+          attrs: {
+            "xmlns:dc": "http://purl.org/dc/elements/1.1/",
+            "xmlns:cc": "http://creativecommons.org/ns#",
+            "xmlns:rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+            "xmlns:svg": "http://www.w3.org/2000/svg",
+            xmlns: "http://www.w3.org/2000/svg",
+            "xmlns:sodipodi":
+              "http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd",
+            "xmlns:inkscape": "http://www.inkscape.org/namespaces/inkscape",
+            width: "200mm",
+            height: "160mm",
+            viewBox: "0 0 200 160",
+            version: "1.1",
+            id: "svg8",
+            "inkscape:version": "0.92.4 (33fec40, 2019-01-16)",
+            "sodipodi:docname": "AUT_NORTH_MAP.svg"
+          }
+        },
         [
+          _c("defs", { attrs: { id: "defs2" } }),
+          _vm._v(" "),
+          _c("sodipodi:namedview", {
+            attrs: {
+              id: "base",
+              pagecolor: "#ffffff",
+              bordercolor: "#666666",
+              borderopacity: "1.0",
+              "inkscape:pageopacity": "0.0",
+              "inkscape:pageshadow": "2",
+              "inkscape:zoom": "0.7",
+              "inkscape:cx": "390.87496",
+              "inkscape:cy": "337.91379",
+              "inkscape:document-units": "mm",
+              "inkscape:current-layer": "layer2",
+              showgrid: "false",
+              "inkscape:object-paths": "true",
+              "inkscape:snap-center": "true",
+              "inkscape:window-width": "1853",
+              "inkscape:window-height": "1025",
+              "inkscape:window-x": "67",
+              "inkscape:window-y": "27",
+              "inkscape:window-maximized": "1"
+            }
+          }),
+          _vm._v(" "),
           _c(
-            "rdf:RDF",
+            "metadata",
+            { attrs: { id: "metadata5" } },
             [
               _c(
-                "cc:Work",
-                { attrs: { "rdf:about": "" } },
+                "rdf:RDF",
                 [
-                  _c("dc:format", [_vm._v("image/svg+xml")]),
-                  _vm._v(" "),
-                  _c("dc:type", {
-                    attrs: {
-                      "rdf:resource": "http://purl.org/dc/dcmitype/StillImage"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("dc:title")
+                  _c(
+                    "cc:Work",
+                    { attrs: { "rdf:about": "" } },
+                    [
+                      _c("dc:format", [_vm._v("image/svg+xml")]),
+                      _vm._v(" "),
+                      _c("dc:type", {
+                        attrs: {
+                          "rdf:resource":
+                            "http://purl.org/dc/dcmitype/StillImage"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("dc:title")
+                    ],
+                    1
+                  )
                 ],
                 1
               )
             ],
             1
-          )
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "g",
-        {
-          attrs: {
-            "inkscape:groupmode": "layer",
-            id: "layer4",
-            "inkscape:label": "back",
-            transform: "translate(0,-160)"
-          }
-        },
-        [
-          _c("rect", {
-            staticStyle: {
-              opacity: "1",
-              fill: "#0b1728",
-              "fill-opacity": "1",
-              stroke: "#000000",
-              "stroke-width": "1.00513816",
-              "stroke-miterlimit": "4",
-              "stroke-dasharray": "none",
-              "stroke-opacity": "1"
-            },
-            attrs: {
-              id: "rect4829",
-              width: "198.71295",
-              height: "155.99391",
-              x: "0.85847241",
-              y: "162.11621"
-            }
-          })
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "g",
-        {
-          attrs: {
-            "inkscape:groupmode": "layer",
-            id: "layer3",
-            "inkscape:label": "roud",
-            transform: "translate(0,-160)"
-          }
-        },
-        [
-          _c("path", {
-            staticStyle: {
-              fill: "#939dac",
-              stroke: "#000000",
-              "stroke-width": "0.26458332px",
-              "stroke-linecap": "butt",
-              "stroke-linejoin": "miter",
-              "stroke-opacity": "1"
-            },
-            attrs: {
-              d:
-                "M 50.459821,168.05358 40.613842,166.74768 2.6615687,225.54697 1.8597601,244.25584 37.406608,285.94989 13.08508,314.815 23.775862,314.54773 43.286536,294.23524 c 0,0 1.870887,-3.4745 4.009043,-2.93996 2.138156,0.53454 26.994223,24.32152 26.994223,24.32152 l 14.699824,-1.60361 -32.072345,-29.13238 2.138156,-5.61266 c 0,0 4.543584,-0.80181 4.543584,-1.33635 0,-0.53454 -0.734991,-8.0849 -0.734991,-8.0849 l -6.748555,3.27405 -0.801809,5.07812 -2.939966,4.27632 -43.8322022,-50.24668 c 0,0 -7.2830933,-8.68626 3.7417742,-3.74177 11.024867,4.94449 81.049484,0.93544 81.049484,0.93544 l 6.882184,10.69079 v 0 l 4.54358,-2.07135 -4.944475,-8.35217 18.307955,-12.56166 v 0 0 l -2.13056,-2.63059 -18.568075,11.76451 -81.66559,-2.05128 c 0,0 -2.672695,-0.80181 -1.069078,-3.20724 1.603617,-2.40542 35.771124,-52.94981 35.771124,-52.94981 z",
-              id: "path1096",
-              "inkscape:connector-curvature": "0"
-            }
-          }),
+          ),
           _vm._v(" "),
           _c(
-            "a",
+            "g",
             {
-              staticStyle: { fill: "#939dac", "fill-opacity": "1" },
               attrs: {
-                id: "a1122",
-                transform: "translate(-6.4255952,74.46131)"
+                "inkscape:groupmode": "layer",
+                id: "layer4",
+                "inkscape:label": "back",
+                transform: "translate(0,-160)"
+              }
+            },
+            [
+              _c("rect", {
+                staticStyle: {
+                  opacity: "1",
+                  fill: "#0b1728",
+                  "fill-opacity": "1",
+                  stroke: "#000000",
+                  "stroke-width": "1.00513816",
+                  "stroke-miterlimit": "4",
+                  "stroke-dasharray": "none",
+                  "stroke-opacity": "1"
+                },
+                attrs: {
+                  id: "rect4829",
+                  width: "198.71295",
+                  height: "155.99391",
+                  x: "0.85847241",
+                  y: "162.11621"
+                }
+              })
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "g",
+            {
+              attrs: {
+                "inkscape:groupmode": "layer",
+                id: "layer3",
+                "inkscape:label": "roud",
+                transform: "translate(0,-160)"
               }
             },
             [
               _c("path", {
                 staticStyle: {
                   fill: "#939dac",
-                  "fill-opacity": "1",
                   stroke: "#000000",
-                  "stroke-width": "0.99999994px",
+                  "stroke-width": "0.26458332px",
                   "stroke-linecap": "butt",
                   "stroke-linejoin": "miter",
                   "stroke-opacity": "1"
                 },
                 attrs: {
-                  "sodipodi:nodetypes":
-                    "cccccccccccccccccscscccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-                  "inkscape:connector-curvature": "0",
                   d:
-                    "m 354.28516,348.01953 39.28711,66.42969 -86.42969,20.71484 -144.61524,-3.79492 -11.5332,17.06641 156.50586,3.6914 88.92773,-23.03515 16.42969,28.92773 47.51953,62.25195 2.30163,8.99879 45.42884,77.62231 -1.5,6.30664 -6.07617,16.67383 -22.98242,28.53711 -29.07227,44.09961 -28.74414,71.13476 c 0,0 -4.01812,24.19699 -7.23242,31.33985 -3.21426,7.14285 -5.89283,43.03654 -6.25,48.57226 -0.35717,5.53572 1.24974,20.71344 2.14258,22.67774 0.89287,1.96429 -0.35716,18.5717 -1.25,21.60742 -0.89284,3.03571 -6.25,9.28515 -6.25,9.28515 l 37.67969,-0.35742 8.21289,-21.07031 10.35742,2.67773 20.35742,-6.25 6.78516,8.92969 c 0,0 58.21513,-15.53645 61.07226,-15.71484 2.85714,-0.1784 4.64258,4.82226 4.64258,4.82226 l -4.28516,26.42774 17.14258,-1.42774 6.42774,-36.42968 c 0,0 80.00141,-26.42855 89.28711,-25 9.28573,1.42858 12.85546,16.42968 12.85546,16.42968 l -10.71289,45.71289 h 30 l 52.85743,-201.42773 -2.14454,-137.85742 -13.39257,82.14258 -1.96289,5.53515 -4.10743,2.85742 -4.75586,-1.24218 -59.35156,-92.77539 1.42774,-8.66016 82.14257,-43.57227 0.71485,-30 L 538.57227,594.44922 497.85742,526.5918 580,472.30664 502.85742,348.01953 l -17.14258,0.71485 75.71289,120.71484 -72.85546,41.42773 -100.71485,-161.42773 z m 286.07226,209.64453 19.77735,37.86524 57.57812,94.19531 -21.71875,84.34766 2.52539,6.5664 c 0,0 0.50545,1.01093 -1.00976,5.55664 -1.51525,4.54568 -3.53516,5.55469 -3.53516,5.55469 0,0 -4.54532,2.52577 -8.58594,4.04102 -4.04058,1.51521 -15.6582,-1.51563 -15.6582,-1.51563 l -8.08008,-1.51367 -24.75,-39.90234 8.58789,2.02148 -68.6914,-111.11719 z m -123.16015,103.27149 27.27539,0.50586 78.79101,121.72265 5.05078,1.51563 21.21289,33.33593 -3.53515,7.07032 -84.85157,24.24414 -75.25781,-118.69336 -8.58593,2.01953 67.67968,112.12695 2.52539,6.56641 -1.00976,2.01953 -81.82227,24.24414 -3.0293,2.02149 -5.55664,0.5039 -6.5664,-2.52539 -5.55469,-4.54492 -6.56641,-18.18359 -1.51562,-45.96094 15.6582,-47.47852 20.20313,-47.98047 z",
-                  transform: "scale(0.26458333)",
-                  id: "path1098"
+                    "M 50.459821,168.05358 40.613842,166.74768 2.6615687,225.54697 1.8597601,244.25584 37.406608,285.94989 13.08508,314.815 23.775862,314.54773 43.286536,294.23524 c 0,0 1.870887,-3.4745 4.009043,-2.93996 2.138156,0.53454 26.994223,24.32152 26.994223,24.32152 l 14.699824,-1.60361 -32.072345,-29.13238 2.138156,-5.61266 c 0,0 4.543584,-0.80181 4.543584,-1.33635 0,-0.53454 -0.734991,-8.0849 -0.734991,-8.0849 l -6.748555,3.27405 -0.801809,5.07812 -2.939966,4.27632 -43.8322022,-50.24668 c 0,0 -7.2830933,-8.68626 3.7417742,-3.74177 11.024867,4.94449 81.049484,0.93544 81.049484,0.93544 l 6.882184,10.69079 v 0 l 4.54358,-2.07135 -4.944475,-8.35217 18.307955,-12.56166 v 0 0 l -2.13056,-2.63059 -18.568075,11.76451 -81.66559,-2.05128 c 0,0 -2.672695,-0.80181 -1.069078,-3.20724 1.603617,-2.40542 35.771124,-52.94981 35.771124,-52.94981 z",
+                  id: "path1096",
+                  "inkscape:connector-curvature": "0"
                 }
-              })
+              }),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  staticStyle: { fill: "#939dac", "fill-opacity": "1" },
+                  attrs: {
+                    id: "a1122",
+                    transform: "translate(-6.4255952,74.46131)"
+                  }
+                },
+                [
+                  _c("path", {
+                    staticStyle: {
+                      fill: "#939dac",
+                      "fill-opacity": "1",
+                      stroke: "#000000",
+                      "stroke-width": "0.99999994px",
+                      "stroke-linecap": "butt",
+                      "stroke-linejoin": "miter",
+                      "stroke-opacity": "1"
+                    },
+                    attrs: {
+                      "sodipodi:nodetypes":
+                        "cccccccccccccccccscscccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+                      "inkscape:connector-curvature": "0",
+                      d:
+                        "m 354.28516,348.01953 39.28711,66.42969 -86.42969,20.71484 -144.61524,-3.79492 -11.5332,17.06641 156.50586,3.6914 88.92773,-23.03515 16.42969,28.92773 47.51953,62.25195 2.30163,8.99879 45.42884,77.62231 -1.5,6.30664 -6.07617,16.67383 -22.98242,28.53711 -29.07227,44.09961 -28.74414,71.13476 c 0,0 -4.01812,24.19699 -7.23242,31.33985 -3.21426,7.14285 -5.89283,43.03654 -6.25,48.57226 -0.35717,5.53572 1.24974,20.71344 2.14258,22.67774 0.89287,1.96429 -0.35716,18.5717 -1.25,21.60742 -0.89284,3.03571 -6.25,9.28515 -6.25,9.28515 l 37.67969,-0.35742 8.21289,-21.07031 10.35742,2.67773 20.35742,-6.25 6.78516,8.92969 c 0,0 58.21513,-15.53645 61.07226,-15.71484 2.85714,-0.1784 4.64258,4.82226 4.64258,4.82226 l -4.28516,26.42774 17.14258,-1.42774 6.42774,-36.42968 c 0,0 80.00141,-26.42855 89.28711,-25 9.28573,1.42858 12.85546,16.42968 12.85546,16.42968 l -10.71289,45.71289 h 30 l 52.85743,-201.42773 -2.14454,-137.85742 -13.39257,82.14258 -1.96289,5.53515 -4.10743,2.85742 -4.75586,-1.24218 -59.35156,-92.77539 1.42774,-8.66016 82.14257,-43.57227 0.71485,-30 L 538.57227,594.44922 497.85742,526.5918 580,472.30664 502.85742,348.01953 l -17.14258,0.71485 75.71289,120.71484 -72.85546,41.42773 -100.71485,-161.42773 z m 286.07226,209.64453 19.77735,37.86524 57.57812,94.19531 -21.71875,84.34766 2.52539,6.5664 c 0,0 0.50545,1.01093 -1.00976,5.55664 -1.51525,4.54568 -3.53516,5.55469 -3.53516,5.55469 0,0 -4.54532,2.52577 -8.58594,4.04102 -4.04058,1.51521 -15.6582,-1.51563 -15.6582,-1.51563 l -8.08008,-1.51367 -24.75,-39.90234 8.58789,2.02148 -68.6914,-111.11719 z m -123.16015,103.27149 27.27539,0.50586 78.79101,121.72265 5.05078,1.51563 21.21289,33.33593 -3.53515,7.07032 -84.85157,24.24414 -75.25781,-118.69336 -8.58593,2.01953 67.67968,112.12695 2.52539,6.56641 -1.00976,2.01953 -81.82227,24.24414 -3.0293,2.02149 -5.55664,0.5039 -6.5664,-2.52539 -5.55469,-4.54492 -6.56641,-18.18359 -1.51562,-45.96094 15.6582,-47.47852 20.20313,-47.98047 z",
+                      transform: "scale(0.26458333)",
+                      id: "path1098"
+                    }
+                  })
+                ]
+              )
             ]
-          )
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "g",
-        {
-          attrs: {
-            "inkscape:groupmode": "layer",
-            id: "layer2",
-            "inkscape:label": "map",
-            transform: "translate(0,-137)"
-          }
-        },
-        [
-          _c("rect", {
-            staticStyle: {
-              opacity: "1",
-              fill: "#00d500",
-              "fill-opacity": "1",
-              stroke: "#000000",
-              "stroke-width": "1",
-              "stroke-miterlimit": "4",
-              "stroke-dasharray": "none",
-              "stroke-opacity": "1"
-            },
-            attrs: {
-              id: "s",
-              width: "29.104166",
-              height: "10.583333",
-              x: "45.35714",
-              y: "190.41072",
-              "inkscape:label": "#rect845"
-            }
-          }),
-          _vm._v(" "),
-          _c("path", {
-            staticStyle: {
-              display: "inline",
-              opacity: "1",
-              fill: "#a05a2c",
-              stroke: "#000000",
-              "stroke-width": "0.26458332px",
-              "stroke-linecap": "butt",
-              "stroke-linejoin": "miter",
-              "stroke-opacity": "1"
-            },
-            attrs: {
-              d:
-                "m 25.702381,179.82739 -6.047618,9.4494 5.291667,3.77977 h 2.645833 l -0.755952,7.55952 18.520828,0.37798 v -10.58333 h 29.104166 v 0 0 0 0 l -0.755946,-5.29167 -41.577381,-0.75596 z",
-              id: "z",
-              "inkscape:connector-curvature": "0",
-              "sodipodi:nodetypes": "ccccccccccccccc",
-              "inkscape:label": "#path849"
-            }
-          }),
-          _vm._v(" "),
-          _c("path", {
-            staticStyle: {
-              fill: "#d40000",
-              stroke: "#000000",
-              "stroke-width": "0.26458332px",
-              "stroke-linecap": "butt",
-              "stroke-linejoin": "miter",
-              "stroke-opacity": "1"
-            },
-            attrs: {
-              d:
-                "m 87.690476,185.49703 8.693449,14.3631 H 85.422619 l 0.377976,-2.64584 -11.33929,-0.37797 -0.755947,-11.71726 z",
-              id: "m",
-              "inkscape:connector-curvature": "0",
-              "sodipodi:nodetypes": "ccccccc",
-              "inkscape:label": "#path866"
-            }
-          }),
-          _vm._v(" "),
-          _c("path", {
-            staticStyle: {
-              fill: "#00ffff",
-              stroke: "#000000",
-              "stroke-width": "0.26458332px",
-              "stroke-linecap": "butt",
-              "stroke-linejoin": "miter",
-              "stroke-opacity": "1"
-            },
-            attrs: {
-              d:
-                "m 96.383925,199.86013 17.386905,-11.71727 -10.96131,-15.49702 -5.291665,4.15774 c 0,0 0.62453,-0.34505 -1.13393,-1.13393 -1.68943,-0.75792 -5.745107,0.89641 -4.157736,3.40179 -0.617604,2.30492 -4.535715,6.42559 -4.535715,6.42559 z",
-              id: "o",
-              "inkscape:connector-curvature": "0",
-              "sodipodi:nodetypes": "ccccsccc",
-              "inkscape:label": "#path870"
-            }
-          }),
-          _vm._v(" "),
-          _c("path", {
-            staticStyle: {
-              fill: "#917c6f",
-              stroke: "#000000",
-              "stroke-width": "0.26458332px",
-              "stroke-linecap": "butt",
-              "stroke-linejoin": "miter",
-              "stroke-opacity": "1"
-            },
-            attrs: {
-              d:
-                "m 38.364582,175.85864 13.229166,0.18899 v -5.48066 L 37.986606,170.189 Z",
-              id: "w",
-              "inkscape:connector-curvature": "0",
-              "inkscape:label": "#path874"
-            }
-          }),
-          _vm._v(" "),
-          _c("path", {
-            staticStyle: {
-              fill: "#a05a2c",
-              stroke: "#000000",
-              "stroke-width": "0.2835815px",
-              "stroke-linecap": "butt",
-              "stroke-linejoin": "miter",
-              "stroke-opacity": "1"
-            },
-            attrs: {
-              d:
-                "m 76.365475,173.03198 1.632567,1.55505 -0.653028,0.35342 0.489769,0.63616 -0.272091,0.44766 4.081407,5.23063 3.646061,-2.21477 -5.958858,-8.03443 z",
-              id: "n",
-              "inkscape:connector-curvature": "0",
-              "inkscape:label": "#path876"
-            }
-          }),
-          _vm._v(" "),
-          _c("path", {
-            staticStyle: {
-              fill: "#ff0000",
-              stroke: "#000000",
-              "stroke-width": "0.26458332px",
-              "stroke-linecap": "butt",
-              "stroke-linejoin": "miter",
-              "stroke-opacity": "1"
-            },
-            attrs: {
-              d:
-                "m 52.727678,152.99108 6.614584,5.48066 0.377975,4.53571 8.504465,0.37798 -5.291666,-13.60715 -2.078871,2.83482 -10.394344,-7.55952 -5.858632,10.20536 -0.944941,-0.37798 -0.944938,1.51191 0.755952,0.18898 -1.13393,2.07887 -0.755952,-0.56696 -2.267857,3.2128 1.13393,1.13392 -0.566965,0.75596 3.96875,0.18899 1.322916,-1.7009 0.755952,0.75595 2.043494,-4.71323 1.466135,0.67014 1.486688,-0.20045 -0.01669,-2.43884 z",
-              id: "r",
-              "inkscape:connector-curvature": "0",
-              "sodipodi:nodetypes": "cccccccccccccccccccccccc",
-              "inkscape:label": "#path878"
-            }
-          }),
-          _vm._v(" "),
-          _c("path", {
-            staticStyle: {
-              fill: "#ff55dd",
-              "fill-opacity": "1",
-              stroke: "#000000",
-              "stroke-width": "0.26458332px",
-              "stroke-linecap": "butt",
-              "stroke-linejoin": "miter",
-              "stroke-opacity": "1"
-            },
-            attrs: {
-              d:
-                "m 64.534463,206.22193 28.798293,0.20045 -0.200454,7.81764 -20.713388,-0.26727 -0.133635,3.14042 h 2.806332 l 0.133633,5.4122 -7.14946,0.0668 -0.200451,-5.47902 h 3.474503 l -0.200451,-3.14042 -6.681739,-0.20045 z",
-              id: "e",
-              "inkscape:connector-curvature": "0",
-              "inkscape:label": "#path880"
-            }
-          }),
-          _vm._v(" "),
-          _c("path", {
-            staticStyle: {
-              fill: "#00ccff",
-              stroke: "#000000",
-              "stroke-width": "0.26458332px",
-              "stroke-linecap": "butt",
-              "stroke-linejoin": "miter",
-              "stroke-opacity": "1"
-            },
-            attrs: {
-              d:
-                "m 37.473426,205.55376 24.18789,0.46772 0.200454,4.27631 -13.430295,-0.13363 -0.06682,4.47676 h -1.670434 l -3.274052,-3.14042 0.267269,-1.53679 -6.214014,-0.0668 z",
-              id: "d",
-              "inkscape:connector-curvature": "0",
-              "inkscape:label": "#path882"
-            }
-          }),
-          _vm._v(" "),
-          _c("path", {
-            staticStyle: {
-              fill: "#ff7f2a",
-              stroke: "#000000",
-              "stroke-width": "0.26458332px",
-              "stroke-linecap": "butt",
-              "stroke-linejoin": "miter",
-              "stroke-opacity": "1"
-            },
-            attrs: {
-              d:
-                "m 36.137076,206.42238 -8.953529,-0.26727 0.200454,1.80407 2.271789,2.27179 v 1.46999 l -2.80633,2.40542 -1.135896,-1.00226 0.400905,-0.26727 -0.935442,-1.20271 -0.334087,0.26727 -1.536801,-1.46998 -3.274052,2.80633 1.703843,1.40316 -0.417608,0.26727 0.7684,0.96885 0.400905,-0.28397 1.453277,1.40316 -0.601356,0.3842 0.918739,0.86863 0.300678,-0.18375 1.186008,1.40317 -0.400904,0.26727 0.634767,0.85192 0.668173,-0.23386 0.267269,0.26727 3.173825,-2.60588 -0.300677,-0.23386 2.806329,-2.57247 -2.77292,-3.30746 v -1.77066 h 6.748555 l -0.200451,-3.77518 z",
-              id: "p",
-              "inkscape:connector-curvature": "0",
-              "inkscape:label": "#path884"
-            }
-          }),
-          _vm._v(" "),
-          _c("path", {
-            staticStyle: {
-              fill: "#99ff55",
-              stroke: "#000000",
-              "stroke-width": "0.26458332px",
-              "stroke-linecap": "butt",
-              "stroke-linejoin": "miter",
-              "stroke-opacity": "1"
-            },
-            attrs: {
-              d:
-                "m 61.704612,213.51452 -9.496652,-0.0945 v 1.08668 l -2.220608,-0.23623 -2.929316,2.74033 -3.96875,-4.15774 -5.622396,4.86644 -0.141742,1.08668 -1.322917,1.22842 7.276042,7.65402 1.984375,-1.46465 -0.236234,-0.18899 1.086681,-0.94494 1.41741,1.41741 4.157739,-3.82701 -3.023809,-3.44903 0.661459,-0.51972 0.566962,0.37797 2.315104,0.0945 v -0.61421 l 0.755954,-0.0473 0.09449,0.47247 2.409597,0.0945 0.04725,-0.28348 h 1.13393 l 0.188986,0.47247 h 2.173365 l -0.09449,-0.47247 1.086681,-0.0472 0.09449,0.51972 1.606399,0.0472 z",
-              id: "c",
-              "inkscape:connector-curvature": "0",
-              "inkscape:label": "#path886"
-            }
-          }),
-          _vm._v(" "),
-          _c("path", {
-            staticStyle: {
-              fill: "#d40000",
-              stroke: "#000000",
-              "stroke-width": "0.26458332px",
-              "stroke-linecap": "butt",
-              "stroke-linejoin": "miter",
-              "stroke-opacity": "1"
-            },
-            attrs: {
-              d:
-                "m 29.482144,225.13728 12.095236,13.93788 -0.755951,0.85044 2.598586,2.59859 9.402157,-8.26823 -6.094865,-6.70908 -2.173364,1.65365 -8.858818,-9.66202 z",
-              id: "b",
-              "inkscape:connector-curvature": "0",
-              "sodipodi:nodetypes": "ccccccccc",
-              "inkscape:label": "#path888"
-            }
-          }),
-          _vm._v(" "),
-          _c("path", {
-            staticStyle: {
-              fill: "#00ffff",
-              stroke: "#000000",
-              "stroke-width": "0.26458332px",
-              "stroke-linecap": "butt",
-              "stroke-linejoin": "miter",
-              "stroke-opacity": "1"
-            },
-            attrs: {
-              d:
-                "m 69.412134,224.86398 h -4.34313 l 0.133633,1.80407 -1.403165,-0.0668 v 9.75534 h 1.202714 l 0.06682,1.5368 h 0.267269 l 0.133633,2.47224 -2.873145,0.0668 0.267269,6.41447 8.218538,0.20045 0.06682,-0.4009 15.367998,0.26727 0.06682,0.60135 6.080381,0.13364 0.133633,-6.81537 -3.140416,0.0668 0.734991,-2.93996 -5.34539,-8.61944 0.601356,-0.53454 -2.472243,-3.27406 c 0,0 -1.135896,-0.86862 -1.536801,-0.46772 -0.400902,0.40091 0,2.00452 0,2.00452 l -12.227578,-0.26726 z",
-              id: "a",
-              "inkscape:connector-curvature": "0",
-              "inkscape:label": "#path890"
-            }
-          }),
-          _vm._v(" "),
-          _c("path", {
-            staticStyle: {
-              fill: "#ff9955",
-              stroke: "#000000",
-              "stroke-width": "0.26458332px",
-              "stroke-linecap": "butt",
-              "stroke-linejoin": "miter",
-              "stroke-opacity": "1"
-            },
-            attrs: {
-              d:
-                "m 81.372443,216.77908 18.842497,0.33409 4.87767,7.81763 -0.40091,0.86862 2.6727,4.40995 c 0,0 2.60588,0.80181 3.60814,1.87089 1.00226,1.06908 1.00226,3.60814 1.00226,3.60814 l -6.28084,14.76664 -4.87766,-1.93771 -0.73499,2.2718 -7.416723,-3.14042 0.133634,-6.81537 -3.140417,0.0668 0.734992,-2.93996 -5.345391,-8.61944 0.601356,-0.53454 -2.472243,-3.27406 -1.516459,-0.48646 0.16882,-0.0779 -0.456436,-1.64062 z",
-              id: "g",
-              "inkscape:connector-curvature": "0",
-              "inkscape:label": "#path894"
-            }
-          }),
-          _vm._v(" "),
-          _c("path", {
-            staticStyle: {
-              fill: "#00ffff",
-              stroke: "#000000",
-              "stroke-width": "0.26458332px",
-              "stroke-linecap": "butt",
-              "stroke-linejoin": "miter",
-              "stroke-opacity": "1"
-            },
-            attrs: {
-              d:
-                "m 107.56485,214.5741 16.30344,-10.55714 2.27179,3.4745 -1.46998,1.06908 0.53454,1.46998 2.80633,2.00452 -10.55714,14.16529 -3.34087,-1.87089 1.33634,-1.73725 -0.66817,-0.66817 2.53906,-3.34087 -3.0736,-2.80633 -2.27179,1.46998 -0.53454,-0.53454 -1.73725,1.06908 z",
-              id: "f",
-              "inkscape:connector-curvature": "0",
-              "inkscape:label": "#path896"
-            }
-          }),
-          _vm._v(" "),
-          _c("path", {
-            staticStyle: {
-              fill: "#ccff00",
-              stroke: "#000000",
-              "stroke-width": "0.26458332px",
-              "stroke-linecap": "butt",
-              "stroke-linejoin": "miter",
-              "stroke-opacity": "1"
-            },
-            attrs: {
-              d:
-                "m 118.122,194.12799 -7.75082,4.81085 3.87541,7.08264 3.87541,-1.60362 1.25928,2.50462 3.07119,-2.52073 -0.69099,-1.22252 c 0,0 0.52562,-0.36026 0.47838,-0.35435 -0.0472,0.006 -0.74415,-0.77958 -0.74415,-0.77958 l 0.73233,-0.57878 -0.89769,-0.99218 0.56697,-0.51972 z",
-              id: "u",
-              "inkscape:connector-curvature": "0",
-              "inkscape:label": "#path898"
-            }
-          }),
-          _vm._v(" "),
-          _c("path", {
-            staticStyle: {
-              fill: "#d38d5f",
-              stroke: "#000000",
-              "stroke-width": "0.26458332px",
-              "stroke-linecap": "butt",
-              "stroke-linejoin": "miter",
-              "stroke-opacity": "1"
-            },
-            attrs: {
-              d:
-                "m 145.8988,212.42783 4.34673,6.99256 18.52083,-11.62276 -5.76414,-8.78795 c 0,0 -12.18973,7.74851 -11.90625,8.22098 0.28349,0.47247 -5.19717,5.19717 -5.19717,5.19717 z",
-              id: "y",
-              "inkscape:connector-curvature": "0",
-              "inkscape:label": "#path900"
-            }
-          }),
-          _vm._v(" "),
-          _c("path", {
-            staticStyle: {
-              fill: "#ccff00",
-              stroke: "#000000",
-              "stroke-width": "0.26458332px",
-              "stroke-linecap": "butt",
-              "stroke-linejoin": "miter",
-              "stroke-opacity": "1"
-            },
-            attrs: {
-              d:
-                "m 151.56845,252.5878 -10.96131,6.04762 5.85863,10.77233 11.15029,-6.04763 z",
-              id: "t",
-              "inkscape:connector-curvature": "0",
-              "inkscape:label": "#path902"
-            }
-          }),
-          _vm._v(" "),
-          _c("path", {
-            staticStyle: {
-              fill: "#ff55dd",
-              stroke: "#000000",
-              "stroke-width": "0.26458332px",
-              "stroke-linecap": "butt",
-              "stroke-linejoin": "miter",
-              "stroke-opacity": "1"
-            },
-            attrs: {
-              d:
-                "m 97.134915,249.54155 -7.743546,22.89 c 0,0 0.188986,3.02381 0.283482,3.02381 0.09449,0 -1.606399,0.37798 -1.606399,0.37798 l 0.566963,3.59077 c 0,0 0.755954,1.22843 1.039436,0.85045 0.28348,-0.37798 0.566963,-1.41741 0.566963,-1.41741 l 0.283482,-0.18899 1.41741,5.00819 2.362349,-0.66146 0.94494,3.59077 4.913685,-1.5119 c 0,0 -3.023805,-11.71726 -2.078855,-12.37872 0.94494,-0.66146 5.386155,-16.91444 5.386155,-16.91444 l -0.47247,-0.18899 1.76656,-5.52558 -3.94877,-1.5687 -0.73499,2.2718 z",
-              id: "h",
-              "inkscape:connector-curvature": "0",
-              "inkscape:label": "#path904"
-            }
-          }),
+          ),
           _vm._v(" "),
           _c(
-            "text",
+            "g",
             {
-              staticStyle: {
-                "font-style": "normal",
-                "font-weight": "normal",
-                "font-size": "8.31636047px",
-                "line-height": "1.25",
-                "font-family": "sans-serif",
-                "letter-spacing": "0px",
-                "word-spacing": "0px",
-                fill: "#000000",
-                "fill-opacity": "1",
-                stroke: "none",
-                "stroke-width": "0.207909"
-              },
               attrs: {
-                "xml:space": "preserve",
-                x: "51.358364",
-                y: "143.41815",
-                id: "text4833",
-                transform: "scale(0.94335929,1.0600415)"
+                "inkscape:groupmode": "layer",
+                id: "layer2",
+                "inkscape:label": "map",
+                transform: "translate(0,-137)"
               }
             },
             [
+              _c("rect", {
+                staticStyle: {
+                  opacity: "1",
+                  fill: "#00d500",
+                  "fill-opacity": "1",
+                  stroke: "#000000",
+                  "stroke-width": "1",
+                  "stroke-miterlimit": "4",
+                  "stroke-dasharray": "none",
+                  "stroke-opacity": "1"
+                },
+                attrs: {
+                  id: "area-s",
+                  width: "29.104166",
+                  height: "10.583333",
+                  x: "45.35714",
+                  y: "190.41072",
+                  "inkscape:label": "#rect845"
+                }
+              }),
+              _vm._v(" "),
+              _c("path", {
+                staticStyle: {
+                  display: "inline",
+                  opacity: "1",
+                  fill: "#a05a2c",
+                  stroke: "#000000",
+                  "stroke-width": "0.26458332px",
+                  "stroke-linecap": "butt",
+                  "stroke-linejoin": "miter",
+                  "stroke-opacity": "1"
+                },
+                attrs: {
+                  d:
+                    "m 25.702381,179.82739 -6.047618,9.4494 5.291667,3.77977 h 2.645833 l -0.755952,7.55952 18.520828,0.37798 v -10.58333 h 29.104166 v 0 0 0 0 l -0.755946,-5.29167 -41.577381,-0.75596 z",
+                  id: "area-z",
+                  "inkscape:connector-curvature": "0",
+                  "sodipodi:nodetypes": "ccccccccccccccc",
+                  "inkscape:label": "#path849"
+                }
+              }),
+              _vm._v(" "),
+              _c("path", {
+                staticStyle: {
+                  fill: "#d40000",
+                  stroke: "#000000",
+                  "stroke-width": "0.26458332px",
+                  "stroke-linecap": "butt",
+                  "stroke-linejoin": "miter",
+                  "stroke-opacity": "1"
+                },
+                attrs: {
+                  d:
+                    "m 87.690476,185.49703 8.693449,14.3631 H 85.422619 l 0.377976,-2.64584 -11.33929,-0.37797 -0.755947,-11.71726 z",
+                  id: "area-m",
+                  "inkscape:connector-curvature": "0",
+                  "sodipodi:nodetypes": "ccccccc",
+                  "inkscape:label": "#path866"
+                }
+              }),
+              _vm._v(" "),
+              _c("path", {
+                staticStyle: {
+                  fill: "#00ffff",
+                  stroke: "#000000",
+                  "stroke-width": "0.26458332px",
+                  "stroke-linecap": "butt",
+                  "stroke-linejoin": "miter",
+                  "stroke-opacity": "1"
+                },
+                attrs: {
+                  d:
+                    "m 96.383925,199.86013 17.386905,-11.71727 -10.96131,-15.49702 -5.291665,4.15774 c 0,0 0.62453,-0.34505 -1.13393,-1.13393 -1.68943,-0.75792 -5.745107,0.89641 -4.157736,3.40179 -0.617604,2.30492 -4.535715,6.42559 -4.535715,6.42559 z",
+                  id: "area-o",
+                  "inkscape:connector-curvature": "0",
+                  "sodipodi:nodetypes": "ccccsccc",
+                  "inkscape:label": "#path870"
+                }
+              }),
+              _vm._v(" "),
+              _c("path", {
+                staticStyle: {
+                  fill: "#917c6f",
+                  stroke: "#000000",
+                  "stroke-width": "0.26458332px",
+                  "stroke-linecap": "butt",
+                  "stroke-linejoin": "miter",
+                  "stroke-opacity": "1"
+                },
+                attrs: {
+                  d:
+                    "m 38.364582,175.85864 13.229166,0.18899 v -5.48066 L 37.986606,170.189 Z",
+                  id: "area-w",
+                  "inkscape:connector-curvature": "0",
+                  "inkscape:label": "#path874"
+                }
+              }),
+              _vm._v(" "),
+              _c("path", {
+                staticStyle: {
+                  fill: "#a05a2c",
+                  stroke: "#000000",
+                  "stroke-width": "0.2835815px",
+                  "stroke-linecap": "butt",
+                  "stroke-linejoin": "miter",
+                  "stroke-opacity": "1"
+                },
+                attrs: {
+                  d:
+                    "m 76.365475,173.03198 1.632567,1.55505 -0.653028,0.35342 0.489769,0.63616 -0.272091,0.44766 4.081407,5.23063 3.646061,-2.21477 -5.958858,-8.03443 z",
+                  id: "area-n",
+                  "inkscape:connector-curvature": "0",
+                  "inkscape:label": "#path876"
+                }
+              }),
+              _vm._v(" "),
+              _c("path", {
+                staticStyle: {
+                  fill: "#ff0000",
+                  stroke: "#000000",
+                  "stroke-width": "0.26458332px",
+                  "stroke-linecap": "butt",
+                  "stroke-linejoin": "miter",
+                  "stroke-opacity": "1"
+                },
+                attrs: {
+                  d:
+                    "m 52.727678,152.99108 6.614584,5.48066 0.377975,4.53571 8.504465,0.37798 -5.291666,-13.60715 -2.078871,2.83482 -10.394344,-7.55952 -5.858632,10.20536 -0.944941,-0.37798 -0.944938,1.51191 0.755952,0.18898 -1.13393,2.07887 -0.755952,-0.56696 -2.267857,3.2128 1.13393,1.13392 -0.566965,0.75596 3.96875,0.18899 1.322916,-1.7009 0.755952,0.75595 2.043494,-4.71323 1.466135,0.67014 1.486688,-0.20045 -0.01669,-2.43884 z",
+                  id: "area-r",
+                  "inkscape:connector-curvature": "0",
+                  "sodipodi:nodetypes": "cccccccccccccccccccccccc",
+                  "inkscape:label": "#path878"
+                }
+              }),
+              _vm._v(" "),
+              _c("path", {
+                staticStyle: {
+                  fill: "#ff55dd",
+                  "fill-opacity": "1",
+                  stroke: "#000000",
+                  "stroke-width": "0.26458332px",
+                  "stroke-linecap": "butt",
+                  "stroke-linejoin": "miter",
+                  "stroke-opacity": "1"
+                },
+                attrs: {
+                  d:
+                    "m 64.534463,206.22193 28.798293,0.20045 -0.200454,7.81764 -20.713388,-0.26727 -0.133635,3.14042 h 2.806332 l 0.133633,5.4122 -7.14946,0.0668 -0.200451,-5.47902 h 3.474503 l -0.200451,-3.14042 -6.681739,-0.20045 z",
+                  id: "area-e",
+                  "inkscape:connector-curvature": "0",
+                  "inkscape:label": "#path880"
+                }
+              }),
+              _vm._v(" "),
+              _c("path", {
+                staticStyle: {
+                  fill: "#00ccff",
+                  stroke: "#000000",
+                  "stroke-width": "0.26458332px",
+                  "stroke-linecap": "butt",
+                  "stroke-linejoin": "miter",
+                  "stroke-opacity": "1"
+                },
+                attrs: {
+                  d:
+                    "m 37.473426,205.55376 24.18789,0.46772 0.200454,4.27631 -13.430295,-0.13363 -0.06682,4.47676 h -1.670434 l -3.274052,-3.14042 0.267269,-1.53679 -6.214014,-0.0668 z",
+                  id: "area-d",
+                  "inkscape:connector-curvature": "0",
+                  "inkscape:label": "#path882"
+                }
+              }),
+              _vm._v(" "),
+              _c("path", {
+                staticStyle: {
+                  fill: "#ff7f2a",
+                  stroke: "#000000",
+                  "stroke-width": "0.26458332px",
+                  "stroke-linecap": "butt",
+                  "stroke-linejoin": "miter",
+                  "stroke-opacity": "1"
+                },
+                attrs: {
+                  d:
+                    "m 36.137076,206.42238 -8.953529,-0.26727 0.200454,1.80407 2.271789,2.27179 v 1.46999 l -2.80633,2.40542 -1.135896,-1.00226 0.400905,-0.26727 -0.935442,-1.20271 -0.334087,0.26727 -1.536801,-1.46998 -3.274052,2.80633 1.703843,1.40316 -0.417608,0.26727 0.7684,0.96885 0.400905,-0.28397 1.453277,1.40316 -0.601356,0.3842 0.918739,0.86863 0.300678,-0.18375 1.186008,1.40317 -0.400904,0.26727 0.634767,0.85192 0.668173,-0.23386 0.267269,0.26727 3.173825,-2.60588 -0.300677,-0.23386 2.806329,-2.57247 -2.77292,-3.30746 v -1.77066 h 6.748555 l -0.200451,-3.77518 z",
+                  id: "area-p",
+                  "inkscape:connector-curvature": "0",
+                  "inkscape:label": "#path884"
+                }
+              }),
+              _vm._v(" "),
+              _c("path", {
+                staticStyle: {
+                  fill: "#99ff55",
+                  stroke: "#000000",
+                  "stroke-width": "0.26458332px",
+                  "stroke-linecap": "butt",
+                  "stroke-linejoin": "miter",
+                  "stroke-opacity": "1"
+                },
+                attrs: {
+                  d:
+                    "m 61.704612,213.51452 -9.496652,-0.0945 v 1.08668 l -2.220608,-0.23623 -2.929316,2.74033 -3.96875,-4.15774 -5.622396,4.86644 -0.141742,1.08668 -1.322917,1.22842 7.276042,7.65402 1.984375,-1.46465 -0.236234,-0.18899 1.086681,-0.94494 1.41741,1.41741 4.157739,-3.82701 -3.023809,-3.44903 0.661459,-0.51972 0.566962,0.37797 2.315104,0.0945 v -0.61421 l 0.755954,-0.0473 0.09449,0.47247 2.409597,0.0945 0.04725,-0.28348 h 1.13393 l 0.188986,0.47247 h 2.173365 l -0.09449,-0.47247 1.086681,-0.0472 0.09449,0.51972 1.606399,0.0472 z",
+                  id: "area-c",
+                  "inkscape:connector-curvature": "0",
+                  "inkscape:label": "#path886"
+                }
+              }),
+              _vm._v(" "),
+              _c("path", {
+                staticStyle: {
+                  fill: "#d40000",
+                  stroke: "#000000",
+                  "stroke-width": "0.26458332px",
+                  "stroke-linecap": "butt",
+                  "stroke-linejoin": "miter",
+                  "stroke-opacity": "1"
+                },
+                attrs: {
+                  d:
+                    "m 29.482144,225.13728 12.095236,13.93788 -0.755951,0.85044 2.598586,2.59859 9.402157,-8.26823 -6.094865,-6.70908 -2.173364,1.65365 -8.858818,-9.66202 z",
+                  id: "area-b",
+                  "inkscape:connector-curvature": "0",
+                  "sodipodi:nodetypes": "ccccccccc",
+                  "inkscape:label": "#path888"
+                }
+              }),
+              _vm._v(" "),
+              _c("path", {
+                staticStyle: {
+                  fill: "#00ffff",
+                  stroke: "#000000",
+                  "stroke-width": "0.26458332px",
+                  "stroke-linecap": "butt",
+                  "stroke-linejoin": "miter",
+                  "stroke-opacity": "1"
+                },
+                attrs: {
+                  d:
+                    "m 69.412134,224.86398 h -4.34313 l 0.133633,1.80407 -1.403165,-0.0668 v 9.75534 h 1.202714 l 0.06682,1.5368 h 0.267269 l 0.133633,2.47224 -2.873145,0.0668 0.267269,6.41447 8.218538,0.20045 0.06682,-0.4009 15.367998,0.26727 0.06682,0.60135 6.080381,0.13364 0.133633,-6.81537 -3.140416,0.0668 0.734991,-2.93996 -5.34539,-8.61944 0.601356,-0.53454 -2.472243,-3.27406 c 0,0 -1.135896,-0.86862 -1.536801,-0.46772 -0.400902,0.40091 0,2.00452 0,2.00452 l -12.227578,-0.26726 z",
+                  id: "area-a",
+                  "inkscape:connector-curvature": "0",
+                  "inkscape:label": "#path890"
+                }
+              }),
+              _vm._v(" "),
+              _c("path", {
+                staticStyle: {
+                  fill: "#ff9955",
+                  stroke: "#000000",
+                  "stroke-width": "0.26458332px",
+                  "stroke-linecap": "butt",
+                  "stroke-linejoin": "miter",
+                  "stroke-opacity": "1"
+                },
+                attrs: {
+                  d:
+                    "m 81.372443,216.77908 18.842497,0.33409 4.87767,7.81763 -0.40091,0.86862 2.6727,4.40995 c 0,0 2.60588,0.80181 3.60814,1.87089 1.00226,1.06908 1.00226,3.60814 1.00226,3.60814 l -6.28084,14.76664 -4.87766,-1.93771 -0.73499,2.2718 -7.416723,-3.14042 0.133634,-6.81537 -3.140417,0.0668 0.734992,-2.93996 -5.345391,-8.61944 0.601356,-0.53454 -2.472243,-3.27406 -1.516459,-0.48646 0.16882,-0.0779 -0.456436,-1.64062 z",
+                  id: "area-g",
+                  "inkscape:connector-curvature": "0",
+                  "inkscape:label": "#path894"
+                }
+              }),
+              _vm._v(" "),
+              _c("path", {
+                staticStyle: {
+                  fill: "#00ffff",
+                  stroke: "#000000",
+                  "stroke-width": "0.26458332px",
+                  "stroke-linecap": "butt",
+                  "stroke-linejoin": "miter",
+                  "stroke-opacity": "1"
+                },
+                attrs: {
+                  d:
+                    "m 107.56485,214.5741 16.30344,-10.55714 2.27179,3.4745 -1.46998,1.06908 0.53454,1.46998 2.80633,2.00452 -10.55714,14.16529 -3.34087,-1.87089 1.33634,-1.73725 -0.66817,-0.66817 2.53906,-3.34087 -3.0736,-2.80633 -2.27179,1.46998 -0.53454,-0.53454 -1.73725,1.06908 z",
+                  id: "area-f",
+                  "inkscape:connector-curvature": "0",
+                  "inkscape:label": "#path896"
+                }
+              }),
+              _vm._v(" "),
+              _c("path", {
+                staticStyle: {
+                  fill: "#ccff00",
+                  stroke: "#000000",
+                  "stroke-width": "0.26458332px",
+                  "stroke-linecap": "butt",
+                  "stroke-linejoin": "miter",
+                  "stroke-opacity": "1"
+                },
+                attrs: {
+                  d:
+                    "m 118.122,194.12799 -7.75082,4.81085 3.87541,7.08264 3.87541,-1.60362 1.25928,2.50462 3.07119,-2.52073 -0.69099,-1.22252 c 0,0 0.52562,-0.36026 0.47838,-0.35435 -0.0472,0.006 -0.74415,-0.77958 -0.74415,-0.77958 l 0.73233,-0.57878 -0.89769,-0.99218 0.56697,-0.51972 z",
+                  id: "area-u",
+                  "inkscape:connector-curvature": "0",
+                  "inkscape:label": "#path898"
+                }
+              }),
+              _vm._v(" "),
+              _c("path", {
+                staticStyle: {
+                  fill: "#d38d5f",
+                  stroke: "#000000",
+                  "stroke-width": "0.26458332px",
+                  "stroke-linecap": "butt",
+                  "stroke-linejoin": "miter",
+                  "stroke-opacity": "1"
+                },
+                attrs: {
+                  d:
+                    "m 145.8988,212.42783 4.34673,6.99256 18.52083,-11.62276 -5.76414,-8.78795 c 0,0 -12.18973,7.74851 -11.90625,8.22098 0.28349,0.47247 -5.19717,5.19717 -5.19717,5.19717 z",
+                  id: "area-y",
+                  "inkscape:connector-curvature": "0",
+                  "inkscape:label": "#path900"
+                }
+              }),
+              _vm._v(" "),
+              _c("path", {
+                staticStyle: {
+                  fill: "#ccff00",
+                  stroke: "#000000",
+                  "stroke-width": "0.26458332px",
+                  "stroke-linecap": "butt",
+                  "stroke-linejoin": "miter",
+                  "stroke-opacity": "1"
+                },
+                attrs: {
+                  d:
+                    "m 151.56845,252.5878 -10.96131,6.04762 5.85863,10.77233 11.15029,-6.04763 z",
+                  id: "area-t",
+                  "inkscape:connector-curvature": "0",
+                  "inkscape:label": "#path902"
+                }
+              }),
+              _vm._v(" "),
+              _c("path", {
+                staticStyle: {
+                  fill: "#ff55dd",
+                  stroke: "#000000",
+                  "stroke-width": "0.26458332px",
+                  "stroke-linecap": "butt",
+                  "stroke-linejoin": "miter",
+                  "stroke-opacity": "1"
+                },
+                attrs: {
+                  d:
+                    "m 97.134915,249.54155 -7.743546,22.89 c 0,0 0.188986,3.02381 0.283482,3.02381 0.09449,0 -1.606399,0.37798 -1.606399,0.37798 l 0.566963,3.59077 c 0,0 0.755954,1.22843 1.039436,0.85045 0.28348,-0.37798 0.566963,-1.41741 0.566963,-1.41741 l 0.283482,-0.18899 1.41741,5.00819 2.362349,-0.66146 0.94494,3.59077 4.913685,-1.5119 c 0,0 -3.023805,-11.71726 -2.078855,-12.37872 0.94494,-0.66146 5.386155,-16.91444 5.386155,-16.91444 l -0.47247,-0.18899 1.76656,-5.52558 -3.94877,-1.5687 -0.73499,2.2718 z",
+                  id: "area-h",
+                  "inkscape:connector-curvature": "0",
+                  "inkscape:label": "#path904"
+                }
+              }),
+              _vm._v(" "),
               _c(
-                "tspan",
+                "text",
                 {
                   staticStyle: {
-                    "font-size": "3.88096833px",
-                    fill: "#ffffff",
+                    "font-style": "normal",
+                    "font-weight": "normal",
+                    "font-size": "8.31636047px",
+                    "line-height": "1.25",
+                    "font-family": "sans-serif",
+                    "letter-spacing": "0px",
+                    "word-spacing": "0px",
+                    fill: "#000000",
+                    "fill-opacity": "1",
+                    stroke: "none",
                     "stroke-width": "0.207909"
                   },
                   attrs: {
-                    "sodipodi:role": "line",
-                    id: "tspan4831",
+                    "xml:space": "preserve",
                     x: "51.358364",
-                    y: "143.41815"
+                    y: "143.41815",
+                    id: "text4833",
+                    transform: "scale(0.94335929,1.0600415)"
                   }
                 },
-                [_vm._v("WR")]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "text",
-            {
-              staticStyle: {
-                "font-style": "normal",
-                "font-weight": "normal",
-                "font-size": "8.31636047px",
-                "line-height": "1.25",
-                "font-family": "sans-serif",
-                "letter-spacing": "0px",
-                "word-spacing": "0px",
-                fill: "#000000",
-                "fill-opacity": "1",
-                stroke: "none",
-                "stroke-width": "0.207909"
-              },
-              attrs: {
-                "xml:space": "preserve",
-                x: "35.528042",
-                y: "179.75656",
-                id: "text4833-3",
-                transform: "scale(0.94335929,1.0600415)"
-              }
-            },
-            [
+                [
+                  _c(
+                    "tspan",
+                    {
+                      staticStyle: {
+                        "font-size": "3.88096833px",
+                        fill: "#ffffff",
+                        "stroke-width": "0.207909"
+                      },
+                      attrs: {
+                        "sodipodi:role": "line",
+                        id: "tspan4831",
+                        x: "51.358364",
+                        y: "143.41815"
+                      }
+                    },
+                    [_vm._v("WR")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
               _c(
-                "tspan",
+                "text",
                 {
                   staticStyle: {
-                    "font-size": "3.88096833px",
-                    fill: "#ffffff",
+                    "font-style": "normal",
+                    "font-weight": "normal",
+                    "font-size": "8.31636047px",
+                    "line-height": "1.25",
+                    "font-family": "sans-serif",
+                    "letter-spacing": "0px",
+                    "word-spacing": "0px",
+                    fill: "#000000",
+                    "fill-opacity": "1",
+                    stroke: "none",
                     "stroke-width": "0.207909"
                   },
                   attrs: {
-                    "sodipodi:role": "line",
-                    id: "tspan4831-6",
+                    "xml:space": "preserve",
                     x: "35.528042",
-                    y: "179.75656"
+                    y: "179.75656",
+                    id: "text4833-3",
+                    transform: "scale(0.94335929,1.0600415)"
                   }
                 },
-                [_vm._v("WZ")]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "text",
-            {
-              staticStyle: {
-                "font-style": "normal",
-                "font-weight": "normal",
-                "font-size": "8.31636047px",
-                "line-height": "1.25",
-                "font-family": "sans-serif",
-                "letter-spacing": "0px",
-                "word-spacing": "0px",
-                fill: "#000000",
-                "fill-opacity": "1",
-                stroke: "none",
-                "stroke-width": "0.207909"
-              },
-              attrs: {
-                "xml:space": "preserve",
-                x: "60.231693",
-                y: "186.03229",
-                id: "text4833-7",
-                transform: "scale(0.94335929,1.0600415)"
-              }
-            },
-            [
+                [
+                  _c(
+                    "tspan",
+                    {
+                      staticStyle: {
+                        "font-size": "3.88096833px",
+                        fill: "#ffffff",
+                        "stroke-width": "0.207909"
+                      },
+                      attrs: {
+                        "sodipodi:role": "line",
+                        id: "tspan4831-6",
+                        x: "35.528042",
+                        y: "179.75656"
+                      }
+                    },
+                    [_vm._v("WZ")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
               _c(
-                "tspan",
+                "text",
                 {
                   staticStyle: {
-                    "font-size": "3.88096833px",
-                    fill: "#ffffff",
+                    "font-style": "normal",
+                    "font-weight": "normal",
+                    "font-size": "8.31636047px",
+                    "line-height": "1.25",
+                    "font-family": "sans-serif",
+                    "letter-spacing": "0px",
+                    "word-spacing": "0px",
+                    fill: "#000000",
+                    "fill-opacity": "1",
+                    stroke: "none",
                     "stroke-width": "0.207909"
                   },
                   attrs: {
-                    "sodipodi:role": "line",
-                    id: "tspan4831-5",
+                    "xml:space": "preserve",
                     x: "60.231693",
-                    y: "186.03229"
+                    y: "186.03229",
+                    id: "text4833-7",
+                    transform: "scale(0.94335929,1.0600415)"
                   }
                 },
-                [_vm._v("WS")]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "text",
-            {
-              staticStyle: {
-                "font-style": "normal",
-                "font-weight": "normal",
-                "font-size": "8.31636047px",
-                "line-height": "1.25",
-                "font-family": "sans-serif",
-                "letter-spacing": "0px",
-                "word-spacing": "0px",
-                fill: "#000000",
-                "fill-opacity": "1",
-                stroke: "none",
-                "stroke-width": "0.207909"
-              },
-              attrs: {
-                "xml:space": "preserve",
-                x: "86.876282",
-                y: "183.00146",
-                id: "text4833-35",
-                transform: "scale(0.94335929,1.0600415)"
-              }
-            },
-            [
+                [
+                  _c(
+                    "tspan",
+                    {
+                      staticStyle: {
+                        "font-size": "3.88096833px",
+                        fill: "#ffffff",
+                        "stroke-width": "0.207909"
+                      },
+                      attrs: {
+                        "sodipodi:role": "line",
+                        id: "tspan4831-5",
+                        x: "60.231693",
+                        y: "186.03229"
+                      }
+                    },
+                    [_vm._v("WS")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
               _c(
-                "tspan",
+                "text",
                 {
                   staticStyle: {
-                    "font-size": "3.88096833px",
-                    fill: "#ffffff",
+                    "font-style": "normal",
+                    "font-weight": "normal",
+                    "font-size": "8.31636047px",
+                    "line-height": "1.25",
+                    "font-family": "sans-serif",
+                    "letter-spacing": "0px",
+                    "word-spacing": "0px",
+                    fill: "#000000",
+                    "fill-opacity": "1",
+                    stroke: "none",
                     "stroke-width": "0.207909"
                   },
                   attrs: {
-                    "sodipodi:role": "line",
-                    id: "tspan4831-62",
+                    "xml:space": "preserve",
                     x: "86.876282",
-                    y: "183.00146"
+                    y: "183.00146",
+                    id: "text4833-35",
+                    transform: "scale(0.94335929,1.0600415)"
                   }
                 },
-                [_vm._v("WM")]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "text",
-            {
-              staticStyle: {
-                "font-style": "normal",
-                "font-weight": "normal",
-                "font-size": "8.31636047px",
-                "line-height": "1.25",
-                "font-family": "sans-serif",
-                "letter-spacing": "0px",
-                "word-spacing": "0px",
-                fill: "#000000",
-                "fill-opacity": "1",
-                stroke: "none",
-                "stroke-width": "0.207909"
-              },
-              attrs: {
-                "xml:space": "preserve",
-                x: "103.50411",
-                y: "177.1181",
-                id: "text4833-9",
-                transform: "scale(0.94335929,1.0600415)"
-              }
-            },
-            [
+                [
+                  _c(
+                    "tspan",
+                    {
+                      staticStyle: {
+                        "font-size": "3.88096833px",
+                        fill: "#ffffff",
+                        "stroke-width": "0.207909"
+                      },
+                      attrs: {
+                        "sodipodi:role": "line",
+                        id: "tspan4831-62",
+                        x: "86.876282",
+                        y: "183.00146"
+                      }
+                    },
+                    [_vm._v("WM")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
               _c(
-                "tspan",
+                "text",
                 {
                   staticStyle: {
-                    "font-size": "3.88096833px",
-                    fill: "#ffffff",
+                    "font-style": "normal",
+                    "font-weight": "normal",
+                    "font-size": "8.31636047px",
+                    "line-height": "1.25",
+                    "font-family": "sans-serif",
+                    "letter-spacing": "0px",
+                    "word-spacing": "0px",
+                    fill: "#000000",
+                    "fill-opacity": "1",
+                    stroke: "none",
                     "stroke-width": "0.207909"
                   },
                   attrs: {
-                    "sodipodi:role": "line",
-                    id: "tspan4831-1",
+                    "xml:space": "preserve",
                     x: "103.50411",
-                    y: "177.1181"
+                    y: "177.1181",
+                    id: "text4833-9",
+                    transform: "scale(0.94335929,1.0600415)"
                   }
                 },
-                [_vm._v("WO")]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "text",
-            {
-              staticStyle: {
-                "font-style": "normal",
-                "font-weight": "normal",
-                "font-size": "4.74860001px",
-                "line-height": "1.25",
-                "font-family": "sans-serif",
-                "letter-spacing": "0px",
-                "word-spacing": "0px",
-                fill: "#000000",
-                "fill-opacity": "1",
-                stroke: "none",
-                "stroke-width": "0.11871499"
-              },
-              attrs: {
-                "xml:space": "preserve",
-                x: "81.695114",
-                y: "172.2011",
-                id: "text4833-2",
-                transform: "scale(0.96966434,1.0312847)"
-              }
-            },
-            [
+                [
+                  _c(
+                    "tspan",
+                    {
+                      staticStyle: {
+                        "font-size": "3.88096833px",
+                        fill: "#ffffff",
+                        "stroke-width": "0.207909"
+                      },
+                      attrs: {
+                        "sodipodi:role": "line",
+                        id: "tspan4831-1",
+                        x: "103.50411",
+                        y: "177.1181"
+                      }
+                    },
+                    [_vm._v("WO")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
               _c(
-                "tspan",
+                "text",
                 {
                   staticStyle: {
-                    "font-size": "2.21601343px",
-                    fill: "#ffffff",
+                    "font-style": "normal",
+                    "font-weight": "normal",
+                    "font-size": "4.74860001px",
+                    "line-height": "1.25",
+                    "font-family": "sans-serif",
+                    "letter-spacing": "0px",
+                    "word-spacing": "0px",
+                    fill: "#000000",
+                    "fill-opacity": "1",
+                    stroke: "none",
                     "stroke-width": "0.11871499"
                   },
                   attrs: {
-                    "sodipodi:role": "line",
-                    id: "tspan4831-7",
+                    "xml:space": "preserve",
                     x: "81.695114",
-                    y: "172.2011"
+                    y: "172.2011",
+                    id: "text4833-2",
+                    transform: "scale(0.96966434,1.0312847)"
                   }
                 },
-                [_vm._v("WN")]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "text",
-            {
-              staticStyle: {
-                "font-style": "normal",
-                "font-weight": "normal",
-                "font-size": "8.31636047px",
-                "line-height": "1.25",
-                "font-family": "sans-serif",
-                "letter-spacing": "0px",
-                "word-spacing": "0px",
-                fill: "#000000",
-                "fill-opacity": "1",
-                stroke: "none",
-                "stroke-width": "0.207909"
-              },
-              attrs: {
-                "xml:space": "preserve",
-                x: "44.20488",
-                y: "164.72739",
-                id: "text4833-36",
-                transform: "scale(0.94335929,1.0600415)"
-              }
-            },
-            [
+                [
+                  _c(
+                    "tspan",
+                    {
+                      staticStyle: {
+                        "font-size": "2.21601343px",
+                        fill: "#ffffff",
+                        "stroke-width": "0.11871499"
+                      },
+                      attrs: {
+                        "sodipodi:role": "line",
+                        id: "tspan4831-7",
+                        x: "81.695114",
+                        y: "172.2011"
+                      }
+                    },
+                    [_vm._v("WN")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
               _c(
-                "tspan",
+                "text",
                 {
                   staticStyle: {
-                    "font-size": "3.88096833px",
-                    fill: "#ffffff",
+                    "font-style": "normal",
+                    "font-weight": "normal",
+                    "font-size": "8.31636047px",
+                    "line-height": "1.25",
+                    "font-family": "sans-serif",
+                    "letter-spacing": "0px",
+                    "word-spacing": "0px",
+                    fill: "#000000",
+                    "fill-opacity": "1",
+                    stroke: "none",
                     "stroke-width": "0.207909"
                   },
                   attrs: {
-                    "sodipodi:role": "line",
-                    id: "tspan4831-0",
+                    "xml:space": "preserve",
                     x: "44.20488",
-                    y: "164.72739"
+                    y: "164.72739",
+                    id: "text4833-36",
+                    transform: "scale(0.94335929,1.0600415)"
                   }
                 },
-                [_vm._v("WW")]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "text",
-            {
-              staticStyle: {
-                "font-style": "normal",
-                "font-weight": "normal",
-                "font-size": "8.31636047px",
-                "line-height": "1.25",
-                "font-family": "sans-serif",
-                "letter-spacing": "0px",
-                "word-spacing": "0px",
-                fill: "#000000",
-                "fill-opacity": "1",
-                stroke: "none",
-                "stroke-width": "0.207909"
-              },
-              attrs: {
-                "xml:space": "preserve",
-                x: "25.375526",
-                y: "204.89145",
-                id: "text4833-6",
-                transform: "scale(0.94335929,1.0600415)"
-              }
-            },
-            [
+                [
+                  _c(
+                    "tspan",
+                    {
+                      staticStyle: {
+                        "font-size": "3.88096833px",
+                        fill: "#ffffff",
+                        "stroke-width": "0.207909"
+                      },
+                      attrs: {
+                        "sodipodi:role": "line",
+                        id: "tspan4831-0",
+                        x: "44.20488",
+                        y: "164.72739"
+                      }
+                    },
+                    [_vm._v("WW")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
               _c(
-                "tspan",
+                "text",
                 {
                   staticStyle: {
-                    "font-size": "3.88096833px",
-                    fill: "#ffffff",
+                    "font-style": "normal",
+                    "font-weight": "normal",
+                    "font-size": "8.31636047px",
+                    "line-height": "1.25",
+                    "font-family": "sans-serif",
+                    "letter-spacing": "0px",
+                    "word-spacing": "0px",
+                    fill: "#000000",
+                    "fill-opacity": "1",
+                    stroke: "none",
                     "stroke-width": "0.207909"
                   },
                   attrs: {
-                    "sodipodi:role": "line",
-                    id: "tspan4831-18",
+                    "xml:space": "preserve",
                     x: "25.375526",
-                    y: "204.89145"
+                    y: "204.89145",
+                    id: "text4833-6",
+                    transform: "scale(0.94335929,1.0600415)"
                   }
                 },
-                [_vm._v("WP")]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "text",
-            {
-              staticStyle: {
-                "font-style": "normal",
-                "font-weight": "normal",
-                "font-size": "8.46509075px",
-                "line-height": "1.25",
-                "font-family": "sans-serif",
-                "letter-spacing": "0px",
-                "word-spacing": "0px",
-                fill: "#000000",
-                "fill-opacity": "1",
-                stroke: "none",
-                "stroke-width": "0.21162727"
-              },
-              attrs: {
-                "xml:space": "preserve",
-                x: "39.825813",
-                y: "220.31332",
-                id: "text4833-79",
-                transform: "scale(1.0525149,0.95010531)"
-              }
-            },
-            [
+                [
+                  _c(
+                    "tspan",
+                    {
+                      staticStyle: {
+                        "font-size": "3.88096833px",
+                        fill: "#ffffff",
+                        "stroke-width": "0.207909"
+                      },
+                      attrs: {
+                        "sodipodi:role": "line",
+                        id: "tspan4831-18",
+                        x: "25.375526",
+                        y: "204.89145"
+                      }
+                    },
+                    [_vm._v("WP")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
               _c(
-                "tspan",
+                "text",
                 {
                   staticStyle: {
-                    "font-size": "3.9503758px",
-                    fill: "#ffffff",
+                    "font-style": "normal",
+                    "font-weight": "normal",
+                    "font-size": "8.46509075px",
+                    "line-height": "1.25",
+                    "font-family": "sans-serif",
+                    "letter-spacing": "0px",
+                    "word-spacing": "0px",
+                    fill: "#000000",
+                    "fill-opacity": "1",
+                    stroke: "none",
                     "stroke-width": "0.21162727"
                   },
                   attrs: {
-                    "sodipodi:role": "line",
-                    id: "tspan4831-2",
+                    "xml:space": "preserve",
                     x: "39.825813",
-                    y: "220.31332"
+                    y: "220.31332",
+                    id: "text4833-79",
+                    transform: "scale(1.0525149,0.95010531)"
                   }
                 },
-                [_vm._v("WD")]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "text",
-            {
-              staticStyle: {
-                "font-style": "normal",
-                "font-weight": "normal",
-                "font-size": "8.31636047px",
-                "line-height": "1.25",
-                "font-family": "sans-serif",
-                "letter-spacing": "0px",
-                "word-spacing": "0px",
-                fill: "#000000",
-                "fill-opacity": "1",
-                stroke: "none",
-                "stroke-width": "0.207909"
-              },
-              attrs: {
-                "xml:space": "preserve",
-                x: "93.322861",
-                y: "212.34689",
-                id: "text4833-0",
-                transform: "scale(0.94335929,1.0600415)"
-              }
-            },
-            [
+                [
+                  _c(
+                    "tspan",
+                    {
+                      staticStyle: {
+                        "font-size": "3.9503758px",
+                        fill: "#ffffff",
+                        "stroke-width": "0.21162727"
+                      },
+                      attrs: {
+                        "sodipodi:role": "line",
+                        id: "tspan4831-2",
+                        x: "39.825813",
+                        y: "220.31332"
+                      }
+                    },
+                    [_vm._v("WD")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
               _c(
-                "tspan",
+                "text",
                 {
                   staticStyle: {
-                    "font-size": "3.88096833px",
-                    fill: "#ffffff",
+                    "font-style": "normal",
+                    "font-weight": "normal",
+                    "font-size": "8.31636047px",
+                    "line-height": "1.25",
+                    "font-family": "sans-serif",
+                    "letter-spacing": "0px",
+                    "word-spacing": "0px",
+                    fill: "#000000",
+                    "fill-opacity": "1",
+                    stroke: "none",
                     "stroke-width": "0.207909"
                   },
                   attrs: {
-                    "sodipodi:role": "line",
-                    id: "tspan4831-23",
+                    "xml:space": "preserve",
                     x: "93.322861",
-                    y: "212.34689"
+                    y: "212.34689",
+                    id: "text4833-0",
+                    transform: "scale(0.94335929,1.0600415)"
                   }
                 },
-                [_vm._v("WG")]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "text",
-            {
-              staticStyle: {
-                "font-style": "normal",
-                "font-weight": "normal",
-                "font-size": "8.31636047px",
-                "line-height": "1.25",
-                "font-family": "sans-serif",
-                "letter-spacing": "0px",
-                "word-spacing": "0px",
-                fill: "#000000",
-                "fill-opacity": "1",
-                stroke: "none",
-                "stroke-width": "0.207909"
-              },
-              attrs: {
-                "xml:space": "preserve",
-                x: "75.4757",
-                y: "224.76198",
-                id: "text4833-75",
-                transform: "scale(0.94335929,1.0600415)"
-              }
-            },
-            [
+                [
+                  _c(
+                    "tspan",
+                    {
+                      staticStyle: {
+                        "font-size": "3.88096833px",
+                        fill: "#ffffff",
+                        "stroke-width": "0.207909"
+                      },
+                      attrs: {
+                        "sodipodi:role": "line",
+                        id: "tspan4831-23",
+                        x: "93.322861",
+                        y: "212.34689"
+                      }
+                    },
+                    [_vm._v("WG")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
               _c(
-                "tspan",
+                "text",
                 {
                   staticStyle: {
-                    "font-size": "3.88096833px",
-                    fill: "#ffffff",
+                    "font-style": "normal",
+                    "font-weight": "normal",
+                    "font-size": "8.31636047px",
+                    "line-height": "1.25",
+                    "font-family": "sans-serif",
+                    "letter-spacing": "0px",
+                    "word-spacing": "0px",
+                    fill: "#000000",
+                    "fill-opacity": "1",
+                    stroke: "none",
                     "stroke-width": "0.207909"
                   },
                   attrs: {
-                    "sodipodi:role": "line",
-                    id: "tspan4831-9",
+                    "xml:space": "preserve",
                     x: "75.4757",
-                    y: "224.76198"
+                    y: "224.76198",
+                    id: "text4833-75",
+                    transform: "scale(0.94335929,1.0600415)"
                   }
                 },
-                [_vm._v("WA")]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "text",
-            {
-              staticStyle: {
-                "font-style": "normal",
-                "font-weight": "normal",
-                "font-size": "8.31636047px",
-                "line-height": "1.25",
-                "font-family": "sans-serif",
-                "letter-spacing": "0px",
-                "word-spacing": "0px",
-                fill: "#000000",
-                "fill-opacity": "1",
-                stroke: "none",
-                "stroke-width": "0.207909"
-              },
-              attrs: {
-                "xml:space": "preserve",
-                x: "99.699287",
-                y: "248.58838",
-                id: "text4833-97",
-                transform: "scale(0.94335929,1.0600415)"
-              }
-            },
-            [
+                [
+                  _c(
+                    "tspan",
+                    {
+                      staticStyle: {
+                        "font-size": "3.88096833px",
+                        fill: "#ffffff",
+                        "stroke-width": "0.207909"
+                      },
+                      attrs: {
+                        "sodipodi:role": "line",
+                        id: "tspan4831-9",
+                        x: "75.4757",
+                        y: "224.76198"
+                      }
+                    },
+                    [_vm._v("WA")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
               _c(
-                "tspan",
+                "text",
                 {
                   staticStyle: {
-                    "font-size": "3.88096833px",
-                    fill: "#ffffff",
+                    "font-style": "normal",
+                    "font-weight": "normal",
+                    "font-size": "8.31636047px",
+                    "line-height": "1.25",
+                    "font-family": "sans-serif",
+                    "letter-spacing": "0px",
+                    "word-spacing": "0px",
+                    fill: "#000000",
+                    "fill-opacity": "1",
+                    stroke: "none",
                     "stroke-width": "0.207909"
                   },
                   attrs: {
-                    "sodipodi:role": "line",
-                    id: "tspan4831-3",
+                    "xml:space": "preserve",
                     x: "99.699287",
-                    y: "248.58838"
+                    y: "248.58838",
+                    id: "text4833-97",
+                    transform: "scale(0.94335929,1.0600415)"
                   }
                 },
-                [_vm._v("WH")]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "text",
-            {
-              staticStyle: {
-                "font-style": "normal",
-                "font-weight": "normal",
-                "font-size": "8.31636047px",
-                "line-height": "1.25",
-                "font-family": "sans-serif",
-                "letter-spacing": "0px",
-                "word-spacing": "0px",
-                fill: "#000000",
-                "fill-opacity": "1",
-                stroke: "none",
-                "stroke-width": "0.207909"
-              },
-              attrs: {
-                "xml:space": "preserve",
-                x: "80.717064",
-                y: "199.54886",
-                id: "text4833-61",
-                transform: "scale(0.94335929,1.0600415)"
-              }
-            },
-            [
+                [
+                  _c(
+                    "tspan",
+                    {
+                      staticStyle: {
+                        "font-size": "3.88096833px",
+                        fill: "#ffffff",
+                        "stroke-width": "0.207909"
+                      },
+                      attrs: {
+                        "sodipodi:role": "line",
+                        id: "tspan4831-3",
+                        x: "99.699287",
+                        y: "248.58838"
+                      }
+                    },
+                    [_vm._v("WH")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
               _c(
-                "tspan",
+                "text",
                 {
                   staticStyle: {
-                    "font-size": "3.88096833px",
-                    fill: "#ffffff",
+                    "font-style": "normal",
+                    "font-weight": "normal",
+                    "font-size": "8.31636047px",
+                    "line-height": "1.25",
+                    "font-family": "sans-serif",
+                    "letter-spacing": "0px",
+                    "word-spacing": "0px",
+                    fill: "#000000",
+                    "fill-opacity": "1",
+                    stroke: "none",
                     "stroke-width": "0.207909"
                   },
                   attrs: {
-                    "sodipodi:role": "line",
-                    id: "tspan4831-29",
+                    "xml:space": "preserve",
                     x: "80.717064",
-                    y: "199.54886"
+                    y: "199.54886",
+                    id: "text4833-61",
+                    transform: "scale(0.94335929,1.0600415)"
                   }
                 },
-                [_vm._v("WE")]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "text",
-            {
-              staticStyle: {
-                "font-style": "normal",
-                "font-weight": "normal",
-                "font-size": "8.31636047px",
-                "line-height": "1.25",
-                "font-family": "sans-serif",
-                "letter-spacing": "0px",
-                "word-spacing": "0px",
-                fill: "#000000",
-                "fill-opacity": "1",
-                stroke: "none",
-                "stroke-width": "0.207909"
-              },
-              attrs: {
-                "xml:space": "preserve",
-                x: "120.1268",
-                y: "190.58197",
-                id: "text4833-31",
-                transform: "scale(0.94335929,1.0600415)"
-              }
-            },
-            [
+                [
+                  _c(
+                    "tspan",
+                    {
+                      staticStyle: {
+                        "font-size": "3.88096833px",
+                        fill: "#ffffff",
+                        "stroke-width": "0.207909"
+                      },
+                      attrs: {
+                        "sodipodi:role": "line",
+                        id: "tspan4831-29",
+                        x: "80.717064",
+                        y: "199.54886"
+                      }
+                    },
+                    [_vm._v("WE")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
               _c(
-                "tspan",
+                "text",
                 {
                   staticStyle: {
-                    "font-size": "3.88096833px",
-                    fill: "#ffffff",
+                    "font-style": "normal",
+                    "font-weight": "normal",
+                    "font-size": "8.31636047px",
+                    "line-height": "1.25",
+                    "font-family": "sans-serif",
+                    "letter-spacing": "0px",
+                    "word-spacing": "0px",
+                    fill: "#000000",
+                    "fill-opacity": "1",
+                    stroke: "none",
                     "stroke-width": "0.207909"
                   },
                   attrs: {
-                    "sodipodi:role": "line",
-                    id: "tspan4831-94",
+                    "xml:space": "preserve",
                     x: "120.1268",
-                    y: "190.58197"
+                    y: "190.58197",
+                    id: "text4833-31",
+                    transform: "scale(0.94335929,1.0600415)"
                   }
                 },
-                [_vm._v("WU")]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "text",
-            {
-              staticStyle: {
-                "font-style": "normal",
-                "font-weight": "normal",
-                "font-size": "8.31636047px",
-                "line-height": "1.25",
-                "font-family": "sans-serif",
-                "letter-spacing": "0px",
-                "word-spacing": "0px",
-                fill: "#000000",
-                "fill-opacity": "1",
-                stroke: "none",
-                "stroke-width": "0.207909"
-              },
-              attrs: {
-                "xml:space": "preserve",
-                x: "122.14645",
-                y: "202.8418",
-                id: "text4833-610",
-                transform: "scale(0.94335929,1.0600415)"
-              }
-            },
-            [
+                [
+                  _c(
+                    "tspan",
+                    {
+                      staticStyle: {
+                        "font-size": "3.88096833px",
+                        fill: "#ffffff",
+                        "stroke-width": "0.207909"
+                      },
+                      attrs: {
+                        "sodipodi:role": "line",
+                        id: "tspan4831-94",
+                        x: "120.1268",
+                        y: "190.58197"
+                      }
+                    },
+                    [_vm._v("WU")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
               _c(
-                "tspan",
+                "text",
                 {
                   staticStyle: {
-                    "font-size": "3.88096833px",
-                    fill: "#ffffff",
+                    "font-style": "normal",
+                    "font-weight": "normal",
+                    "font-size": "8.31636047px",
+                    "line-height": "1.25",
+                    "font-family": "sans-serif",
+                    "letter-spacing": "0px",
+                    "word-spacing": "0px",
+                    fill: "#000000",
+                    "fill-opacity": "1",
+                    stroke: "none",
                     "stroke-width": "0.207909"
                   },
                   attrs: {
-                    "sodipodi:role": "line",
-                    id: "tspan4831-63",
+                    "xml:space": "preserve",
                     x: "122.14645",
-                    y: "202.8418"
+                    y: "202.8418",
+                    id: "text4833-610",
+                    transform: "scale(0.94335929,1.0600415)"
                   }
                 },
-                [_vm._v("WF")]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "text",
-            {
-              staticStyle: {
-                "font-style": "normal",
-                "font-weight": "normal",
-                "font-size": "8.31636047px",
-                "line-height": "1.25",
-                "font-family": "sans-serif",
-                "letter-spacing": "0px",
-                "word-spacing": "0px",
-                fill: "#000000",
-                "fill-opacity": "1",
-                stroke: "none",
-                "stroke-width": "0.207909"
-              },
-              attrs: {
-                "xml:space": "preserve",
-                x: "152.25455",
-                y: "247.32773",
-                id: "text4833-20",
-                transform: "scale(0.94335929,1.0600415)"
-              }
-            },
-            [
+                [
+                  _c(
+                    "tspan",
+                    {
+                      staticStyle: {
+                        "font-size": "3.88096833px",
+                        fill: "#ffffff",
+                        "stroke-width": "0.207909"
+                      },
+                      attrs: {
+                        "sodipodi:role": "line",
+                        id: "tspan4831-63",
+                        x: "122.14645",
+                        y: "202.8418"
+                      }
+                    },
+                    [_vm._v("WF")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
               _c(
-                "tspan",
+                "text",
                 {
                   staticStyle: {
-                    "font-size": "3.88096833px",
-                    fill: "#ffffff",
+                    "font-style": "normal",
+                    "font-weight": "normal",
+                    "font-size": "8.31636047px",
+                    "line-height": "1.25",
+                    "font-family": "sans-serif",
+                    "letter-spacing": "0px",
+                    "word-spacing": "0px",
+                    fill: "#000000",
+                    "fill-opacity": "1",
+                    stroke: "none",
                     "stroke-width": "0.207909"
                   },
                   attrs: {
-                    "sodipodi:role": "line",
-                    id: "tspan4831-61",
+                    "xml:space": "preserve",
                     x: "152.25455",
-                    y: "247.32773"
+                    y: "247.32773",
+                    id: "text4833-20",
+                    transform: "scale(0.94335929,1.0600415)"
                   }
                 },
-                [_vm._v("WT")]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "text",
-            {
-              staticStyle: {
-                "font-style": "normal",
-                "font-weight": "normal",
-                "font-size": "8.31636047px",
-                "line-height": "1.25",
-                "font-family": "sans-serif",
-                "letter-spacing": "0px",
-                "word-spacing": "0px",
-                fill: "#000000",
-                "fill-opacity": "1",
-                stroke: "none",
-                "stroke-width": "0.207909"
-              },
-              attrs: {
-                "xml:space": "preserve",
-                x: "163.5045",
-                y: "198.77957",
-                id: "text4833-93",
-                transform: "scale(0.94335929,1.0600415)"
-              }
-            },
-            [
+                [
+                  _c(
+                    "tspan",
+                    {
+                      staticStyle: {
+                        "font-size": "3.88096833px",
+                        fill: "#ffffff",
+                        "stroke-width": "0.207909"
+                      },
+                      attrs: {
+                        "sodipodi:role": "line",
+                        id: "tspan4831-61",
+                        x: "152.25455",
+                        y: "247.32773"
+                      }
+                    },
+                    [_vm._v("WT")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
               _c(
-                "tspan",
+                "text",
                 {
                   staticStyle: {
-                    "font-size": "3.88096833px",
-                    fill: "#ffffff",
+                    "font-style": "normal",
+                    "font-weight": "normal",
+                    "font-size": "8.31636047px",
+                    "line-height": "1.25",
+                    "font-family": "sans-serif",
+                    "letter-spacing": "0px",
+                    "word-spacing": "0px",
+                    fill: "#000000",
+                    "fill-opacity": "1",
+                    stroke: "none",
                     "stroke-width": "0.207909"
                   },
                   attrs: {
-                    "sodipodi:role": "line",
-                    id: "tspan4831-74",
+                    "xml:space": "preserve",
                     x: "163.5045",
-                    y: "198.77957"
+                    y: "198.77957",
+                    id: "text4833-93",
+                    transform: "scale(0.94335929,1.0600415)"
                   }
                 },
-                [_vm._v("WY")]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "text",
-            {
-              staticStyle: {
-                "font-style": "normal",
-                "font-weight": "normal",
-                "font-size": "8.31636047px",
-                "line-height": "1.25",
-                "font-family": "sans-serif",
-                "letter-spacing": "0px",
-                "word-spacing": "0px",
-                fill: "#000000",
-                "fill-opacity": "1",
-                stroke: "none",
-                "stroke-width": "0.207909"
-              },
-              attrs: {
-                "xml:space": "preserve",
-                x: "43.035931",
-                y: "208.87772",
-                id: "text4833-5",
-                transform: "scale(0.94335929,1.0600415)"
-              }
-            },
-            [
+                [
+                  _c(
+                    "tspan",
+                    {
+                      staticStyle: {
+                        "font-size": "3.88096833px",
+                        fill: "#ffffff",
+                        "stroke-width": "0.207909"
+                      },
+                      attrs: {
+                        "sodipodi:role": "line",
+                        id: "tspan4831-74",
+                        x: "163.5045",
+                        y: "198.77957"
+                      }
+                    },
+                    [_vm._v("WY")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
               _c(
-                "tspan",
+                "text",
                 {
                   staticStyle: {
-                    "font-size": "3.88096833px",
-                    fill: "#ffffff",
+                    "font-style": "normal",
+                    "font-weight": "normal",
+                    "font-size": "8.31636047px",
+                    "line-height": "1.25",
+                    "font-family": "sans-serif",
+                    "letter-spacing": "0px",
+                    "word-spacing": "0px",
+                    fill: "#000000",
+                    "fill-opacity": "1",
+                    stroke: "none",
                     "stroke-width": "0.207909"
                   },
                   attrs: {
-                    "sodipodi:role": "line",
-                    id: "tspan4831-25",
+                    "xml:space": "preserve",
                     x: "43.035931",
-                    y: "208.87772"
+                    y: "208.87772",
+                    id: "text4833-5",
+                    transform: "scale(0.94335929,1.0600415)"
                   }
                 },
-                [_vm._v("WC")]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "text",
-            {
-              staticStyle: {
-                "font-style": "normal",
-                "font-weight": "normal",
-                "font-size": "8.31636047px",
-                "line-height": "1.25",
-                "font-family": "sans-serif",
-                "letter-spacing": "0px",
-                "word-spacing": "0px",
-                fill: "#000000",
-                "fill-opacity": "1",
-                stroke: "none",
-                "stroke-width": "0.207909"
-              },
-              attrs: {
-                "xml:space": "preserve",
-                x: "38.786182",
-                y: "216.44165",
-                id: "text4833-4",
-                transform: "scale(0.94335929,1.0600415)"
-              }
-            },
-            [
+                [
+                  _c(
+                    "tspan",
+                    {
+                      staticStyle: {
+                        "font-size": "3.88096833px",
+                        fill: "#ffffff",
+                        "stroke-width": "0.207909"
+                      },
+                      attrs: {
+                        "sodipodi:role": "line",
+                        id: "tspan4831-25",
+                        x: "43.035931",
+                        y: "208.87772"
+                      }
+                    },
+                    [_vm._v("WC")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
               _c(
-                "tspan",
+                "text",
                 {
                   staticStyle: {
-                    "font-size": "3.88096833px",
-                    fill: "#ffffff",
+                    "font-style": "normal",
+                    "font-weight": "normal",
+                    "font-size": "8.31636047px",
+                    "line-height": "1.25",
+                    "font-family": "sans-serif",
+                    "letter-spacing": "0px",
+                    "word-spacing": "0px",
+                    fill: "#000000",
+                    "fill-opacity": "1",
+                    stroke: "none",
                     "stroke-width": "0.207909"
                   },
                   attrs: {
-                    "sodipodi:role": "line",
-                    id: "tspan4831-744",
+                    "xml:space": "preserve",
                     x: "38.786182",
-                    y: "216.44165"
+                    y: "216.44165",
+                    id: "text4833-4",
+                    transform: "scale(0.94335929,1.0600415)"
                   }
                 },
-                [_vm._v("WB")]
+                [
+                  _c(
+                    "tspan",
+                    {
+                      staticStyle: {
+                        "font-size": "3.88096833px",
+                        fill: "#ffffff",
+                        "stroke-width": "0.207909"
+                      },
+                      attrs: {
+                        "sodipodi:role": "line",
+                        id: "tspan4831-744",
+                        x: "38.786182",
+                        y: "216.44165"
+                      }
+                    },
+                    [_vm._v("WB")]
+                  )
+                ]
               )
             ]
           )
-        ]
+        ],
+        1
       )
-    ],
-    1
-  )
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -39998,9 +40027,9 @@ var render = function() {
             "xmlns:sodipodi":
               "http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd",
             "xmlns:inkscape": "http://www.inkscape.org/namespaces/inkscape",
-            width: "500mm",
-            height: "300mm",
-            viewBox: "0 0 500 300",
+            width: "190mm",
+            height: "90mm",
+            viewBox: "0 0 190 90",
             version: "1.1",
             id: "svg5249",
             "inkscape:version": "0.92.4 (33fec40, 2019-01-16)",
@@ -40039,8 +40068,8 @@ var render = function() {
               "inkscape:pageopacity": "0.0",
               "inkscape:pageshadow": "2",
               "inkscape:zoom": "0.35",
-              "inkscape:cx": "-74.285714",
-              "inkscape:cy": "560",
+              "inkscape:cx": "85.714286",
+              "inkscape:cy": "542.85714",
               "inkscape:document-units": "mm",
               "inkscape:current-layer": "layer1",
               showgrid: "false",
@@ -40090,7 +40119,7 @@ var render = function() {
                 "inkscape:label": "Layer 1",
                 "inkscape:groupmode": "layer",
                 id: "layer1",
-                transform: "translate(0,3)"
+                transform: "translate(0,-207)"
               }
             },
             [
@@ -40109,8 +40138,8 @@ var render = function() {
                   id: "rect5794",
                   width: "185.92601",
                   height: "84.630684",
-                  x: "29.159283",
-                  y: "19.248093"
+                  x: "1.1890448",
+                  y: "212.01596"
                 }
               }),
               _vm._v(" "),
@@ -40129,8 +40158,8 @@ var render = function() {
                   id: "area-7",
                   width: "46.402084",
                   height: "25.49407",
-                  x: "29.159283",
-                  y: "19.248093",
+                  x: "1.1890448",
+                  y: "212.01596",
                   "inkscape:label": "#rect7244"
                 }
               }),
@@ -40150,8 +40179,8 @@ var render = function() {
                   id: "area-1",
                   width: "46.402084",
                   height: "25.49407",
-                  x: "29.159283",
-                  y: "78.384705",
+                  x: "1.1890448",
+                  y: "271.15256",
                   "inkscape:label": "#rect7244-6"
                 }
               }),
@@ -40171,8 +40200,8 @@ var render = function() {
                   id: "area-8",
                   width: "46.402084",
                   height: "25.49407",
-                  x: "29.159283",
-                  y: "47.974487",
+                  x: "1.1890448",
+                  y: "240.74236",
                   "inkscape:label": "#rect7244-6-1"
                 }
               }),
@@ -40192,8 +40221,8 @@ var render = function() {
                   id: "area-9",
                   width: "77.837105",
                   height: "32.615074",
-                  x: "137.22139",
-                  y: "71.243011",
+                  x: "109.25116",
+                  y: "264.01086",
                   "inkscape:label": "#rect7244-6-8"
                 }
               }),
@@ -40213,8 +40242,8 @@ var render = function() {
                   id: "area-4",
                   width: "89.38295",
                   height: "14.70394",
-                  x: "92.808739",
-                  y: "19.249599",
+                  x: "64.838501",
+                  y: "212.01746",
                   "inkscape:label": "#rect7244-6-7"
                 }
               }),
@@ -40234,8 +40263,8 @@ var render = function() {
                   id: "area-6",
                   width: "51.773407",
                   height: "17.472502",
-                  x: "162.87323",
-                  y: "50.314125",
+                  x: "134.90298",
+                  y: "243.08199",
                   "inkscape:label": "#rect7244-6-9"
                 }
               }),
@@ -40255,8 +40284,8 @@ var render = function() {
                   id: "area-3",
                   width: "46.402084",
                   height: "25.49407",
-                  x: "93.368118",
-                  y: "40.130905",
+                  x: "65.397881",
+                  y: "232.89877",
                   "inkscape:label": "#rect7244-6-2"
                 }
               }),
@@ -40276,8 +40305,8 @@ var render = function() {
                   id: "area-2",
                   width: "46.402084",
                   height: "17.051117",
-                  x: "84.255272",
-                  y: "86.834015",
+                  x: "56.285034",
+                  y: "279.60187",
                   "inkscape:label": "#rect7244-6-0"
                 }
               }),
@@ -40297,8 +40326,8 @@ var render = function() {
                   id: "area-5",
                   width: "21.19211",
                   height: "22.959764",
-                  x: "193.8932",
-                  y: "19.248093",
+                  x: "165.92296",
+                  y: "212.01596",
                   "inkscape:label": "#rect7244-6-23"
                 }
               }),
@@ -40321,11 +40350,11 @@ var render = function() {
                   },
                   attrs: {
                     "xml:space": "preserve",
-                    x: "31.864086",
-                    y: "32.400356",
+                    x: "7.2862873",
+                    y: "251.7757",
                     id: "text-7",
                     "inkscape:label": "#text7314",
-                    transform: "scale(1.1380286,0.87871252)"
+                    transform: "scale(1.1380286,0.87871253)"
                   }
                 },
                 [
@@ -40336,8 +40365,8 @@ var render = function() {
                       attrs: {
                         "sodipodi:role": "line",
                         id: "tspan7312",
-                        x: "31.864086",
-                        y: "32.400356"
+                        x: "7.2862873",
+                        y: "251.7757"
                       }
                     },
                     [_vm._v("Room 7")]
@@ -40363,11 +40392,11 @@ var render = function() {
                   },
                   attrs: {
                     "xml:space": "preserve",
-                    x: "36.118107",
-                    y: "69.685593",
+                    x: "11.540307",
+                    y: "289.06094",
                     id: "text-8",
                     "inkscape:label": "#text7318",
-                    transform: "scale(1.1380286,0.87871252)"
+                    transform: "scale(1.1380286,0.87871253)"
                   }
                 },
                 [
@@ -40378,8 +40407,8 @@ var render = function() {
                       attrs: {
                         "sodipodi:role": "line",
                         id: "tspan7316",
-                        x: "36.118107",
-                        y: "69.685593"
+                        x: "11.540307",
+                        y: "289.06094"
                       }
                     },
                     [_vm._v("Room 8")]
@@ -40405,11 +40434,11 @@ var render = function() {
                   },
                   attrs: {
                     "xml:space": "preserve",
-                    x: "34.866924",
-                    y: "104.46847",
+                    x: "10.289125",
+                    y: "323.84381",
                     id: "text-1",
                     "inkscape:label": "#text7322",
-                    transform: "scale(1.1380286,0.87871252)"
+                    transform: "scale(1.1380286,0.87871253)"
                   }
                 },
                 [
@@ -40420,8 +40449,8 @@ var render = function() {
                       attrs: {
                         "sodipodi:role": "line",
                         id: "tspan7320",
-                        x: "34.866924",
-                        y: "104.46847"
+                        x: "10.289125",
+                        y: "323.84381"
                       }
                     },
                     [_vm._v("Room 1")]
@@ -40447,11 +40476,11 @@ var render = function() {
                   },
                   attrs: {
                     "xml:space": "preserve",
-                    x: "152.97853",
-                    y: "106.22013",
+                    x: "128.40073",
+                    y: "325.59546",
                     id: "text-9",
                     "inkscape:label": "#text7326",
-                    transform: "scale(1.1380286,0.87871252)"
+                    transform: "scale(1.1380286,0.87871253)"
                   }
                 },
                 [
@@ -40462,8 +40491,8 @@ var render = function() {
                       attrs: {
                         "sodipodi:role": "line",
                         id: "tspan7324",
-                        x: "152.97853",
-                        y: "106.22013"
+                        x: "128.40073",
+                        y: "325.59546"
                       }
                     },
                     [_vm._v("Room 9")]
@@ -40489,11 +40518,11 @@ var render = function() {
                   },
                   attrs: {
                     "xml:space": "preserve",
-                    x: "91.420372",
-                    y: "111.22485",
+                    x: "66.842567",
+                    y: "330.60019",
                     id: "text-2",
                     "inkscape:label": "#text7330",
-                    transform: "scale(1.1380286,0.87871252)"
+                    transform: "scale(1.1380286,0.87871253)"
                   }
                 },
                 [
@@ -40504,8 +40533,8 @@ var render = function() {
                       attrs: {
                         "sodipodi:role": "line",
                         id: "tspan7328",
-                        x: "91.420372",
-                        y: "111.22485"
+                        x: "66.842567",
+                        y: "330.60019"
                       }
                     },
                     [_vm._v("Room 2")]
@@ -40531,11 +40560,11 @@ var render = function() {
                   },
                   attrs: {
                     "xml:space": "preserve",
-                    x: "92.921791",
-                    y: "59.4259",
+                    x: "68.343987",
+                    y: "278.80124",
                     id: "text-3",
                     "inkscape:label": "#text7334",
-                    transform: "scale(1.1380286,0.87871252)"
+                    transform: "scale(1.1380286,0.87871253)"
                   }
                 },
                 [
@@ -40546,8 +40575,8 @@ var render = function() {
                       attrs: {
                         "sodipodi:role": "line",
                         id: "tspan7332",
-                        x: "92.921791",
-                        y: "59.4259"
+                        x: "68.343987",
+                        y: "278.80124"
                       }
                     },
                     [_vm._v("Room 3")]
@@ -40573,11 +40602,11 @@ var render = function() {
                   },
                   attrs: {
                     "xml:space": "preserve",
-                    x: "100.17864",
-                    y: "29.647757",
+                    x: "75.600838",
+                    y: "249.0231",
                     id: "text-4",
                     "inkscape:label": "#text7338",
-                    transform: "scale(1.1380286,0.87871252)"
+                    transform: "scale(1.1380286,0.87871253)"
                   }
                 },
                 [
@@ -40588,8 +40617,8 @@ var render = function() {
                       attrs: {
                         "sodipodi:role": "line",
                         id: "tspan7336",
-                        x: "100.17864",
-                        y: "29.647757"
+                        x: "75.600838",
+                        y: "249.0231"
                       }
                     },
                     [_vm._v("Room 4")]
@@ -40615,11 +40644,11 @@ var render = function() {
                   },
                   attrs: {
                     "xml:space": "preserve",
-                    x: "153.72926",
-                    y: "66.432526",
+                    x: "129.15146",
+                    y: "285.80786",
                     id: "text-6",
                     "inkscape:label": "#text7342",
-                    transform: "scale(1.1380286,0.87871252)"
+                    transform: "scale(1.1380286,0.87871253)"
                   }
                 },
                 [
@@ -40630,8 +40659,8 @@ var render = function() {
                       attrs: {
                         "sodipodi:role": "line",
                         id: "tspan7340",
-                        x: "153.72926",
-                        y: "66.432526"
+                        x: "129.15146",
+                        y: "285.80786"
                       }
                     },
                     [_vm._v("Room 6")]
@@ -40657,11 +40686,11 @@ var render = function() {
                   },
                   attrs: {
                     "xml:space": "preserve",
-                    x: "170.99557",
-                    y: "30.898939",
+                    x: "146.41777",
+                    y: "250.27428",
                     id: "text-5",
                     "inkscape:label": "#text7346",
-                    transform: "scale(1.1380286,0.87871252)"
+                    transform: "scale(1.1380286,0.87871253)"
                   }
                 },
                 [
@@ -40672,8 +40701,8 @@ var render = function() {
                       attrs: {
                         "sodipodi:role": "line",
                         id: "tspan7344",
-                        x: "170.99557",
-                        y: "30.898939"
+                        x: "146.41777",
+                        y: "250.27428"
                       }
                     },
                     [_vm._v("Room 5")]
@@ -78780,12 +78809,11 @@ Vue.use(vuetify__WEBPACK_IMPORTED_MODULE_1___default.a);
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
-Vue.component('map-22', __webpack_require__(/*! ./components/map-22.vue */ "./resources/js/components/map-22.vue").default); //--------------------
-
-Vue.component('map-1', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue").default);
+Vue.component('map-22', __webpack_require__(/*! ./components/map-22.vue */ "./resources/js/components/map-22.vue").default);
 Vue.component('area-map', __webpack_require__(/*! ./components/AreaMap.vue */ "./resources/js/components/AreaMap.vue").default);
 Vue.component('nav-bar', __webpack_require__(/*! ./components/NavBar.vue */ "./resources/js/components/NavBar.vue").default);
 Vue.component('navigation-map', __webpack_require__(/*! ./components/NavigationMap.vue */ "./resources/js/components/NavigationMap.vue").default);
+Vue.component('main-map', __webpack_require__(/*! ./components/MainMap.vue */ "./resources/js/components/MainMap.vue").default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -78943,17 +78971,17 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/ExampleComponent.vue":
-/*!******************************************************!*\
-  !*** ./resources/js/components/ExampleComponent.vue ***!
-  \******************************************************/
+/***/ "./resources/js/components/MainMap.vue":
+/*!*********************************************!*\
+  !*** ./resources/js/components/MainMap.vue ***!
+  \*********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ExampleComponent.vue?vue&type=template&id=299e239e& */ "./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e&");
-/* harmony import */ var _ExampleComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ExampleComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js&");
+/* harmony import */ var _MainMap_vue_vue_type_template_id_56c7be70___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MainMap.vue?vue&type=template&id=56c7be70& */ "./resources/js/components/MainMap.vue?vue&type=template&id=56c7be70&");
+/* harmony import */ var _MainMap_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MainMap.vue?vue&type=script&lang=js& */ "./resources/js/components/MainMap.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -78963,9 +78991,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _ExampleComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _MainMap_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _MainMap_vue_vue_type_template_id_56c7be70___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _MainMap_vue_vue_type_template_id_56c7be70___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -78975,38 +79003,38 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/ExampleComponent.vue"
+component.options.__file = "resources/js/components/MainMap.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************!*\
-  !*** ./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************************/
+/***/ "./resources/js/components/MainMap.vue?vue&type=script&lang=js&":
+/*!**********************************************************************!*\
+  !*** ./resources/js/components/MainMap.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./ExampleComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_MainMap_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./MainMap.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MainMap.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_MainMap_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e&":
-/*!*************************************************************************************!*\
-  !*** ./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e& ***!
-  \*************************************************************************************/
+/***/ "./resources/js/components/MainMap.vue?vue&type=template&id=56c7be70&":
+/*!****************************************************************************!*\
+  !*** ./resources/js/components/MainMap.vue?vue&type=template&id=56c7be70& ***!
+  \****************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./ExampleComponent.vue?vue&type=template&id=299e239e& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MainMap_vue_vue_type_template_id_56c7be70___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./MainMap.vue?vue&type=template&id=56c7be70& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MainMap.vue?vue&type=template&id=56c7be70&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MainMap_vue_vue_type_template_id_56c7be70___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MainMap_vue_vue_type_template_id_56c7be70___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

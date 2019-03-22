@@ -1,5 +1,8 @@
 <template>
-    <div class="my-2">
+    <main-map :areas="areas" ref="main_map">
+
+    
+    <div class="my-2" slot="child-map" >
         <v-container>
             <v-layout row wrap>
                 <v-flex xs12 lg8 md8>
@@ -19,12 +22,11 @@
                 </v-card>
                 </v-flex>
                 <v-spacer></v-spacer>
-                <v-flex xs12 lg3 md6>
-
+                <v-flex xs12 lg4 md6>
                     <v-card>
                         <v-card-title><h3 class="title">Areas :-</h3></v-card-title>
                         <v-card-text >
-                            <v-card v-for="area in areas" :key="area.id">
+                            <v-card v-for="area in areas" :key="area.id" @click="selectArea(area.id)">
                                 <v-card-text>
                                     <v-layout row>
                                         <v-flex xs4>
@@ -47,6 +49,7 @@
         </v-container>
         
     </div>
+    </main-map>
 </template>
 
 <script>
@@ -67,7 +70,8 @@ const axios = require('axios');
                 GOOD:3,
                 EMPTY:4,
                 fullV:this.v,
-                t:0
+                t:0,
+                holdIdZoom : 0,
             }
         },methods:{
             changeColor:function () {
@@ -83,9 +87,9 @@ const axios = require('axios');
                         el.addEventListener("click",this.clickMapEvent);
                         el.style.cursor ="pointer"
                     }
-                    
-                    
                 }
+            },selectArea(id){
+                this.$refs.main_map.selectArea(id);
             },
             getAreas:function () {
                 
