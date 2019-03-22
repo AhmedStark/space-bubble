@@ -76,3 +76,9 @@ Route::post('/area','areaController@showTables');
 Route::get('/count',"areaController@totalTables");
 
 Route::get('/countTaken',"areaController@totalTakenTables");
+
+Route::get('/deleteTable','tableController@delete');
+
+Route::get('/deleteArea','areaController@delete');
+Route::get('/deleteLevel','levelController@delete');
+Route::get('/deleteBuilding','buildingController@delete');

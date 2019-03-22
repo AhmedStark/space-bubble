@@ -4,34 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Area;
+use DB;
 class areaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function create()
     {
         return view('area.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+   
     public function store(Request $request)
     {
         $area=new Area;
@@ -40,6 +22,13 @@ class areaController extends Controller
         $area->name=$request->name;
 
         $area->save();
+    }
+
+    public function delete(Request $request){
+        $id=$request->id;
+        $tables=Area::find($id)->tables();
+        $tables->delete();
+        DB::table('areas')->where('id', '=', $id)->delete();
     }
 
     public function showAreas(){
