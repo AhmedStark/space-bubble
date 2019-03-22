@@ -16,9 +16,12 @@ class CreateTablesTable extends Migration
         Schema::create('tables', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('area_id');
-            $table->string('token', 5)->unique();
+            $table->string('token', 25)->unique();
             $table->boolean('taken');
             $table->timestamps();
+            //alter table `orders` add constraint orders_employee_id_foreign foreign key (`employee_id`) references `employees` (`id`)
+
+      
         });
     }
 
