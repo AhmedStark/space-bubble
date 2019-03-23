@@ -1,5 +1,10 @@
 <template>
+<div>
     <v-container>
+        <create-building-dialog
+            v-on:building_created="getBuildings()"
+            ref="create_building_dialog"
+        ></create-building-dialog>
         <v-layout row wrap>
             <v-flex md4>
                 <v-card class="mx-2">
@@ -9,7 +14,7 @@
                             indeterminate
                             color="primary"
                             ></v-progress-circular>
-                        <v-btn color="green" dark href="#">Create a Building</v-btn>
+                        <v-btn color="green" dark href="#" @click="createBuilding">Create a Building</v-btn>
                         <v-card style="border-radius:50px;" class="my-3 building-card" v-for="(building,index) in buildings" :dark="index===selectedBuilding" :key="'b'+building.id" @click="selectBuilding(index)">
                             <v-card-text>             
                                 <v-layout row>
@@ -18,7 +23,7 @@
                                     </v-flex>
                                     <v-spacer></v-spacer>
                                     <v-flex>
-                                        12 levels
+                                        ID:{{building.id}}
                                     </v-flex>
                                 </v-layout>
                             </v-card-text>
@@ -78,8 +83,10 @@
                         
                     </v-card-text></v-card>
             </v-flex>
+            
         </v-layout>
     </v-container>
+    </div>
 </template>
 
 <script>
@@ -99,7 +106,12 @@ export default {
             selectedArea:0,
         }    
     },methods:{
+        createBuilding:function () {
+            this.$refs.create_building_dialog.openDialog();
+        },
+        deleteBuilding:function(){
 
+        },
         selectBuilding:function (index) {
             this.selectedBuilding = index;
             this.getLevels();
@@ -114,8 +126,8 @@ export default {
         getBuildings:function(){
             this.loadingBuildings = true;
             axios.get('/buildings').then((response)=> {
-                
-                this.buildings=response.data.buildings;
+                this.buildings=response.data;
+                console.log(this.buildings);
                 this.getLevels(this.buildings[this.selectedBuilding].id);
             }).catch(function(error){
             }).then((response)=> {

@@ -81,22 +81,15 @@ Route::get('/levels/{id}/areas',function(){
     ]];
 });
 
-Route::get('/buildings',function(){
-    return [
-        'buildings'=>[
-        ['name'=>"WS",'id'=>1],
-        ['name'=>"WG",'id'=>2],
-        ['name'=>"WL",'id'=>3],
-    ]];
-});
 
 
 Route::get('big-map',function(){
     return view('big-map');
 });
-Route::get('/main','buildingController@buildings');
+Route::get('/buildings','buildingController@getBuildings');
 
-Route::post('/main','buildingController@showLevels');
+//Route::post('/main','buildingController@showLevels');
+Route::post('/buildings/create','buildingController@store');
 
 Route::post('/level','levelController@showAreas');
 Route::post('/area','areaController@showTables');

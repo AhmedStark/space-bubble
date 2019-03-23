@@ -10,7 +10,9 @@ use DB;
 class buildingController extends Controller
 {
     
-
+    public function getBuildings(){
+        return Building::all();
+    }
     public function showLevels(Request $request){
         $building_id=$request->building_id;
         
@@ -50,6 +52,7 @@ class buildingController extends Controller
         $building->name=$request->name;
         
         $building->save();
+        return ["response"=>"<p class='success--text'>Building was created</p>","status"=>1];
     }
 
    

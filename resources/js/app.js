@@ -35,6 +35,7 @@ Vue.component('nav-bar', require('./components/NavBar.vue').default);
 Vue.component('navigation-map', require('./components/NavigationMap.vue').default);
 Vue.component('main-map', require('./components/MainMap.vue').default);
 Vue.component('admin-dashboard', require('./components/admin/AdminDashboard.vue').default);
+Vue.component('create-building-dialog', require('./components/admin/CreateBuildingForm.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
