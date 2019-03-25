@@ -5,6 +5,10 @@
             v-on:building_created="getBuildings()"
             ref="create_building_dialog"
         ></create-building-dialog>
+        <create-level-dialog
+            v-on:level_created="getLevels()"
+            ref="create_level_dialog"
+        ></create-level-dialog>
         <v-layout row wrap>
             <v-flex md4>
                 <v-card class="mx-2">
@@ -56,6 +60,7 @@
                                     </v-flex>
                                 </v-layout> 
                         </v-card-text></v-card>
+                        <v-btn v-if="buildings.length>0" dark color="blue" @click="showCreateBuildingForm">Add new level to this building</v-btn>
                     </v-card-text>
                 </v-card>
             </v-flex>
@@ -107,6 +112,9 @@ export default {
             selectedArea:0,
         }    
     },methods:{
+        showCreateBuildingForm:function(){
+            this.$refs.create_level_dialog.openDialog(this.buildings[this.selectedBuilding].id);
+        },
         createBuilding:function () {
             this.$refs.create_building_dialog.openDialog();
         },
@@ -139,7 +147,7 @@ export default {
 
             this.loadingLevels = true;
             axios.get('/buildings/'+this.buildings[this.selectedBuilding].id+"/levels").then((response)=> {
-                this.levels=response.data.levels;
+                this.levels=response.data;
                 this.getAreas(id);
                 console.log("Load");
             }).catch(function(error){

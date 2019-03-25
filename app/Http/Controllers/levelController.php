@@ -35,6 +35,8 @@ class levelController extends Controller
         $level->name=$request->name;
 
         $level->save();
+
+        return ["response"=>"<p class='success--text'>Building was created</p>","status"=>1];
     }
 
 

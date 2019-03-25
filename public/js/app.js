@@ -2210,6 +2210,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2229,6 +2234,9 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
     };
   },
   methods: {
+    showCreateBuildingForm: function showCreateBuildingForm() {
+      this.$refs.create_level_dialog.openDialog(this.buildings[this.selectedBuilding].id);
+    },
     createBuilding: function createBuilding() {
       this.$refs.create_building_dialog.openDialog();
     },
@@ -2263,7 +2271,7 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
       this.loadingLevels = true;
       axios.get('/buildings/' + this.buildings[this.selectedBuilding].id + "/levels").then(function (response) {
-        _this2.levels = response.data.levels;
+        _this2.levels = response.data;
 
         _this2.getAreas(id);
 
@@ -2392,6 +2400,117 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
     },
     clear: function clear() {
       this.buildingName = "";
+      this.response = "";
+      this.status = 0;
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/admin/CreateLevelForm.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/admin/CreateLevelForm.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      buildingID: null,
+      LEVEL_CREATED: 1,
+      levelName: "",
+      open: false,
+      loading: false,
+      response: "",
+      status: 0,
+      csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+      nameRules: [function (v) {
+        return !!v || 'Name is required';
+      }]
+    };
+  },
+  methods: {
+    openDialog: function openDialog(buildingID) {
+      this.buildingID = buildingID;
+      this.open = !this.open;
+    },
+    createLevel: function createLevel() {
+      var _this = this;
+
+      if (this.levelName === "") {
+        this.response = "<p class='error--text'>Level name is required</p>";
+      } else {
+        this.loading = true;
+        axios.post('/levels/create', {
+          name: this.levelName,
+          building_id: this.buildingID,
+          csrf: this.csrf
+        }).then(function (response) {
+          _this.response = response.data.response;
+          _this.status = response.data.status;
+        }).catch(function (error) {
+          console.log(error);
+        }).then(function (response) {
+          if (_this.status === _this.LEVEL_CREATED) {
+            _this.$emit("level_created");
+
+            _this.openDialog(_this.buildingID);
+          }
+
+          _this.loading = false;
+        });
+      }
+    },
+    clear: function clear() {
+      this.levelName = "";
       this.response = "";
       this.status = 0;
     }
@@ -38533,6 +38652,15 @@ var render = function() {
             }
           }),
           _vm._v(" "),
+          _c("create-level-dialog", {
+            ref: "create_level_dialog",
+            on: {
+              level_created: function($event) {
+                return _vm.getLevels()
+              }
+            }
+          }),
+          _vm._v(" "),
           _c(
             "v-layout",
             { attrs: { row: "", wrap: "" } },
@@ -38703,7 +38831,18 @@ var render = function() {
                               ],
                               1
                             )
-                          })
+                          }),
+                          _vm._v(" "),
+                          _vm.buildings.length > 0
+                            ? _c(
+                                "v-btn",
+                                {
+                                  attrs: { dark: "", color: "blue" },
+                                  on: { click: _vm.showCreateBuildingForm }
+                                },
+                                [_vm._v("Add new level to this building")]
+                              )
+                            : _vm._e()
                         ],
                         2
                       )
@@ -38881,6 +39020,105 @@ var render = function() {
                 {
                   attrs: { color: "success", flat: "" },
                   on: { click: _vm.createBuilding }
+                },
+                [_vm._v("Create")]
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/admin/CreateLevelForm.vue?vue&type=template&id=631f16b1&":
+/*!************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/admin/CreateLevelForm.vue?vue&type=template&id=631f16b1& ***!
+  \************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "v-dialog",
+    { attrs: { width: "600", value: _vm.open } },
+    [
+      _c(
+        "v-card",
+        [
+          _c(
+            "v-card-title",
+            {
+              staticClass: "headline grey lighten-2",
+              attrs: { "primary-title": "" }
+            },
+            [_vm._v("\n      Create a new level\n    ")]
+          ),
+          _vm._v(" "),
+          _c(
+            "v-card-text",
+            [
+              _c("v-text-field", {
+                attrs: {
+                  rules: _vm.nameRules,
+                  label: "Level name",
+                  required: ""
+                },
+                model: {
+                  value: _vm.levelName,
+                  callback: function($$v) {
+                    _vm.levelName = $$v
+                  },
+                  expression: "levelName"
+                }
+              }),
+              _vm._v(" "),
+              _c("div", { domProps: { innerHTML: _vm._s(_vm.response) } }),
+              _vm._v(" "),
+              _vm.loading
+                ? _c("v-progress-circular", {
+                    attrs: { indeterminate: "", color: "primary" }
+                  })
+                : _vm._e()
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("v-divider"),
+          _vm._v(" "),
+          _c(
+            "v-card-actions",
+            [
+              _c(
+                "v-btn",
+                {
+                  attrs: { color: "error", flat: "" },
+                  on: { click: _vm.createLevel }
+                },
+                [_vm._v("Discard")]
+              ),
+              _vm._v(" "),
+              _c(
+                "v-btn",
+                {
+                  attrs: { color: "success", flat: "" },
+                  on: { click: _vm.createLevel }
                 },
                 [_vm._v("Create")]
               )
@@ -77728,6 +77966,7 @@ Vue.component('navigation-map', __webpack_require__(/*! ./components/NavigationM
 Vue.component('main-map', __webpack_require__(/*! ./components/MainMap.vue */ "./resources/js/components/MainMap.vue").default);
 Vue.component('admin-dashboard', __webpack_require__(/*! ./components/admin/AdminDashboard.vue */ "./resources/js/components/admin/AdminDashboard.vue").default);
 Vue.component('create-building-dialog', __webpack_require__(/*! ./components/admin/CreateBuildingForm.vue */ "./resources/js/components/admin/CreateBuildingForm.vue").default);
+Vue.component('create-level-dialog', __webpack_require__(/*! ./components/admin/CreateLevelForm.vue */ "./resources/js/components/admin/CreateLevelForm.vue").default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -78261,6 +78500,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateBuildingForm_vue_vue_type_template_id_187078df___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateBuildingForm_vue_vue_type_template_id_187078df___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/admin/CreateLevelForm.vue":
+/*!***********************************************************!*\
+  !*** ./resources/js/components/admin/CreateLevelForm.vue ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _CreateLevelForm_vue_vue_type_template_id_631f16b1___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CreateLevelForm.vue?vue&type=template&id=631f16b1& */ "./resources/js/components/admin/CreateLevelForm.vue?vue&type=template&id=631f16b1&");
+/* harmony import */ var _CreateLevelForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CreateLevelForm.vue?vue&type=script&lang=js& */ "./resources/js/components/admin/CreateLevelForm.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _CreateLevelForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _CreateLevelForm_vue_vue_type_template_id_631f16b1___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _CreateLevelForm_vue_vue_type_template_id_631f16b1___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/admin/CreateLevelForm.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/admin/CreateLevelForm.vue?vue&type=script&lang=js&":
+/*!************************************************************************************!*\
+  !*** ./resources/js/components/admin/CreateLevelForm.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateLevelForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./CreateLevelForm.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/admin/CreateLevelForm.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateLevelForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/admin/CreateLevelForm.vue?vue&type=template&id=631f16b1&":
+/*!******************************************************************************************!*\
+  !*** ./resources/js/components/admin/CreateLevelForm.vue?vue&type=template&id=631f16b1& ***!
+  \******************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateLevelForm_vue_vue_type_template_id_631f16b1___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./CreateLevelForm.vue?vue&type=template&id=631f16b1& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/admin/CreateLevelForm.vue?vue&type=template&id=631f16b1&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateLevelForm_vue_vue_type_template_id_631f16b1___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateLevelForm_vue_vue_type_template_id_631f16b1___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

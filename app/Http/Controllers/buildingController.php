@@ -13,8 +13,8 @@ class buildingController extends Controller
     public function getBuildings(){
         return Building::all();
     }
-    public function showLevels(Request $request){
-        $building_id=$request->building_id;
+    public function showLevels($id){
+        $building_id=$id;
         
         $levels=Building::find($building_id)->levels()->get();
         return $levels;

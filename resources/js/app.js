@@ -33,6 +33,7 @@ Vue.component('navigation-map', require('./components/NavigationMap.vue').defaul
 Vue.component('main-map', require('./components/MainMap.vue').default);
 Vue.component('admin-dashboard', require('./components/admin/AdminDashboard.vue').default);
 Vue.component('create-building-dialog', require('./components/admin/CreateBuildingForm.vue').default);
+Vue.component('create-level-dialog', require('./components/admin/CreateLevelForm.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

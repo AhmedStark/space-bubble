@@ -65,14 +65,7 @@ Route::get('/areas/{id}',function($id){
         'id'=>$id
     ];
 });
-Route::get('/buildings/{id}/levels',function(){
-    return ['levels'=>[
-        ['name'=>"Basement",'id'=>1],
-        ['name'=>"Ground",'id'=>2],
-        ['name'=>"Level 1",'id'=>3],
-        ['name'=>"Level 2",'id'=>4],
-    ]];
-});
+Route::get('/buildings/{id}/levels','buildingController@showLevels');
 Route::get('/levels/{id}/areas',function(){
     return ['areas'=>[
         ['name'=>"South",'id'=>1],
@@ -90,7 +83,7 @@ Route::get('/buildings','buildingController@getBuildings');
 
 //Route::post('/main','buildingController@showLevels');
 Route::post('/buildings/create','buildingController@store');
-
+Route::post('/levels/create','levelController@store');
 Route::post('/level','levelController@showAreas');
 Route::post('/area','areaController@showTables');
 
