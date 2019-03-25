@@ -22,6 +22,8 @@ class areaController extends Controller
         $area->name=$request->name;
 
         $area->save();
+
+        return ["response"=>"<p class='success--text'>Building was created</p>","status"=>1];
     }
 
     public function delete(Request $request){

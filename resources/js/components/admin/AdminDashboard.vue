@@ -9,6 +9,10 @@
             v-on:level_created="getLevels()"
             ref="create_level_dialog"
         ></create-level-dialog>
+        <create-area-dialog
+            v-on:area_created="getAreas()"
+            ref="create_area_dialog"
+        ></create-area-dialog>
         <v-layout row wrap>
             <v-flex md4>
                 <v-card class="mx-2">
@@ -60,7 +64,7 @@
                                     </v-flex>
                                 </v-layout> 
                         </v-card-text></v-card>
-                        <v-btn v-if="buildings.length>0" dark color="blue" @click="showCreateBuildingForm">Add new level to this building</v-btn>
+                        <v-btn v-if="buildings.length>0" dark color="blue" @click="showCreateLevelForm">Add new level to this building</v-btn>
                     </v-card-text>
                 </v-card>
             </v-flex>
@@ -68,6 +72,8 @@
                 <v-card class="mx-2">
                     <v-card-text>
 
+                    <h3 class="title" v-if="levels.length>0" >{{levels[selectedLevel].name}} areas</h3>
+                    <p v-if="areas.length===0" class="my-2">This level does not contain any areas click on the button to add your first one. </p>
                         <v-progress-circular
                             v-if="loadingBuildings"
                             indeterminate
@@ -86,7 +92,7 @@
                                 </v-layout> 
                         </v-card-text>
                         </v-card>
-                        
+                        <v-btn v-if="levels.length>0" dark color="blue" normal @click="showCreateAreaForm">Add new area to this level</v-btn>
                     </v-card-text></v-card>
             </v-flex>
             
@@ -112,8 +118,11 @@ export default {
             selectedArea:0,
         }    
     },methods:{
-        showCreateBuildingForm:function(){
+        showCreateLevelForm:function(){
             this.$refs.create_level_dialog.openDialog(this.buildings[this.selectedBuilding].id);
+        },
+        showCreateAreaForm:function(){
+            this.$refs.create_area_dialog.openDialog(this.levels[this.selectedLevel].id);
         },
         createBuilding:function () {
             this.$refs.create_building_dialog.openDialog();
@@ -158,9 +167,8 @@ export default {
 
         getAreas:function(id){
             this.loadingAreas = true;
-            axios.get('/levels/'+id+"/areas").then((response)=> {
-                this.areas=response.data.areas;
-                
+            axios.get('/levels/'+this.levels[this.selectedLevel].id+"/areas").then((response)=> {
+                this.areas=response.data;
             }).catch(function(error){
             }).then((response)=> {
                 this.loadingAreas = false;

@@ -1,0 +1,95 @@
+<template>
+    <v-dialog width="600" :value="open">
+       <v-card>
+        <v-card-title
+          class="headline grey lighten-2"
+          primary-title
+        >
+          Create a new area
+        </v-card-title>
+
+        <v-card-text>
+            <v-text-field
+                v-model="areaName"
+                :rules="nameRules"
+                label="area name"
+                required
+            ></v-text-field>
+            <div v-html="response"></div>
+            <v-progress-circular
+                v-if="loading"
+                indeterminate
+                color="primary"
+                ></v-progress-circular>
+        </v-card-text>
+
+        <v-divider></v-divider>
+
+        <v-card-actions>
+          <v-btn
+            color="error"
+            flat
+            @click="openDialog(this.levelID)"
+          >Discard</v-btn>
+          <v-btn
+            color="success"
+            flat
+            @click="createArea"
+          >Create</v-btn>
+        </v-card-actions>
+      </v-card> 
+    </v-dialog>
+</template>
+<script>
+const axios = require('axios');
+export default {
+    data(){
+        return{
+            levelID:null,
+            AREA_CREATED:1,
+            areaName:"",
+            open:false,
+            loading:false,
+            response:"",
+            status:0,
+            csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+            nameRules:[v => !!v || 'Name is required',],
+        }
+    },methods:{
+        openDialog(levelID){
+            this.levelID=levelID;
+            this.open=!this.open;
+        },createArea(){
+            if(this.areaName === ""){
+                this.response = "<p class='error--text'>area name is required</p>";
+            }else{
+                this.loading = true;
+                axios.post('/areas/create', {
+                        name: this.areaName,
+                        level_id:this.levelID,
+                        csrf:this.csrf,
+                    })
+                    .then((response) => {     
+                        this.response = response.data.response;
+                        this.status = response.data.status;
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    }).then((response) => {     
+                        if(this.status===this.AREA_CREATED){
+                            this.$emit("area_created");
+                            this.openDialog(this.buildingID);
+                        }
+                        this.loading = false;
+                });
+            }
+        }
+        ,clear:function () {
+            this.areaName = "";
+            this.response = "";   
+            this.status = 0;   
+        }
+    }
+
+}
+</script>

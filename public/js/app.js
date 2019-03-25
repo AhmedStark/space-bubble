@@ -2215,6 +2215,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2234,8 +2240,11 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
     };
   },
   methods: {
-    showCreateBuildingForm: function showCreateBuildingForm() {
+    showCreateLevelForm: function showCreateLevelForm() {
       this.$refs.create_level_dialog.openDialog(this.buildings[this.selectedBuilding].id);
+    },
+    showCreateAreaForm: function showCreateAreaForm() {
+      this.$refs.create_area_dialog.openDialog(this.levels[this.selectedLevel].id);
     },
     createBuilding: function createBuilding() {
       this.$refs.create_building_dialog.openDialog();
@@ -2285,8 +2294,8 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
       var _this3 = this;
 
       this.loadingAreas = true;
-      axios.get('/levels/' + id + "/areas").then(function (response) {
-        _this3.areas = response.data.areas;
+      axios.get('/levels/' + this.levels[this.selectedLevel].id + "/areas").then(function (response) {
+        _this3.areas = response.data;
       }).catch(function (error) {}).then(function (response) {
         _this3.loadingAreas = false;
       });
@@ -2295,6 +2304,117 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
   },
   mounted: function mounted() {
     this.getBuildings();
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/admin/CreateAreaForm.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/admin/CreateAreaForm.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      levelID: null,
+      AREA_CREATED: 1,
+      areaName: "",
+      open: false,
+      loading: false,
+      response: "",
+      status: 0,
+      csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+      nameRules: [function (v) {
+        return !!v || 'Name is required';
+      }]
+    };
+  },
+  methods: {
+    openDialog: function openDialog(levelID) {
+      this.levelID = levelID;
+      this.open = !this.open;
+    },
+    createArea: function createArea() {
+      var _this = this;
+
+      if (this.areaName === "") {
+        this.response = "<p class='error--text'>area name is required</p>";
+      } else {
+        this.loading = true;
+        axios.post('/areas/create', {
+          name: this.areaName,
+          level_id: this.levelID,
+          csrf: this.csrf
+        }).then(function (response) {
+          _this.response = response.data.response;
+          _this.status = response.data.status;
+        }).catch(function (error) {
+          console.log(error);
+        }).then(function (response) {
+          if (_this.status === _this.AREA_CREATED) {
+            _this.$emit("area_created");
+
+            _this.openDialog(_this.buildingID);
+          }
+
+          _this.loading = false;
+        });
+      }
+    },
+    clear: function clear() {
+      this.areaName = "";
+      this.response = "";
+      this.status = 0;
+    }
   }
 });
 
@@ -38661,6 +38781,15 @@ var render = function() {
             }
           }),
           _vm._v(" "),
+          _c("create-area-dialog", {
+            ref: "create_area_dialog",
+            on: {
+              area_created: function($event) {
+                return _vm.getAreas()
+              }
+            }
+          }),
+          _vm._v(" "),
           _c(
             "v-layout",
             { attrs: { row: "", wrap: "" } },
@@ -38838,7 +38967,7 @@ var render = function() {
                                 "v-btn",
                                 {
                                   attrs: { dark: "", color: "blue" },
-                                  on: { click: _vm.showCreateBuildingForm }
+                                  on: { click: _vm.showCreateLevelForm }
                                 },
                                 [_vm._v("Add new level to this building")]
                               )
@@ -38864,6 +38993,23 @@ var render = function() {
                       _c(
                         "v-card-text",
                         [
+                          _vm.levels.length > 0
+                            ? _c("h3", { staticClass: "title" }, [
+                                _vm._v(
+                                  _vm._s(_vm.levels[_vm.selectedLevel].name) +
+                                    " areas"
+                                )
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm.areas.length === 0
+                            ? _c("p", { staticClass: "my-2" }, [
+                                _vm._v(
+                                  "This level does not contain any areas click on the button to add your first one. "
+                                )
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
                           _vm.loadingBuildings
                             ? _c("v-progress-circular", {
                                 attrs: { indeterminate: "", color: "primary" }
@@ -38914,7 +39060,22 @@ var render = function() {
                               ],
                               1
                             )
-                          })
+                          }),
+                          _vm._v(" "),
+                          _vm.levels.length > 0
+                            ? _c(
+                                "v-btn",
+                                {
+                                  attrs: {
+                                    dark: "",
+                                    color: "blue",
+                                    normal: ""
+                                  },
+                                  on: { click: _vm.showCreateAreaForm }
+                                },
+                                [_vm._v("Add new area to this level")]
+                              )
+                            : _vm._e()
                         ],
                         2
                       )
@@ -38923,6 +39084,109 @@ var render = function() {
                   )
                 ],
                 1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/admin/CreateAreaForm.vue?vue&type=template&id=10120590&":
+/*!***********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/admin/CreateAreaForm.vue?vue&type=template&id=10120590& ***!
+  \***********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "v-dialog",
+    { attrs: { width: "600", value: _vm.open } },
+    [
+      _c(
+        "v-card",
+        [
+          _c(
+            "v-card-title",
+            {
+              staticClass: "headline grey lighten-2",
+              attrs: { "primary-title": "" }
+            },
+            [_vm._v("\n      Create a new area\n    ")]
+          ),
+          _vm._v(" "),
+          _c(
+            "v-card-text",
+            [
+              _c("v-text-field", {
+                attrs: {
+                  rules: _vm.nameRules,
+                  label: "area name",
+                  required: ""
+                },
+                model: {
+                  value: _vm.areaName,
+                  callback: function($$v) {
+                    _vm.areaName = $$v
+                  },
+                  expression: "areaName"
+                }
+              }),
+              _vm._v(" "),
+              _c("div", { domProps: { innerHTML: _vm._s(_vm.response) } }),
+              _vm._v(" "),
+              _vm.loading
+                ? _c("v-progress-circular", {
+                    attrs: { indeterminate: "", color: "primary" }
+                  })
+                : _vm._e()
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("v-divider"),
+          _vm._v(" "),
+          _c(
+            "v-card-actions",
+            [
+              _c(
+                "v-btn",
+                {
+                  attrs: { color: "error", flat: "" },
+                  on: {
+                    click: function($event) {
+                      return _vm.openDialog(this.levelID)
+                    }
+                  }
+                },
+                [_vm._v("Discard")]
+              ),
+              _vm._v(" "),
+              _c(
+                "v-btn",
+                {
+                  attrs: { color: "success", flat: "" },
+                  on: { click: _vm.createArea }
+                },
+                [_vm._v("Create")]
               )
             ],
             1
@@ -77967,6 +78231,7 @@ Vue.component('main-map', __webpack_require__(/*! ./components/MainMap.vue */ ".
 Vue.component('admin-dashboard', __webpack_require__(/*! ./components/admin/AdminDashboard.vue */ "./resources/js/components/admin/AdminDashboard.vue").default);
 Vue.component('create-building-dialog', __webpack_require__(/*! ./components/admin/CreateBuildingForm.vue */ "./resources/js/components/admin/CreateBuildingForm.vue").default);
 Vue.component('create-level-dialog', __webpack_require__(/*! ./components/admin/CreateLevelForm.vue */ "./resources/js/components/admin/CreateLevelForm.vue").default);
+Vue.component('create-area-dialog', __webpack_require__(/*! ./components/admin/CreateAreaForm.vue */ "./resources/js/components/admin/CreateAreaForm.vue").default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -78431,6 +78696,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AdminDashboard_vue_vue_type_template_id_ddddf5a0_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AdminDashboard_vue_vue_type_template_id_ddddf5a0_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/admin/CreateAreaForm.vue":
+/*!**********************************************************!*\
+  !*** ./resources/js/components/admin/CreateAreaForm.vue ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _CreateAreaForm_vue_vue_type_template_id_10120590___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CreateAreaForm.vue?vue&type=template&id=10120590& */ "./resources/js/components/admin/CreateAreaForm.vue?vue&type=template&id=10120590&");
+/* harmony import */ var _CreateAreaForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CreateAreaForm.vue?vue&type=script&lang=js& */ "./resources/js/components/admin/CreateAreaForm.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _CreateAreaForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _CreateAreaForm_vue_vue_type_template_id_10120590___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _CreateAreaForm_vue_vue_type_template_id_10120590___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/admin/CreateAreaForm.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/admin/CreateAreaForm.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/components/admin/CreateAreaForm.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateAreaForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./CreateAreaForm.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/admin/CreateAreaForm.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateAreaForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/admin/CreateAreaForm.vue?vue&type=template&id=10120590&":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/components/admin/CreateAreaForm.vue?vue&type=template&id=10120590& ***!
+  \*****************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateAreaForm_vue_vue_type_template_id_10120590___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./CreateAreaForm.vue?vue&type=template&id=10120590& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/admin/CreateAreaForm.vue?vue&type=template&id=10120590&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateAreaForm_vue_vue_type_template_id_10120590___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateAreaForm_vue_vue_type_template_id_10120590___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

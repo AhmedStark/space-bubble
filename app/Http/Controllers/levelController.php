@@ -18,8 +18,8 @@ class levelController extends Controller
         return view('levels.index');
     }
 
-    public function showAreas(Request $request){
-        $level_id=$request->level_id;
+    public function showAreas($id){
+        $level_id=$id;
         
         $areas=Level::find($level_id)->areas()->get();
         return $areas;

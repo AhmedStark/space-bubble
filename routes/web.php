@@ -35,6 +35,7 @@ Route::post('admin/login','adminController@checklogin');
 
 
 Route::get('admin/control','adminController@control');
+Route::post('areas/create','areaController@store');
 
 Route::get('/areas',function(){
 
@@ -66,13 +67,7 @@ Route::get('/areas/{id}',function($id){
     ];
 });
 Route::get('/buildings/{id}/levels','buildingController@showLevels');
-Route::get('/levels/{id}/areas',function(){
-    return ['areas'=>[
-        ['name'=>"South",'id'=>1],
-        ['name'=>"North",'id'=>2],
-        ['name'=>"West",'id'=>3],
-    ]];
-});
+Route::get('/levels/{id}/areas','levelController@showAreas');
 
 
 
