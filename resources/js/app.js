@@ -11,9 +11,6 @@ window.Vue = require('vue');
 import 'vuetify/dist/vuetify.min.css' ;
 window.Vue = require('vue');
 
-import VueCytoscape from 'vue-cytoscape'
-import 'vue-cytoscape/dist/vue-cytoscape.css'
-Vue.use(VueCytoscape)
 import Vuetify from 'vuetify';
 
 Vue.use(Vuetify);

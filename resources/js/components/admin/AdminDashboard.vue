@@ -15,6 +15,7 @@
                             color="primary"
                             ></v-progress-circular>
                         <v-btn color="green" dark href="#" @click="createBuilding">Create a Building</v-btn>
+                        <p v-if="buildings.length===0" >There are no building click on the button to add you first building</p>
                         <v-card style="border-radius:50px;" class="my-3 building-card" v-for="(building,index) in buildings" :dark="index===selectedBuilding" :key="'b'+building.id" @click="selectBuilding(index)">
                             <v-card-text>             
                                 <v-layout row>
@@ -42,7 +43,7 @@
                             indeterminate
                             color="primary"
                             ></v-progress-circular>
-                        <h3 class="title">{{buildings[selectedBuilding].name}} levels</h3>
+                        <h3 class="title" v-if="buildings.length>0" >{{buildings[selectedBuilding].name}} levels</h3>
                         <v-card style="border-radius:50px;" class="my-3 building-card" v-for="(level,index) in levels" :dark="index===selectedLevel" :key="'l'+level.id" @click="selectLevel(index)">
                         <v-card-text>
                                 <v-layout row>

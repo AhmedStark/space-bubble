@@ -1,6 +1,7 @@
 <template>
     <main-map :areas="areas" ref="main_map">
 
+
     
     <div class="my-2" slot="child-map" >
         <v-container>
