@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use DB;
 use Illuminate\Http\Request;
 use App\Table;
+use App\Area;
 class tableController extends Controller
 {
     public static  $TOKEN_LENGTH = 25;
@@ -48,7 +49,19 @@ class tableController extends Controller
         $table->save();
     }
 
-    
+    public function moveTo(Request $request){
+        
+        if(Area::where('id', '=', $request->area_id)->count() == 0){
+            return 'Error area does not exist';
+        }else{
+            $area=Area::find($request->area_id)->first();
+            DB::table('tables')
+            ->where('id', $request->table_id)
+            ->update(['area_id' =>$request->area_id]);
+            return 'update was successful';
+        }
+    }
+   
    
     public function statusUpdate(Request $request){
         

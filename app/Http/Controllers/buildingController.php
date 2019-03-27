@@ -48,13 +48,22 @@ class buildingController extends Controller
     public function store(Request $request)
     {
         $building=new Building;
-
-        $building->name=$request->name;
+        if(isset($request->name)){
+            $building->name=$request->name;
+        }else{
+            $building->name='building';
+        }
+        
         
         $building->save();
         return ["response"=>"<p class='success--text'>Building was created</p>","status"=>1];
     }
 
    
-  
+    public function update(Request $request){
+        DB::table('buildings')
+            ->where('id', $request->id)
+            ->update(['name' =>$request->name]);
+
+    }
 }

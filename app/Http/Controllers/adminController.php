@@ -39,6 +39,10 @@ class adminController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'email' => 'required|unique',                //still working on this 
+        ]);
         $credentials = [
             'name'=> $request->name,
             'email'    => $request->email,
@@ -53,6 +57,7 @@ class adminController extends Controller
     }
 
     public function checklogin(Request $request){
+
         $credentials = [
             'email'    => $request->email,
             'password' => $request->pwd,
@@ -61,48 +66,6 @@ class adminController extends Controller
         Sentinel::authenticate($credentials);
         return redirect('admin/control');
     }
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+    
 }

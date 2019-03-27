@@ -56,6 +56,11 @@ class levelController extends Controller
         DB::table('levels')->where('id', '=', $id)->delete();
         
     }
+    public function update(Request $request){
+        DB::table('levels')
+            ->where('id', $request->id)
+            ->update(['name' =>$request->name]);
 
+    }
     
 }

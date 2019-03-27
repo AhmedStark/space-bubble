@@ -91,3 +91,9 @@ Route::get('/deleteTable','tableController@delete');
 Route::get('/deleteArea','areaController@delete');
 Route::get('/deleteLevel','levelController@delete');
 Route::get('/deleteBuilding','buildingController@delete');
+Route::get('updateBuilding','buildingController@update');
+Route::get('updateArea','areaController@update');
+Route::get('updateLevel','levelController@update');
+
+Route::get('createUser','adminController@store');
+Route::get('moveTable','tableController@moveTo');

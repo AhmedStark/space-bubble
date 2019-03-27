@@ -55,4 +55,12 @@ class areaController extends Controller
         $count=Area::find($area_id)->tables()->where('taken','=',1)->count(); 
         return $count;
     }
+
+
+    public function update(Request $request){
+        DB::table('areas')
+            ->where('id', $request->id)
+            ->update(['name' =>$request->name]);
+
+    }
 }
