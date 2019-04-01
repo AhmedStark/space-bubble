@@ -68,9 +68,7 @@ class tableController extends Controller
         DB::table('tables')
             ->where('token', $request->token)
             ->update(['taken' => $request->status]);
-
-        
-                
+     
     }
 
     function refresh_area($id){
