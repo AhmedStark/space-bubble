@@ -18,3 +18,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::get('/table','tableController@statusUpdate');
 Route::post('/table','tableController@statusUpdate');
+Route::post('/tableController',function(){
+    return "ok";
+});

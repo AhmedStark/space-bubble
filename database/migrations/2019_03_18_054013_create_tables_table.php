@@ -17,7 +17,7 @@ class CreateTablesTable extends Migration
             $table->bigIncrements('id');
             $table->integer('area_id');
             $table->string('token', 25)->unique();
-            $table->boolean('taken');
+            $table->boolean('taken')->default(false);
             $table->timestamps();
             //alter table `orders` add constraint orders_employee_id_foreign foreign key (`employee_id`) references `employees` (`id`)
 

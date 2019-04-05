@@ -97,3 +97,6 @@ Route::get('updateLevel','levelController@update');
 
 Route::get('createUser','adminController@store');
 Route::get('moveTable','tableController@moveTo');
+
+Route::get('/table','tableController@store');
+Route::post('/table','tableController@store');

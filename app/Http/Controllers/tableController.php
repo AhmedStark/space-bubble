@@ -32,21 +32,25 @@ class tableController extends Controller
     public function store(Request $request)
     {
         $table=new Table;
-
+        $state = true;
         $table->area_id= $request->area_id;
-        while(true){
+        while($state){
             $token=str_random(self::$TOKEN_LENGTH);
-            if(Table::where("token",'=',$token)){
+            if(Table::where("token",'=',$token)->count()>0){
                 $token=str_random(self::$TOKEN_LENGTH);
+                continue;
             }else{
                 $table->token=$token;
+                $state=false;
                 break;
             }
+            
         }
         
         $table->taken=0;
 
         $table->save();
+        return ['status'=>true,'message' => "Product Created!","data"=>$request->all()];
     }
 
     public function moveTo(Request $request){
