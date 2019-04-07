@@ -36,6 +36,7 @@ Vue.component('admin-area', require('./components/admin/AdminArea.vue').default)
 Vue.component('create-building-dialog', require('./components/admin/CreateBuildingForm.vue').default);
 Vue.component('create-level-dialog', require('./components/admin/CreateLevelForm.vue').default);
 Vue.component('create-area-dialog', require('./components/admin/CreateAreaForm.vue').default);
+Vue.component('admin-login', require('./components/admin/AdminLogin.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

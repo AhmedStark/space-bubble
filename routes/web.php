@@ -29,12 +29,11 @@ Route::get('/admin/dashboard',function(){
 Route::get('admin/create','adminController@create');
 Route::post('admin/create','adminController@store');
 
-Route::get('admin/login','adminController@login');
+Route::get('admin/','adminController@login');
 Route::post('admin/login','adminController@checklogin');
 
 
 
-Route::get('admin/control','adminController@control');
 Route::post('areas/create','areaController@store');
 
 Route::get('/areas',function(){

@@ -1,7 +1,10 @@
-<form action="/admin/login"method='POST'>
-{{csrf_field()}}
-<li><input type="email" name="email" id=""></li>
-<li><input type="password" name="pwd" id=""></li>
-<input type="submit" value="submit">
-
-</form>
+@extends('main-template')
+@section('content')
+<head><title>Admin Login</title></head>
+<nav-bar></nav-bar>
+@if(isset($response))
+<admin-login response="{{$response}}"></admin-login>
+@else
+<admin-login></admin-login>
+@endif
+@endSection

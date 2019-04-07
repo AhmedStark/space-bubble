@@ -52,9 +52,7 @@ class adminController extends Controller
         $user = Sentinel::registerAndActivate($credentials);
         
     }
-    public function control(){
-        return view('admin.control');
-    }
+    
 
     public function checklogin(Request $request){
 
@@ -64,7 +62,7 @@ class adminController extends Controller
         ];
         
         Sentinel::authenticate($credentials);
-        return redirect('admin/control');
+        return redirect('admin/');
     }
 
     
