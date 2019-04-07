@@ -60,7 +60,7 @@
                                     </v-flex>
                                     <v-spacer></v-spacer>
                                     <v-flex>
-                                        6 areas    
+                                        7 areas    
                                     </v-flex>
                                 </v-layout> 
                         </v-card-text></v-card>
@@ -87,7 +87,10 @@
                                     </v-flex>
                                     <v-spacer></v-spacer>
                                     <v-flex>
-                                        6 areas    
+                                        6 seats  
+                                    </v-flex>
+                                    <v-flex>
+                                        <a :href="'/admin/area/'+area.id">edit</a>
                                     </v-flex>
                                 </v-layout> 
                         </v-card-text>

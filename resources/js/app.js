@@ -32,6 +32,7 @@ Vue.component('nav-bar', require('./components/NavBar.vue').default);
 Vue.component('navigation-map', require('./components/NavigationMap.vue').default);
 Vue.component('main-map', require('./components/MainMap.vue').default);
 Vue.component('admin-dashboard', require('./components/admin/AdminDashboard.vue').default);
+Vue.component('admin-area', require('./components/admin/AdminArea.vue').default);
 Vue.component('create-building-dialog', require('./components/admin/CreateBuildingForm.vue').default);
 Vue.component('create-level-dialog', require('./components/admin/CreateLevelForm.vue').default);
 Vue.component('create-area-dialog', require('./components/admin/CreateAreaForm.vue').default);

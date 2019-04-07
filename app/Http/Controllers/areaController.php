@@ -13,6 +13,12 @@ class areaController extends Controller
         return view('area.create');
     }
 
+    public function editArea($id){
+        if(!$area=Area::find($id)){
+            return redirect('admin/dashboard');
+        }
+        return view("admin.area")->with(['area'=>$area]);
+    }
    
     public function store(Request $request)
     {
