@@ -13,9 +13,10 @@ class tableController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function delete(Request $request){
-        $id=$request->id;
+    public function delete($id){
+        $id=$id;
         DB::table('tables')->where('id', '=', $id)->delete();
+        return ['response'=>"Table deleted"];
     }
     
     public function create()
@@ -50,7 +51,7 @@ class tableController extends Controller
         $table->taken=0;
 
         $table->save();
-        return ['status'=>true,'message' => "Product Created!","data"=>$request->all()];
+        return ['status'=>true,'response' => "Table created !","data"=>$request->all()];
     }
 
     public function moveTo(Request $request){

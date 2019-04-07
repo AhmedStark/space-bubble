@@ -2152,24 +2152,46 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     areaName: {
       default: '',
       type: String
+    },
+    id: {
+      default: "",
+      type: String
     }
   },
   data: function data() {
     return {
+      csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+      currentPage: 1,
+      pagesNumber: 1,
+      loadingTables: false,
       snackbarText: "Hi guys",
       snackbar: false,
-      tables: [{
-        "token": "djhagwifyat7y8ildhb2891i",
-        "id": "12"
-      }, {
-        "token": "ngcbfxdvwafi2i91`acwpoc",
-        "id": "13"
-      }]
+      tables: []
     };
   },
   methods: {
@@ -2180,8 +2202,55 @@ __webpack_require__.r(__webpack_exports__);
       el.select();
       document.execCommand('copy');
       document.body.removeChild(el);
+      this.snackbarText = "Copied token to clipboard";
       this.snackbar = true;
+    },
+    getTables: function getTables() {
+      var _this = this;
+
+      this.loadingTables = true;
+      axios.get('/area/' + this.id + '/tables/?page=' + this.currentPage).then(function (response) {
+        _this.tables = response.data.data;
+        _this.pagesNumber = response.data.last_page;
+      }).catch(function (error) {}).then(function (response) {
+        _this.loadingBuildings = false;
+      });
+      ;
+    },
+    changePage: function changePage() {
+      this.getTables();
+    },
+    addTable: function addTable() {
+      var _this2 = this;
+
+      axios.post('/table', {
+        area_id: this.id,
+        csrf: this.csrf
+      }).then(function (response) {
+        _this2.currentPage = _this2.pagesNumber;
+
+        _this2.getTables();
+
+        _this2.snackbarText = response.data.response;
+        _this2.snackbar = true;
+      }).catch(function (error) {}).then(function (response) {});
+    },
+    deleteTable: function deleteTable(id) {
+      var _this3 = this;
+
+      axios.post('/table/' + id + "/delete", {
+        area_id: this.id,
+        csrf: this.csrf
+      }).then(function (response) {
+        _this3.getTables();
+
+        _this3.snackbarText = response.data.response;
+        _this3.snackbar = true;
+      }).catch(function (error) {}).then(function (response) {});
     }
+  },
+  mounted: function mounted() {
+    this.getTables();
   }
 });
 
@@ -38905,6 +38974,44 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c(
+        "v-layout",
+        { attrs: { row: "" } },
+        [
+          _c("v-flex", [
+            _c(
+              "a",
+              { attrs: { href: "/admin/dashboard/" } },
+              [
+                _c("v-icon", { attrs: { color: "blue", small: "" } }, [
+                  _vm._v("keyboard_backspace")
+                ]),
+                _vm._v(" back to the dashboard")
+              ],
+              1
+            )
+          ]),
+          _vm._v(" "),
+          _c("v-spacer"),
+          _vm._v(" "),
+          _c(
+            "v-flex",
+            [
+              _c(
+                "v-btn",
+                {
+                  attrs: { small: "", color: "green", dark: "" },
+                  on: { click: _vm.addTable }
+                },
+                [_vm._v("Add new table")]
+              )
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
         "v-card",
         [
           _c(
@@ -38925,10 +39032,16 @@ var render = function() {
                       _vm._v(" "),
                       _c(
                         "v-list-tile-content",
-                        { ref: "token-" + index, refInFor: true },
+                        {
+                          on: {
+                            click: function($event) {
+                              return _vm.copyTokenToClipBoard(index)
+                            }
+                          }
+                        },
                         [
                           _vm._v(
-                            "\n                        " +
+                            "\n                        token :: " +
                               _vm._s(table.token) +
                               "\n                    "
                           )
@@ -38942,9 +39055,18 @@ var render = function() {
                             "v-layout",
                             { attrs: { row: "" } },
                             [
-                              _c("v-icon", { attrs: { color: "red" } }, [
-                                _vm._v("delete")
-                              ]),
+                              _c(
+                                "v-icon",
+                                {
+                                  attrs: { color: "red" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.deleteTable(table.id)
+                                    }
+                                  }
+                                },
+                                [_vm._v("delete")]
+                              ),
                               _vm._v(" "),
                               _c(
                                 "v-icon",
@@ -38968,6 +39090,32 @@ var render = function() {
                     1
                   )
                 }),
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-layout",
+            { attrs: { row: "" } },
+            [
+              _c(
+                "v-flex",
+                { attrs: { xs6: "", "offset-xs3": "", "offset-lg4": "" } },
+                [
+                  _c("v-pagination", {
+                    attrs: { length: _vm.pagesNumber },
+                    on: { input: _vm.changePage },
+                    model: {
+                      value: _vm.currentPage,
+                      callback: function($$v) {
+                        _vm.currentPage = $$v
+                      },
+                      expression: "currentPage"
+                    }
+                  })
+                ],
                 1
               )
             ],

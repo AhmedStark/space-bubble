@@ -43,10 +43,10 @@ class areaController extends Controller
         return view('areas.index');
     }
 
-    public function showTables(Request $request){
-        $area_id=$request->area_id;
+    public function showTables($id){
+        $area_id=$id;
         
-        $tables=Area::find($area_id)->tables()->get();
+        $tables=Area::find($area_id)->tables()->paginate(15);
         return $tables;
     }
 
