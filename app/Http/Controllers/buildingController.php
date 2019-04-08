@@ -22,7 +22,9 @@ class buildingController extends Controller
     
     public function delete(Request $request){
         $id=$request->id;
-        
+        if (!Building::find($id)){
+            return ['status'=>true,'response' => "Building not found!","request"=>$request->all()];   
+        }
         $levels=Building::find($id)->levels();
         
         foreach ($levels->get() as $level){
@@ -41,6 +43,7 @@ class buildingController extends Controller
             $areas->delete();
         }
         $levels->delete();
+        
         DB::table('buildings')->where('id', '=', $id)->delete();
        
         return ['status'=>true,'response' => "Building Deleted!","request"=>$request->all()];        
@@ -57,7 +60,8 @@ class buildingController extends Controller
         
         
         $building->save();
-        return ['status'=>true,'response' => "Building Created!","data"=>$request->all(),"id"=>$building->id];
+        $ID=DB::table('buildings')->orderBy('id','desc')->first()->id;
+        return ['status'=>true,'response' => "Building Created!","data"=>$request->all(),"id"=>$ID];
     }
 
    

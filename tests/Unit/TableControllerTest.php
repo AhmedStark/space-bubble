@@ -2,12 +2,15 @@
 
 namespace Tests\Unit;
 use App\Table;
+use DB;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\database\factories\TableFactory;
 class TableControllerTests extends TestCase
 {
+
+    public $ID;
 
     public function testCreateTable(){
         $data = [
@@ -19,22 +22,19 @@ class TableControllerTests extends TestCase
         $response = $this->json('POST', '/table',$data);
         $response->assertStatus(200);
         $response->assertJson(['status' => true]);
-        $response->assertJson(['message' => "Table Created!"]);
         $response->assertJson(['data' => $data]);
-        //add assertion of whether it exists in DB??
+        $this->ID=DB::table('tables')->orderBy('id','desc')->first()->id;
     }
     public function testDeleteTable(){
         $request = [
-            'id' => 1,
+            'id' => $this->ID,
         ];
         $table = factory(Table::class)->create();
         $response = $this->json('GET', '/deleteTable',$request);
-        $checkTable=DB::table('tables')->where('id', '=', $request->id)->count();
-        assertTrue($checkTable==0);
+        $checkTable=DB::table('tables')->where('id', '=', $request['id'])->count();
+        $this->assertTrue($checkTable==0);
         $response->assertStatus(200);
         $response->assertJson(['status' => true]);
-        $response->assertJson(['message' => "Table deleted!"]);
-        $response->assertJson(['request' => $request]);
         
     }
 }

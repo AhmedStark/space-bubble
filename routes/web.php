@@ -77,6 +77,7 @@ Route::get('/buildings','buildingController@getBuildings');
 
 //Route::post('/main','buildingController@showLevels');
 Route::post('/buildings/create','buildingController@store');
+Route::get('/buildings/create','buildingController@store');
 Route::post('/levels/create','levelController@store');
 Route::post('/level','levelController@showAreas');
 Route::get('/area/{id}/tables','areaController@showTables');
