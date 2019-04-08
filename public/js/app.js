@@ -2695,7 +2695,7 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      BUILDING_CREATED: 1,
+      BUILDING_CREATED: true,
       buildingName: "",
       open: false,
       loading: false,

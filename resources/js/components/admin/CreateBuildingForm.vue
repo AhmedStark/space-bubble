@@ -45,7 +45,7 @@ const axios = require('axios');
 export default {
     data(){
         return{
-            BUILDING_CREATED:1,
+            BUILDING_CREATED:true,
             buildingName:"",
             open:false,
             loading:false,

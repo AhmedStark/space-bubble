@@ -60,8 +60,7 @@ class buildingController extends Controller
         
         
         $building->save();
-        $ID=DB::table('buildings')->orderBy('id','desc')->first()->id;
-        return ['status'=>true,'response' => "Building Created!","data"=>$request->all(),"id"=>$ID];
+        return ['status'=>true,'response' => "Building Created!","data"=>$request->all()];
     }
 
    
