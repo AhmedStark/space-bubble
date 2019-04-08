@@ -9,6 +9,8 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class BuildingControllerTest extends TestCase
 {
+
+    public $ID;
     /**
      * A basic unit test example.
      *
@@ -26,15 +28,17 @@ class BuildingControllerTest extends TestCase
         $response->assertJson(['status' => true]);
         $response->assertJson(['message' => "Building Created!"]);
         $response->assertJson(['data' => $data]);
-
+        $this->ID=$response->id;
     }
 
     public function testDeleteBuilding()
     {
         $request = [
-            'id' => 1,
+            'id' => $ID,
         ];
-        $building = factory(Building::class)->create(); //check if we need it
+        
+        
+        
         $response = $this->json('GET', '/deleteBuilding',$request);
         $checkBuilding=DB::table('buildings')->where('id', '=', $request->id)->count();
         $checkLevels=DB::table('levels')->where('building_id', '=', $request->id)->count();

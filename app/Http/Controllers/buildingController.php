@@ -57,7 +57,7 @@ class buildingController extends Controller
         
         
         $building->save();
-        return ['status'=>true,'response' => "Building Created!","data"=>$request->all()];
+        return ['status'=>true,'response' => "Building Created!","data"=>$request->all(),"id"=>$building->id];
     }
 
    
