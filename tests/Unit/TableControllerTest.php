@@ -21,6 +21,7 @@ class TableControllerTests extends TestCase
         $response->assertJson(['status' => true]);
         $response->assertJson(['message' => "Table Created!"]);
         $response->assertJson(['data' => $data]);
+        //add assertion of whether it exists in DB??
     }
     public function testDeleteTable(){
         $request = [

@@ -42,7 +42,8 @@ class buildingController extends Controller
         }
         $levels->delete();
         DB::table('buildings')->where('id', '=', $id)->delete();
-        
+       
+        return ['status'=>true,'response' => "Building Deleted!","request"=>$request->all()];        
     }
     
     public function store(Request $request)
@@ -56,7 +57,7 @@ class buildingController extends Controller
         
         
         $building->save();
-        return ["response"=>"<p class='success--text'>Building was created</p>","status"=>1];
+        return ['status'=>true,'response' => "Building Created!","data"=>$request->all()];
     }
 
    
