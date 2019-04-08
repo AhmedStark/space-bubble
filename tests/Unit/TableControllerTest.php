@@ -19,16 +19,21 @@ class TableControllerTests extends TestCase
         $response = $this->json('POST', '/table',$data);
         $response->assertStatus(200);
         $response->assertJson(['status' => true]);
-        $response->assertJson(['message' => "Product Created!"]);
+        $response->assertJson(['message' => "Table Created!"]);
         $response->assertJson(['data' => $data]);
     }
-    /**
-     * A basic unit test example.
-     *
-     * @return void
-     */
-    public function testExample()
-    {
-        $this->assertTrue(true);
+    public function testDeleteTable(){
+        $request = [
+            'id' => 1,
+        ];
+        $table = factory(Table::class)->create();
+        $response = $this->json('GET', '/deleteTable',$request);
+        $checkTable=DB::table('tables')->where('id', '=', $request->id)->count();
+        assertTrue($checkTable==0);
+        $response->assertStatus(200);
+        $response->assertJson(['status' => true]);
+        $response->assertJson(['message' => "Table deleted!"]);
+        $response->assertJson(['request' => $request]);
+        
     }
 }
