@@ -31,7 +31,7 @@ class TableControllerTests extends TestCase
             'id' => $this->ID,
         ];
         $table = factory(Table::class)->create();
-        $response = $this->json('GET', '/deleteTable',$request);
+        $response = $this->json('post', '/deleteTable',$request);
         $checkTable=DB::table('tables')->where('id', '=', $request['id'])->count();
         $this->assertTrue($checkTable==0);
         $response->assertStatus(200);

@@ -104,9 +104,9 @@ export default {
                         
                 });
         },deleteTable(id){
-            axios.post('/table/'+id+"/delete", {
+            axios.post('/deleteTable', {
                         area_id: this.id,
-                        
+                        id:id,
                         csrf:this.csrf,
                     })
                     .then((response) => {

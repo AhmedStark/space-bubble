@@ -2238,8 +2238,9 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
     deleteTable: function deleteTable(id) {
       var _this3 = this;
 
-      axios.post('/table/' + id + "/delete", {
+      axios.post('/deleteTable', {
         area_id: this.id,
+        id: id,
         csrf: this.csrf
       }).then(function (response) {
         _this3.getTables();
