@@ -77,8 +77,5 @@ class tableController extends Controller
      
     }
 
-    function refresh_area($id){
-        echo'hello';
-    }
 
 }

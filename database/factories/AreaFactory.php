@@ -5,5 +5,6 @@ use Faker\Generator as Faker;
 $factory->define(Area::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
+        'level_id'=>1,
     ];
 });

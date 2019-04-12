@@ -2,6 +2,7 @@
 
 namespace Tests\Unit;
 use App\Table;
+use App\Area;
 use DB;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -36,5 +37,18 @@ class TableControllerTests extends TestCase
         $response->assertStatus(200);
         $response->assertJson(['status' => true]);
         
+    }
+    public function testMoveTo(){
+        $request=[
+            'area_id'=>2,
+            'table_id'=>$this->ID,
+        ];
+        $areas=factory(Area::class)->create();
+        
+        
+        $response=$this->json('GET','/moveTable',$request);
+        $this->assertTrue(!Table::find($this->ID));
+        
+
     }
 }

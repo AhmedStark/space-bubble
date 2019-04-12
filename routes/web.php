@@ -97,6 +97,7 @@ Route::get('updateLevel','levelController@update');
 
 Route::get('createUser','adminController@store');
 Route::get('moveTable','tableController@moveTo');
+Route::post('moveTable','tableController@moveTo');
 Route::get('admin/area/{id}','areaController@editArea');
 
 Route::get('/table','tableController@store');
