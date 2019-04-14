@@ -34,7 +34,7 @@ Route::post('admin/login','adminController@checklogin');
 
 
 
-Route::post('areas/create','areaController@store');
+Route::post('/areas/create','areaController@store');
 
 Route::get('/areas',function(){
 

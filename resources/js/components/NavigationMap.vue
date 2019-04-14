@@ -1,5 +1,14 @@
 <template>
 <v-container>
+<building-list ref="levels"></building-list>
+<v-layout row>
+    <v-flex md4>    
+        <v-card>
+            <v-breadcrumbs :items="navBreadCrumbs" large class="subtitle" divider=">" ></v-breadcrumbs>
+        </v-card>
+    </v-flex>
+
+</v-layout>
 <v-layout row wrap class="my-2">
 
 <v-flex md8 sm12>
@@ -15,10 +24,15 @@
     <v-card>
         <v-card-title><v-flex class="text-xs-center"><b class="headline">Buildings</b></v-flex></v-card-title>
         <v-card-text>
-            <v-flex class="text-xs-center my-2" v-for="(building,index) in buildings" :key="index"><a :href="'/buildings/'+building.id" class="building-link title">{{building.name}}</a></v-flex>
+            <v-flex class="text-xs-center my-2" v-for="(building,index) in buildings" :key="index"><a href="#" @click="showLevels(building.name,building.id)" class="building-link title">{{building.name}}</a></v-flex>
         </v-card-text>
     </v-card>
-</v-flex>   
+</v-flex>
+</v-layout>
+<v-layout row>
+    <v-flex xs2><v-btn float dark color="purple lighten-1" large icon @click="getBuilding(0)"><v-icon>arrow_left</v-icon></v-btn></v-flex>
+    <v-spacer></v-spacer>
+    <v-flex xs2><v-btn float dark color="purple lighten-1" large icon @click="getBuilding(buildings.length-1)"><v-icon>arrow_right</v-icon></v-btn></v-flex>
 </v-layout>
 </v-container>
 
@@ -26,49 +40,36 @@
         
 
 <script>
+const axios = require('axios');
 export default {
+    props:{
+        navBreadCrumbs:{default:function () {
+            return [{text:'Buildings',href:"/big-map","disabled":false}]
+        },type:Array    }
+    },
     data:function(){
         return{
-            buildings:[
-                {id:"17",direct:"1",name:"Hello world"},
-                {id:"10",direct:"1",name:"Hello world"},
-                {id:"14",direct:"1",name:"Hello world"},
-                {id:"16",direct:"1",name:"Hello world"},
-                {id:"9",direct:"1",name:"Hello world"},
-                {id:"11",direct:"1",name:"Hello world"},
-                {id:"4",name:"Hello world"},
-                {id:"5",name:"Hello world"},
-                {id:"15",direct:"1",name:"Hello world"},
-                {id:"3",direct:"1",name:"Hello world"},
-                {id:"2",name:"Hello world"},
-                {id:"1",direct:"1",name:"Hello world"},
-                {id:"7",direct:"1",name:"Hello world"},
-                {id:"6",name:"Hello world"},
-                {id:"18",name:"Hello world"},
-                {id:"8",direct:"1",name:"Hello world"},
-                {id:"12",name:"Hello world"},
-                {id:"13",name:"Hello world"},
-                {id:"100",name:"Hello world"},
-                ]
+            buildings:[],
+            buildingName:"",
         }
     },
     methods:{
         changeColor:function () {
+                                
                 for(var i = 0 ;i<this.buildings.length;i++){
                     var building = this.buildings[i];
+                    console.log("damn");
                     var el=document.getElementById("building-"+building.id);
                     el.addEventListener("mouseover",this.mouseOverMapEvent);
                     el.addEventListener("mouseout",this.mouseOutMapEvent);
                     el.buildingID = "building-"+ building.id;
+                    el.buildingName =  building.name;
                     el.buildingIndex = i;
                     this.buildings[i].color=el.style.fill;
 
 
-                    if(building.direct!==undefined){
-                        el.direct=building.direct;
                         el.addEventListener("click",this.clickMapEvent);
                         el.style.cursor ="pointer"
-                    }
                 }
             },mouseOverMapEvent:function(evt){
                 var el = document.getElementById(evt.target.buildingID);
@@ -76,14 +77,35 @@ export default {
             },mouseOutMapEvent:function(evt){
                 var el = document.getElementById(evt.target.buildingID);
                 el.style.fill = this.buildings[el.buildingIndex].color;
+            },findById:function (building,id) {
+                
+                return building.id===id;
             },
             clickMapEvent:function(evt){
-                window.location = 'http://localhost:8000/map/'+evt.target.direct;
+                this.showLevels(evt.target.buildingName,evt.target.buildingID.substr(9,evt.target.buildingID.length-1));
             },selectbuilding(id){
                 this.$refs.main_map.selectbuilding(id);
-            },
+            },getBuilding:function(index){
+                this.showLevels(this.buildings[index].name,this.buildings[index].id);
+            },showLevels:function(buildingName,buildingID){
+                this.$refs.levels.openList(buildingName,buildingID);
+            },getBuildings:function(){
+                
+                axios.get('/buildings/').then((response)=> {
+                    console.log("sjs");
+                    console.log(response.data)
+                    this.buildings=response.data;
+                }).catch(function(error){
+                }).then((response)=> {
+                    this.changeColor();
+                });
+            }
     },mounted(){
+        console.log("lol")
         this.changeColor();
+    },created(){
+        console.log("cearted")
+        this.getBuildings();
     }
 }
 
