@@ -1,10 +1,13 @@
 <template>
-    <v-dialog width="500" v-model="open">
+    <v-dialog width="400" v-model="open">
         <v-card>
             <v-card-title>{{title}}</v-card-title>
             <v-card-text>
                 <v-divider></v-divider>
-                <v-flex class="text-xs-center my-2" v-for="(level,index) in levels" :key="index"><a href="#" class="building-link title">{{level.name}}</a></v-flex>
+                <v-layout>
+                    <v-flex xs12 class="text-xs-center my-2" v-for="(level,index) in levels" :key="index" @click="openAreasList(level.id,level.name)"><a href="#" class="building-link title">{{level.name}}</a></v-flex>
+                </v-layout>
+                
             </v-card-text>
         </v-card>
     </v-dialog>
@@ -22,6 +25,9 @@ export default {
         
         
     },methods:{
+        openAreasList(id,name){
+            this.$emit("selected-level",{name:name,id:id});
+        },
         openList(buildingName,buildingID){
             console.log(buildingID);
             this.open = true;

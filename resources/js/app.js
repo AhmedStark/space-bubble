@@ -38,6 +38,7 @@ Vue.component('create-level-dialog', require('./components/admin/CreateLevelForm
 Vue.component('create-area-dialog', require('./components/admin/CreateAreaForm.vue').default);
 Vue.component('admin-login', require('./components/admin/AdminLogin.vue').default);
 Vue.component('building-list', require('./components/BuildingList.vue').default);
+Vue.component('level-list', require('./components/LevelList.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

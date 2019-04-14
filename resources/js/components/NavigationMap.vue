@@ -1,6 +1,7 @@
 <template>
 <v-container>
-<building-list ref="levels"></building-list>
+<building-list ref="levels" v-on:selected-level="selectLevel"></building-list>
+<level-list ref="areas"></level-list>
 <v-layout row>
     <v-flex md4>    
         <v-card>
@@ -11,7 +12,7 @@
 </v-layout>
 <v-layout row wrap class="my-2">
 
-<v-flex md8 sm12>
+<v-flex lg8 sm12>
 
     <main-map :buildings="buildings" ref="main_map">
         <div slot="child-map" >
@@ -20,7 +21,7 @@
     </main-map>
 </v-flex>
 <v-spacer></v-spacer>
-<v-flex md3 sm12>
+<v-flex lg3 sm12>
     <v-card>
         <v-card-title><v-flex class="text-xs-center"><b class="headline">Buildings</b></v-flex></v-card-title>
         <v-card-text>
@@ -30,9 +31,9 @@
 </v-flex>
 </v-layout>
 <v-layout row>
-    <v-flex xs2><v-btn float dark color="purple lighten-1" large icon @click="getBuilding(0)"><v-icon>arrow_left</v-icon></v-btn></v-flex>
+    <v-flex xs2><v-btn float dark color="purple lighten-1" large icon @click="getBuilding(buildings.length-1)"><v-icon>arrow_left</v-icon></v-btn></v-flex>
     <v-spacer></v-spacer>
-    <v-flex xs2><v-btn float dark color="purple lighten-1" large icon @click="getBuilding(buildings.length-1)"><v-icon>arrow_right</v-icon></v-btn></v-flex>
+    <v-flex xs2><v-btn float dark color="purple lighten-1" large icon @click="getBuilding(0)"><v-icon>arrow_right</v-icon></v-btn></v-flex>
 </v-layout>
 </v-container>
 
@@ -99,6 +100,8 @@ export default {
                 }).then((response)=> {
                     this.changeColor();
                 });
+            },selectLevel(e){
+                this.$refs.areas.openList(e.id,e.name);
             }
     },mounted(){
         console.log("lol")
