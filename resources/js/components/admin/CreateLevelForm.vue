@@ -21,6 +21,12 @@
                 indeterminate
                 color="primary"
                 ></v-progress-circular>
+
+<img large class="responsive pr-1" :src="imageUrl" alt="" />
+                <div >
+                    <input accept=".svg" hidden class="" @change="fileChange" type="file" name="item_image" ref="file" >
+                    <v-btn @click="$refs.file.click()" class="pr-1" type='file' color="green" flat >change Image</v-btn>
+                </div> 
         </v-card-text>
 
         <v-divider></v-divider>
@@ -45,6 +51,7 @@ const axios = require('axios');
 export default {
     data(){
         return{
+            imageUrl:null,
             buildingID:null,
             LEVEL_CREATED:1,
             levelName:"",
@@ -88,8 +95,18 @@ export default {
             this.levelName = "";
             this.response = "";   
             this.status = 0;   
-        }
+        },fileChange(e){
+            this.selectedFile = e.target.files[0];
+            this.imageUrl = URL.createObjectURL(this.selectedFile);
+        },
     }
 
 }
 </script>
+
+<style scoped>
+.responsive{
+    width: 100%;
+    height: auto;
+}
+</style>

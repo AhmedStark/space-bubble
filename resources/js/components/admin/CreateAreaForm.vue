@@ -1,5 +1,5 @@
 <template>
-    <v-dialog width="600" :value="open">
+    <v-dialog width="600" v-model="open">
        <v-card>
         <v-card-title
           class="headline grey lighten-2"
@@ -20,12 +20,12 @@
                 v-if="loading"
                 indeterminate
                 color="primary"
-                ></v-progress-circular>
+                ></v-progress-circular><!--
 <img large class="responsive pr-1" :src="imageUrl" alt="" />
                 <div >
                     <input accept=".svg" hidden class="" @change="fileChange" type="file" name="item_image" ref="file" >
                     <v-btn @click="$refs.file.click()" class="pr-1" type='file' color="green" flat >change Image</v-btn>
-                </div> 
+                </div> -->
         </v-card-text>
 
         <v-divider></v-divider>
@@ -103,9 +103,3 @@ export default {
 
 }
 </script>
-<style scoped>
-.responsive{
-    width: 100%;
-    height: auto;
-}
-</style>
