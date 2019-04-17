@@ -99,7 +99,7 @@ Route::get('/deleteArea','areaController@delete');
 Route::post('/deleteArea','areaController@delete');
 
 
-Route::get('/deleteLevel','levelController@delete');
+Route::post('/levels/{id}/delete','levelController@delete');
 Route::post('/buildings/{id}/delete','buildingController@delete');
 Route::post('building/{id}/edit','buildingController@update');
 Route::get('updateArea','areaController@update');

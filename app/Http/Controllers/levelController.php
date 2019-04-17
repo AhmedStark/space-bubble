@@ -20,7 +20,9 @@ class levelController extends Controller
 
     public function showAreas($id){
         $level_id=$id;
-        
+        if(!Level::find($id)){
+            return [];
+        }
         $areas=Level::find($level_id)->areas()->get();
         return $areas;
     }

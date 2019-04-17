@@ -52,7 +52,6 @@ class BuildingControllerTest extends TestCase
             }
             $this->assertTrue($checkAreas==0);
         }
-        echo "/buildings/".$request['id']."/delete";
         $this->assertTrue($checkBuilding==0);
         $this->assertTrue($checkLevels==0);
         $response->assertStatus(200);

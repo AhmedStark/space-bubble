@@ -2570,6 +2570,7 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
     getLevels: function getLevels(id) {
       var _this3 = this;
 
+      this.selectedLevel = 0;
       this.loadingLevels = true;
       axios.get('/buildings/' + this.buildings[this.selectedBuilding].id + "/levels").then(function (response) {
         _this3.levels = response.data;
@@ -2586,12 +2587,26 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
       var _this4 = this;
 
       this.loadingAreas = true;
+
+      if (this.levels[this.selectedLevel].length < 0) {
+        return;
+      }
+
       axios.get('/levels/' + this.levels[this.selectedLevel].id + "/areas").then(function (response) {
         _this4.areas = response.data;
       }).catch(function (error) {}).then(function (response) {
         _this4.loadingAreas = false;
       });
       ;
+    },
+    deleteLevel: function deleteLevel(index) {
+      var _this5 = this;
+
+      axios.post('/levels/' + this.levels[index].id + "/delete", {
+        csrf: this.csrf
+      }).then(function (response) {
+        _this5.getLevels();
+      }).catch(function (error) {}).then(function (response) {});
     }
   },
   mounted: function mounted() {
@@ -40095,11 +40110,26 @@ var render = function() {
                                         _vm._v(" "),
                                         _c("v-spacer"),
                                         _vm._v(" "),
-                                        _c("v-flex", [
-                                          _vm._v(
-                                            "\n                                        7 areas    \n                                    "
-                                          )
-                                        ]),
+                                        _c(
+                                          "v-flex",
+                                          [
+                                            _c(
+                                              "v-icon",
+                                              {
+                                                attrs: { color: "red" },
+                                                on: {
+                                                  click: function($event) {
+                                                    return _vm.deleteLevel(
+                                                      index
+                                                    )
+                                                  }
+                                                }
+                                              },
+                                              [_vm._v("delete")]
+                                            )
+                                          ],
+                                          1
+                                        ),
                                         _vm._v(" "),
                                         _c(
                                           "v-flex",
@@ -41482,58 +41512,6 @@ var render = function() {
         1
       )
     ])
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/maps/map-2.vue?vue&type=template&id=5e417694&":
-/*!*************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/maps/map-2.vue?vue&type=template&id=5e417694& ***!
-  \*************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("area-map", { attrs: { v: "" } }, [
-    _c("div", { attrs: { slot: "map" }, slot: "map" })
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/maps/map-3.vue?vue&type=template&id=5e4f8e15&":
-/*!*************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/maps/map-3.vue?vue&type=template&id=5e4f8e15& ***!
-  \*************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("area-map", { attrs: { v: "" } }, [
-    _c("div", { attrs: { slot: "map" }, slot: "map" })
   ])
 }
 var staticRenderFns = []
@@ -79648,9 +79626,7 @@ Vue.component('create-level-dialog', __webpack_require__(/*! ./components/admin/
 Vue.component('create-area-dialog', __webpack_require__(/*! ./components/admin/CreateAreaForm.vue */ "./resources/js/components/admin/CreateAreaForm.vue").default);
 Vue.component('admin-login', __webpack_require__(/*! ./components/admin/AdminLogin.vue */ "./resources/js/components/admin/AdminLogin.vue").default);
 Vue.component('building-list', __webpack_require__(/*! ./components/BuildingList.vue */ "./resources/js/components/BuildingList.vue").default);
-Vue.component('level-list', __webpack_require__(/*! ./components/LevelList.vue */ "./resources/js/components/LevelList.vue").default);
-Vue.component('map-2', __webpack_require__(/*! ./components/maps/map-2.vue */ "./resources/js/components/maps/map-2.vue").default);
-Vue.component('map-3', __webpack_require__(/*! ./components/maps/map-3.vue */ "./resources/js/components/maps/map-3.vue").default); //--------------------
+Vue.component('level-list', __webpack_require__(/*! ./components/LevelList.vue */ "./resources/js/components/LevelList.vue").default); //--------------------
 
 var app = new Vue({
   el: '#app'
@@ -80682,112 +80658,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_map_22_vue_vue_type_template_id_4c17fddc___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_map_22_vue_vue_type_template_id_4c17fddc___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
-/***/ "./resources/js/components/maps/map-2.vue":
-/*!************************************************!*\
-  !*** ./resources/js/components/maps/map-2.vue ***!
-  \************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _map_2_vue_vue_type_template_id_5e417694___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./map-2.vue?vue&type=template&id=5e417694& */ "./resources/js/components/maps/map-2.vue?vue&type=template&id=5e417694&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-var script = {}
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
-  script,
-  _map_2_vue_vue_type_template_id_5e417694___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _map_2_vue_vue_type_template_id_5e417694___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/components/maps/map-2.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/components/maps/map-2.vue?vue&type=template&id=5e417694&":
-/*!*******************************************************************************!*\
-  !*** ./resources/js/components/maps/map-2.vue?vue&type=template&id=5e417694& ***!
-  \*******************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_map_2_vue_vue_type_template_id_5e417694___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./map-2.vue?vue&type=template&id=5e417694& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/maps/map-2.vue?vue&type=template&id=5e417694&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_map_2_vue_vue_type_template_id_5e417694___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_map_2_vue_vue_type_template_id_5e417694___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
-/***/ "./resources/js/components/maps/map-3.vue":
-/*!************************************************!*\
-  !*** ./resources/js/components/maps/map-3.vue ***!
-  \************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _map_3_vue_vue_type_template_id_5e4f8e15___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./map-3.vue?vue&type=template&id=5e4f8e15& */ "./resources/js/components/maps/map-3.vue?vue&type=template&id=5e4f8e15&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-var script = {}
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
-  script,
-  _map_3_vue_vue_type_template_id_5e4f8e15___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _map_3_vue_vue_type_template_id_5e4f8e15___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/components/maps/map-3.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/components/maps/map-3.vue?vue&type=template&id=5e4f8e15&":
-/*!*******************************************************************************!*\
-  !*** ./resources/js/components/maps/map-3.vue?vue&type=template&id=5e4f8e15& ***!
-  \*******************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_map_3_vue_vue_type_template_id_5e4f8e15___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./map-3.vue?vue&type=template&id=5e4f8e15& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/maps/map-3.vue?vue&type=template&id=5e4f8e15&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_map_3_vue_vue_type_template_id_5e4f8e15___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_map_3_vue_vue_type_template_id_5e4f8e15___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

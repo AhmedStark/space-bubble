@@ -63,7 +63,7 @@
                                     </v-flex>
                                     <v-spacer></v-spacer>
                                     <v-flex>
-                                        7 areas    
+                                        <v-icon color="red" @click="deleteLevel(index)">delete</v-icon>    
                                     </v-flex>
                                     <v-flex><v-icon @click="editLevel(index)">edit</v-icon></v-flex>
                                 </v-layout> 
@@ -176,7 +176,7 @@ export default {
             });;
         },
         getLevels:function(id){
-            
+            this.selectedLevel = 0;
             this.loadingLevels = true;
             axios.get('/buildings/'+this.buildings[this.selectedBuilding].id+"/levels").then((response)=> {
                 this.levels=response.data;
@@ -190,12 +190,26 @@ export default {
 
         getAreas:function(id){
             this.loadingAreas = true;
+            if(this.levels[this.selectedLevel].length<0){
+                return;
+            }
             axios.get('/levels/'+this.levels[this.selectedLevel].id+"/areas").then((response)=> {
                 this.areas=response.data;
             }).catch(function(error){
             }).then((response)=> {
                 this.loadingAreas = false;
             });;
+        },deleteLevel(index){
+            axios.post('/levels/'+this.levels[index].id+"/delete", {
+                        csrf:this.csrf,
+                    })
+                    .then((response) => {
+                        this.getLevels();
+                    })
+                    .catch(function (error) {
+                    }).then((response) => {     
+                        
+                });
         }
     },mounted(){
         this.getBuildings();
