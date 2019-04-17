@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 namespace App\Http\Controllers;
 
@@ -36,7 +36,7 @@ class levelController extends Controller
 
         $level->save();
         $this->registerComponent($level->id);
-        return ["response"=>"<p class='success--text'>Building was created</p>","status"=>1];
+        return ["data"=>$request->all(),"response"=>"<p class='success--text'>Building was created</p>","status"=>1];
     }
     public function changeMap(Request $request,$id)
     {   
@@ -66,8 +66,8 @@ class levelController extends Controller
         fwrite($appJsWrite,$newAppJsFileContent);
         fclose($appJsWrite);
     }
-    public function delete(Request $request){
-        $id=$request->id;
+    public function delete($id,Request $request){
+    
         
         $areas=Level::find($id)->areas();
         
@@ -80,6 +80,8 @@ class levelController extends Controller
         }
         $areas->delete();
         DB::table('levels')->where('id', '=', $id)->delete();
+
+        return ["response"=>"Area deleted!", 'request'=>$request->all(),'status'=>1];
         
     }
     public function update(Request $request){

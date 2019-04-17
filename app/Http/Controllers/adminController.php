@@ -12,16 +12,7 @@ class adminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function create()
     {
         return view('admin.create');
@@ -37,19 +28,9 @@ class adminController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public static function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'name' => 'required',
-            'email' => 'required|unique',                //still working on this 
-        ]);
-        $credentials = [
-            'name'=> $request->name,
-            'email'    => $request->email,
-            'password' => $request->pwd,
-        ];
         
-        $user = Sentinel::registerAndActivate($credentials);
         
     }
     

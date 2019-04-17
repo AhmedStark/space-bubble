@@ -82,7 +82,10 @@ Route::get('/buildings','buildingController@getBuildings');
 //Route::post('/main','buildingController@showLevels');
 Route::post('/buildings/create','buildingController@store');
 Route::get('/buildings/create','buildingController@store');
+
 Route::post('/levels/create','levelController@store');
+Route::get('/levels/create','levelController@store');
+
 Route::post('/level','levelController@showAreas');
 Route::get('/area/{id}/tables','areaController@showTables');
 
@@ -99,13 +102,17 @@ Route::get('/deleteArea','areaController@delete');
 Route::post('/deleteArea','areaController@delete');
 
 
-Route::get('/deleteLevel','levelController@delete');
+Route::post('/level/{id}/delete','levelController@delete');
+Route::post('/deleteLevel','levelController@delete');
+
 Route::get('/deleteBuilding','buildingController@delete');
 Route::get('updateBuilding','buildingController@update');
 Route::get('updateArea','areaController@update');
 Route::get('updateLevel','levelController@update');
 
 Route::get('createUser','adminController@store');
+
+
 Route::get('moveTable','tableController@moveTo');
 Route::post('moveTable','tableController@moveTo');
 Route::get('admin/area/{id}','areaController@editArea');

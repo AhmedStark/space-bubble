@@ -43,6 +43,56 @@ Vue.component('level-list', require('./components/LevelList.vue').default);
 
 Vue.component('map-1', require('./components/maps/map-1.vue').default);
 
+
+Vue.component('map-1', require('./components/maps/map-1.vue').default);
+
+Vue.component('map-2', require('./components/maps/map-2.vue').default);
+
+Vue.component('map-3', require('./components/maps/map-3.vue').default);
+
+Vue.component('map-4', require('./components/maps/map-4.vue').default);
+
+Vue.component('map-5', require('./components/maps/map-5.vue').default);
+
+Vue.component('map-6', require('./components/maps/map-6.vue').default);
+
+Vue.component('map-7', require('./components/maps/map-7.vue').default);
+
+Vue.component('map-8', require('./components/maps/map-8.vue').default);
+
+Vue.component('map-9', require('./components/maps/map-9.vue').default);
+
+Vue.component('map-10', require('./components/maps/map-10.vue').default);
+
+Vue.component('map-11', require('./components/maps/map-11.vue').default);
+
+Vue.component('map-12', require('./components/maps/map-12.vue').default);
+
+Vue.component('map-13', require('./components/maps/map-13.vue').default);
+
+Vue.component('map-14', require('./components/maps/map-14.vue').default);
+
+Vue.component('map-15', require('./components/maps/map-15.vue').default);
+
+Vue.component('map-16', require('./components/maps/map-16.vue').default);
+
+Vue.component('map-17', require('./components/maps/map-17.vue').default);
+
+Vue.component('map-18', require('./components/maps/map-18.vue').default);
+
+Vue.component('map-19', require('./components/maps/map-19.vue').default);
+
+Vue.component('map-20', require('./components/maps/map-20.vue').default);
+
+Vue.component('map-21', require('./components/maps/map-21.vue').default);
+
+Vue.component('map-22', require('./components/maps/map-22.vue').default);
+
+Vue.component('map-23', require('./components/maps/map-23.vue').default);
+
+Vue.component('map-24', require('./components/maps/map-24.vue').default);
+
+Vue.component('map-25', require('./components/maps/map-25.vue').default);
 //--------------------
 /**
  * Next, we will create a fresh Vue application instance and attach it to
