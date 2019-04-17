@@ -41,6 +41,7 @@ Vue.component('building-list', require('./components/BuildingList.vue').default)
 Vue.component('level-list', require('./components/LevelList.vue').default);
 
 
+<<<<<<< HEAD
 Vue.component('map-1', require('./components/maps/map-1.vue').default);
 
 
@@ -93,12 +94,9 @@ Vue.component('map-23', require('./components/maps/map-23.vue').default);
 Vue.component('map-24', require('./components/maps/map-24.vue').default);
 
 Vue.component('map-25', require('./components/maps/map-25.vue').default);
+=======
+>>>>>>> cfca1b5f9fefb2b9651cd1964d24d127b1158543
 //--------------------
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
 
 const app = new Vue({
     el: '#app'

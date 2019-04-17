@@ -15,15 +15,19 @@ class buildingController extends Controller
     }
     public function showLevels($id){
         $building_id=$id;
-        
+        if(!Building::find($id)){
+            return [];
+        }
         $levels=Building::find($building_id)->levels()->get();
         return $levels;
     }
     
-    public function delete(Request $request){
-        $id=$request->id;
+    public function delete(Request $request,$id){
+        $req = $request->all();
         if (!Building::find($id)){
-            return ['status'=>true,'response' => "Building not found!","request"=>$request->all()];   
+            
+            $req['id']=$id;
+            return ['status'=>true,'response' => "Building not found!","request"=>$req];   
         }
         $levels=Building::find($id)->levels();
         
@@ -46,7 +50,7 @@ class buildingController extends Controller
         
         DB::table('buildings')->where('id', '=', $id)->delete();
        
-        return ['status'=>true,'response' => "Building Deleted!","request"=>$request->all()];        
+        return ['status'=>true,'response' => "Building Deleted!","request"=>$req];        
     }
     
     public function store(Request $request)
@@ -64,10 +68,10 @@ class buildingController extends Controller
     }
 
    
-    public function update(Request $request){
+    public function update(Request $request,$id){
         DB::table('buildings')
-            ->where('id', $request->id)
+            ->where('id', $id)
             ->update(['name' =>$request->name]);
-
+        return ['status'=>true,'response' => "Building Edited!","data"=>$request->all()];
     }
 }

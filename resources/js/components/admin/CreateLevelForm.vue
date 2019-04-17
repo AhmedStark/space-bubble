@@ -1,5 +1,5 @@
 <template>
-    <v-dialog width="600" :value="open">
+    <v-dialog width="600" v-model="open">
        <v-card>
         <v-card-title
           class="headline grey lighten-2"
@@ -22,8 +22,8 @@
                 color="primary"
                 ></v-progress-circular>
 
-<img large class="responsive pr-1" :src="imageUrl" alt="" />
-                <div >
+<img v-if="this.editMode" large class="responsive pr-1" :src="imageUrl" alt="" />
+                <div v-if="editMode">
                     <input accept=".svg" hidden class="" @change="fileChange" type="file" name="item_image" ref="file" >
                     <v-btn @click="$refs.file.click()" class="pr-1" type='file' color="green" flat >change Image</v-btn>
                 </div> 
@@ -40,8 +40,15 @@
           <v-btn
             color="success"
             flat
+            v-if="!editMode"
             @click="createLevel"
           >Create</v-btn>
+          <v-btn
+            color="success"
+            flat
+            v-if="editMode"
+            @click="editLevel"
+          >Edit</v-btn>
         </v-card-actions>
       </v-card> 
     </v-dialog>
@@ -49,8 +56,13 @@
 <script>
 const axios = require('axios');
 export default {
+    props:{
+        
+    },
     data(){
         return{
+            editMode:false,
+            id:null,
             imageUrl:null,
             buildingID:null,
             LEVEL_CREATED:1,
@@ -66,6 +78,7 @@ export default {
         openDialog(buildingID){
             this.buildingID=buildingID;
             this.open=!this.open;
+            this.editMode=false;
         },createLevel(){
             if(this.levelName === ""){
                 this.response = "<p class='error--text'>Level name is required</p>";
@@ -98,7 +111,41 @@ export default {
         },fileChange(e){
             this.selectedFile = e.target.files[0];
             this.imageUrl = URL.createObjectURL(this.selectedFile);
-        },
+        },edit:function (id,name) {
+            this.levelName = name;
+            this.id=id;
+            this.openDialog(null);
+            this.editMode = true;
+        },editLevel:function () {
+            var bodyFormData = new FormData();
+            
+            bodyFormData.set('name',this.levelName);
+            bodyFormData.append('map', this.selectedFile);
+            console.warn(this.id)
+            var url = '/level/'+this.id+'/edit';
+            axios(
+                {
+                    method:'post',
+                    url:url,
+                    data:bodyFormData,
+                    config:{ headers: {'Content-Type': 'multipart/form-data' }}
+                }
+            )
+                    .then( (response)=> {
+                        this.response = response.data.response;
+                        this.status = response.data.status;
+                    })
+                    .catch(function (error) {
+                    })
+                    .then( ()=> {
+                           
+                        if(this.status===this.LEVEL_CREATED){
+                            this.$emit("level_created");
+                            this.openDialog(this.buildingID);
+                        }
+                        this.loading = false;
+                    });
+        }
     }
 
 }

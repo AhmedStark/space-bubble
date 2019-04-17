@@ -20,7 +20,9 @@ class levelController extends Controller
 
     public function showAreas($id){
         $level_id=$id;
-        
+        if(!Level::find($id)){
+            return [];
+        }
         $areas=Level::find($level_id)->areas()->get();
         return $areas;
     }
@@ -38,16 +40,35 @@ class levelController extends Controller
         $this->registerComponent($level->id);
         return ["data"=>$request->all(),"response"=>"<p class='success--text'>Building was created</p>","status"=>1];
     }
+
+
     public function changeMap(Request $request,$id)
     {   
-        $checkMapID = true;
+        if($level = Level::find($id)){
+            $level->name = $request->name;
+            $level->save();
+        }else{
+            return ["response"=>'level not found'];
+        }
+        $checkMapID = $request->file('map')!==null;
         $mapID=$id;
+        
         if($checkMapID){
             $compenet = fopen(base_path("resources/js/components/maps/")."map-".$mapID.".vue", "w"); 
             fwrite($compenet, 
 "<template>\n<area-map v>\n    <div slot=\"map\">\n\n         ".$this->saveMapFile($request)." \n\n   </div>\n</area-map></template>");
             fclose($compenet);
         }
+        return ["response"=>"<p class='success--text'>Building was created</p>","status"=>1];
+    }
+
+    public function writeVueFile($mapID,$content){
+        $compenet = fopen(base_path("resources/js/components/maps/")."map-".$mapID.".vue", "w"); 
+            fwrite($compenet, 
+"<template>\n<area-map v>\n    <div slot=\"map\">\n\n         ".$content." \n\n   </div>\n</area-map></template>");
+            fclose($compenet);
+    
+            
     }
 
     public function saveMapFile(Request $request){
@@ -59,9 +80,9 @@ class levelController extends Controller
         $appJsBath=base_path("resources/js/app.js");
         $txt=file_get_contents($appJsBath);
         $spliter="//--------------------";
-        $arr =explode($spliter,$txt);        
-    
+        $arr =explode($spliter,$txt);
         $appJsWrite = fopen($appJsBath,"w");
+        $this->writeVueFile($mapID,"");
         $newAppJsFileContent = $arr[0]."\nVue.component('map-".$mapID."', require('./components/maps/map-".$mapID.".vue').default);\n".$spliter.$arr[1];
         fwrite($appJsWrite,$newAppJsFileContent);
         fclose($appJsWrite);

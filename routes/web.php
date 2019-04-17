@@ -71,7 +71,7 @@ Route::get('/levels/{id}/areas','levelController@showAreas');
 Route::get("/up-map",function(){
     return view("admin.upload-map");
 });
-Route::post("/map/{id}/upload",'levelController@changeMap');
+Route::post("/level/{id}/edit",'levelController@changeMap');
 
 
 Route::get('big-map',function(){
@@ -102,11 +102,17 @@ Route::get('/deleteArea','areaController@delete');
 Route::post('/deleteArea','areaController@delete');
 
 
+<<<<<<< HEAD
 Route::post('/level/{id}/delete','levelController@delete');
 Route::post('/deleteLevel','levelController@delete');
 
 Route::get('/deleteBuilding','buildingController@delete');
 Route::get('updateBuilding','buildingController@update');
+=======
+Route::post('/levels/{id}/delete','levelController@delete');
+Route::post('/buildings/{id}/delete','buildingController@delete');
+Route::post('building/{id}/edit','buildingController@update');
+>>>>>>> cfca1b5f9fefb2b9651cd1964d24d127b1158543
 Route::get('updateArea','areaController@update');
 Route::get('updateLevel','levelController@update');
 
