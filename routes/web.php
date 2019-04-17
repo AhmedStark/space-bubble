@@ -70,7 +70,7 @@ Route::get('/levels/{id}/areas','levelController@showAreas');
 Route::get("/up-map",function(){
     return view("admin.upload-map");
 });
-Route::post("/map/{id}/upload",'levelController@changeMap');
+Route::post("/level/{id}/edit",'levelController@changeMap');
 
 
 Route::get('big-map',function(){

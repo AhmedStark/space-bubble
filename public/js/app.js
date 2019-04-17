@@ -2495,6 +2495,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2514,6 +2515,9 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
     };
   },
   methods: {
+    editLevel: function editLevel(index) {
+      this.$refs.create_level_dialog.edit(this.levels[index].id, this.levels[index].name);
+    },
     showCreateLevelForm: function showCreateLevelForm() {
       this.$refs.create_level_dialog.openDialog(this.buildings[this.selectedBuilding].id);
     },
@@ -2928,11 +2932,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {},
   data: function data() {
     return {
+      editMode: false,
+      id: null,
       imageUrl: null,
       buildingID: null,
       LEVEL_CREATED: 1,
@@ -2951,6 +2965,7 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
     openDialog: function openDialog(buildingID) {
       this.buildingID = buildingID;
       this.open = !this.open;
+      this.editMode = false;
     },
     createLevel: function createLevel() {
       var _this = this;
@@ -2987,6 +3002,42 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
     fileChange: function fileChange(e) {
       this.selectedFile = e.target.files[0];
       this.imageUrl = URL.createObjectURL(this.selectedFile);
+    },
+    edit: function edit(id, name) {
+      this.levelName = name;
+      this.id = id;
+      this.openDialog(null);
+      this.editMode = true;
+    },
+    editLevel: function editLevel() {
+      var _this2 = this;
+
+      var bodyFormData = new FormData();
+      bodyFormData.set('name', this.levelName);
+      bodyFormData.append('map', this.selectedFile);
+      console.warn(this.id);
+      var url = '/level/' + this.id + '/edit';
+      axios({
+        method: 'post',
+        url: url,
+        data: bodyFormData,
+        config: {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        }
+      }).then(function (response) {
+        _this2.response = response.data.response;
+        _this2.status = response.data.status;
+      }).catch(function (error) {}).then(function () {
+        if (_this2.status === _this2.LEVEL_CREATED) {
+          _this2.$emit("level_created");
+
+          _this2.openDialog(_this2.buildingID);
+        }
+
+        _this2.loading = false;
+      });
     }
   }
 });
@@ -39955,7 +40006,25 @@ var render = function() {
                                           _vm._v(
                                             "\n                                        7 areas    \n                                    "
                                           )
-                                        ])
+                                        ]),
+                                        _vm._v(" "),
+                                        _c(
+                                          "v-flex",
+                                          [
+                                            _c(
+                                              "v-icon",
+                                              {
+                                                on: {
+                                                  click: function($event) {
+                                                    return _vm.editLevel(index)
+                                                  }
+                                                }
+                                              },
+                                              [_vm._v("edit")]
+                                            )
+                                          ],
+                                          1
+                                        )
                                       ],
                                       1
                                     )
@@ -40446,7 +40515,16 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "v-dialog",
-    { attrs: { width: "600", value: _vm.open } },
+    {
+      attrs: { width: "600" },
+      model: {
+        value: _vm.open,
+        callback: function($$v) {
+          _vm.open = $$v
+        },
+        expression: "open"
+      }
+    },
     [
       _c(
         "v-card",
@@ -40486,41 +40564,45 @@ var render = function() {
                   })
                 : _vm._e(),
               _vm._v(" "),
-              _c("img", {
-                staticClass: "responsive pr-1",
-                attrs: { large: "", src: _vm.imageUrl, alt: "" }
-              }),
+              this.editMode
+                ? _c("img", {
+                    staticClass: "responsive pr-1",
+                    attrs: { large: "", src: _vm.imageUrl, alt: "" }
+                  })
+                : _vm._e(),
               _vm._v(" "),
-              _c(
-                "div",
-                [
-                  _c("input", {
-                    ref: "file",
-                    attrs: {
-                      accept: ".svg",
-                      hidden: "",
-                      type: "file",
-                      name: "item_image"
-                    },
-                    on: { change: _vm.fileChange }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "v-btn",
-                    {
-                      staticClass: "pr-1",
-                      attrs: { type: "file", color: "green", flat: "" },
-                      on: {
-                        click: function($event) {
-                          return _vm.$refs.file.click()
-                        }
-                      }
-                    },
-                    [_vm._v("change Image")]
+              _vm.editMode
+                ? _c(
+                    "div",
+                    [
+                      _c("input", {
+                        ref: "file",
+                        attrs: {
+                          accept: ".svg",
+                          hidden: "",
+                          type: "file",
+                          name: "item_image"
+                        },
+                        on: { change: _vm.fileChange }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "v-btn",
+                        {
+                          staticClass: "pr-1",
+                          attrs: { type: "file", color: "green", flat: "" },
+                          on: {
+                            click: function($event) {
+                              return _vm.$refs.file.click()
+                            }
+                          }
+                        },
+                        [_vm._v("change Image")]
+                      )
+                    ],
+                    1
                   )
-                ],
-                1
-              )
+                : _vm._e()
             ],
             1
           ),
@@ -40539,14 +40621,27 @@ var render = function() {
                 [_vm._v("Discard")]
               ),
               _vm._v(" "),
-              _c(
-                "v-btn",
-                {
-                  attrs: { color: "success", flat: "" },
-                  on: { click: _vm.createLevel }
-                },
-                [_vm._v("Create")]
-              )
+              !_vm.editMode
+                ? _c(
+                    "v-btn",
+                    {
+                      attrs: { color: "success", flat: "" },
+                      on: { click: _vm.createLevel }
+                    },
+                    [_vm._v("Create")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.editMode
+                ? _c(
+                    "v-btn",
+                    {
+                      attrs: { color: "success", flat: "" },
+                      on: { click: _vm.editLevel }
+                    },
+                    [_vm._v("Edit")]
+                  )
+                : _vm._e()
             ],
             1
           )
@@ -41276,168 +41371,6 @@ var render = function() {
                   )
                 ]
               )
-            ]
-          )
-        ],
-        1
-      )
-    ])
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/maps/map-1.vue?vue&type=template&id=5e335f13&":
-/*!*************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/maps/map-1.vue?vue&type=template&id=5e335f13& ***!
-  \*************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("area-map", { attrs: { v: "" } }, [
-    _c("div", { attrs: { slot: "map" }, slot: "map" }, [
-      _c(
-        "svg",
-        {
-          attrs: {
-            "xmlns:dc": "http://purl.org/dc/elements/1.1/",
-            "xmlns:cc": "http://creativecommons.org/ns#",
-            "xmlns:rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-            "xmlns:svg": "http://www.w3.org/2000/svg",
-            xmlns: "http://www.w3.org/2000/svg",
-            "xmlns:sodipodi":
-              "http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd",
-            "xmlns:inkscape": "http://www.inkscape.org/namespaces/inkscape",
-            width: "210mm",
-            height: "297mm",
-            viewBox: "0 0 210 297",
-            version: "1.1",
-            id: "svg8",
-            "inkscape:version": "0.92.4 (33fec40, 2019-01-16)",
-            "sodipodi:docname": "test.svg"
-          }
-        },
-        [
-          _c("defs", { attrs: { id: "defs2" } }),
-          _vm._v(" "),
-          _c("sodipodi:namedview", {
-            attrs: {
-              id: "base",
-              pagecolor: "#ffffff",
-              bordercolor: "#666666",
-              borderopacity: "1.0",
-              "inkscape:pageopacity": "0.0",
-              "inkscape:pageshadow": "2",
-              "inkscape:zoom": "0.35",
-              "inkscape:cx": "400",
-              "inkscape:cy": "560",
-              "inkscape:document-units": "mm",
-              "inkscape:current-layer": "layer1",
-              showgrid: "false",
-              "inkscape:window-width": "1853",
-              "inkscape:window-height": "1016",
-              "inkscape:window-x": "67",
-              "inkscape:window-y": "27",
-              "inkscape:window-maximized": "1"
-            }
-          }),
-          _vm._v(" "),
-          _c(
-            "metadata",
-            { attrs: { id: "metadata5" } },
-            [
-              _c(
-                "rdf:RDF",
-                [
-                  _c(
-                    "cc:Work",
-                    { attrs: { "rdf:about": "" } },
-                    [
-                      _c("dc:format", [_vm._v("image/svg+xml")]),
-                      _vm._v(" "),
-                      _c("dc:type", {
-                        attrs: {
-                          "rdf:resource":
-                            "http://purl.org/dc/dcmitype/StillImage"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("dc:title")
-                    ],
-                    1
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "g",
-            {
-              attrs: {
-                "inkscape:label": "Layer 1",
-                "inkscape:groupmode": "layer",
-                id: "layer1"
-              }
-            },
-            [
-              _c("rect", {
-                staticStyle: { "stroke-width": "0.26458332", fill: "#aa0000" },
-                attrs: {
-                  id: "rect3713",
-                  width: "89.202377",
-                  height: "58.208332",
-                  x: "9.8273811",
-                  y: "15.785713"
-                }
-              }),
-              _vm._v(" "),
-              _c("rect", {
-                staticStyle: { fill: "#554400", "stroke-width": "0.26458332" },
-                attrs: {
-                  id: "rect3715",
-                  width: "52.160713",
-                  height: "139.09525",
-                  x: "29.482143",
-                  y: "82.309525"
-                }
-              }),
-              _vm._v(" "),
-              _c("rect", {
-                staticStyle: { fill: "#445500", "stroke-width": "0.26458332" },
-                attrs: {
-                  id: "rect3717",
-                  width: "113.39286",
-                  height: "41.577381",
-                  x: "88.446426",
-                  y: "101.20833"
-                }
-              }),
-              _vm._v(" "),
-              _c("rect", {
-                staticStyle: { fill: "#483737", "stroke-width": "0.26458332" },
-                attrs: {
-                  id: "rect3719",
-                  width: "49.892857",
-                  height: "110.36904",
-                  x: "123.97619",
-                  y: "154.125"
-                }
-              })
             ]
           )
         ],
@@ -79558,14 +79491,7 @@ Vue.component('create-level-dialog', __webpack_require__(/*! ./components/admin/
 Vue.component('create-area-dialog', __webpack_require__(/*! ./components/admin/CreateAreaForm.vue */ "./resources/js/components/admin/CreateAreaForm.vue").default);
 Vue.component('admin-login', __webpack_require__(/*! ./components/admin/AdminLogin.vue */ "./resources/js/components/admin/AdminLogin.vue").default);
 Vue.component('building-list', __webpack_require__(/*! ./components/BuildingList.vue */ "./resources/js/components/BuildingList.vue").default);
-Vue.component('level-list', __webpack_require__(/*! ./components/LevelList.vue */ "./resources/js/components/LevelList.vue").default);
-Vue.component('map-1', __webpack_require__(/*! ./components/maps/map-1.vue */ "./resources/js/components/maps/map-1.vue").default); //--------------------
-
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+Vue.component('level-list', __webpack_require__(/*! ./components/LevelList.vue */ "./resources/js/components/LevelList.vue").default); //--------------------
 
 var app = new Vue({
   el: '#app'
@@ -80597,59 +80523,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_map_22_vue_vue_type_template_id_4c17fddc___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_map_22_vue_vue_type_template_id_4c17fddc___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
-/***/ "./resources/js/components/maps/map-1.vue":
-/*!************************************************!*\
-  !*** ./resources/js/components/maps/map-1.vue ***!
-  \************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _map_1_vue_vue_type_template_id_5e335f13___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./map-1.vue?vue&type=template&id=5e335f13& */ "./resources/js/components/maps/map-1.vue?vue&type=template&id=5e335f13&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-var script = {}
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
-  script,
-  _map_1_vue_vue_type_template_id_5e335f13___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _map_1_vue_vue_type_template_id_5e335f13___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/components/maps/map-1.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/components/maps/map-1.vue?vue&type=template&id=5e335f13&":
-/*!*******************************************************************************!*\
-  !*** ./resources/js/components/maps/map-1.vue?vue&type=template&id=5e335f13& ***!
-  \*******************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_map_1_vue_vue_type_template_id_5e335f13___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./map-1.vue?vue&type=template&id=5e335f13& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/maps/map-1.vue?vue&type=template&id=5e335f13&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_map_1_vue_vue_type_template_id_5e335f13___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_map_1_vue_vue_type_template_id_5e335f13___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

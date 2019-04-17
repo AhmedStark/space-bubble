@@ -63,6 +63,7 @@
                                     <v-flex>
                                         7 areas    
                                     </v-flex>
+                                    <v-flex><v-icon @click="editLevel(index)">edit</v-icon></v-flex>
                                 </v-layout> 
                         </v-card-text></v-card>
                    </v-card-text>
@@ -121,6 +122,9 @@ export default {
             selectedArea:0,
         }    
     },methods:{
+        editLevel:function(index){
+            this.$refs.create_level_dialog.edit(this.levels[index].id,this.levels[index].name);
+        },
         showCreateLevelForm:function(){
             this.$refs.create_level_dialog.openDialog(this.buildings[this.selectedBuilding].id);
         },
