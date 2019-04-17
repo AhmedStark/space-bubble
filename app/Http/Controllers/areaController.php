@@ -28,15 +28,23 @@ class areaController extends Controller
         $area->name=$request->name;
 
         $area->save();
-
-        return ["response"=>"<p class='success--text'>Building was created</p>","status"=>1];
+        
+        return ["response"=>"<p class='success--text'>Building was created</p>","data"=>$request->all(),'status'=>1];
     }
 
     public function delete(Request $request){
         $id=$request->id;
-        $tables=Area::find($id)->tables();
-        $tables->delete();
-        DB::table('areas')->where('id', '=', $id)->delete();
+
+        if (Area::find($id)){
+            
+            $tables=Area::find($id)->tables();
+            $tables->delete();
+            
+            
+            DB::table('areas')->where('id', '=', $id)->delete();
+        }
+        return ['status'=>1];
+            
     }
 
     public function showAreas(){
@@ -52,14 +60,14 @@ class areaController extends Controller
 
 
     public function totalTables(Request $request){
-        $area_id=$request->area_id;
+        $area_id=$request->area_id; 
         $count=Area::find($area_id)->tables()->count();
-        return $count;
+        return ['count'=>$count];
     }
     public function totalTakenTables(Request $request){
         $area_id=$request->area_id;
         $count=Area::find($area_id)->tables()->where('taken','=',1)->count(); 
-        return $count;
+        return ['count'=>$count];
     }
 
 

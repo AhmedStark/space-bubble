@@ -35,6 +35,7 @@ Route::post('admin/login','adminController@checklogin');
 
 
 Route::post('/areas/create','areaController@store');
+Route::get('/areas/create','areaController@store');
 
 Route::get('/areas',function(){
 
@@ -86,13 +87,18 @@ Route::post('/level','levelController@showAreas');
 Route::get('/area/{id}/tables','areaController@showTables');
 
 Route::get('/count',"areaController@totalTables");
+Route::post('/count',"areaController@totalTables");
 
 Route::get('/countTaken',"areaController@totalTakenTables");
+Route::post('/countTaken',"areaController@totalTakenTables");
 
 Route::get('/deleteTable','tableController@create');
 Route::post('/deleteTable','tableController@delete');
 
 Route::get('/deleteArea','areaController@delete');
+Route::post('/deleteArea','areaController@delete');
+
+
 Route::get('/deleteLevel','levelController@delete');
 Route::get('/deleteBuilding','buildingController@delete');
 Route::get('updateBuilding','buildingController@update');
