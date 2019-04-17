@@ -52,9 +52,10 @@
                             color="primary"
                             ></v-progress-circular>
                         <h3 class="title" v-if="buildings.length>0" >{{buildings[selectedBuilding].name}} levels</h3>
-                        <v-card style="border-radius:50px;" class="my-3 building-card" v-for="(level,index) in levels" :dark="index===selectedLevel" :key="'l'+level.id" @click="selectLevel(index)">
+                         <v-btn v-if="buildings.length>0" dark color="blue" @click="showCreateLevelForm">Add new level to this building</v-btn>
+                         <v-card style="border-radius:50px;" class="my-3 building-card" v-for="(level,index) in levels" :dark="index===selectedLevel" :key="'l'+level.id" @click="selectLevel(index)">
                         <v-card-text>
-                                <v-layout row>
+                               <v-layout row>
                                     <v-flex>
                                         {{level.name}}
                                     </v-flex>
@@ -64,8 +65,7 @@
                                     </v-flex>
                                 </v-layout> 
                         </v-card-text></v-card>
-                        <v-btn v-if="buildings.length>0" dark color="blue" @click="showCreateLevelForm">Add new level to this building</v-btn>
-                    </v-card-text>
+                   </v-card-text>
                 </v-card>
             </v-flex>
             <v-flex md3>
@@ -79,6 +79,7 @@
                             indeterminate
                             color="primary"
                             ></v-progress-circular>
+                         <v-btn v-if="levels.length>0" dark color="blue" normal @click="showCreateAreaForm">Add new area to this level</v-btn>
                         <v-card  class="my-3" v-for="(area,index) in areas" :key="'a'+area.id" @click="selectArea(index)">
                             <v-card-text>
                                 <v-layout row>
@@ -95,8 +96,7 @@
                                 </v-layout> 
                         </v-card-text>
                         </v-card>
-                        <v-btn v-if="levels.length>0" dark color="blue" normal @click="showCreateAreaForm">Add new area to this level</v-btn>
-                    </v-card-text></v-card>
+                   </v-card-text></v-card>
             </v-flex>
             
         </v-layout>

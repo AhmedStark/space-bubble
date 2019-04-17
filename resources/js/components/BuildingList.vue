@@ -5,7 +5,7 @@
             <v-card-text>
                 <v-divider></v-divider>
                 <v-layout>
-                    <v-flex xs12 class="text-xs-center my-2" v-for="(level,index) in levels" :key="index" @click="openAreasList(level.id,level.name)"><a href="#" class="building-link title">{{level.name}}</a></v-flex>
+                    <v-flex xs12 class="text-xs-center my-2" v-for="(level,index) in levels" :key="index" ><a :href="'/map/'+level.id" class="building-link title">{{level.name}}</a></v-flex>
                 </v-layout>
                 
             </v-card-text>

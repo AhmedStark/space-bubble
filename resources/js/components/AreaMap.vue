@@ -10,8 +10,7 @@
                     <v-container>
                         <slot name="map" class="svg-container"></slot>
                         </v-container>
-                
-                <v-card>
+                 <v-card>
                     
                     <v-card-text class="mx-4 px-4" v-if="fullV">
                         <v-chip class="white--text" :color="areaColors[FULL]">Full</v-chip>
@@ -21,7 +20,8 @@
                         <v-chip class="white--text" :color="areaColors[EMPTY]">Empty</v-chip>
                     </v-card-text>
                 </v-card>
-                </v-flex>
+                
+               </v-flex>
                 <v-spacer></v-spacer>
                 <v-flex xs12 lg4 md6>
                     <v-card>

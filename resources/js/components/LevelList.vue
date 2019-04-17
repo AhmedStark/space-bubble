@@ -4,7 +4,7 @@
             <v-card-title>{{title}}</v-card-title>
             <v-card-text>
                 <v-divider></v-divider>
-                <v-flex class="text-xs-center my-2" v-for="(level,index) in levels" :key="index"><a href="#" class="level-link title">{{level.name}}</a></v-flex>
+                <v-flex class="text-xs-center my-2" v-for="(area,index) in areas" :key="index"><a :href="'/map/'+area.id" class="area-link title">{{area.name}}</a></v-flex>
             </v-card-text>
         </v-card>
     </v-dialog>
@@ -16,18 +16,18 @@ export default {
         
         return{
             open:false,
-            title:"Select a level ",
-            levels:[],
+            title:"Select a area ",
+            areas:[],
         }
         
         
     },methods:{
-        openList(levelID,levelName){
-            console.log(levelID);
+        openList(areaID,areaName){
+            console.log(areaID);
             this.open = true;
-            this.title = "Select an area " + levelName;
-            axios.get('/levels/'+levelID+'/areas/').then((response)=> {
-                this.levels=response.data;
+            this.title = "Select an area " + areaName;
+            axios.get('/levels/'+areaID+'/areas/').then((response)=> {
+                this.areas=response.data;
             }).catch(function(error){
             }).then((response)=> {
 

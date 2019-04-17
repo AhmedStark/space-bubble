@@ -68,7 +68,10 @@ Route::get('/areas/{id}',function($id){
 });
 Route::get('/buildings/{id}/levels','buildingController@showLevels');
 Route::get('/levels/{id}/areas','levelController@showAreas');
-
+Route::get("/up-map",function(){
+    return view("admin.upload-map");
+});
+Route::post("/map/{id}/upload",'levelController@changeMap');
 
 
 Route::get('big-map',function(){
