@@ -30,12 +30,18 @@
             color="error"
             flat
             @click="createBuilding"
-          >Discard</v-btn>
+          >Discard</v-btn><v-btn
+            color="success"
+            flat
+            v-if="!editMode"
+            @click="createBuilding"
+          >Create</v-btn>
           <v-btn
             color="success"
             flat
-            @click="createBuilding"
-          >Create</v-btn>
+            v-if="editMode"
+            @click="editBuilding"
+          >Edit</v-btn>
         </v-card-actions>
       </v-card> 
     </v-dialog>
@@ -45,6 +51,8 @@ const axios = require('axios');
 export default {
     data(){
         return{
+            editMode:false,
+            id:null,
             BUILDING_CREATED:true,
             buildingName:"",
             open:false,
@@ -85,6 +93,39 @@ export default {
             this.buildingName = "";
             this.response = "";   
             this.status = 0;   
+        },edit:function (id,name) {
+            this.buildingName = name;
+            this.id=id;
+            this.openDialog(null);
+            this.editMode = true;
+        },
+        editBuilding:function () {
+            var bodyFormData = new FormData();
+            
+            bodyFormData.set('name',this.buildingName);
+            bodyFormData.set('_token',this.csrf);
+            var url = '/building/'+this.id+'/edit';
+            axios(
+                {
+                    method:'post',
+                    url:url,
+                    data:bodyFormData,
+                }
+            )
+                    .then( (response)=> {
+                        this.response = response.data.response;
+                        this.status = response.data.status;
+                    })
+                    .catch(function (error) {
+                    })
+                    .then( ()=> {
+                           
+                        if(this.status===this.BUILDING_CREATED){
+                            this.$emit("building_created");
+                            this.openDialog(this.buildingID);
+                        }
+                        this.loading = false;
+                    });
         }
     }
 

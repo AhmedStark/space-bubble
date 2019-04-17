@@ -34,6 +34,8 @@
                                     <v-flex>
                                         ID:{{building.id}}
                                     </v-flex>
+                                    <v-flex><v-icon color="red" @click="deleteBuilding(index)">delete</v-icon></v-flex>
+                                    <v-flex><v-icon  @click="editBuilding(index)">edit</v-icon></v-flex>
                                 </v-layout>
                             </v-card-text>
                         </v-card>
@@ -125,6 +127,9 @@ export default {
         editLevel:function(index){
             this.$refs.create_level_dialog.edit(this.levels[index].id,this.levels[index].name);
         },
+        editBuilding:function(index){
+            this.$refs.create_building_dialog.edit(this.buildings[index].id,this.buildings[index].name);
+        },
         showCreateLevelForm:function(){
             this.$refs.create_level_dialog.openDialog(this.buildings[this.selectedBuilding].id);
         },
@@ -134,8 +139,18 @@ export default {
         createBuilding:function () {
             this.$refs.create_building_dialog.openDialog();
         },
-        deleteBuilding:function(){
-
+        deleteBuilding:function(index){
+            
+            axios.post('/buildings/'+this.buildings[index].id+"/delete", {
+                        csrf:this.csrf,
+                    })
+                    .then((response) => {
+                        this.getBuildings();
+                    })
+                    .catch(function (error) {
+                    }).then((response) => {     
+                        
+                });
         },
         selectBuilding:function (index) {
             this.selectedBuilding = index;
@@ -149,6 +164,7 @@ export default {
             this.selectedArea = index;
         },
         getBuildings:function(){
+            this.selectedBuilding =0;
             this.loadingBuildings = true;
             axios.get('/buildings').then((response)=> {
                 this.buildings=response.data;
@@ -160,7 +176,7 @@ export default {
             });;
         },
         getLevels:function(id){
-
+            
             this.loadingLevels = true;
             axios.get('/buildings/'+this.buildings[this.selectedBuilding].id+"/levels").then((response)=> {
                 this.levels=response.data;

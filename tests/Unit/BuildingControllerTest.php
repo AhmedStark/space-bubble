@@ -32,14 +32,13 @@ class BuildingControllerTest extends TestCase
 
     public function testDeleteBuilding()
     {
+        $this->ID=DB::table('buildings')->orderBy('id','desc')->first()->id;
         $request = [
             'id' => $this->ID,
         ];
-        
-        
-        
-        $response = $this->json('GET', '/deleteBuilding',$request);
-        $checkBuilding=DB::table('buildings')->where('id', '=', $request['id'])->count();
+        $this->ID=DB::table('buildings')->orderBy('id','desc')->first()->id;
+        $response = $this->json('POST', "/buildings/".$this->ID."/delete",$request);
+        $checkBuilding=DB::table('buildings')->where('id', '=', $this->ID)->count();
         $checkLevels=DB::table('levels')->where('building_id', '=', $request['id'])->count();
         $Levels=DB::table('levels')->where('building_id', '=', $request['id'])->get();
         foreach($Levels as $level){
@@ -53,6 +52,7 @@ class BuildingControllerTest extends TestCase
             }
             $this->assertTrue($checkAreas==0);
         }
+        echo "/buildings/".$request['id']."/delete";
         $this->assertTrue($checkBuilding==0);
         $this->assertTrue($checkLevels==0);
         $response->assertStatus(200);
