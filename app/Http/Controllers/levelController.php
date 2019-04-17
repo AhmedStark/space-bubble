@@ -35,22 +35,26 @@ class levelController extends Controller
         $level->name=$request->name;
 
         $level->save();
-
+        $this->registerComponent($level->id);
         return ["response"=>"<p class='success--text'>Building was created</p>","status"=>1];
     }
-    public function changeMap()
+    public function changeMap(Request $request,$id)
     {   
         $checkMapID = true;
-        $mapID=$this->ask("What is the maps id ?");
-        $this->registerComponent($mapID);
-        
+        $mapID=$id;
         if($checkMapID){
-            $compenet = fopen(base_path("resources/js/components/")."map-".$mapID.".vue", "w"); 
+            $compenet = fopen(base_path("resources/js/components/maps/")."map-".$mapID.".vue", "w"); 
             fwrite($compenet, 
-"<template>\n<area-map v>\n    <div slot=\"map\">\n\n         <!--put your svg code here-->\n\n    </div>\n</area-map></template>");
+"<template>\n<area-map v>\n    <div slot=\"map\">\n\n         ".$this->saveMapFile($request)." \n\n   </div>\n</area-map></template>");
             fclose($compenet);
         }
     }
+
+    public function saveMapFile(Request $request){
+        $file = $request->file('map'); // get the file user sent via POST
+        return str_replace('<?xml version="1.0" encoding="UTF-8" standalone="no"?>','',file_get_contents($file)) ;
+    }
+
     public function registerComponent($mapID){
         $appJsBath=base_path("resources/js/app.js");
         $txt=file_get_contents($appJsBath);
@@ -58,12 +62,9 @@ class levelController extends Controller
         $arr =explode($spliter,$txt);        
     
         $appJsWrite = fopen($appJsBath,"w");
-        $newAppJsFileContent = $arr[0]."\nVue.component('map-".$mapID."', require('./components/map-".$mapID.".vue').default);\n".$spliter.$arr[1];
+        $newAppJsFileContent = $arr[0]."\nVue.component('map-".$mapID."', require('./components/maps/map-".$mapID.".vue').default);\n".$spliter.$arr[1];
         fwrite($appJsWrite,$newAppJsFileContent);
         fclose($appJsWrite);
-    }
-    public function changeMap(Request $request){
-    
     }
     public function delete(Request $request){
         $id=$request->id;
