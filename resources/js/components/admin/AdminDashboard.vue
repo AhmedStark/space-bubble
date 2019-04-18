@@ -91,8 +91,9 @@
                                     </v-flex>
                                     <v-spacer></v-spacer>
                                     <v-flex>
-                                        6 seats  
+                                        ID::{{area.id}}  
                                     </v-flex>
+                                    
                                     <v-flex>
                                         <a :href="'/admin/area/'+area.id">edit</a>
                                     </v-flex>

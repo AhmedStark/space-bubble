@@ -1,5 +1,5 @@
 <template>
-<area-map v>
+<area-map v :id="id">
     <div slot="map">
 
 <svg
@@ -264,4 +264,10 @@
 </svg>
 
     </div>
-</area-map></template>
+</area-map></template><script>
+export default {
+   props:{
+      id:{type:String}
+   }
+}
+</script>

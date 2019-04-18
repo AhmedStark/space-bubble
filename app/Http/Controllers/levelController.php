@@ -61,7 +61,13 @@ class levelController extends Controller
         if($checkMapID){
             $compenet = fopen(base_path("resources/js/components/maps/")."map-".$mapID.".vue", "w"); 
             fwrite($compenet, 
-"<template>\n<area-map v>\n    <div slot=\"map\">\n\n         ".$this->saveMapFile($request)." \n\n   </div>\n</area-map></template>");
+"<template>\n<area-map :id=\"id\" v>\n    <div slot=\"map\">\n\n         ".$this->saveMapFile($request)." \n\n   </div>\n</area-map></template><script>
+export default {
+   props:{
+      id:{type:String}
+   }
+}
+</script>");
             fclose($compenet);
         }
         return ["response"=>"<p class='success--text'>Building was created</p>","status"=>1];
@@ -87,7 +93,7 @@ class levelController extends Controller
         $spliter="//--------------------";
         $arr =explode($spliter,$txt);
         $appJsWrite = fopen($appJsBath,"w");
-        $this->writeVueFile($mapID,"");
+        $this->writeVueFile($mapID,"<p>This map is not available</p>");
         $newAppJsFileContent = $arr[0]."\nVue.component('map-".$mapID."', require('./components/maps/map-".$mapID.".vue').default);\n".$spliter.$arr[1];
         fwrite($appJsWrite,$newAppJsFileContent);
         fclose($appJsWrite);
