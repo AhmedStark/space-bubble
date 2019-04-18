@@ -20,7 +20,7 @@ class LevelControllerTest extends TestCase
 
             
         ];
-        $response = $this->json('GET', '/levels/create',$data);
+        $response = $this->json('POST', '/levels/create',$data);
         $response->assertStatus(200);
         $response->assertJson(['status' => true]);
         $response->assertJson(['data' => $data]);

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\AdminAuth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,6 +12,60 @@
 |
 */
 
+Route::group(['middleware' => ['AdminAuth']], function () {
+    Route::post('/level/{id}/delete','levelController@delete');
+    Route::post('/deleteLevel','levelController@delete');
+
+    Route::post('/areas/create','areaController@store');
+    Route::get('/areas/create','areaController@store');
+
+    Route::post("/level/{id}/edit",'levelController@changeMap');
+
+
+    Route::post('/buildings/create','buildingController@store');
+    Route::get('/buildings/create','buildingController@store');
+    
+    Route::post('/levels/create','levelController@store');
+    Route::get('/levels/create','levelController@store');
+
+    Route::get('/deleteTable','tableController@create');
+    Route::post('/deleteTable','tableController@delete');
+    
+    Route::get('/deleteArea','areaController@delete');
+    Route::post('/deleteArea','areaController@delete');
+    
+    
+    
+    
+    
+    Route::get('/deleteBuilding','buildingController@delete');
+    Route::get('updateBuilding','buildingController@update');
+    
+
+
+    Route::post('/levels/{id}/delete','levelController@delete');
+    Route::post('/buildings/{id}/delete','buildingController@delete');
+    Route::post('building/{id}/edit','buildingController@update');
+
+    Route::get('updateArea','areaController@update');
+    Route::get('updateLevel','levelController@update');
+
+    Route::get('moveTable','tableController@moveTo');
+    Route::post('moveTable','tableController@moveTo');
+    Route::get('admin/area/{id}','areaController@editArea');
+
+    Route::get('/table','tableController@store');
+    Route::post('/table','tableController@store');
+
+    Route::get('/admin/dashboard',function(){
+
+        return view('admin.dashboard');
+    });
+
+
+
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -21,21 +76,14 @@ Route::get('/map/{id}',function(){
     return view('map');
 });
 
-Route::get('/admin/dashboard',function(){
 
-    return view('admin.dashboard');
-});
-//don't use this structure
-Route::get('admin/create','adminController@create');
-Route::post('admin/create','adminController@store');
+
 
 Route::get('admin/','adminController@login');
 Route::post('admin/login','adminController@checklogin');
 
 
 
-Route::post('/areas/create','areaController@store');
-Route::get('/areas/create','areaController@store');
 
 Route::get('/areas',function(){
 
@@ -66,12 +114,10 @@ Route::get('/areas/{id}',function($id){
         'id'=>$id
     ];
 });
+
+
 Route::get('/buildings/{id}/levels','buildingController@showLevels');
 Route::get('/levels/{id}/areas','levelController@showAreas');
-Route::get("/up-map",function(){
-    return view("admin.upload-map");
-});
-Route::post("/level/{id}/edit",'levelController@changeMap');
 
 
 Route::get('big-map',function(){
@@ -80,11 +126,7 @@ Route::get('big-map',function(){
 Route::get('/buildings','buildingController@getBuildings');
 
 //Route::post('/main','buildingController@showLevels');
-Route::post('/buildings/create','buildingController@store');
-Route::get('/buildings/create','buildingController@store');
 
-Route::post('/levels/create','levelController@store');
-Route::get('/levels/create','levelController@store');
 
 Route::post('/level','levelController@showAreas');
 Route::get('/area/{id}/tables','areaController@showTables');
@@ -95,33 +137,6 @@ Route::post('/count',"areaController@totalTables");
 Route::get('/countTaken',"areaController@totalTakenTables");
 Route::post('/countTaken',"areaController@totalTakenTables");
 
-Route::get('/deleteTable','tableController@create');
-Route::post('/deleteTable','tableController@delete');
-
-Route::get('/deleteArea','areaController@delete');
-Route::post('/deleteArea','areaController@delete');
-
-
-<<<<<<< HEAD
-Route::post('/level/{id}/delete','levelController@delete');
-Route::post('/deleteLevel','levelController@delete');
-
-Route::get('/deleteBuilding','buildingController@delete');
-Route::get('updateBuilding','buildingController@update');
-=======
-Route::post('/levels/{id}/delete','levelController@delete');
-Route::post('/buildings/{id}/delete','buildingController@delete');
-Route::post('building/{id}/edit','buildingController@update');
->>>>>>> cfca1b5f9fefb2b9651cd1964d24d127b1158543
-Route::get('updateArea','areaController@update');
-Route::get('updateLevel','levelController@update');
-
 Route::get('createUser','adminController@store');
 
 
-Route::get('moveTable','tableController@moveTo');
-Route::post('moveTable','tableController@moveTo');
-Route::get('admin/area/{id}','areaController@editArea');
-
-Route::get('/table','tableController@store');
-Route::post('/table','tableController@store');
