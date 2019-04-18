@@ -1,6 +1,14 @@
 <template>
 <div>
     <v-container>
+        <v-layout row>
+            <form method="post" action="/logout">
+            
+                <input type="hidden" :value="csrf" name="_token" />
+                <v-spacer></v-spacer>
+                <v-btn color="grey darken-2" large flat type="submit"><v-icon>exit_to_app</v-icon>log-out</v-btn>
+             </form>
+        </v-layout>
         <create-building-dialog
             v-on:building_created="getBuildings()"
             ref="create_building_dialog"
@@ -114,6 +122,7 @@ export default {
     
     data(){
         return{
+            csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'), 
             loadingBuildings:false,
             loadingLevels:false,
             loadingAreas:false,

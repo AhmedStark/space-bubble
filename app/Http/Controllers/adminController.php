@@ -44,13 +44,16 @@ class adminController extends Controller
         ];
         
         
-        Sentinel::authenticate($credentials);
+        if($user=Sentinel::authenticate($credentials)){
+            return redirect('/admin/dashboard');
+        };
         
-        return ['status'=>1,Sentinel::check()];
+        return redirect()->back()->with(['response'=>"<p class='error--text'>incorrect password or user name</p>"]);
     }
 
     public function logout(){
         Sentinel::logout();
+        return redirect("/admin");
     }
     
 }

@@ -46,7 +46,7 @@ Route::group(['middleware' => ['AdminAuth']], function () {
         return view('admin.dashboard');
     });
 
-    Route::get('/logout','adminController@logout');
+    Route::post('/logout','adminController@logout');
 
 
 });
