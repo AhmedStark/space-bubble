@@ -101,7 +101,7 @@ Route::get('/areas/{id}',function($id){
 
     return  [
         'areas'=>[
-        ['name'=>"Lab 1",'id'=>1,'desks'=>20,'takenDesks'=>2,"direct"=>"1"],
+        ['name'=>"Lab 1",'id'=>1,'desks'=>20,'takenDesks'=>2],
         ['name'=>"Lab 2",'id'=>2,'desks'=>20,'takenDesks'=>20,"direct"=>"1"],
         ['name'=>"Lab 3",'id'=>3,'desks'=>30,'takenDesks'=>28,"direct"=>"1"],
         ['name'=>"Lab 4",'id'=>4,'desks'=>20,'takenDesks'=>07,"direct"=>"1"],
@@ -137,6 +137,27 @@ Route::post('/count',"areaController@totalTables");
 Route::get('/countTaken',"areaController@totalTakenTables");
 Route::post('/countTaken',"areaController@totalTakenTables");
 
+<<<<<<< HEAD
+=======
+Route::get('/deleteTable','tableController@create');
+Route::post('/deleteTable','tableController@delete');
+
+Route::get('/deleteArea','areaController@delete');
+Route::post('/deleteArea','areaController@delete');
+
+
+Route::post('/level/{id}/delete','levelController@delete');
+Route::post('/deleteLevel','levelController@delete');
+
+Route::get('/deleteBuilding','buildingController@delete');
+Route::get('updateBuilding','buildingController@update');
+Route::post('/levels/{id}/delete','levelController@delete');
+Route::post('/buildings/{id}/delete','buildingController@delete');
+Route::post('building/{id}/edit','buildingController@update');
+Route::get('updateArea','areaController@update');
+Route::get('updateLevel','levelController@update');
+
+>>>>>>> 90d38689f2da8f95dbf8483072ccdac8ff0fed65
 Route::get('createUser','adminController@store');
 
 

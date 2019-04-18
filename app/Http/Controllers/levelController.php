@@ -23,7 +23,12 @@ class levelController extends Controller
         if(!Level::find($id)){
             return [];
         }
+        $ar=[];
         $areas=Level::find($level_id)->areas()->get();
+        for ($i=0;$i<count($areas);$i++){
+            $areas[$i]['tables']= areaController::totalTables($areas[$i]['id']);
+            $areas[$i]['takenTables']= areaController::totalTakenTables($areas[$i]['id']);
+        }
         return $areas;
     }
     
