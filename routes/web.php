@@ -53,7 +53,7 @@ Route::get('/areas/{id}',function($id){
 
     return  [
         'areas'=>[
-        ['name'=>"Lab 1",'id'=>1,'desks'=>20,'takenDesks'=>2,"direct"=>"1"],
+        ['name'=>"Lab 1",'id'=>1,'desks'=>20,'takenDesks'=>2],
         ['name'=>"Lab 2",'id'=>2,'desks'=>20,'takenDesks'=>20,"direct"=>"1"],
         ['name'=>"Lab 3",'id'=>3,'desks'=>30,'takenDesks'=>28,"direct"=>"1"],
         ['name'=>"Lab 4",'id'=>4,'desks'=>20,'takenDesks'=>07,"direct"=>"1"],

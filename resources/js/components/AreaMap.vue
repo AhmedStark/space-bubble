@@ -31,11 +31,11 @@
                                 <v-card-text>
                                     <v-layout row>
                                         <v-flex xs4>
-                                            Area-{{area.id}} {{area.takenDesks}}/{{area.desks}} 
+                                            Area-{{area.id}} {{area.takenTables}}/{{area.tables}} 
                                         </v-flex>
                                         <v-spacer></v-spacer>
                                         <v-flex xs3>
-                                            <v-chip small :color="getColorForArea(area.takenDesks,area.desks)" class="white--text" >{{status[areaStatus(area.takenDesks,area.desks)]}}</v-chip>
+                                            <v-chip small :color="getColorForArea(area.takenTables,area.tables)" class="white--text" >{{status[areaStatus(area.takenTables,area.tables)]}}</v-chip>
                                         </v-flex>
                                     </v-layout>
 
@@ -61,7 +61,7 @@ const axios = require('axios');
         },
         data:function(){
             return{
-                id:1,
+                id:2,
                 areas:[],
                 status:["Full","Crowded","Normal","Good","Empty"],
                 areaColors:["#ff3939","#ffa238","#b4d65e","#42f4a7","#5bcfef"],
@@ -80,9 +80,15 @@ const axios = require('axios');
                     var area = this.areas[i];
                     var el=document.getElementById("area-"+area.id);
                     var elText=document.getElementById("text-"+area.id);
-                    el===null ? console.warn("error id 10 not found in the map"):el.style="fill: "+this.getColorForArea(area.takenDesks,area.desks)+"; stroke: rgb(0, 0, 0);";
+                    el===null ? console.warn("error id 10 not found in the map"):el.style="fill: "+this.getColorForArea(area.takenTables,area.tables)+"; stroke: rgb(0, 0, 0);";
                     elText===null ? console.warn("error id text-"+area.id+" not found in the map"):null;
-                    elText.innerHTML=area.name+"( "+area.takenDesks+" / "+area.desks+" )";
+                    console.log(area.name);
+                    if(area.tables==0){
+                        elText.innerHTML=area.name+"(No tables)"
+                    }else{
+                        elText.innerHTML=area.name+"( "+area.takenTables+" / "+area.tables+" )";
+                    }
+                    
                     if(area.direct!==null){
                         el.direct=area.direct;
                         el.addEventListener("click",this.clickMapEvent);
@@ -95,28 +101,29 @@ const axios = require('axios');
             getAreas:function () {
                 
                 this.fullV ? this.changeColor():null;
-                axios.get('/areas/'+this.id).then((response)=> {
-                this.areas=response.data.areas;
+                axios.get('/levels/'+this.id+"/areas").then((response)=> {
+                this.areas=response.data;
+                
                 
             }).catch(function(error){
             }).then((response)=> {
             });
-            },areaStatus(takenDesks,desks){
-                if(takenDesks===desks){
+            },areaStatus(takenTables,tables){
+                if(takenTables===tables){
                     return this.FULL;
-                }else if(takenDesks===0){
+                }else if(takenTables===0){
                     return this.EMPTY;
-                }else if (takenDesks/desks>0.6){
+                }else if (takenTables/tables>0.6){
                     return this.CROWDED;
-                }else if (takenDesks/desks>0.4){
+                }else if (takenTables/tables>0.4){
                     return this.NORMAL
-                }else if (takenDesks/desks>0){
+                }else if (takenTables/tables>0){
                     return this.GOOD;
                 }
-            },getColorForArea:function (takenDesks,desks) {
-                return this.areaColors[this.areaStatus(takenDesks,desks)];
+            },getColorForArea:function (takenTables,tables) {
+                return this.areaColors[this.areaStatus(takenTables,tables)];
             },clickMapEvent:function(evt){
-                window.location = 'http://localhost:8000/map/'+evt.target.direct;
+            
             },
         },
         mounted() {
