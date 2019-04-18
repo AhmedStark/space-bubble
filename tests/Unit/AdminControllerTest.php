@@ -31,7 +31,7 @@ class AdminControllerTest extends TestCase
 
     public function test_console_command()
 {
-    $this->artisan('question')
+    $this->artisan('mkAdmin')
          ->expectsQuestion('What is your first name?', 'Tupac')
          ->expectsQuestion('What is your last name?', 'Shakur')
          ->expectsQuestion('What is your email?', 'tupac@gmail.com')

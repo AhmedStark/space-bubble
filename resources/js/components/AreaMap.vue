@@ -6,7 +6,7 @@
     <div class="my-2" slot="child-map" >
         <v-container>
             <v-layout row wrap>
-                <v-flex xs12 lg8 md8>
+                <v-flex xs12 lg9 md8>
                     <v-container>
                         <slot name="map" class="svg-container"></slot>
                         </v-container>
@@ -23,7 +23,7 @@
                 
                </v-flex>
                 <v-spacer></v-spacer>
-                <v-flex xs12 lg4 md6>
+                <v-flex xs12 lg3 md6>
                     <v-card>
                         <v-card-title><h3 class="title">Areas :-</h3></v-card-title>
                         <v-card-text >
@@ -58,10 +58,10 @@ const axios = require('axios');
     export default {
         props:{
             v:{type:Boolean,default:false}
+            ,id:{type:String},
         },
         data:function(){
             return{
-                id:2,
                 areas:[],
                 status:["Full","Crowded","Normal","Good","Empty"],
                 areaColors:["#ff3939","#ffa238","#b4d65e","#42f4a7","#5bcfef"],
@@ -83,23 +83,20 @@ const axios = require('axios');
                     el===null ? console.warn("error id 10 not found in the map"):el.style="fill: "+this.getColorForArea(area.takenTables,area.tables)+"; stroke: rgb(0, 0, 0);";
                     elText===null ? console.warn("error id text-"+area.id+" not found in the map"):null;
                     console.log(area.name);
+                    console.log(area.id);
+                    elText.style['font-size']="3pt";
                     if(area.tables==0){
                         elText.innerHTML=area.name+"(No tables)"
                     }else{
                         elText.innerHTML=area.name+"( "+area.takenTables+" / "+area.tables+" )";
                     }
                     
-                    if(area.direct!==null){
-                        el.direct=area.direct;
-                        el.addEventListener("click",this.clickMapEvent);
-                        el.style.cursor ="pointer"
-                    }
+                    
                 }
             },selectArea(id){
                 this.$refs.main_map.selectArea(id);
             },
             getAreas:function () {
-                
                 this.fullV ? this.changeColor():null;
                 axios.get('/levels/'+this.id+"/areas").then((response)=> {
                 this.areas=response.data;
@@ -131,6 +128,7 @@ const axios = require('axios');
             this.getAreas();
         }
         ,created () {
+            console.log(this.id);
             setInterval(() => {
                 this.getAreas();
             }, 2000)

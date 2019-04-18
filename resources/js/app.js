@@ -42,11 +42,8 @@ Vue.component('level-list', require('./components/LevelList.vue').default);
 
 
 
-Vue.component('map-24', require('./components/maps/map-24.vue').default);
 
-Vue.component('map-25', require('./components/maps/map-25.vue').default);
-
-Vue.component('map-26', require('./components/maps/map-26.vue').default);
+Vue.component('map-1', require('./components/maps/map-1.vue').default);
 
 Vue.component('map-2', require('./components/maps/map-2.vue').default);
 
@@ -59,6 +56,7 @@ Vue.component('map-5', require('./components/maps/map-5.vue').default);
 Vue.component('map-6', require('./components/maps/map-6.vue').default);
 
 Vue.component('map-7', require('./components/maps/map-7.vue').default);
+<<<<<<< HEAD
 
 Vue.component('map-8', require('./components/maps/map-8.vue').default);
 
@@ -91,6 +89,12 @@ Vue.component('map-43', require('./components/maps/map-43.vue').default);
 Vue.component('map-44', require('./components/maps/map-44.vue').default);
 
 Vue.component('map-45', require('./components/maps/map-45.vue').default);
+=======
+>>>>>>> 5ee3f12dd114b79939ff9091811c88eefdc9fb90
+
+Vue.component('map-46', require('./components/maps/map-46.vue').default);
+
+Vue.component('map-47', require('./components/maps/map-47.vue').default);
 //--------------------
 
 const app = new Vue({

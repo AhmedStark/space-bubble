@@ -50,7 +50,7 @@ class CreateAdmin extends Command
             'first_name'=>$name,
             'last_name'=>$surname,
             'email'=>$email,
-            'password'=>$pwd,
+            'password'=>$pwd,   
         ];
 
         $validator = Validator::make($data, [ "first_name" => "required|min:3", "email"=>"required|unique:users","password"=>"min:4" ]);
