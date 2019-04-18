@@ -43,7 +43,8 @@ class adminController extends Controller
         ];
         
         Sentinel::authenticate($credentials);
-        return redirect('admin/');
+        
+        return ['status'=>1,''];
     }
 
     
