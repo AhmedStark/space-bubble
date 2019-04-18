@@ -73,6 +73,17 @@ export default {
         return ["response"=>"<p class='success--text'>Building was created</p>","status"=>1];
     }
 
+    public function deleteVueComponent($mapID){
+        $appJsBath=base_path("resources/js/app.js");
+        $txt=file_get_contents($appJsBath);
+        $appJsWrite = fopen($appJsBath,"w");
+        $phrase = "Vue.component('map-".$mapID."', require('./components/maps/map-".$mapID.".vue').default);";
+        $txt=str_replace($phrase,"",$txt);
+        fwrite($appJsWrite,$txt);
+        fclose($appJsWrite);
+        unlink(base_path("resources/js/components/maps/")."map-".$mapID.".vue");
+    }
+
     public function writeVueFile($mapID,$content){
         $compenet = fopen(base_path("resources/js/components/maps/")."map-".$mapID.".vue", "w"); 
             fwrite($compenet, 
@@ -111,6 +122,8 @@ export default {
             $tables->delete();
         }
         $areas->delete();
+        $this->deleteVueComponent($id);
+
         DB::table('levels')->where('id', '=', $id)->delete();
 
         return ["response"=>"Area deleted!", 'request'=>$request->all(),'status'=>1];

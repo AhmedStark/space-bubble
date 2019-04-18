@@ -7,13 +7,14 @@
                     <v-card-text>
                         <v-form id="login-form" action="/admin/login" method="post">
                             <v-text-field
-                                
+                                name="email"
                                 :rules="nameRules"
                                 label="Login-ID"
                                 required
                             ></v-text-field>
                             <input type="hidden" name="_token" :value="csrf" />
                             <v-text-field
+                                name="pwd"
                                 type="password"                            
                                 label="Password"
                                 required

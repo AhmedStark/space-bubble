@@ -38,7 +38,6 @@ class adminController extends Controller
     
 
     public function checklogin(Request $request){
-        
         $credentials = [
             'email'    => $request->email,
             'password' => $request->pwd,

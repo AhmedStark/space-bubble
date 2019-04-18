@@ -40,61 +40,6 @@ Vue.component('admin-login', require('./components/admin/AdminLogin.vue').defaul
 Vue.component('building-list', require('./components/BuildingList.vue').default);
 Vue.component('level-list', require('./components/LevelList.vue').default);
 
-
-
-
-Vue.component('map-1', require('./components/maps/map-1.vue').default);
-
-Vue.component('map-2', require('./components/maps/map-2.vue').default);
-
-Vue.component('map-3', require('./components/maps/map-3.vue').default);
-
-Vue.component('map-4', require('./components/maps/map-4.vue').default);
-
-Vue.component('map-5', require('./components/maps/map-5.vue').default);
-
-Vue.component('map-6', require('./components/maps/map-6.vue').default);
-
-Vue.component('map-7', require('./components/maps/map-7.vue').default);
-<<<<<<< HEAD
-
-Vue.component('map-8', require('./components/maps/map-8.vue').default);
-
-Vue.component('map-9', require('./components/maps/map-9.vue').default);
-
-Vue.component('map-10', require('./components/maps/map-10.vue').default);
-
-Vue.component('map-11', require('./components/maps/map-11.vue').default);
-
-Vue.component('map-12', require('./components/maps/map-12.vue').default);
-
-Vue.component('map-35', require('./components/maps/map-35.vue').default);
-
-Vue.component('map-36', require('./components/maps/map-36.vue').default);
-
-Vue.component('map-37', require('./components/maps/map-37.vue').default);
-
-Vue.component('map-38', require('./components/maps/map-38.vue').default);
-
-Vue.component('map-39', require('./components/maps/map-39.vue').default);
-
-Vue.component('map-40', require('./components/maps/map-40.vue').default);
-
-Vue.component('map-41', require('./components/maps/map-41.vue').default);
-
-Vue.component('map-42', require('./components/maps/map-42.vue').default);
-
-Vue.component('map-43', require('./components/maps/map-43.vue').default);
-
-Vue.component('map-44', require('./components/maps/map-44.vue').default);
-
-Vue.component('map-45', require('./components/maps/map-45.vue').default);
-=======
->>>>>>> 5ee3f12dd114b79939ff9091811c88eefdc9fb90
-
-Vue.component('map-46', require('./components/maps/map-46.vue').default);
-
-Vue.component('map-47', require('./components/maps/map-47.vue').default);
 //--------------------
 
 const app = new Vue({
