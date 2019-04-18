@@ -1,6 +1,7 @@
 <?php
 
 namespace Tests\Unit;
+use WithoutMiddleware;
 use DB;
 use App\Area;
 use Tests\TestCase;
@@ -14,6 +15,7 @@ class LevelControllerTest extends TestCase
 
     public function testCreateLevel()
     {
+        $this->withoutMiddleware();
         $data = [
             'building_id' => 1,
             'name'=>"level 1",
@@ -29,6 +31,7 @@ class LevelControllerTest extends TestCase
 
     public function testDeleteLevel()
     {
+        $this->withoutMiddleware();
         $this->ID=DB::table('levels')->orderBy('id','desc')->first()->id;
         
         $request = [

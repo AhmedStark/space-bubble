@@ -1,6 +1,7 @@
 <?php
 
 namespace Tests\Unit;
+use WithoutMiddleware;
 
 use App\Building;
 use Tests\TestCase;
@@ -19,6 +20,7 @@ class BuildingControllerTest extends TestCase
      */
     public function testCreateBuilding()
     {
+        $this->withoutMiddleware();
         $data = [
             'name' => "WS",
             
@@ -32,6 +34,7 @@ class BuildingControllerTest extends TestCase
 
     public function testDeleteBuilding()
     {
+        $this->withoutMiddleware();
         $this->ID=DB::table('buildings')->orderBy('id','desc')->first()->id;
         $request = [
             'id' => $this->ID,

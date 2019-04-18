@@ -8,12 +8,14 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\database\factories\TableFactory;
+use WithoutMiddleware;
 class TableControllerTests extends TestCase
 {
 
     public $ID;
 
     public function testCreateTable(){
+        $this->withoutMiddleware();
         $data = [
             'area_id' => 1,
             'taken' => 0,
@@ -27,6 +29,7 @@ class TableControllerTests extends TestCase
         $this->ID=DB::table('tables')->orderBy('id','desc')->first()->id;
     }
     public function testDeleteTable(){
+        $this->withoutMiddleware();
         $request = [
             'id' => $this->ID,
         ];
@@ -39,6 +42,7 @@ class TableControllerTests extends TestCase
         
     }
     public function testMoveTo(){
+        $this->withoutMiddleware();
         $request=[
             'area_id'=>2,
             'table_id'=>$this->ID,

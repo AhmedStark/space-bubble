@@ -1,6 +1,9 @@
 <?php
 
+
+
 namespace Tests\Unit;
+use WithoutMiddleware;
 use App\Area;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -19,6 +22,7 @@ class AreaControllerTest extends TestCase
     private $ID;
     public function testCreateArea()
     {
+        $this->withoutMiddleware();
         $data = [
             'level_id' => 1,
             'name' => 'area 1',
@@ -37,6 +41,7 @@ class AreaControllerTest extends TestCase
 
     
     public function testTotalTables(){
+        $this->withoutMiddleware();
         $this->ID=DB::table('areas')->orderBy('id','desc')->first()->id;
 
         $request = [
@@ -50,6 +55,7 @@ class AreaControllerTest extends TestCase
     }
 
     public function testTotalTakenTables(){
+        $this->withoutMiddleware();
         $this->ID=DB::table('areas')->orderBy('id','desc')->first()->id;
 
         $request = [
@@ -63,6 +69,7 @@ class AreaControllerTest extends TestCase
     }
 
     public function testDeleteArea(){
+        $this->withoutMiddleware();
         $this->ID=DB::table('areas')->orderBy('id','desc')->first()->id;
 
         $request = [

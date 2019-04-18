@@ -69,6 +69,28 @@ Vue.component('map-10', require('./components/maps/map-10.vue').default);
 Vue.component('map-11', require('./components/maps/map-11.vue').default);
 
 Vue.component('map-12', require('./components/maps/map-12.vue').default);
+
+Vue.component('map-35', require('./components/maps/map-35.vue').default);
+
+Vue.component('map-36', require('./components/maps/map-36.vue').default);
+
+Vue.component('map-37', require('./components/maps/map-37.vue').default);
+
+Vue.component('map-38', require('./components/maps/map-38.vue').default);
+
+Vue.component('map-39', require('./components/maps/map-39.vue').default);
+
+Vue.component('map-40', require('./components/maps/map-40.vue').default);
+
+Vue.component('map-41', require('./components/maps/map-41.vue').default);
+
+Vue.component('map-42', require('./components/maps/map-42.vue').default);
+
+Vue.component('map-43', require('./components/maps/map-43.vue').default);
+
+Vue.component('map-44', require('./components/maps/map-44.vue').default);
+
+Vue.component('map-45', require('./components/maps/map-45.vue').default);
 //--------------------
 
 const app = new Vue({

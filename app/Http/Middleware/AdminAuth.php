@@ -16,7 +16,7 @@ class AdminAuth
      */
     public function handle($request, Closure $next)
     {
-        if(Sentinel::check()){
+        if($user=Sentinel::check()){
             return $next($request);
         }
         return redirect("/");

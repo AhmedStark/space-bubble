@@ -1,16 +1,7 @@
 <?php
 
 use App\Http\Middleware\AdminAuth;
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+
 
 Route::group(['middleware' => ['AdminAuth']], function () {
     Route::post('/level/{id}/delete','levelController@delete');
@@ -20,7 +11,6 @@ Route::group(['middleware' => ['AdminAuth']], function () {
     Route::get('/areas/create','areaController@store');
 
     Route::post("/level/{id}/edit",'levelController@changeMap');
-
 
     Route::post('/buildings/create','buildingController@store');
     Route::get('/buildings/create','buildingController@store');
@@ -34,15 +24,9 @@ Route::group(['middleware' => ['AdminAuth']], function () {
     Route::get('/deleteArea','areaController@delete');
     Route::post('/deleteArea','areaController@delete');
     
-    
-    
-    
-    
     Route::get('/deleteBuilding','buildingController@delete');
     Route::get('updateBuilding','buildingController@update');
     
-
-
     Route::post('/levels/{id}/delete','levelController@delete');
     Route::post('/buildings/{id}/delete','buildingController@delete');
     Route::post('building/{id}/edit','buildingController@update');
@@ -62,6 +46,7 @@ Route::group(['middleware' => ['AdminAuth']], function () {
         return view('admin.dashboard');
     });
 
+    Route::get('/logout','adminController@logout');
 
 
 });
@@ -81,6 +66,7 @@ Route::get('/map/{id}',function(){
 
 Route::get('admin/','adminController@login');
 Route::post('admin/login','adminController@checklogin');
+Route::get('admin/login','adminController@checklogin');
 
 
 
@@ -137,27 +123,7 @@ Route::post('/count',"areaController@totalTables");
 Route::get('/countTaken',"areaController@totalTakenTables");
 Route::post('/countTaken',"areaController@totalTakenTables");
 
-<<<<<<< HEAD
-=======
-Route::get('/deleteTable','tableController@create');
-Route::post('/deleteTable','tableController@delete');
 
-Route::get('/deleteArea','areaController@delete');
-Route::post('/deleteArea','areaController@delete');
-
-
-Route::post('/level/{id}/delete','levelController@delete');
-Route::post('/deleteLevel','levelController@delete');
-
-Route::get('/deleteBuilding','buildingController@delete');
-Route::get('updateBuilding','buildingController@update');
-Route::post('/levels/{id}/delete','levelController@delete');
-Route::post('/buildings/{id}/delete','buildingController@delete');
-Route::post('building/{id}/edit','buildingController@update');
-Route::get('updateArea','areaController@update');
-Route::get('updateLevel','levelController@update');
-
->>>>>>> 90d38689f2da8f95dbf8483072ccdac8ff0fed65
 Route::get('createUser','adminController@store');
 
 

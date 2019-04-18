@@ -300,6 +300,11 @@ class EloquentUser extends Model implements RoleableInterface, PermissibleInterf
         return $this->password;
     }
 
+    public function getAuthPassword()
+    {
+        return $this->password;
+    }
+
     /**
      * Returns the roles model.
      *

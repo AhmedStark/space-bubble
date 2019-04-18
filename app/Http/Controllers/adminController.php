@@ -5,6 +5,8 @@ use Sentinel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+
+
 class adminController extends Controller
 {
     /**
@@ -36,16 +38,20 @@ class adminController extends Controller
     
 
     public function checklogin(Request $request){
-
+        
         $credentials = [
             'email'    => $request->email,
             'password' => $request->pwd,
         ];
         
+        
         Sentinel::authenticate($credentials);
         
-        return ['status'=>1,''];
+        return ['status'=>1,Sentinel::check()];
     }
 
+    public function logout(){
+        Sentinel::logout();
+    }
     
 }
