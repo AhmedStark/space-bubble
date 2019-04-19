@@ -19,8 +19,6 @@ class LevelControllerTest extends TestCase
         $data = [
             'building_id' => 1,
             'name'=>"level 1",
-
-            
         ];
         $response = $this->json('POST', '/levels/create',$data);
         $response->assertStatus(200);

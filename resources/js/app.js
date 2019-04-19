@@ -40,6 +40,58 @@ Vue.component('admin-login', require('./components/admin/AdminLogin.vue').defaul
 Vue.component('building-list', require('./components/BuildingList.vue').default);
 Vue.component('level-list', require('./components/LevelList.vue').default);
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //--------------------
 
 const app = new Vue({

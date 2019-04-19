@@ -56,7 +56,7 @@ class CreateAdmin extends Command
         $validator = Validator::make($data, [ "first_name" => "required|min:3", "email"=>"required|unique:users","password"=>"min:4" ]);
         if ($validator->fails()){
             echo "Try again :(";
-            return"ass";
+            return "ass";
         }
                 
         $user = Sentinel::registerAndActivate($data);

@@ -37,10 +37,8 @@ class levelController extends Controller
     public function store(Request $request)
     {
         $level=new Level;
-
         $level->building_id= $request->building_id;
         $level->name=$request->name;
-
         $level->save();
         $this->registerComponent($level->id);
         return ["data"=>$request->all(),"response"=>"<p class='success--text'>Building was created</p>","status"=>1];
@@ -81,7 +79,10 @@ export default {
         $txt=str_replace($phrase,"",$txt);
         fwrite($appJsWrite,$txt);
         fclose($appJsWrite);
-        unlink(base_path("resources/js/components/maps/")."map-".$mapID.".vue");
+        if(file_exists(base_path("resources/js/components/maps/")."map-".$mapID.".vue")){
+
+            unlink(base_path("resources/js/components/maps/")."map-".$mapID.".vue");
+        }
     }
 
     public function writeVueFile($mapID,$content){
