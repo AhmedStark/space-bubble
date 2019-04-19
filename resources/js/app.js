@@ -43,55 +43,6 @@ Vue.component('level-list', require('./components/LevelList.vue').default);
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //--------------------
 
 const app = new Vue({

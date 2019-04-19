@@ -24,7 +24,6 @@ class AdminControllerTest extends TestCase
         
         public function test_console_command()
     {
-        echo "name :".$this->first_name." ". $this->last_name." ".$this->password." ".$this->email;
         $this->artisan('mkAdmin')
              ->expectsQuestion('What is your first name?', $this->first_name)
              ->expectsQuestion('What is your last name?', $this->last_name)
