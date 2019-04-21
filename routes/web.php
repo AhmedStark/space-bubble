@@ -55,8 +55,8 @@ Route::group(['middleware' => ['AdminAuth']], function () {
 Route::get('/map',function(){
     return view('map');
 });
-Route::get('/map/{id}',function(){
-    return view('map');
+Route::get('/map/{id}',function($id){
+    return view('map')->with(["id"=>$id]);
 });
 
 
@@ -84,7 +84,6 @@ Route::get('/big-map',function(){
 Route::get('/buildings','buildingController@getBuildings');
 
 //Route::post('/main','buildingController@showLevels');
-
 
 Route::post('/level','levelController@showAreas');
 Route::get('/area/{id}/tables','areaController@showTables');

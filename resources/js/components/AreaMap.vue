@@ -131,7 +131,7 @@ const axios = require('axios');
             console.log(this.id);
             setInterval(() => {
                 this.getAreas();
-            }, 2000)
+            }, 1000)
         }
     }
 </script>

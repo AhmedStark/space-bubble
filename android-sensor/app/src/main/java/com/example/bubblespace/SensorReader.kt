@@ -49,7 +49,7 @@ class SensorReader: Service(), SensorEventListener {
 
 
     override fun onCreate() {
-        requestHandler = RequestHandler(applicationContext,getString(R.string.api_link))
+        requestHandler = RequestHandler(applicationContext,getString(R.string.api_link),getString(R.string.token))
         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
         lightSensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT)
         lightSensor?.also {

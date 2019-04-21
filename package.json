@@ -10,6 +10,7 @@
     "watch-poll": "npm run watch -- --watch-poll"
   },
   "dependencies": {
+    "npm": "^6.9.0",
     "vue": "^2.6.8",
     "vuetify": "^1.5.5"
   },

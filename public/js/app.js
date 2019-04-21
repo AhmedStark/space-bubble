@@ -1903,7 +1903,7 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
     console.log(this.id);
     setInterval(function () {
       _this2.getAreas();
-    }, 2000);
+    }, 1000);
   }
 });
 
@@ -40581,6 +40581,12 @@ var render = function() {
                                             "\n                                        ID::" +
                                               _vm._s(area.id) +
                                               "  \n                                    "
+                                          )
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("v-flex", [
+                                          _vm._v(
+                                            "tables :: " + _vm._s(area.tables)
                                           )
                                         ]),
                                         _vm._v(" "),
@@ -79937,16 +79943,6 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 
 Vue.use(vuetify__WEBPACK_IMPORTED_MODULE_1___default.a);
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
-// const files = require.context('./', true, /\.vue$/i);
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
-
 Vue.component('map-22', __webpack_require__(/*! ./components/map-22.vue */ "./resources/js/components/map-22.vue").default);
 Vue.component('area-map', __webpack_require__(/*! ./components/AreaMap.vue */ "./resources/js/components/AreaMap.vue").default);
 Vue.component('nav-bar', __webpack_require__(/*! ./components/NavBar.vue */ "./resources/js/components/NavBar.vue").default);

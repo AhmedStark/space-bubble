@@ -101,7 +101,7 @@
                                     <v-flex>
                                         ID::{{area.id}}  
                                     </v-flex>
-                                    
+                                    <v-flex>tables :: {{area.tables}}</v-flex>
                                     <v-flex>
                                         <a :href="'/admin/area/'+area.id">edit</a>
                                     </v-flex>

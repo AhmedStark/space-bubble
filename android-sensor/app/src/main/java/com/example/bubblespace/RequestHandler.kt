@@ -8,10 +8,10 @@ import org.json.JSONObject
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 
-class RequestHandler  (applicationContext:Context,apiLink:String){
+class RequestHandler  (applicationContext:Context,apiLink:String,token:String){
     private var  mRequestQueue: RequestQueue = Volley.newRequestQueue(applicationContext)
     private val apiLink = apiLink
-
+    private  val  token=token
     companion object {
         public val REQUEST_SUCCESS = 0
         public val REQUEST_DENIED_BY_CLIENT = 1
@@ -20,7 +20,12 @@ class RequestHandler  (applicationContext:Context,apiLink:String){
 
     fun sendStatusRequest(state:Boolean):Int{
         val params = JSONObject()
-        params.put("vacant",state.toString())
+        var x=1
+        if(state){
+            x = 0
+        }
+        params.put("status",x.toString())
+        params.put("token",token)
 
 
         var jsonRequest = JsonObjectRequest(Request.Method.POST,apiLink ,params,

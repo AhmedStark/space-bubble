@@ -28,7 +28,10 @@ class CreateLevelsTable extends Migration
      */
     public function down()
     {
-        shell_exec('rm '.base_path(' resources/js/components/maps/')."*.vue");
+        $appJSFile = fopen(base_path("resources/js/")."app.js","w");
+        fwrite($appJSFile,file_get_contents(base_path("resources/js/")."rest_app.js"));
+        fclose($appJSFile);
+        shell_exec('rm '.base_path('resources/js/components/maps/')."*.vue");
         Schema::dropIfExists('levels');
     }
 }
