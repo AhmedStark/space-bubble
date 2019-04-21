@@ -52,12 +52,7 @@ Route::group(['middleware' => ['AdminAuth']], function () {
 });
 
 
-Route::get('/map',function(){
-    return view('map');
-});
-Route::get('/map/{id}',function($id){
-    return view('map')->with(["id"=>$id]);
-});
+Route::get('/map/{id}','levelController@getMap');
 
 
 

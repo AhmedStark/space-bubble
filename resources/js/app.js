@@ -31,6 +31,10 @@ Vue.component('building-list', require('./components/BuildingList.vue').default)
 Vue.component('level-list', require('./components/LevelList.vue').default);
 
 
+
+Vue.component('map-1', require('./components/maps/map-1.vue').default);
+
+
 //--------------------
 
 const app = new Vue({

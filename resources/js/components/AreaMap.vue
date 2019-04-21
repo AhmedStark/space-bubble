@@ -82,9 +82,14 @@ const axios = require('axios');
                     var elText=document.getElementById("text-"+area.id);
                     el===null ? console.warn("error id 10 not found in the map"):el.style="fill: "+this.getColorForArea(area.takenTables,area.tables)+"; stroke: rgb(0, 0, 0);";
                     elText===null ? console.warn("error id text-"+area.id+" not found in the map"):null;
-                    console.log(area.name);
-                    console.log(area.id);
+                    
+                    if(elText===null){
+                        console.error("Area text not found",area.id);
+                        continue;
+                    }
                     elText.style['font-size']="3pt";
+                   
+                    
                     if(area.tables==0){
                         elText.innerHTML=area.name+"(No tables)"
                     }else{
@@ -124,11 +129,9 @@ const axios = require('axios');
             },
         },
         mounted() {
-            console.log("Heyy")
             this.getAreas();
         }
         ,created () {
-            console.log(this.id);
             setInterval(() => {
                 this.getAreas();
             }, 1000)

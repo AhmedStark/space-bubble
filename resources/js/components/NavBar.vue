@@ -3,8 +3,6 @@
         color="blue"
         dark
     >
-        <v-toolbar-side-icon v-on:click="opneNavDrawer">    
-        </v-toolbar-side-icon>
         <a href="/"><v-toolbar-title class="white--text text-uppercase" ><span class="font-weight-light">Space</span><span> Bubble</span></v-toolbar-title></a>
                     
 

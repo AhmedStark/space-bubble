@@ -33,7 +33,12 @@ class levelController extends Controller
     }
     
     
-
+    public function getMap($id){
+        if(Level::find($id)===null){
+            return view("404-map");
+        }
+        return view('map')->with(["id"=>$id]);
+    }
     public function store(Request $request)
     {
         $level=new Level;

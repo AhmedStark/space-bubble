@@ -1853,8 +1853,12 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
         var elText = document.getElementById("text-" + area.id);
         el === null ? console.warn("error id 10 not found in the map") : el.style = "fill: " + this.getColorForArea(area.takenTables, area.tables) + "; stroke: rgb(0, 0, 0);";
         elText === null ? console.warn("error id text-" + area.id + " not found in the map") : null;
-        console.log(area.name);
-        console.log(area.id);
+
+        if (elText === null) {
+          console.error("Area text not found", area.id);
+          continue;
+        }
+
         elText.style['font-size'] = "3pt";
 
         if (area.tables == 0) {
@@ -1894,13 +1898,11 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
     clickMapEvent: function clickMapEvent(evt) {}
   },
   mounted: function mounted() {
-    console.log("Heyy");
     this.getAreas();
   },
   created: function created() {
     var _this2 = this;
 
-    console.log(this.id);
     setInterval(function () {
       _this2.getAreas();
     }, 1000);
@@ -2072,8 +2074,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
 //
 //
 //
@@ -3134,6 +3134,1007 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    id: {
+      type: String
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/maps/map-1.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/maps/map-1.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -39701,26 +40702,19 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "v-toolbar",
-    { attrs: { color: "blue", dark: "" } },
-    [
-      _c("v-toolbar-side-icon", { on: { click: _vm.opneNavDrawer } }),
-      _vm._v(" "),
-      _c(
-        "a",
-        { attrs: { href: "/" } },
-        [
-          _c("v-toolbar-title", { staticClass: "white--text text-uppercase" }, [
-            _c("span", { staticClass: "font-weight-light" }, [_vm._v("Space")]),
-            _c("span", [_vm._v(" Bubble")])
-          ])
-        ],
-        1
-      )
-    ],
-    1
-  )
+  return _c("v-toolbar", { attrs: { color: "blue", dark: "" } }, [
+    _c(
+      "a",
+      { attrs: { href: "/" } },
+      [
+        _c("v-toolbar-title", { staticClass: "white--text text-uppercase" }, [
+          _c("span", { staticClass: "font-weight-light" }, [_vm._v("Space")]),
+          _c("span", [_vm._v(" Bubble")])
+        ])
+      ],
+      1
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -41842,6 +42836,2410 @@ var render = function() {
                       }
                     },
                     [_vm._v("Room 5")]
+                  )
+                ]
+              )
+            ]
+          )
+        ],
+        1
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/maps/map-1.vue?vue&type=template&id=5e335f13&":
+/*!*************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/maps/map-1.vue?vue&type=template&id=5e335f13& ***!
+  \*************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("area-map", { attrs: { id: _vm.id, v: "" } }, [
+    _c("div", { attrs: { slot: "map" }, slot: "map" }, [
+      _c(
+        "svg",
+        {
+          attrs: {
+            "xmlns:osb": "http://www.openswatchbook.org/uri/2009/osb",
+            "xmlns:dc": "http://purl.org/dc/elements/1.1/",
+            "xmlns:cc": "http://creativecommons.org/ns#",
+            "xmlns:rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+            "xmlns:svg": "http://www.w3.org/2000/svg",
+            xmlns: "http://www.w3.org/2000/svg",
+            "xmlns:xlink": "http://www.w3.org/1999/xlink",
+            "xmlns:sodipodi":
+              "http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd",
+            "xmlns:inkscape": "http://www.inkscape.org/namespaces/inkscape",
+            width: "200mm",
+            height: "190mm",
+            viewBox: "0 0 200 190",
+            version: "1.1",
+            id: "svg953",
+            "inkscape:version": "0.92.4 (33fec40, 2019-01-16)",
+            "sodipodi:docname": "Level 2.svg"
+          }
+        },
+        [
+          _c(
+            "defs",
+            { attrs: { id: "defs947" } },
+            [
+              _c(
+                "linearGradient",
+                { attrs: { id: "linearGradient1650", "osb:paint": "solid" } },
+                [
+                  _c("stop", {
+                    staticStyle: {
+                      "stop-color": "#000000",
+                      "stop-opacity": "1"
+                    },
+                    attrs: { offset: "0", id: "stop1648" }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "linearGradient",
+                { attrs: { id: "linearGradient1618", "osb:paint": "solid" } },
+                [
+                  _c("stop", {
+                    staticStyle: {
+                      "stop-color": "#000000",
+                      "stop-opacity": "1"
+                    },
+                    attrs: { offset: "0", id: "stop1616" }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "linearGradient",
+                { attrs: { id: "linearGradient1610", "osb:paint": "solid" } },
+                [
+                  _c("stop", {
+                    staticStyle: {
+                      "stop-color": "#000000",
+                      "stop-opacity": "1"
+                    },
+                    attrs: { offset: "0", id: "stop1608" }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "linearGradient",
+                { attrs: { id: "linearGradient1580", "osb:paint": "solid" } },
+                [
+                  _c("stop", {
+                    staticStyle: {
+                      "stop-color": "#000000",
+                      "stop-opacity": "1"
+                    },
+                    attrs: { offset: "0", id: "stop1578" }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "linearGradient",
+                { attrs: { id: "linearGradient1572", "osb:paint": "solid" } },
+                [
+                  _c("stop", {
+                    staticStyle: {
+                      "stop-color": "#000000",
+                      "stop-opacity": "1"
+                    },
+                    attrs: { offset: "0", id: "stop1570" }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "linearGradient",
+                { attrs: { id: "linearGradient1560", "osb:paint": "solid" } },
+                [
+                  _c("stop", {
+                    staticStyle: {
+                      "stop-color": "#000000",
+                      "stop-opacity": "1"
+                    },
+                    attrs: { offset: "0", id: "stop1558" }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "linearGradient",
+                { attrs: { id: "linearGradient1550", "osb:paint": "solid" } },
+                [
+                  _c("stop", {
+                    staticStyle: {
+                      "stop-color": "#000000",
+                      "stop-opacity": "1"
+                    },
+                    attrs: { offset: "0", id: "stop1548" }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "linearGradient",
+                { attrs: { id: "linearGradient1542", "osb:paint": "solid" } },
+                [
+                  _c("stop", {
+                    staticStyle: {
+                      "stop-color": "#000000",
+                      "stop-opacity": "1"
+                    },
+                    attrs: { offset: "0", id: "stop1540" }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "linearGradient",
+                { attrs: { id: "linearGradient1532", "osb:paint": "solid" } },
+                [
+                  _c("stop", {
+                    staticStyle: {
+                      "stop-color": "#000000",
+                      "stop-opacity": "1"
+                    },
+                    attrs: { offset: "0", id: "stop1530" }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "linearGradient",
+                { attrs: { id: "linearGradient1524", "osb:paint": "solid" } },
+                [
+                  _c("stop", {
+                    staticStyle: {
+                      "stop-color": "#000000",
+                      "stop-opacity": "1"
+                    },
+                    attrs: { offset: "0", id: "stop1522" }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "linearGradient",
+                { attrs: { id: "linearGradient1512", "osb:paint": "solid" } },
+                [
+                  _c("stop", {
+                    staticStyle: {
+                      "stop-color": "#000000",
+                      "stop-opacity": "1"
+                    },
+                    attrs: { offset: "0", id: "stop1510" }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "linearGradient",
+                { attrs: { id: "linearGradient1504", "osb:paint": "solid" } },
+                [
+                  _c("stop", {
+                    staticStyle: {
+                      "stop-color": "#000000",
+                      "stop-opacity": "1"
+                    },
+                    attrs: { offset: "0", id: "stop1502" }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("linearGradient", {
+                attrs: {
+                  "inkscape:collect": "always",
+                  "xlink:href": "#linearGradient1504",
+                  id: "linearGradient1506",
+                  x1: "1.0690781",
+                  y1: "201.98568",
+                  x2: "198.31398",
+                  y2: "201.98568",
+                  gradientUnits: "userSpaceOnUse"
+                }
+              }),
+              _vm._v(" "),
+              _c("linearGradient", {
+                attrs: {
+                  "inkscape:collect": "always",
+                  "xlink:href": "#linearGradient1512",
+                  id: "linearGradient1514",
+                  x1: "1.0690781",
+                  y1: "127.28385",
+                  x2: "91.13891",
+                  y2: "127.28385",
+                  gradientUnits: "userSpaceOnUse",
+                  gradientTransform:
+                    "matrix(0.86370865,0,0,0.67234888,1.7238765,-208.22362)"
+                }
+              }),
+              _vm._v(" "),
+              _c("linearGradient", {
+                attrs: {
+                  "inkscape:collect": "always",
+                  "xlink:href": "#linearGradient1524",
+                  id: "linearGradient1526",
+                  x1: "72.964577",
+                  y1: "139.43923",
+                  x2: "92.726406",
+                  y2: "139.43923",
+                  gradientUnits: "userSpaceOnUse",
+                  gradientTransform:
+                    "matrix(0.55747958,0,0,0.67065103,28.773318,36.367023)"
+                }
+              }),
+              _vm._v(" "),
+              _c("linearGradient", {
+                attrs: {
+                  "inkscape:collect": "always",
+                  "xlink:href": "#linearGradient1532",
+                  id: "linearGradient1534",
+                  x1: "80.441338",
+                  y1: "128.34287",
+                  x2: "133.10022",
+                  y2: "128.34287",
+                  gradientUnits: "userSpaceOnUse",
+                  gradientTransform:
+                    "matrix(0.79245585,0,0,0.67286207,22.052878,-208.7416)"
+                }
+              }),
+              _vm._v(" "),
+              _c("linearGradient", {
+                attrs: {
+                  "inkscape:collect": "always",
+                  "xlink:href": "#linearGradient1542",
+                  id: "linearGradient1544",
+                  x1: "175.59608",
+                  y1: "201.71841",
+                  x2: "194.57222",
+                  y2: "201.71841",
+                  gradientUnits: "userSpaceOnUse",
+                  gradientTransform:
+                    "matrix(1.0839355,0,0,0.9996277,-14.733318,0.07510004)"
+                }
+              }),
+              _vm._v(" "),
+              _c("linearGradient", {
+                attrs: {
+                  "inkscape:collect": "always",
+                  "xlink:href": "#linearGradient1550",
+                  id: "linearGradient1552",
+                  x1: "137.64381",
+                  y1: "161.89526",
+                  x2: "167.31073",
+                  y2: "161.89526",
+                  gradientUnits: "userSpaceOnUse"
+                }
+              }),
+              _vm._v(" "),
+              _c("linearGradient", {
+                attrs: {
+                  "inkscape:collect": "always",
+                  "xlink:href": "#linearGradient1560",
+                  id: "linearGradient1562",
+                  x1: "185.48505",
+                  y1: "114.58855",
+                  x2: "195.90855",
+                  y2: "114.58855",
+                  gradientUnits: "userSpaceOnUse"
+                }
+              }),
+              _vm._v(" "),
+              _c("linearGradient", {
+                attrs: {
+                  "inkscape:collect": "always",
+                  "xlink:href": "#linearGradient1572",
+                  id: "linearGradient1574",
+                  x1: "4.8108511",
+                  y1: "161.62799",
+                  x2: "80.180854",
+                  y2: "161.62799",
+                  gradientUnits: "userSpaceOnUse"
+                }
+              }),
+              _vm._v(" "),
+              _c("linearGradient", {
+                attrs: {
+                  "inkscape:collect": "always",
+                  "xlink:href": "#linearGradient1580",
+                  id: "linearGradient1582",
+                  x1: "50.24667",
+                  y1: "201.58478",
+                  x2: "79.379047",
+                  y2: "201.58478",
+                  gradientUnits: "userSpaceOnUse",
+                  gradientTransform: "matrix(1.1050234,0,0,1,-8.3366568,0)"
+                }
+              }),
+              _vm._v(" "),
+              _c("linearGradient", {
+                attrs: {
+                  gradientTransform:
+                    "matrix(1.155286,0,0,0.99930344,-52.768561,0.40768395)",
+                  "inkscape:collect": "always",
+                  "xlink:href": "#linearGradient1580",
+                  id: "linearGradient1582-3",
+                  x1: "50.24667",
+                  y1: "201.58478",
+                  x2: "79.379044",
+                  y2: "201.58478",
+                  gradientUnits: "userSpaceOnUse"
+                }
+              }),
+              _vm._v(" "),
+              _c("linearGradient", {
+                attrs: {
+                  "inkscape:collect": "always",
+                  "xlink:href": "#linearGradient1610",
+                  id: "linearGradient1612",
+                  x1: "1.0690781",
+                  y1: "259.44862",
+                  x2: "79.913583",
+                  y2: "259.44862",
+                  gradientUnits: "userSpaceOnUse",
+                  gradientTransform:
+                    "matrix(0.93908684,0,0,1.000113,4.8772532,-3.2043132)"
+                }
+              }),
+              _vm._v(" "),
+              _c("linearGradient", {
+                attrs: {
+                  "inkscape:collect": "always",
+                  "xlink:href": "#linearGradient1618",
+                  id: "linearGradient1620",
+                  x1: "87.12986",
+                  y1: "237.26526",
+                  x2: "126.15121",
+                  y2: "237.26526",
+                  gradientUnits: "userSpaceOnUse"
+                }
+              }),
+              _vm._v(" "),
+              _c("linearGradient", {
+                attrs: {
+                  gradientTransform: "translate(44.366749,-0.13363248)",
+                  "inkscape:collect": "always",
+                  "xlink:href": "#linearGradient1618",
+                  id: "linearGradient1620-5",
+                  x1: "87.12986",
+                  y1: "237.26526",
+                  x2: "126.15121",
+                  y2: "237.26526",
+                  gradientUnits: "userSpaceOnUse"
+                }
+              }),
+              _vm._v(" "),
+              _c("linearGradient", {
+                attrs: {
+                  "inkscape:collect": "always",
+                  "xlink:href": "#linearGradient1650",
+                  id: "linearGradient1652",
+                  x1: "-54.522984",
+                  y1: "129.68927",
+                  x2: "-39.823158",
+                  y2: "129.68927",
+                  gradientUnits: "userSpaceOnUse",
+                  gradientTransform:
+                    "matrix(0.60769671,0,0,0.54038862,156.15448,141.92031)"
+                }
+              }),
+              _vm._v(" "),
+              _c("linearGradient", {
+                attrs: {
+                  "inkscape:collect": "always",
+                  "xlink:href": "#linearGradient1650",
+                  id: "linearGradient1652-9",
+                  x1: "-54.522984",
+                  y1: "129.68927",
+                  x2: "-39.823158",
+                  y2: "129.68927",
+                  gradientUnits: "userSpaceOnUse",
+                  gradientTransform:
+                    "matrix(0.60769671,0,0,0.54038862,151.34364,93.817168)"
+                }
+              }),
+              _vm._v(" "),
+              _c("linearGradient", {
+                attrs: {
+                  "inkscape:collect": "always",
+                  "xlink:href": "#linearGradient1650",
+                  id: "linearGradient1652-93",
+                  x1: "-54.522984",
+                  y1: "129.68927",
+                  x2: "-39.823158",
+                  y2: "129.68927",
+                  gradientUnits: "userSpaceOnUse",
+                  gradientTransform:
+                    "matrix(0.60769671,0,0,0.54038862,170.68368,81.635583)"
+                }
+              }),
+              _vm._v(" "),
+              _c("linearGradient", {
+                attrs: {
+                  "inkscape:collect": "always",
+                  "xlink:href": "#linearGradient1650",
+                  id: "linearGradient1652-6",
+                  x1: "-54.522984",
+                  y1: "129.68927",
+                  x2: "-39.823158",
+                  y2: "129.68927",
+                  gradientUnits: "userSpaceOnUse",
+                  gradientTransform:
+                    "matrix(0.60769671,0,0,0.54038862,95.4843,105.59313)"
+                }
+              }),
+              _vm._v(" "),
+              _c("linearGradient", {
+                attrs: {
+                  "inkscape:collect": "always",
+                  "xlink:href": "#linearGradient1650",
+                  id: "linearGradient1652-2",
+                  x1: "-54.522984",
+                  y1: "129.68927",
+                  x2: "-39.823158",
+                  y2: "129.68927",
+                  gradientUnits: "userSpaceOnUse",
+                  gradientTransform:
+                    "matrix(0.60769671,0,0,0.54038862,80.249937,154.20397)"
+                }
+              }),
+              _vm._v(" "),
+              _c("linearGradient", {
+                attrs: {
+                  "inkscape:collect": "always",
+                  "xlink:href": "#linearGradient1650",
+                  id: "linearGradient1652-22",
+                  x1: "-54.522984",
+                  y1: "129.68927",
+                  x2: "-39.823158",
+                  y2: "129.68927",
+                  gradientUnits: "userSpaceOnUse",
+                  gradientTransform:
+                    "matrix(0.60769671,0,0,0.54038862,89.069831,121.60246)"
+                }
+              }),
+              _vm._v(" "),
+              _c("linearGradient", {
+                attrs: {
+                  "inkscape:collect": "always",
+                  "xlink:href": "#linearGradient1650",
+                  id: "linearGradient1652-1",
+                  x1: "-54.522984",
+                  y1: "129.68927",
+                  x2: "-39.823158",
+                  y2: "129.68927",
+                  gradientUnits: "userSpaceOnUse",
+                  gradientTransform:
+                    "matrix(0.60769671,0,0,0.54038862,44.43582,122.13163)"
+                }
+              }),
+              _vm._v(" "),
+              _c("linearGradient", {
+                attrs: {
+                  "inkscape:collect": "always",
+                  "xlink:href": "#linearGradient1650",
+                  id: "linearGradient1652-7",
+                  x1: "-54.522984",
+                  y1: "129.68927",
+                  x2: "-39.823158",
+                  y2: "129.68927",
+                  gradientUnits: "userSpaceOnUse",
+                  gradientTransform:
+                    "matrix(0.60769671,0,0,0.54038862,125.95303,156.61477)"
+                }
+              }),
+              _vm._v(" "),
+              _c("linearGradient", {
+                attrs: {
+                  "inkscape:collect": "always",
+                  "xlink:href": "#linearGradient1650",
+                  id: "linearGradient1652-61",
+                  x1: "-54.522984",
+                  y1: "129.68927",
+                  x2: "-39.823158",
+                  y2: "129.68927",
+                  gradientUnits: "userSpaceOnUse",
+                  gradientTransform:
+                    "matrix(0.60769671,0,0,0.54038862,191.70133,191.36518)"
+                }
+              }),
+              _vm._v(" "),
+              _c("linearGradient", {
+                attrs: {
+                  "inkscape:collect": "always",
+                  "xlink:href": "#linearGradient1650",
+                  id: "linearGradient1652-15",
+                  x1: "-54.522984",
+                  y1: "129.68927",
+                  x2: "-39.823158",
+                  y2: "129.68927",
+                  gradientUnits: "userSpaceOnUse",
+                  gradientTransform:
+                    "matrix(0.60769671,0,0,0.54038862,134.23838,191.37055)"
+                }
+              }),
+              _vm._v(" "),
+              _c("linearGradient", {
+                attrs: {
+                  "inkscape:collect": "always",
+                  "xlink:href": "#linearGradient1650",
+                  id: "linearGradient1652-3",
+                  x1: "-54.522984",
+                  y1: "129.68927",
+                  x2: "-39.823158",
+                  y2: "129.68927",
+                  gradientUnits: "userSpaceOnUse",
+                  gradientTransform:
+                    "matrix(0.60769671,0,0,0.54038862,181.54509,156.35287)"
+                }
+              }),
+              _vm._v(" "),
+              _c("linearGradient", {
+                attrs: {
+                  "inkscape:collect": "always",
+                  "xlink:href": "#linearGradient1650",
+                  id: "linearGradient1652-4",
+                  x1: "-54.522984",
+                  y1: "129.68927",
+                  x2: "-39.823158",
+                  y2: "129.68927",
+                  gradientUnits: "userSpaceOnUse",
+                  gradientTransform:
+                    "matrix(0.60769671,0,0,0.54038862,215.75559,121.33519)"
+                }
+              }),
+              _vm._v(" "),
+              _c("linearGradient", {
+                attrs: {
+                  "inkscape:collect": "always",
+                  "xlink:href": "#linearGradient1650",
+                  id: "linearGradient1652-8",
+                  x1: "-54.522984",
+                  y1: "129.68927",
+                  x2: "-39.823158",
+                  y2: "129.68927",
+                  gradientUnits: "userSpaceOnUse",
+                  gradientTransform:
+                    "matrix(0.60769671,0,0,0.54038862,125.68576,60.482353)"
+                }
+              }),
+              _vm._v(" "),
+              _c("linearGradient", {
+                attrs: {
+                  "inkscape:collect": "always",
+                  "xlink:href": "#linearGradient1650",
+                  id: "linearGradient1652-49",
+                  x1: "-54.522984",
+                  y1: "129.68927",
+                  x2: "-39.823158",
+                  y2: "129.68927",
+                  gradientUnits: "userSpaceOnUse",
+                  gradientTransform:
+                    "matrix(0.60769671,0,0,0.54038862,207.72139,164.64359)"
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("sodipodi:namedview", {
+            attrs: {
+              id: "base",
+              pagecolor: "#ffffff",
+              bordercolor: "#666666",
+              borderopacity: "1.0",
+              "inkscape:pageopacity": "0.0",
+              "inkscape:pageshadow": "2",
+              "inkscape:zoom": "0.98994949",
+              "inkscape:cx": "391.48302",
+              "inkscape:cy": "387.79203",
+              "inkscape:document-units": "mm",
+              "inkscape:current-layer": "layer1",
+              showgrid: "false",
+              "inkscape:window-width": "1853",
+              "inkscape:window-height": "1016",
+              "inkscape:window-x": "67",
+              "inkscape:window-y": "27",
+              "inkscape:window-maximized": "1"
+            }
+          }),
+          _vm._v(" "),
+          _c(
+            "metadata",
+            { attrs: { id: "metadata950" } },
+            [
+              _c(
+                "rdf:RDF",
+                [
+                  _c(
+                    "cc:Work",
+                    { attrs: { "rdf:about": "" } },
+                    [
+                      _c("dc:format", [_vm._v("image/svg+xml")]),
+                      _vm._v(" "),
+                      _c("dc:type", {
+                        attrs: {
+                          "rdf:resource":
+                            "http://purl.org/dc/dcmitype/StillImage"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("dc:title")
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "g",
+            {
+              attrs: {
+                "inkscape:label": "Layer 1",
+                "inkscape:groupmode": "layer",
+                id: "layer1",
+                transform: "translate(0,-107)"
+              }
+            },
+            [
+              _c("rect", {
+                staticStyle: {
+                  fill: "#ffffff",
+                  stroke: "url(#linearGradient1506)",
+                  "stroke-width": "0.26499999",
+                  "stroke-miterlimit": "4",
+                  "stroke-dasharray": "none"
+                },
+                attrs: {
+                  id: "rect957",
+                  width: "197.2449",
+                  height: "187.35594",
+                  x: "1.0690781",
+                  y: "108.30771",
+                  ry: "0"
+                }
+              }),
+              _vm._v(" "),
+              _c("rect", {
+                staticStyle: {
+                  fill: "#ffffff",
+                  stroke: "url(#linearGradient1514)",
+                  "stroke-width": "0.20194207",
+                  "stroke-miterlimit": "4",
+                  "stroke-dasharray": "none"
+                },
+                attrs: {
+                  id: "area-13",
+                  width: "77.79409",
+                  height: "25.517166",
+                  x: "2.6472485",
+                  y: "-135.40302",
+                  transform: "scale(1,-1)",
+                  "inkscape:label": "#rect1508"
+                }
+              }),
+              _vm._v(" "),
+              _c("rect", {
+                staticStyle: {
+                  fill: "#ffffff",
+                  stroke: "url(#linearGradient1526)",
+                  "stroke-width": "0.16203493",
+                  "stroke-miterlimit": "4",
+                  "stroke-dasharray": "none"
+                },
+                attrs: {
+                  id: "rect1516",
+                  width: "11.016816",
+                  height: "10.568212",
+                  x: "69.449577",
+                  y: "124.59798"
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "text",
+                {
+                  staticStyle: {
+                    "font-style": "normal",
+                    "font-weight": "normal",
+                    "font-size": "10.58333302px",
+                    "line-height": "1.25",
+                    "font-family": "sans-serif",
+                    "letter-spacing": "0px",
+                    "word-spacing": "0px",
+                    fill: "#000000",
+                    "fill-opacity": "1",
+                    stroke: "none",
+                    "stroke-width": "0.26458332"
+                  },
+                  attrs: {
+                    "xml:space": "preserve",
+                    x: "72.365585",
+                    y: "131.80592",
+                    id: "text1520"
+                  }
+                },
+                [
+                  _c(
+                    "tspan",
+                    {
+                      staticStyle: {
+                        "font-size": "5.29166651px",
+                        "stroke-width": "0.26458332"
+                      },
+                      attrs: {
+                        "sodipodi:role": "line",
+                        id: "tspan1518",
+                        x: "72.365585",
+                        y: "131.80592"
+                      }
+                    },
+                    [_vm._v("O")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c("rect", {
+                staticStyle: {
+                  fill: "#ffffff",
+                  stroke: "url(#linearGradient1534)",
+                  "stroke-width": "0.1935069",
+                  "stroke-miterlimit": "4",
+                  "stroke-dasharray": "none"
+                },
+                attrs: {
+                  id: "area-12",
+                  width: "41.729839",
+                  height: "25.550167",
+                  x: "85.799088",
+                  y: "-135.15964",
+                  transform: "scale(1,-1)",
+                  "inkscape:label": "#rect1528"
+                }
+              }),
+              _vm._v(" "),
+              _c("path", {
+                staticStyle: {
+                  fill: "none",
+                  stroke: "#000000",
+                  "stroke-width": "0.26458332px",
+                  "stroke-linecap": "butt",
+                  "stroke-linejoin": "miter",
+                  "stroke-opacity": "1"
+                },
+                attrs: {
+                  d:
+                    "m 133.90203,109.91133 v 24.92288 l 41.96131,-0.0668 0,47.03944 20.04522,-0.26727 v -71.62823 z",
+                  id: "area-10",
+                  "inkscape:connector-curvature": "0",
+                  "sodipodi:nodetypes": "ccccccc",
+                  "inkscape:label": "#path1536"
+                }
+              }),
+              _vm._v(" "),
+              _c("rect", {
+                staticStyle: {
+                  fill: "#ffffff",
+                  stroke: "url(#linearGradient1544)",
+                  "stroke-width": "0.275846",
+                  "stroke-miterlimit": "4",
+                  "stroke-dasharray": "none"
+                },
+                attrs: {
+                  id: "area-9",
+                  width: "20.568909",
+                  height: "29.121532",
+                  x: "175.6015",
+                  y: "187.15764",
+                  "inkscape:label": "#rect1538"
+                }
+              }),
+              _vm._v(" "),
+              _c("rect", {
+                staticStyle: {
+                  fill: "#ffffff",
+                  "stroke-width": "0.26499999",
+                  "stroke-miterlimit": "4",
+                  "stroke-dasharray": "none",
+                  stroke: "url(#linearGradient1552)"
+                },
+                attrs: {
+                  id: "area-11",
+                  width: "29.666916",
+                  height: "37.150467",
+                  x: "137.64381",
+                  y: "143.32002",
+                  "inkscape:label": "#rect1546"
+                }
+              }),
+              _vm._v(" "),
+              _c("path", {
+                staticStyle: {
+                  fill: "none",
+                  stroke: "#000000",
+                  "stroke-width": "0.26458332px",
+                  "stroke-linecap": "butt",
+                  "stroke-linejoin": "miter",
+                  "stroke-opacity": "1"
+                },
+                attrs: {
+                  d:
+                    "M 127.22029,143.58729 H 87.129865 v 72.69731 h 82.319015 v -29.13238 l -42.22858,0 z",
+                  id: "area-8",
+                  "inkscape:connector-curvature": "0",
+                  "sodipodi:nodetypes": "ccccccc",
+                  "inkscape:label": "#path1554"
+                }
+              }),
+              _vm._v(" "),
+              _c("rect", {
+                staticStyle: {
+                  fill: "#ffffff",
+                  "stroke-width": "0.26499999",
+                  "stroke-miterlimit": "4",
+                  "stroke-dasharray": "none",
+                  stroke: "url(#linearGradient1562)"
+                },
+                attrs: {
+                  id: "rect1556",
+                  width: "10.423508",
+                  height: "9.3544121",
+                  x: "185.48505",
+                  y: "109.91135"
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "text",
+                {
+                  staticStyle: {
+                    "font-style": "normal",
+                    "font-weight": "normal",
+                    "font-size": "4.93888855px",
+                    "line-height": "1.25",
+                    "font-family": "sans-serif",
+                    "letter-spacing": "0px",
+                    "word-spacing": "0px",
+                    fill: "#000000",
+                    "fill-opacity": "1",
+                    stroke: "none",
+                    "stroke-width": "0.26458332"
+                  },
+                  attrs: {
+                    "xml:space": "preserve",
+                    x: "188.66539",
+                    y: "116.34193",
+                    id: "text1566"
+                  }
+                },
+                [
+                  _c(
+                    "tspan",
+                    {
+                      staticStyle: { "stroke-width": "0.26458332" },
+                      attrs: {
+                        "sodipodi:role": "line",
+                        id: "tspan1564",
+                        x: "188.66539",
+                        y: "116.34193"
+                      }
+                    },
+                    [_vm._v("O")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c("rect", {
+                staticStyle: {
+                  fill: "#ffffff",
+                  "stroke-width": "0.26499999",
+                  "stroke-miterlimit": "4",
+                  "stroke-dasharray": "none",
+                  stroke: "url(#linearGradient1574)"
+                },
+                attrs: {
+                  id: "area-4",
+                  width: "75.370003",
+                  height: "36.615925",
+                  x: "4.8108511",
+                  y: "143.32002",
+                  "inkscape:label": "#rect1568"
+                }
+              }),
+              _vm._v(" "),
+              _c("rect", {
+                staticStyle: {
+                  fill: "#ffffff",
+                  stroke: "url(#linearGradient1582)",
+                  "stroke-width": "0.27856824",
+                  "stroke-miterlimit": "4",
+                  "stroke-dasharray": "none"
+                },
+                attrs: {
+                  id: "area-6",
+                  width: "32.191959",
+                  height: "28.33057",
+                  x: "47.187088",
+                  y: "187.41949",
+                  "inkscape:label": "#rect1576"
+                }
+              }),
+              _vm._v(" "),
+              _c("rect", {
+                staticStyle: {
+                  fill: "#ffffff",
+                  stroke: "url(#linearGradient1582-3)",
+                  "stroke-width": "0.28473398",
+                  "stroke-miterlimit": "4",
+                  "stroke-dasharray": "none"
+                },
+                attrs: {
+                  id: "area-5",
+                  width: "33.656227",
+                  height: "28.310837",
+                  x: "5.2807231",
+                  y: "187.69662",
+                  "inkscape:label": "#rect1576-7"
+                }
+              }),
+              _vm._v(" "),
+              _c("rect", {
+                staticStyle: {
+                  fill: "#ffffff",
+                  stroke: "url(#linearGradient1612)",
+                  "stroke-width": "0.25681669",
+                  "stroke-miterlimit": "4",
+                  "stroke-dasharray": "none"
+                },
+                attrs: {
+                  id: "area-1",
+                  width: "74.04184",
+                  height: "72.43821",
+                  x: "5.8812103",
+                  y: "220.05457",
+                  "inkscape:label": "#rect1606"
+                }
+              }),
+              _vm._v(" "),
+              _c("rect", {
+                staticStyle: {
+                  fill: "#ffffff",
+                  "stroke-width": "0.26499999",
+                  "stroke-miterlimit": "4",
+                  "stroke-dasharray": "none",
+                  stroke: "url(#linearGradient1620)"
+                },
+                attrs: {
+                  id: "area-3",
+                  width: "39.021351",
+                  height: "30.735994",
+                  x: "87.12986",
+                  y: "221.89726",
+                  "inkscape:label": "#rect1614"
+                }
+              }),
+              _vm._v(" "),
+              _c("rect", {
+                staticStyle: {
+                  fill: "#ffffff",
+                  stroke: "url(#linearGradient1620-5)",
+                  "stroke-width": "0.26499999",
+                  "stroke-miterlimit": "4",
+                  "stroke-dasharray": "none"
+                },
+                attrs: {
+                  id: "area-7",
+                  width: "39.021351",
+                  height: "30.735996",
+                  x: "131.49661",
+                  y: "221.76363",
+                  "inkscape:label": "#rect1614-5"
+                }
+              }),
+              _vm._v(" "),
+              _c("path", {
+                staticStyle: {
+                  fill: "none",
+                  stroke: "#000000",
+                  "stroke-width": "0.26072788px",
+                  "stroke-linecap": "butt",
+                  "stroke-linejoin": "miter",
+                  "stroke-opacity": "1"
+                },
+                attrs: {
+                  d:
+                    "m 174.53609,221.57342 21.63476,0.11152 v 70.59501 l -108.985353,0.18554 v -35.25112 l 87.300443,-0.18554 z",
+                  id: "area-2",
+                  "inkscape:connector-curvature": "0",
+                  "sodipodi:nodetypes": "ccccccc",
+                  "inkscape:label": "#path1644"
+                }
+              }),
+              _vm._v(" "),
+              _c("rect", {
+                staticStyle: {
+                  fill: "#ffffff",
+                  stroke: "url(#linearGradient1652)",
+                  "stroke-width": "0.15185966",
+                  "stroke-miterlimit": "4",
+                  "stroke-dasharray": "none"
+                },
+                attrs: {
+                  id: "rect1646",
+                  width: "8.9330349",
+                  height: "8.6657648",
+                  x: "123.02104",
+                  y: "207.67003"
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "text",
+                {
+                  staticStyle: {
+                    "font-style": "normal",
+                    "font-weight": "normal",
+                    "font-size": "4.93888855px",
+                    "line-height": "1.25",
+                    "font-family": "sans-serif",
+                    "letter-spacing": "0px",
+                    "word-spacing": "0px",
+                    fill: "#000000",
+                    "fill-opacity": "1",
+                    stroke: "none",
+                    "stroke-width": "0.26458332"
+                  },
+                  attrs: {
+                    "xml:space": "preserve",
+                    x: "125.1592",
+                    y: "213.81723",
+                    id: "text1656"
+                  }
+                },
+                [
+                  _c(
+                    "tspan",
+                    {
+                      staticStyle: { "stroke-width": "0.26458332" },
+                      attrs: {
+                        "sodipodi:role": "line",
+                        id: "tspan1654",
+                        x: "125.1592",
+                        y: "213.81723"
+                      }
+                    },
+                    [_vm._v("O")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c("rect", {
+                staticStyle: {
+                  fill: "#ffffff",
+                  stroke: "url(#linearGradient1652-9)",
+                  "stroke-width": "0.15185966",
+                  "stroke-miterlimit": "4",
+                  "stroke-dasharray": "none"
+                },
+                attrs: {
+                  id: "rect1646-2",
+                  width: "8.9330349",
+                  height: "8.6657648",
+                  x: "118.2102",
+                  y: "159.56689"
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "text",
+                {
+                  staticStyle: {
+                    "font-style": "normal",
+                    "font-weight": "normal",
+                    "font-size": "4.93888855px",
+                    "line-height": "1.25",
+                    "font-family": "sans-serif",
+                    "letter-spacing": "0px",
+                    "word-spacing": "0px",
+                    fill: "#000000",
+                    "fill-opacity": "1",
+                    stroke: "none",
+                    "stroke-width": "0.26458332"
+                  },
+                  attrs: {
+                    "xml:space": "preserve",
+                    x: "120.34836",
+                    y: "165.71408",
+                    id: "text1656-7"
+                  }
+                },
+                [
+                  _c(
+                    "tspan",
+                    {
+                      staticStyle: { "stroke-width": "0.26458332" },
+                      attrs: {
+                        "sodipodi:role": "line",
+                        id: "tspan1654-0",
+                        x: "120.34836",
+                        y: "165.71408"
+                      }
+                    },
+                    [_vm._v("O")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c("rect", {
+                staticStyle: {
+                  fill: "#ffffff",
+                  stroke: "url(#linearGradient1652-93)",
+                  "stroke-width": "0.15185966",
+                  "stroke-miterlimit": "4",
+                  "stroke-dasharray": "none"
+                },
+                attrs: {
+                  id: "rect1646-0",
+                  width: "8.9330349",
+                  height: "8.6657648",
+                  x: "137.55043",
+                  y: "147.38547"
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "text",
+                {
+                  staticStyle: {
+                    "font-style": "normal",
+                    "font-weight": "normal",
+                    "font-size": "4.93888855px",
+                    "line-height": "1.25",
+                    "font-family": "sans-serif",
+                    "letter-spacing": "0px",
+                    "word-spacing": "0px",
+                    fill: "#000000",
+                    "fill-opacity": "1",
+                    stroke: "none",
+                    "stroke-width": "0.26458332"
+                  },
+                  attrs: {
+                    "xml:space": "preserve",
+                    x: "139.6886",
+                    y: "153.53265",
+                    id: "text1656-6"
+                  }
+                },
+                [
+                  _c(
+                    "tspan",
+                    {
+                      staticStyle: { "stroke-width": "0.26458332" },
+                      attrs: {
+                        "sodipodi:role": "line",
+                        id: "tspan1654-2",
+                        x: "139.6886",
+                        y: "153.53265"
+                      }
+                    },
+                    [_vm._v("O")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c("rect", {
+                staticStyle: {
+                  fill: "#ffffff",
+                  stroke: "url(#linearGradient1652-6)",
+                  "stroke-width": "0.15185966",
+                  "stroke-miterlimit": "4",
+                  "stroke-dasharray": "none"
+                },
+                attrs: {
+                  id: "rect1646-8",
+                  width: "8.9330349",
+                  height: "8.6657648",
+                  x: "62.350864",
+                  y: "171.3429"
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "text",
+                {
+                  staticStyle: {
+                    "font-style": "normal",
+                    "font-weight": "normal",
+                    "font-size": "4.93888855px",
+                    "line-height": "1.25",
+                    "font-family": "sans-serif",
+                    "letter-spacing": "0px",
+                    "word-spacing": "0px",
+                    fill: "#000000",
+                    "fill-opacity": "1",
+                    stroke: "none",
+                    "stroke-width": "0.26458332"
+                  },
+                  attrs: {
+                    "xml:space": "preserve",
+                    x: "64.489029",
+                    y: "177.49008",
+                    id: "text1656-79"
+                  }
+                },
+                [
+                  _c(
+                    "tspan",
+                    {
+                      staticStyle: { "stroke-width": "0.26458332" },
+                      attrs: {
+                        "sodipodi:role": "line",
+                        id: "tspan1654-20",
+                        x: "64.489029",
+                        y: "177.49008"
+                      }
+                    },
+                    [_vm._v("O")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c("rect", {
+                staticStyle: {
+                  fill: "#ffffff",
+                  stroke: "url(#linearGradient1652-2)",
+                  "stroke-width": "0.15185966",
+                  "stroke-miterlimit": "4",
+                  "stroke-dasharray": "none"
+                },
+                attrs: {
+                  id: "rect1646-7",
+                  width: "8.9330349",
+                  height: "8.6657648",
+                  x: "47.116501",
+                  y: "219.95367"
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "text",
+                {
+                  staticStyle: {
+                    "font-style": "normal",
+                    "font-weight": "normal",
+                    "font-size": "4.93888855px",
+                    "line-height": "1.25",
+                    "font-family": "sans-serif",
+                    "letter-spacing": "0px",
+                    "word-spacing": "0px",
+                    fill: "#000000",
+                    "fill-opacity": "1",
+                    stroke: "none",
+                    "stroke-width": "0.26458332"
+                  },
+                  attrs: {
+                    "xml:space": "preserve",
+                    x: "49.254662",
+                    y: "226.10086",
+                    id: "text1656-5"
+                  }
+                },
+                [
+                  _c(
+                    "tspan",
+                    {
+                      staticStyle: { "stroke-width": "0.26458332" },
+                      attrs: {
+                        "sodipodi:role": "line",
+                        id: "tspan1654-9",
+                        x: "49.254662",
+                        y: "226.10086"
+                      }
+                    },
+                    [_vm._v("O")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c("rect", {
+                staticStyle: {
+                  fill: "#ffffff",
+                  stroke: "url(#linearGradient1652-22)",
+                  "stroke-width": "0.15185966",
+                  "stroke-miterlimit": "4",
+                  "stroke-dasharray": "none"
+                },
+                attrs: {
+                  id: "rect1646-9",
+                  width: "8.9330349",
+                  height: "8.6657648",
+                  x: "55.936398",
+                  y: "187.35216"
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "text",
+                {
+                  staticStyle: {
+                    "font-style": "normal",
+                    "font-weight": "normal",
+                    "font-size": "4.93888855px",
+                    "line-height": "1.25",
+                    "font-family": "sans-serif",
+                    "letter-spacing": "0px",
+                    "word-spacing": "0px",
+                    fill: "#000000",
+                    "fill-opacity": "1",
+                    stroke: "none",
+                    "stroke-width": "0.26458332"
+                  },
+                  attrs: {
+                    "xml:space": "preserve",
+                    x: "58.074558",
+                    y: "193.49936",
+                    id: "text1656-73"
+                  }
+                },
+                [
+                  _c(
+                    "tspan",
+                    {
+                      staticStyle: { "stroke-width": "0.26458332" },
+                      attrs: {
+                        "sodipodi:role": "line",
+                        id: "tspan1654-6",
+                        x: "58.074558",
+                        y: "193.49936"
+                      }
+                    },
+                    [_vm._v("O")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c("rect", {
+                staticStyle: {
+                  fill: "#ffffff",
+                  stroke: "url(#linearGradient1652-1)",
+                  "stroke-width": "0.15185966",
+                  "stroke-miterlimit": "4",
+                  "stroke-dasharray": "none"
+                },
+                attrs: {
+                  id: "rect1646-93",
+                  width: "8.9330349",
+                  height: "8.6657648",
+                  x: "11.302384",
+                  y: "187.88132"
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "text",
+                {
+                  staticStyle: {
+                    "font-style": "normal",
+                    "font-weight": "normal",
+                    "font-size": "4.93888855px",
+                    "line-height": "1.25",
+                    "font-family": "sans-serif",
+                    "letter-spacing": "0px",
+                    "word-spacing": "0px",
+                    fill: "#000000",
+                    "fill-opacity": "1",
+                    stroke: "none",
+                    "stroke-width": "0.26458332"
+                  },
+                  attrs: {
+                    "xml:space": "preserve",
+                    x: "13.440545",
+                    y: "194.02852",
+                    id: "text1656-1"
+                  }
+                },
+                [
+                  _c(
+                    "tspan",
+                    {
+                      staticStyle: { "stroke-width": "0.26458332" },
+                      attrs: {
+                        "sodipodi:role": "line",
+                        id: "tspan1654-94",
+                        x: "13.440545",
+                        y: "194.02852"
+                      }
+                    },
+                    [_vm._v("O")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c("rect", {
+                staticStyle: {
+                  fill: "#ffffff",
+                  stroke: "url(#linearGradient1652-7)",
+                  "stroke-width": "0.15185966",
+                  "stroke-miterlimit": "4",
+                  "stroke-dasharray": "none"
+                },
+                attrs: {
+                  id: "rect1646-4",
+                  width: "8.9330349",
+                  height: "8.6657648",
+                  x: "92.819588",
+                  y: "222.36447"
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "text",
+                {
+                  staticStyle: {
+                    "font-style": "normal",
+                    "font-weight": "normal",
+                    "font-size": "4.93888855px",
+                    "line-height": "1.25",
+                    "font-family": "sans-serif",
+                    "letter-spacing": "0px",
+                    "word-spacing": "0px",
+                    fill: "#000000",
+                    "fill-opacity": "1",
+                    stroke: "none",
+                    "stroke-width": "0.26458332"
+                  },
+                  attrs: {
+                    "xml:space": "preserve",
+                    x: "94.957748",
+                    y: "228.51167",
+                    id: "text1656-50"
+                  }
+                },
+                [
+                  _c(
+                    "tspan",
+                    {
+                      staticStyle: { "stroke-width": "0.26458332" },
+                      attrs: {
+                        "sodipodi:role": "line",
+                        id: "tspan1654-3",
+                        x: "94.957748",
+                        y: "228.51167"
+                      }
+                    },
+                    [_vm._v("O")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c("rect", {
+                staticStyle: {
+                  fill: "#ffffff",
+                  stroke: "url(#linearGradient1652-61)",
+                  "stroke-width": "0.15185966",
+                  "stroke-miterlimit": "4",
+                  "stroke-dasharray": "none"
+                },
+                attrs: {
+                  id: "rect1646-6",
+                  width: "8.9330349",
+                  height: "8.6657648",
+                  x: "158.5679",
+                  y: "257.1149"
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "text",
+                {
+                  staticStyle: {
+                    "font-style": "normal",
+                    "font-weight": "normal",
+                    "font-size": "4.93888855px",
+                    "line-height": "1.25",
+                    "font-family": "sans-serif",
+                    "letter-spacing": "0px",
+                    "word-spacing": "0px",
+                    fill: "#000000",
+                    "fill-opacity": "1",
+                    stroke: "none",
+                    "stroke-width": "0.26458332"
+                  },
+                  attrs: {
+                    "xml:space": "preserve",
+                    x: "160.70605",
+                    y: "263.26208",
+                    id: "text1656-3"
+                  }
+                },
+                [
+                  _c(
+                    "tspan",
+                    {
+                      staticStyle: { "stroke-width": "0.26458332" },
+                      attrs: {
+                        "sodipodi:role": "line",
+                        id: "tspan1654-206",
+                        x: "160.70605",
+                        y: "263.26208"
+                      }
+                    },
+                    [_vm._v("O")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c("rect", {
+                staticStyle: {
+                  fill: "#ffffff",
+                  stroke: "url(#linearGradient1652-15)",
+                  "stroke-width": "0.15185966",
+                  "stroke-miterlimit": "4",
+                  "stroke-dasharray": "none"
+                },
+                attrs: {
+                  id: "rect1646-47",
+                  width: "8.9330349",
+                  height: "8.6657648",
+                  x: "101.10494",
+                  y: "257.12027"
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "text",
+                {
+                  staticStyle: {
+                    "font-style": "normal",
+                    "font-weight": "normal",
+                    "font-size": "4.93888855px",
+                    "line-height": "1.25",
+                    "font-family": "sans-serif",
+                    "letter-spacing": "0px",
+                    "word-spacing": "0px",
+                    fill: "#000000",
+                    "fill-opacity": "1",
+                    stroke: "none",
+                    "stroke-width": "0.26458332"
+                  },
+                  attrs: {
+                    "xml:space": "preserve",
+                    x: "103.2431",
+                    y: "263.26746",
+                    id: "text1656-65"
+                  }
+                },
+                [
+                  _c(
+                    "tspan",
+                    {
+                      staticStyle: { "stroke-width": "0.26458332" },
+                      attrs: {
+                        "sodipodi:role": "line",
+                        id: "tspan1654-69",
+                        x: "103.2431",
+                        y: "263.26746"
+                      }
+                    },
+                    [_vm._v("O")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c("rect", {
+                staticStyle: {
+                  fill: "#ffffff",
+                  stroke: "url(#linearGradient1652-3)",
+                  "stroke-width": "0.15185966",
+                  "stroke-miterlimit": "4",
+                  "stroke-dasharray": "none"
+                },
+                attrs: {
+                  id: "rect1646-45",
+                  width: "8.9330349",
+                  height: "8.6657648",
+                  x: "148.41165",
+                  y: "222.10258"
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "text",
+                {
+                  staticStyle: {
+                    "font-style": "normal",
+                    "font-weight": "normal",
+                    "font-size": "4.93888855px",
+                    "line-height": "1.25",
+                    "font-family": "sans-serif",
+                    "letter-spacing": "0px",
+                    "word-spacing": "0px",
+                    fill: "#000000",
+                    "fill-opacity": "1",
+                    stroke: "none",
+                    "stroke-width": "0.26458332"
+                  },
+                  attrs: {
+                    "xml:space": "preserve",
+                    x: "150.54982",
+                    y: "228.24977",
+                    id: "text1656-2"
+                  }
+                },
+                [
+                  _c(
+                    "tspan",
+                    {
+                      staticStyle: { "stroke-width": "0.26458332" },
+                      attrs: {
+                        "sodipodi:role": "line",
+                        id: "tspan1654-5",
+                        x: "150.54982",
+                        y: "228.24977"
+                      }
+                    },
+                    [_vm._v("O")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c("rect", {
+                staticStyle: {
+                  fill: "#ffffff",
+                  stroke: "url(#linearGradient1652-4)",
+                  "stroke-width": "0.15185966",
+                  "stroke-miterlimit": "4",
+                  "stroke-dasharray": "none"
+                },
+                attrs: {
+                  id: "rect1646-44",
+                  width: "8.9330349",
+                  height: "8.6657648",
+                  x: "182.62215",
+                  y: "187.0849"
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "text",
+                {
+                  staticStyle: {
+                    "font-style": "normal",
+                    "font-weight": "normal",
+                    "font-size": "4.93888855px",
+                    "line-height": "1.25",
+                    "font-family": "sans-serif",
+                    "letter-spacing": "0px",
+                    "word-spacing": "0px",
+                    fill: "#000000",
+                    "fill-opacity": "1",
+                    stroke: "none",
+                    "stroke-width": "0.26458332"
+                  },
+                  attrs: {
+                    "xml:space": "preserve",
+                    x: "184.76031",
+                    y: "193.23209",
+                    id: "text1656-30"
+                  }
+                },
+                [
+                  _c(
+                    "tspan",
+                    {
+                      staticStyle: { "stroke-width": "0.26458332" },
+                      attrs: {
+                        "sodipodi:role": "line",
+                        id: "tspan1654-7",
+                        x: "184.76031",
+                        y: "193.23209"
+                      }
+                    },
+                    [_vm._v("O")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c("rect", {
+                staticStyle: {
+                  fill: "#ffffff",
+                  stroke: "url(#linearGradient1652-8)",
+                  "stroke-width": "0.15185966",
+                  "stroke-miterlimit": "4",
+                  "stroke-dasharray": "none"
+                },
+                attrs: {
+                  id: "rect1646-88",
+                  width: "8.9330349",
+                  height: "8.6657648",
+                  x: "92.552322",
+                  y: "126.23207"
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "text",
+                {
+                  staticStyle: {
+                    "font-style": "normal",
+                    "font-weight": "normal",
+                    "font-size": "4.93888855px",
+                    "line-height": "1.25",
+                    "font-family": "sans-serif",
+                    "letter-spacing": "0px",
+                    "word-spacing": "0px",
+                    fill: "#000000",
+                    "fill-opacity": "1",
+                    stroke: "none",
+                    "stroke-width": "0.26458332"
+                  },
+                  attrs: {
+                    "xml:space": "preserve",
+                    x: "94.690483",
+                    y: "132.37921",
+                    id: "text1656-4"
+                  }
+                },
+                [
+                  _c(
+                    "tspan",
+                    {
+                      staticStyle: { "stroke-width": "0.26458332" },
+                      attrs: {
+                        "sodipodi:role": "line",
+                        id: "tspan1654-31",
+                        x: "94.690483",
+                        y: "132.37921"
+                      }
+                    },
+                    [_vm._v("O")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c("rect", {
+                staticStyle: {
+                  fill: "#ffffff",
+                  stroke: "url(#linearGradient1652-49)",
+                  "stroke-width": "0.15185966",
+                  "stroke-miterlimit": "4",
+                  "stroke-dasharray": "none"
+                },
+                attrs: {
+                  id: "rect1646-06",
+                  width: "8.9330349",
+                  height: "8.6657648",
+                  x: "174.58792",
+                  y: "230.39331"
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "text",
+                {
+                  staticStyle: {
+                    "font-style": "normal",
+                    "font-weight": "normal",
+                    "font-size": "4.93888855px",
+                    "line-height": "1.25",
+                    "font-family": "sans-serif",
+                    "letter-spacing": "0px",
+                    "word-spacing": "0px",
+                    fill: "#000000",
+                    "fill-opacity": "1",
+                    stroke: "none",
+                    "stroke-width": "0.26458332"
+                  },
+                  attrs: {
+                    "xml:space": "preserve",
+                    x: "176.72609",
+                    y: "236.54051",
+                    id: "text1656-8"
+                  }
+                },
+                [
+                  _c(
+                    "tspan",
+                    {
+                      staticStyle: { "stroke-width": "0.26458332" },
+                      attrs: {
+                        "sodipodi:role": "line",
+                        id: "tspan1654-92",
+                        x: "176.72609",
+                        y: "236.54051"
+                      }
+                    },
+                    [_vm._v("O")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "text",
+                {
+                  staticStyle: {
+                    "font-style": "normal",
+                    "font-weight": "normal",
+                    "font-size": "4.93888855px",
+                    "line-height": "1.25",
+                    "font-family": "sans-serif",
+                    "letter-spacing": "0px",
+                    "word-spacing": "0px",
+                    fill: "#000000",
+                    "fill-opacity": "1",
+                    stroke: "none",
+                    "stroke-width": "0.26458332"
+                  },
+                  attrs: {
+                    "xml:space": "preserve",
+                    x: "20.579754",
+                    y: "254.23688",
+                    id: "text-1",
+                    "inkscape:label": "#text1975"
+                  }
+                },
+                [
+                  _c(
+                    "tspan",
+                    {
+                      staticStyle: { "stroke-width": "0.26458332" },
+                      attrs: {
+                        "sodipodi:role": "line",
+                        id: "tspan1973",
+                        x: "20.579754",
+                        y: "254.23688"
+                      }
+                    },
+                    [_vm._v("Area 1")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "text",
+                {
+                  staticStyle: {
+                    "font-style": "normal",
+                    "font-weight": "normal",
+                    "font-size": "4.93888855px",
+                    "line-height": "1.25",
+                    "font-family": "sans-serif",
+                    "letter-spacing": "0px",
+                    "word-spacing": "0px",
+                    fill: "#000000",
+                    "fill-opacity": "1",
+                    stroke: "none",
+                    "stroke-width": "0.26458332"
+                  },
+                  attrs: {
+                    "xml:space": "preserve",
+                    x: "122.40945",
+                    y: "279.62747",
+                    id: "text-2",
+                    "inkscape:label": "#text1979"
+                  }
+                },
+                [
+                  _c(
+                    "tspan",
+                    {
+                      staticStyle: { "stroke-width": "0.26458332" },
+                      attrs: {
+                        "sodipodi:role": "line",
+                        id: "tspan1977",
+                        x: "122.40945",
+                        y: "279.62747"
+                      }
+                    },
+                    [_vm._v("Area -2")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "text",
+                {
+                  staticStyle: {
+                    "font-style": "normal",
+                    "font-weight": "normal",
+                    "font-size": "4.93888855px",
+                    "line-height": "1.25",
+                    "font-family": "sans-serif",
+                    "letter-spacing": "0px",
+                    "word-spacing": "0px",
+                    fill: "#000000",
+                    "fill-opacity": "1",
+                    stroke: "none",
+                    "stroke-width": "0.26458332"
+                  },
+                  attrs: {
+                    "xml:space": "preserve",
+                    x: "98.355186",
+                    y: "239.26978",
+                    id: "text-3",
+                    "inkscape:label": "#text1983"
+                  }
+                },
+                [
+                  _c(
+                    "tspan",
+                    {
+                      staticStyle: { "stroke-width": "0.26458332" },
+                      attrs: {
+                        "sodipodi:role": "line",
+                        id: "tspan1981",
+                        x: "98.355186",
+                        y: "239.26978"
+                      }
+                    },
+                    [_vm._v("Area 3")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "text",
+                {
+                  staticStyle: {
+                    "font-style": "normal",
+                    "font-weight": "normal",
+                    "font-size": "4.93888855px",
+                    "line-height": "1.25",
+                    "font-family": "sans-serif",
+                    "letter-spacing": "0px",
+                    "word-spacing": "0px",
+                    fill: "#000000",
+                    "fill-opacity": "1",
+                    stroke: "none",
+                    "stroke-width": "0.26458332"
+                  },
+                  attrs: {
+                    "xml:space": "preserve",
+                    x: "26.192413",
+                    y: "159.62346",
+                    id: "text-4",
+                    "inkscape:label": "#text1987"
+                  }
+                },
+                [
+                  _c(
+                    "tspan",
+                    {
+                      staticStyle: { "stroke-width": "0.26458332" },
+                      attrs: {
+                        "sodipodi:role": "line",
+                        id: "tspan1985",
+                        x: "26.192413",
+                        y: "159.62346"
+                      }
+                    },
+                    [_vm._v("Area 4")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "text",
+                {
+                  staticStyle: {
+                    "font-style": "normal",
+                    "font-weight": "normal",
+                    "font-size": "4.93888855px",
+                    "line-height": "1.25",
+                    "font-family": "sans-serif",
+                    "letter-spacing": "0px",
+                    "word-spacing": "0px",
+                    fill: "#000000",
+                    "fill-opacity": "1",
+                    stroke: "none",
+                    "stroke-width": "0.26458332"
+                  },
+                  attrs: {
+                    "xml:space": "preserve",
+                    x: "16.30344",
+                    y: "203.45567",
+                    id: "text-5",
+                    "inkscape:label": "#text1991"
+                  }
+                },
+                [
+                  _c(
+                    "tspan",
+                    {
+                      staticStyle: { "stroke-width": "0.26458332" },
+                      attrs: {
+                        "sodipodi:role": "line",
+                        id: "tspan1989",
+                        x: "16.30344",
+                        y: "203.45567"
+                      }
+                    },
+                    [_vm._v("Area 5")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "text",
+                {
+                  staticStyle: {
+                    "font-style": "normal",
+                    "font-weight": "normal",
+                    "font-size": "4.93888855px",
+                    "line-height": "1.25",
+                    "font-family": "sans-serif",
+                    "letter-spacing": "0px",
+                    "word-spacing": "0px",
+                    fill: "#000000",
+                    "fill-opacity": "1",
+                    stroke: "none",
+                    "stroke-width": "0.26458332"
+                  },
+                  attrs: {
+                    "xml:space": "preserve",
+                    x: "55.057518",
+                    y: "203.72293",
+                    id: "text-6",
+                    "inkscape:label": "#text1995"
+                  }
+                },
+                [
+                  _c(
+                    "tspan",
+                    {
+                      staticStyle: { "stroke-width": "0.26458332" },
+                      attrs: {
+                        "sodipodi:role": "line",
+                        id: "tspan1993",
+                        x: "55.057518",
+                        y: "203.72293"
+                      }
+                    },
+                    [_vm._v("Area 6")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "text",
+                {
+                  staticStyle: {
+                    "font-style": "normal",
+                    "font-weight": "normal",
+                    "font-size": "4.93888855px",
+                    "line-height": "1.25",
+                    "font-family": "sans-serif",
+                    "letter-spacing": "0px",
+                    "word-spacing": "0px",
+                    fill: "#000000",
+                    "fill-opacity": "1",
+                    stroke: "none",
+                    "stroke-width": "0.26458332"
+                  },
+                  attrs: {
+                    "xml:space": "preserve",
+                    x: "140.85104",
+                    y: "237.93343",
+                    id: "text-7",
+                    "inkscape:label": "#text1999"
+                  }
+                },
+                [
+                  _c(
+                    "tspan",
+                    {
+                      staticStyle: { "stroke-width": "0.26458332" },
+                      attrs: {
+                        "sodipodi:role": "line",
+                        id: "tspan1997",
+                        x: "140.85104",
+                        y: "237.93343"
+                      }
+                    },
+                    [_vm._v("Area 7")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "text",
+                {
+                  staticStyle: {
+                    "font-style": "normal",
+                    "font-weight": "normal",
+                    "font-size": "4.93888855px",
+                    "line-height": "1.25",
+                    "font-family": "sans-serif",
+                    "letter-spacing": "0px",
+                    "word-spacing": "0px",
+                    fill: "#000000",
+                    "fill-opacity": "1",
+                    stroke: "none",
+                    "stroke-width": "0.26458332"
+                  },
+                  attrs: {
+                    "xml:space": "preserve",
+                    x: "98.087914",
+                    y: "195.97212",
+                    id: "text-8",
+                    "inkscape:label": "#text2003"
+                  }
+                },
+                [
+                  _c(
+                    "tspan",
+                    {
+                      staticStyle: { "stroke-width": "0.26458332" },
+                      attrs: {
+                        "sodipodi:role": "line",
+                        id: "tspan2001",
+                        x: "98.087914",
+                        y: "195.97212"
+                      }
+                    },
+                    [_vm._v("Area 8")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "text",
+                {
+                  staticStyle: {
+                    "font-style": "normal",
+                    "font-weight": "normal",
+                    "font-size": "4.93888855px",
+                    "line-height": "1.25",
+                    "font-family": "sans-serif",
+                    "letter-spacing": "0px",
+                    "word-spacing": "0px",
+                    fill: "#000000",
+                    "fill-opacity": "1",
+                    stroke: "none",
+                    "stroke-width": "0.26458332"
+                  },
+                  attrs: {
+                    "xml:space": "preserve",
+                    x: "176.66515",
+                    y: "203.45567",
+                    id: "text-9",
+                    "inkscape:label": "#text2007"
+                  }
+                },
+                [
+                  _c(
+                    "tspan",
+                    {
+                      staticStyle: { "stroke-width": "0.26458332" },
+                      attrs: {
+                        "sodipodi:role": "line",
+                        id: "tspan2005",
+                        x: "176.66515",
+                        y: "203.45567"
+                      }
+                    },
+                    [_vm._v("Area 9")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "text",
+                {
+                  staticStyle: {
+                    "font-style": "normal",
+                    "font-weight": "normal",
+                    "font-size": "4.93888855px",
+                    "line-height": "1.25",
+                    "font-family": "sans-serif",
+                    "letter-spacing": "0px",
+                    "word-spacing": "0px",
+                    fill: "#000000",
+                    "fill-opacity": "1",
+                    stroke: "none",
+                    "stroke-width": "0.26458332"
+                  },
+                  attrs: {
+                    "xml:space": "preserve",
+                    x: "140.85104",
+                    y: "116.59306",
+                    id: "text-10",
+                    "inkscape:label": "#text2011"
+                  }
+                },
+                [
+                  _c(
+                    "tspan",
+                    {
+                      staticStyle: { "stroke-width": "0.26458332" },
+                      attrs: {
+                        "sodipodi:role": "line",
+                        id: "tspan2009",
+                        x: "140.85104",
+                        y: "116.59306"
+                      }
+                    },
+                    [_vm._v("Area 10")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "text",
+                {
+                  staticStyle: {
+                    "font-style": "normal",
+                    "font-weight": "normal",
+                    "font-size": "4.93888855px",
+                    "line-height": "1.25",
+                    "font-family": "sans-serif",
+                    "letter-spacing": "0px",
+                    "word-spacing": "0px",
+                    fill: "#000000",
+                    "fill-opacity": "1",
+                    stroke: "none",
+                    "stroke-width": "0.26458332"
+                  },
+                  attrs: {
+                    "xml:space": "preserve",
+                    x: "146.99825",
+                    y: "163.36523",
+                    id: "text-11",
+                    "inkscape:label": "#text2015"
+                  }
+                },
+                [
+                  _c(
+                    "tspan",
+                    {
+                      staticStyle: { "stroke-width": "0.26458332" },
+                      attrs: {
+                        "sodipodi:role": "line",
+                        id: "tspan2013",
+                        x: "146.99825",
+                        y: "163.36523"
+                      }
+                    },
+                    [_vm._v("Area 11")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "text",
+                {
+                  staticStyle: {
+                    "font-style": "normal",
+                    "font-weight": "normal",
+                    "font-size": "4.93888855px",
+                    "line-height": "1.25",
+                    "font-family": "sans-serif",
+                    "letter-spacing": "0px",
+                    "word-spacing": "0px",
+                    fill: "#000000",
+                    "fill-opacity": "1",
+                    stroke: "none",
+                    "stroke-width": "0.26458332"
+                  },
+                  attrs: {
+                    "xml:space": "preserve",
+                    x: "90.069832",
+                    y: "117.92941",
+                    id: "text-12",
+                    "inkscape:label": "#text2019"
+                  }
+                },
+                [
+                  _c(
+                    "tspan",
+                    {
+                      staticStyle: { "stroke-width": "0.26458332" },
+                      attrs: {
+                        "sodipodi:role": "line",
+                        id: "tspan2017",
+                        x: "90.069832",
+                        y: "117.92941"
+                      }
+                    },
+                    [_vm._v("Area 12")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "text",
+                {
+                  staticStyle: {
+                    "font-style": "normal",
+                    "font-weight": "normal",
+                    "font-size": "4.93888855px",
+                    "line-height": "1.25",
+                    "font-family": "sans-serif",
+                    "letter-spacing": "0px",
+                    "word-spacing": "0px",
+                    fill: "#000000",
+                    "fill-opacity": "1",
+                    stroke: "none",
+                    "stroke-width": "0.26458332"
+                  },
+                  attrs: {
+                    "xml:space": "preserve",
+                    x: "10.690781",
+                    y: "121.40392",
+                    id: "text-13",
+                    "inkscape:label": "#text2023"
+                  }
+                },
+                [
+                  _c(
+                    "tspan",
+                    {
+                      staticStyle: { "stroke-width": "0.26458332" },
+                      attrs: {
+                        "sodipodi:role": "line",
+                        id: "tspan2021",
+                        x: "10.690781",
+                        y: "121.40392"
+                      }
+                    },
+                    [_vm._v("Area 13")]
                   )
                 ]
               )
@@ -79955,7 +83353,8 @@ Vue.component('create-level-dialog', __webpack_require__(/*! ./components/admin/
 Vue.component('create-area-dialog', __webpack_require__(/*! ./components/admin/CreateAreaForm.vue */ "./resources/js/components/admin/CreateAreaForm.vue").default);
 Vue.component('admin-login', __webpack_require__(/*! ./components/admin/AdminLogin.vue */ "./resources/js/components/admin/AdminLogin.vue").default);
 Vue.component('building-list', __webpack_require__(/*! ./components/BuildingList.vue */ "./resources/js/components/BuildingList.vue").default);
-Vue.component('level-list', __webpack_require__(/*! ./components/LevelList.vue */ "./resources/js/components/LevelList.vue").default); //--------------------
+Vue.component('level-list', __webpack_require__(/*! ./components/LevelList.vue */ "./resources/js/components/LevelList.vue").default);
+Vue.component('map-1', __webpack_require__(/*! ./components/maps/map-1.vue */ "./resources/js/components/maps/map-1.vue").default); //--------------------
 
 var app = new Vue({
   el: '#app'
@@ -81003,6 +84402,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_map_22_vue_vue_type_template_id_4c17fddc___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_map_22_vue_vue_type_template_id_4c17fddc___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/maps/map-1.vue":
+/*!************************************************!*\
+  !*** ./resources/js/components/maps/map-1.vue ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _map_1_vue_vue_type_template_id_5e335f13___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./map-1.vue?vue&type=template&id=5e335f13& */ "./resources/js/components/maps/map-1.vue?vue&type=template&id=5e335f13&");
+/* harmony import */ var _map_1_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./map-1.vue?vue&type=script&lang=js& */ "./resources/js/components/maps/map-1.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _map_1_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _map_1_vue_vue_type_template_id_5e335f13___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _map_1_vue_vue_type_template_id_5e335f13___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/maps/map-1.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/maps/map-1.vue?vue&type=script&lang=js&":
+/*!*************************************************************************!*\
+  !*** ./resources/js/components/maps/map-1.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_map_1_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./map-1.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/maps/map-1.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_map_1_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/maps/map-1.vue?vue&type=template&id=5e335f13&":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/components/maps/map-1.vue?vue&type=template&id=5e335f13& ***!
+  \*******************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_map_1_vue_vue_type_template_id_5e335f13___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./map-1.vue?vue&type=template&id=5e335f13& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/maps/map-1.vue?vue&type=template&id=5e335f13&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_map_1_vue_vue_type_template_id_5e335f13___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_map_1_vue_vue_type_template_id_5e335f13___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
