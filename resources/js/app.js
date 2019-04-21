@@ -29,6 +29,7 @@ Vue.component('create-area-dialog', require('./components/admin/CreateAreaForm.v
 Vue.component('admin-login', require('./components/admin/AdminLogin.vue').default);
 Vue.component('building-list', require('./components/BuildingList.vue').default);
 Vue.component('level-list', require('./components/LevelList.vue').default);
+Vue.component('map404', require('./components/404-map.vue').default);
 
 
 

@@ -19,6 +19,6 @@ class AdminAuth
         if($user=Sentinel::check()){
             return $next($request);
         }
-        return redirect("/");
+        return redirect("/admin");
     }
 }
