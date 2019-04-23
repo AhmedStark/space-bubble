@@ -45,7 +45,7 @@ const axios = require('axios');
 export default {
     props:{
         navBreadCrumbs:{default:function () {
-            return [{text:'Buildings',href:"/big-map","disabled":false}]
+            return [{text:'Buildings',href:"/","disabled":false}]
         },type:Array    }
     },
     data:function(){

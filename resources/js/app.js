@@ -36,6 +36,8 @@ Vue.component('map404', require('./components/404-map.vue').default);
 Vue.component('map-1', require('./components/maps/map-1.vue').default);
 
 
+
+
 //--------------------
 
 const app = new Vue({

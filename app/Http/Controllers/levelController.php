@@ -37,7 +37,12 @@ class levelController extends Controller
         if(Level::find($id)===null){
             return view("404-map");
         }
-        return view('map')->with(["id"=>$id]);
+        $level = Level::find($id);
+        $building=$level->building()->get()[0];
+        $nav=[["text"=>'Buildings',"href"=>"/","disabled"=>false]];
+        array_push($nav,['text'=>$building->name,"href"=>"/","disabled"=>true]);
+        array_push($nav,['text'=>$building->name,"href"=>"/map/".$id,"disabled"=>false]);
+        return view('map')->with(["id"=>$id,"nav"=>$nav]);
     }
     public function store(Request $request)
     {
@@ -67,7 +72,8 @@ class levelController extends Controller
 "<template>\n<area-map :id=\"id\" v>\n    <div slot=\"map\">\n\n         ".$this->saveMapFile($request)." \n\n   </div>\n</area-map></template><script>
 export default {
    props:{
-      id:{type:String}
+      id:{type:String},
+      nav:{type:Array}
    }
 }
 </script>");

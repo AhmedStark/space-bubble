@@ -5,6 +5,15 @@
     
     <div class="my-2" slot="child-map" >
         <v-container>
+
+<v-layout row>
+    <v-flex md4>    
+        <v-card>
+            <v-breadcrumbs :items="nav" large class="subtitle" divider=">" ></v-breadcrumbs>
+        </v-card>
+    </v-flex>
+
+</v-layout>
             <v-layout row wrap>
                 <v-flex xs12 lg9 md8>
                     <v-container>
@@ -59,6 +68,9 @@ const axios = require('axios');
         props:{
             v:{type:Boolean,default:false}
             ,id:{type:String},
+            nav:{type:Array,default:function () {
+                return [{"text":"sss","href":"sss","disabled":false}]
+            }}
         },
         data:function(){
             return{

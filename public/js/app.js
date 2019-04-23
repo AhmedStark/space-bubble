@@ -1818,6 +1818,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -1828,6 +1837,16 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
     },
     id: {
       type: String
+    },
+    nav: {
+      type: Array,
+      default: function _default() {
+        return [{
+          "text": "sss",
+          "href": "sss",
+          "disabled": false
+        }];
+      }
     }
   },
   data: function data() {
@@ -2156,7 +2175,7 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
       default: function _default() {
         return [{
           text: 'Buildings',
-          href: "/big-map",
+          href: "/",
           "disabled": false
         }];
       },
@@ -4405,6 +4424,9 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     id: {
       type: String
+    },
+    nav: {
+      type: Array
     }
   }
 });
@@ -8887,7 +8909,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.responsive{\n    width: 100%;\n    height: auto;\n}\n", ""]);
+exports.push([module.i, "\n.responsive{\n    width: 100%;\n    height: 105%;\n}\n", ""]);
 
 // exports
 
@@ -40363,39 +40385,45 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "v-layout",
+    "div",
     [
       _c(
-        "v-flex",
-        { attrs: { lg3: "" } },
+        "v-layout",
         [
           _c(
-            "v-card",
-            { attrs: { height: "100%", elevation: "4" } },
+            "v-flex",
+            { attrs: { lg3: "", sm12: "" } },
             [
-              _c("v-card-title", [
-                _c("h3", { staticClass: "display-1" }, [
-                  _vm._v("This map wasn't found")
-                ])
-              ]),
-              _vm._v(" "),
               _c(
-                "v-card-text",
+                "v-card",
+                { attrs: { height: "105%", elevation: "4" } },
                 [
+                  _c("v-card-title", [
+                    _c("h3", { staticClass: "display-1" }, [
+                      _vm._v("This map wasn't found")
+                    ])
+                  ]),
+                  _vm._v(" "),
                   _c(
-                    "v-btn",
-                    {
-                      attrs: {
-                        round: "",
-                        color: "green",
-                        dark: "",
-                        large: "",
-                        href: "/"
-                      }
-                    },
+                    "v-card-text",
                     [
-                      _c("v-icon", [_vm._v("home")]),
-                      _vm._v(" Go back to the main page")
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: {
+                            round: "",
+                            color: "green",
+                            dark: "",
+                            large: "",
+                            href: "/"
+                          }
+                        },
+                        [
+                          _c("v-icon", [_vm._v("home")]),
+                          _vm._v(" Go back to the main page")
+                        ],
+                        1
+                      )
                     ],
                     1
                   )
@@ -40404,17 +40432,17 @@ var render = function() {
               )
             ],
             1
-          )
+          ),
+          _vm._v(" "),
+          _c("v-flex", { attrs: { lg9: "", sm12: "" } }, [
+            _c("img", {
+              staticClass: "responsive",
+              attrs: { src: "/404-map.svg", alt: "" }
+            })
+          ])
         ],
         1
-      ),
-      _vm._v(" "),
-      _c("v-flex", { attrs: { lg9: "" } }, [
-        _c("img", {
-          staticClass: "responsive",
-          attrs: { src: "/404-map.svg", alt: "" }
-        })
-      ])
+      )
     ],
     1
   )
@@ -40449,6 +40477,31 @@ var render = function() {
         _c(
           "v-container",
           [
+            _c(
+              "v-layout",
+              { attrs: { row: "" } },
+              [
+                _c(
+                  "v-flex",
+                  { attrs: { md4: "" } },
+                  [
+                    _c(
+                      "v-card",
+                      [
+                        _c("v-breadcrumbs", {
+                          staticClass: "subtitle",
+                          attrs: { items: _vm.nav, large: "", divider: ">" }
+                        })
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
             _c(
               "v-layout",
               { attrs: { row: "", wrap: "" } },
@@ -40562,13 +40615,13 @@ var render = function() {
                                       [
                                         _c("v-flex", { attrs: { xs4: "" } }, [
                                           _vm._v(
-                                            "\n                                        Area-" +
+                                            "\n                                            Area-" +
                                               _vm._s(area.id) +
                                               " " +
                                               _vm._s(area.takenTables) +
                                               "/" +
                                               _vm._s(area.tables) +
-                                              " \n                                    "
+                                              " \n                                        "
                                           )
                                         ]),
                                         _vm._v(" "),
@@ -42997,7 +43050,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("area-map", { attrs: { id: _vm.id, v: "" } }, [
+  return _c("area-map", { attrs: { id: _vm.id, v: "", nav: _vm.nav } }, [
     _c("div", { attrs: { slot: "map" }, slot: "map" }, [
       _c(
         "svg",
