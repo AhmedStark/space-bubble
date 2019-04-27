@@ -2529,6 +2529,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2639,6 +2642,21 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
       }).then(function (response) {
         _this5.getLevels();
       }).catch(function (error) {}).then(function (response) {});
+    },
+    deleteArea: function deleteArea(index) {
+      var _this6 = this;
+
+      console.log("lol");
+      axios.post('/deleteArea', {
+        id: this.areas[index].id,
+        csrf: this.csrf
+      }).then(function (response) {
+        _this6.getAreas();
+      }).catch(function (error) {}).then(function (response) {});
+    },
+    editArea: function editArea(index) {
+      console.log('hok ::', this.areas[index].id, this.areas[index].name);
+      this.$refs.create_area_dialog.edit(this.areas[index].id, this.areas[index].name);
     }
   },
   mounted: function mounted() {
@@ -2764,14 +2782,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      id: null,
+      editMode: false,
       imageUrl: null,
       levelID: null,
-      AREA_CREATED: 1,
+      AREA_CREATED: true,
       areaName: "",
       open: false,
       loading: false,
@@ -2784,6 +2811,12 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
     };
   },
   methods: {
+    edit: function edit(id, name) {
+      this.areaName = name;
+      this.id = id;
+      this.openDialog(null);
+      this.editMode = true;
+    },
     fileChange: function fileChange(e) {
       this.selectedFile = e.target.files[0];
       this.imageUrl = URL.createObjectURL(this.selectedFile);
@@ -2795,6 +2828,8 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
       if (this.open == false) {
         this.clear();
       }
+
+      this.editMode = false;
     },
     createArea: function createArea() {
       var _this = this;
@@ -2822,6 +2857,31 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
           _this.loading = false;
         });
       }
+    },
+    editArea: function editArea() {
+      var _this2 = this;
+
+      console.log("editing area");
+      var bodyFormData = new FormData();
+      bodyFormData.set('name', this.areaName);
+      bodyFormData.set('_token', this.csrf);
+      var url = '/area/' + this.id + '/edit';
+      axios({
+        method: 'post',
+        url: url,
+        data: bodyFormData
+      }).then(function (response) {
+        _this2.response = response.data.response;
+        _this2.status = response.data.status;
+      }).catch(function (error) {}).then(function () {
+        if (_this2.status === _this2.AREA_CREATED) {
+          _this2.$emit("area_created");
+
+          _this2.openDialog(_this2.buildingID);
+        }
+
+        _this2.loading = false;
+      });
     },
     clear: function clear() {
       this.areaName = "";
@@ -40002,7 +40062,7 @@ var render = function() {
             [
               _c(
                 "v-flex",
-                { attrs: { md4: "" } },
+                { attrs: { md3: "" } },
                 [
                   _c(
                     "v-card",
@@ -40136,7 +40196,7 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "v-flex",
-                { attrs: { md5: "" } },
+                { attrs: { md4: "" } },
                 [
                   _c(
                     "v-card",
@@ -40264,7 +40324,7 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "v-flex",
-                { attrs: { md3: "" } },
+                { attrs: { md5: "" } },
                 [
                   _c(
                     "v-card",
@@ -40355,17 +40415,46 @@ var render = function() {
                                           )
                                         ]),
                                         _vm._v(" "),
-                                        _c("v-flex", [
-                                          _c(
-                                            "a",
-                                            {
-                                              attrs: {
-                                                href: "/admin/area/" + area.id
-                                              }
-                                            },
-                                            [_vm._v("edit")]
-                                          )
-                                        ])
+                                        _c(
+                                          "v-flex",
+                                          [
+                                            _c(
+                                              "a",
+                                              {
+                                                attrs: {
+                                                  href: "/admin/area/" + area.id
+                                                }
+                                              },
+                                              [_vm._v("edit")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "v-icon",
+                                              {
+                                                attrs: { color: "red" },
+                                                on: {
+                                                  click: function($event) {
+                                                    return _vm.deleteArea(index)
+                                                  }
+                                                }
+                                              },
+                                              [_vm._v("delete")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "v-icon",
+                                              {
+                                                on: {
+                                                  click: function($event) {
+                                                    return _vm.editArea(index)
+                                                  }
+                                                }
+                                              },
+                                              [_vm._v("edit")]
+                                            )
+                                          ],
+                                          1
+                                        )
                                       ],
                                       1
                                     )
@@ -40601,14 +40690,27 @@ var render = function() {
                 [_vm._v("Discard")]
               ),
               _vm._v(" "),
-              _c(
-                "v-btn",
-                {
-                  attrs: { color: "success", flat: "" },
-                  on: { click: _vm.createArea }
-                },
-                [_vm._v("Create")]
-              )
+              !_vm.editMode
+                ? _c(
+                    "v-btn",
+                    {
+                      attrs: { color: "success", flat: "" },
+                      on: { click: _vm.createArea }
+                    },
+                    [_vm._v("Create")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.editMode
+                ? _c(
+                    "v-btn",
+                    {
+                      attrs: { color: "success", flat: "" },
+                      on: { click: _vm.editArea }
+                    },
+                    [_vm._v("Edit")]
+                  )
+                : _vm._e()
             ],
             1
           )

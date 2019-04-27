@@ -22,7 +22,7 @@
             ref="create_area_dialog"
         ></create-area-dialog>
         <v-layout row wrap>
-            <v-flex md4>
+            <v-flex md3>
                 <v-card class="mx-2">
                     <v-card-text>
                         <v-progress-circular
@@ -51,7 +51,7 @@
                     </v-card-text>
                 </v-card>
             </v-flex>
-            <v-flex md5>
+            <v-flex md4>
                 <v-card class="mx-2">
                     
                     <v-card-text>
@@ -79,7 +79,7 @@
                    </v-card-text>
                 </v-card>
             </v-flex>
-            <v-flex md3>
+            <v-flex md5>
                 <v-card class="mx-2">
                     <v-card-text>
 
@@ -104,6 +104,9 @@
                                     <v-flex>tables :: {{area.tables}}</v-flex>
                                     <v-flex>
                                         <a :href="'/admin/area/'+area.id">edit</a>
+                                        <v-icon color="red" @click="deleteArea(index)">delete</v-icon>
+                                        <v-icon @click="editArea(index)" >edit</v-icon>
+             
                                     </v-flex>
                                 </v-layout> 
                         </v-card-text>
@@ -220,6 +223,22 @@ export default {
                     }).then((response) => {     
                         
                 });
+        },deleteArea(index){
+            console.log("lol");
+            axios.post('/deleteArea', {
+                        id:this.areas[index].id,
+                        csrf:this.csrf,
+                    })
+                    .then((response) => {
+                        this.getAreas();
+                    })
+                    .catch(function (error) {
+                    }).then((response) => {     
+                        
+                });
+        },editArea(index){
+            console.log('hok ::',this.areas[index].id,this.areas[index].name)
+         this.$refs.create_area_dialog.edit(this.areas[index].id,this.areas[index].name);   
         }
     },mounted(){
         this.getBuildings();

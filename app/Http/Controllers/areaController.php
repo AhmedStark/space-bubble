@@ -71,10 +71,10 @@ class areaController extends Controller
     }
 
 
-    public function update(Request $request){
+    public function update($id,Request $request){
         DB::table('areas')
-            ->where('id', $request->id)
+            ->where('id', $id)
             ->update(['name' =>$request->name]);
-
+            return ['status'=>true,'response' => "Area Edited!","data"=>$request->all()];
     }
 }

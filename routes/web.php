@@ -11,6 +11,7 @@ Route::group(['middleware' => ['AdminAuth']], function () {
     Route::get('/areas/create','areaController@store');
 
     Route::post("/level/{id}/edit",'levelController@changeMap');
+    Route::post("/area/{id}/edit",'areaController@update');
 
     Route::post('/buildings/create','buildingController@store');
     Route::get('/buildings/create','buildingController@store');

@@ -39,8 +39,15 @@
           <v-btn
             color="success"
             flat
+            v-if="!editMode"
             @click="createArea"
           >Create</v-btn>
+          <v-btn
+            color="success"
+            flat
+            v-if="editMode"
+            @click="editArea"
+          >Edit</v-btn>
         </v-card-actions>
       </v-card> 
     </v-dialog>
@@ -50,9 +57,11 @@ const axios = require('axios');
 export default {
     data(){
         return{
+            id:null,
+            editMode:false,
             imageUrl:null,
             levelID:null,
-            AREA_CREATED:1,
+            AREA_CREATED:true,
             areaName:"",
             open:false,
             loading:false,
@@ -62,6 +71,13 @@ export default {
             nameRules:[v => !!v || 'Name is required',],
         }
     },methods:{
+
+    edit:function (id,name) {
+            this.areaName = name;
+            this.id=id;
+            this.openDialog(null);
+            this.editMode = true;
+        },
         fileChange(e){
             this.selectedFile = e.target.files[0];
             this.imageUrl = URL.createObjectURL(this.selectedFile);
@@ -72,6 +88,7 @@ export default {
             if(this.open==false){
                 this.clear();
             }
+            this.editMode=false;
         },createArea(){
             if(this.areaName === ""){
                 this.response = "<p class='error--text'>area name is required</p>";
@@ -96,6 +113,34 @@ export default {
                         this.loading = false;
                 });
             }
+        },editArea(){
+            console.log("editing area");
+            var bodyFormData = new FormData();
+            
+            bodyFormData.set('name',this.areaName);
+            bodyFormData.set('_token',this.csrf);
+            var url = '/area/'+this.id+'/edit';
+            axios(
+                {
+                    method:'post',
+                    url:url,
+                    data:bodyFormData,
+                }
+            )
+                    .then( (response)=> {
+                        this.response = response.data.response;
+                        this.status = response.data.status;
+                    })
+                    .catch(function (error) {
+                    })
+                    .then( ()=> {
+                           
+                        if(this.status===this.AREA_CREATED){
+                            this.$emit("area_created");
+                            this.openDialog(this.buildingID);
+                        }
+                        this.loading = false;
+                    });
         }
         ,clear:function () {
             this.areaName = "";
