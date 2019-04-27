@@ -15,7 +15,6 @@ import Vuetify from 'vuetify';
 
 Vue.use(Vuetify);
 
-Vue.component('map-22', require('./components/map-22.vue').default);
 
 Vue.component('area-map', require('./components/AreaMap.vue').default);
 Vue.component('nav-bar', require('./components/NavBar.vue').default);
@@ -29,13 +28,6 @@ Vue.component('create-area-dialog', require('./components/admin/CreateAreaForm.v
 Vue.component('admin-login', require('./components/admin/AdminLogin.vue').default);
 Vue.component('building-list', require('./components/BuildingList.vue').default);
 Vue.component('level-list', require('./components/LevelList.vue').default);
-Vue.component('map404', require('./components/404-map.vue').default);
-
-
-
-Vue.component('map-1', require('./components/maps/map-1.vue').default);
-
-
 
 
 //--------------------

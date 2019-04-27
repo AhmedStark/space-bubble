@@ -69,6 +69,9 @@ export default {
         openDialog(levelID){
             this.levelID=levelID;
             this.open=!this.open;
+            if(this.open==false){
+                this.clear();
+            }
         },createArea(){
             if(this.areaName === ""){
                 this.response = "<p class='error--text'>area name is required</p>";

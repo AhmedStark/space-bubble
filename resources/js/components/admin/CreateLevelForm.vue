@@ -78,6 +78,9 @@ export default {
         openDialog(buildingID){
             this.buildingID=buildingID;
             this.open=!this.open;
+            if(this.open==false){
+                this.clear();
+            }
             this.editMode=false;
         },createLevel(){
             if(this.levelName === ""){

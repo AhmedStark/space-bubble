@@ -65,6 +65,9 @@ export default {
     },methods:{
         openDialog(){
             this.open=!this.open;
+            if(this.open==false){
+                this.clear();
+            }
         },createBuilding(){
             if(this.buildingName === ""){
                 this.response = "<p class='error--text'>Building name is required</p>";
@@ -84,6 +87,7 @@ export default {
                         if(this.status===this.BUILDING_CREATED){
                             this.$emit("building_created");
                             this.openDialog();
+                            
                         }
                         this.loading = false;
                 });
