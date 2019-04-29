@@ -61,7 +61,7 @@ export default {
             editMode:false,
             imageUrl:null,
             levelID:null,
-            AREA_CREATED:true,
+            AREA_CREATED:1,
             areaName:"",
             open:false,
             loading:false,
