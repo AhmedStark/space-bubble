@@ -15,7 +15,6 @@ import Vuetify from 'vuetify';
 
 Vue.use(Vuetify);
 
-Vue.component('map-22', require('./components/map-22.vue').default);
 
 Vue.component('area-map', require('./components/AreaMap.vue').default);
 Vue.component('nav-bar', require('./components/NavBar.vue').default);
