@@ -28,6 +28,7 @@ Vue.component('create-area-dialog', require('./components/admin/CreateAreaForm.v
 Vue.component('admin-login', require('./components/admin/AdminLogin.vue').default);
 Vue.component('building-list', require('./components/BuildingList.vue').default);
 Vue.component('level-list', require('./components/LevelList.vue').default);
+Vue.component('admin-help-layout', require('./components/admin/HelpLayout.vue').default);
 
 
 //--------------------

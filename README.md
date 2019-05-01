@@ -1,8 +1,8 @@
 # space-bubble
 A web-app that allows users to check how busy rooms are in a certain building. (Can be customized for any building)(still in development).
 
-This web-app is developed using Laravel. 
-# Server requirements 
+This web-app is developed using Laravel.
+# Server requirements
 
 1. PHP >= 7.1.3
 2. OpenSSL PHP Extension
@@ -13,7 +13,7 @@ This web-app is developed using Laravel.
 7. Ctype PHP Extension
 8. JSON PHP Extension
 9. BCMath PHP Extension
-10. NodeJs and NPM (node pacjage manager)
+10. NodeJs and NPM (node package manager)
 11. MySQL database server
 
 # Deployment
@@ -52,7 +52,7 @@ To create the framework needed tables run the following command:-
 php artisan migrate
 ```
 
-To run the development server you need to run 
+To run the development server you need to run
 
 ```
 php artisan serve
@@ -70,7 +70,7 @@ To create an admin for the website you need to run the following command in the 
 php artisan mkAdmin
 ```
 Which will ask you for your username and password
-Password must be more than 8 charechters
+Password must be more than 8 characters
 
 ## Making you first building
 After you have created your admin login credentials. Go to `THE_SITE_DOMAIN/admin`
@@ -89,15 +89,15 @@ to `THE_SITE_DOMAIN/api/table`:-
 1. Incase the seat/table is taken
 ```
 {
-    "token":"THE_GENERATED_TOKEN",
-    "taken":true
+   "token":"THE_GENERATED_TOKEN",
+   "taken":true
 }
 ```
 2. Incase the seat/table is empty
 ```
 {
-    "token":"THE_GENERATED_TOKEN",
-    "taken":false
+   "token":"THE_GENERATED_TOKEN",
+   "taken":false
 }
 ```
 ## Android sensor example
