@@ -34,7 +34,7 @@
           <v-btn
             color="error"
             flat
-            @click="openDialog(this.levelID)"
+            @click="openDialog(null)"
           >Discard</v-btn>
           <v-btn
             color="success"

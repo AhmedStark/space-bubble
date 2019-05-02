@@ -25,7 +25,7 @@
 <img v-if="this.editMode" large class="responsive pr-1" :src="imageUrl" alt="" />
                 <div v-if="editMode">
                     <input accept=".svg" hidden class="" @change="fileChange" type="file" name="item_image" ref="file" >
-                    <v-btn @click="$refs.file.click()" class="pr-1" type='file' color="green" flat >change Image</v-btn>
+                    <v-btn @click="$refs.file.click()" class="pr-1" type='file' color="green" flat >upload map</v-btn>
                 </div> 
         </v-card-text>
 
@@ -35,7 +35,7 @@
           <v-btn
             color="error"
             flat
-            @click="createLevel"
+            @click="openDialog(null)"
           >Discard</v-btn>
           <v-btn
             color="success"

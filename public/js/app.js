@@ -3312,6 +3312,98 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {};
@@ -40742,7 +40834,7 @@ var render = function() {
                                                   href: "/admin/area/" + area.id
                                                 }
                                               },
-                                              [_vm._v("edit")]
+                                              [_vm._v("seats")]
                                             ),
                                             _vm._v(" "),
                                             _c(
@@ -41000,7 +41092,7 @@ var render = function() {
                   attrs: { color: "error", flat: "" },
                   on: {
                     click: function($event) {
-                      return _vm.openDialog(this.levelID)
+                      return _vm.openDialog(null)
                     }
                   }
                 },
@@ -41255,7 +41347,7 @@ var render = function() {
                             }
                           }
                         },
-                        [_vm._v("change Image")]
+                        [_vm._v("upload map")]
                       )
                     ],
                     1
@@ -41274,7 +41366,11 @@ var render = function() {
                 "v-btn",
                 {
                   attrs: { color: "error", flat: "" },
-                  on: { click: _vm.createLevel }
+                  on: {
+                    click: function($event) {
+                      return _vm.openDialog(null)
+                    }
+                  }
                 },
                 [_vm._v("Discard")]
               ),
@@ -41359,7 +41455,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "a",
-            { staticClass: "link", attrs: { href: "/admin/dashboard" } },
+            { staticClass: "link", attrs: { href: "/" } },
             [
               _c("v-icon", { attrs: { color: "blue darken-1" } }, [
                 _vm._v("map")
@@ -41415,7 +41511,7 @@ var render = function() {
                   _c("li", { staticClass: "listItem" }, [
                     _c(
                       "a",
-                      { staticClass: "linkHash", attrs: { href: "#2" } },
+                      { staticClass: "linkHash", attrs: { href: "#level" } },
                       [_vm._v("Levels")]
                     )
                   ]),
@@ -41443,7 +41539,7 @@ var render = function() {
                   _c("li", [
                     _c(
                       "a",
-                      { staticClass: "linkHash", attrs: { href: "#3" } },
+                      { staticClass: "linkHash", attrs: { href: "#area" } },
                       [_vm._v("Area")]
                     )
                   ]),
@@ -41471,15 +41567,35 @@ var render = function() {
                   _c("li", [
                     _c(
                       "a",
-                      { staticClass: "linkHash", attrs: { href: "#3" } },
+                      { staticClass: "linkHash", attrs: { href: "#table" } },
                       [_vm._v("Tables/Seats")]
                     )
+                  ]),
+                  _vm._v(" "),
+                  _c("ul", { staticClass: "list" }, [
+                    _c("li", { staticClass: "listItem" }, [
+                      _c("a", { attrs: { href: "#table-show" } }, [
+                        _vm._v("Show area tables/seats")
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("li", { staticClass: "listItem" }, [
+                      _c("a", { attrs: { href: "#table-create" } }, [
+                        _vm._v("Creating tables/seats")
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("li", { staticClass: "listItem" }, [
+                      _c("a", { attrs: { href: "#table-delete" } }, [
+                        _vm._v("Deleting tables/seats")
+                      ])
+                    ])
                   ])
                 ])
               ]),
               _vm._v(" "),
               _c("li", [
-                _c("a", { staticClass: "linkHash", attrs: { href: "#4" } }, [
+                _c("a", { staticClass: "linkHash", attrs: { href: "#map" } }, [
                   _c("b", [_vm._v("Drawing maps")])
                 ]),
                 _vm._v(" "),
@@ -41487,7 +41603,7 @@ var render = function() {
                   _c("li", { staticClass: "listItem" }, [
                     _c(
                       "a",
-                      { staticClass: "linkHash", attrs: { href: "#5" } },
+                      { staticClass: "linkHash", attrs: { href: "#map-file" } },
                       [_vm._v("File format")]
                     )
                   ]),
@@ -41495,7 +41611,10 @@ var render = function() {
                   _c("li", { staticClass: "listItem" }, [
                     _c(
                       "a",
-                      { staticClass: "linkHash", attrs: { href: "#6" } },
+                      {
+                        staticClass: "linkHash",
+                        attrs: { href: "#map-integrate" }
+                      },
                       [_vm._v("Integrating maps")]
                     )
                   ])
@@ -41508,7 +41627,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "div",
-            { staticClass: "py-4", attrs: { id: "1" } },
+            { staticClass: "py-4" },
             [
               _c("h3", { staticClass: "display-1  font-weight-light mb-4" }, [
                 _vm._v("# Creating map layout")
@@ -41538,17 +41657,19 @@ var render = function() {
                     [
                       _c("template", { slot: "instructions" }, [
                         _c("ol", [
-                          _c("li", [
-                            _vm._v("Click on the add Building button "),
-                            _c("img", {
-                              attrs: {
-                                height: "30",
-                                src: "/imgs/building_button.png",
-                                alt: ""
-                              }
-                            }),
-                            _vm._v(" on the top left of the page")
-                          ]),
+                          _c(
+                            "li",
+                            [
+                              _vm._v("Click on the add Building button "),
+                              _c(
+                                "v-btn",
+                                { attrs: { color: "green", dark: "" } },
+                                [_vm._v("CREATE A BUILDING")]
+                              ),
+                              _vm._v(" on the top left of the page")
+                            ],
+                            1
+                          ),
                           _vm._v(" "),
                           _c("li", [
                             _vm._v("Key in the building name and press Create")
@@ -41621,7 +41742,8 @@ var render = function() {
                       _vm._v("To delete a building click on the delete icon "),
                       _c("v-icon", { attrs: { color: "red" } }, [
                         _vm._v("delete")
-                      ])
+                      ]),
+                      _vm._v(" on that building.")
                     ],
                     1
                   )
@@ -41631,11 +41753,452 @@ var render = function() {
               _vm._v(" "),
               _c("v-divider", { staticClass: "my-3" }),
               _vm._v(" "),
-              _c("div", { staticClass: "ml-4", attrs: { id: "3" } }, [
-                _c("h6", { staticClass: "headline font-weight-regular mb-3" }, [
-                  _vm._v("Levels")
-                ])
-              ])
+              _c(
+                "div",
+                { staticClass: "ml-4", attrs: { id: "level" } },
+                [
+                  _c(
+                    "h6",
+                    { staticClass: "headline font-weight-regular mb-3" },
+                    [_vm._v("Levels")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "admin-help-instruction",
+                    {
+                      attrs: { title: "Creating a Level", id: "level-create" }
+                    },
+                    [
+                      _c("template", { slot: "instructions" }, [
+                        _c("ol", [
+                          _c(
+                            "li",
+                            [
+                              _vm._v(
+                                "Click on the add new level to this building button "
+                              ),
+                              _c(
+                                "v-btn",
+                                { attrs: { color: "blue", dark: "" } },
+                                [_vm._v("ADD NEW LEVEL TO THIS BUILDING")]
+                              )
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c("li", [
+                            _vm._v("Key in the Level name and press Create")
+                          ]),
+                          _c("br"),
+                          _vm._v(" "),
+                          _c("img", {
+                            attrs: {
+                              src: "/imgs/create_level_form.png",
+                              alt: ""
+                            }
+                          })
+                        ])
+                      ])
+                    ],
+                    2
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "admin-help-instruction",
+                    {
+                      staticClass: "mt-4",
+                      attrs: { title: "Editing a Level", id: "level-edit" }
+                    },
+                    [
+                      _c("template", { slot: "instructions" }, [
+                        _c("ol", [
+                          _c(
+                            "li",
+                            [
+                              _vm._v("Click on the edit icon edit a level "),
+                              _c("v-icon", [_vm._v("edit")]),
+                              _vm._v(".")
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c("li", [_vm._v("Key in the level's name.")]),
+                          _vm._v(" "),
+                          _c(
+                            "li",
+                            [
+                              _vm._v("click upload map button "),
+                              _c(
+                                "v-btn",
+                                {
+                                  attrs: { flat: "", color: "green", small: "" }
+                                },
+                                [_vm._v("upload map")]
+                              ),
+                              _vm._v(
+                                " and choose a file to change the level's map. (The map has to be in "
+                              ),
+                              _c("b", [_vm._v("SVG")]),
+                              _vm._v(" format)")
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c("img", {
+                            attrs: { src: "/imgs/edit_level_form.png", alt: "" }
+                          }),
+                          _vm._v(" "),
+                          _c("li", [
+                            _vm._v("Press on edit to save the changes.")
+                          ])
+                        ])
+                      ])
+                    ],
+                    2
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "h6",
+                    {
+                      staticClass: "title mt-4",
+                      attrs: { id: "level-delete" }
+                    },
+                    [_vm._v("Deleting levels :-")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "p",
+                    [
+                      _vm._v("To delete a level click on the delete icon "),
+                      _c("v-icon", { attrs: { color: "red" } }, [
+                        _vm._v("delete")
+                      ]),
+                      _vm._v(" on that level.")
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("v-divider", { staticClass: "my-3" }),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "ml-4", attrs: { id: "area" } },
+                [
+                  _c(
+                    "h6",
+                    { staticClass: "headline font-weight-regular mb-3" },
+                    [_vm._v("Areas")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "admin-help-instruction",
+                    { attrs: { title: "Creating an Area", id: "area-create" } },
+                    [
+                      _c("template", { slot: "instructions" }, [
+                        _c("ol", [
+                          _c(
+                            "li",
+                            [
+                              _vm._v("Click on add new area button "),
+                              _c(
+                                "v-btn",
+                                { attrs: { color: "blue", dark: "" } },
+                                [_vm._v("ADD NEW AREA TO THIS LEVEL")]
+                              )
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "li",
+                            [
+                              _vm._v("Key in the area's name then press "),
+                              _c(
+                                "v-btn",
+                                {
+                                  attrs: { flat: "", color: "green", small: "" }
+                                },
+                                [_vm._v("Create")]
+                              )
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c("img", {
+                            attrs: {
+                              src: "/imgs/create_area_form.png",
+                              alt: ""
+                            }
+                          })
+                        ])
+                      ])
+                    ],
+                    2
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "admin-help-instruction",
+                    {
+                      staticClass: "mt-4",
+                      attrs: { id: "area-edit", title: "Creating an Area" }
+                    },
+                    [
+                      _c("template", { slot: "instructions" }, [
+                        _c("ol", [
+                          _c(
+                            "li",
+                            [
+                              _vm._v("Click on the edit icon edit an area "),
+                              _c("v-icon", [_vm._v("edit")]),
+                              _vm._v(".")
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "li",
+                            [
+                              _vm._v("Key in the area's name then press "),
+                              _c(
+                                "v-btn",
+                                {
+                                  attrs: { flat: "", color: "green", small: "" }
+                                },
+                                [_vm._v("Edit")]
+                              )
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c("img", {
+                            attrs: { src: "/imgs/edit_area_form.png", alt: "" }
+                          }),
+                          _vm._v(" "),
+                          _c("li", [
+                            _vm._v("Press on edit to save the changes.")
+                          ])
+                        ])
+                      ])
+                    ],
+                    2
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "h6",
+                    { staticClass: "title mt-4", attrs: { id: "area-delete" } },
+                    [_vm._v("Deleting Areas :-")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "p",
+                    [
+                      _vm._v("To delete a area click on the delete icon "),
+                      _c("v-icon", { attrs: { color: "red" } }, [
+                        _vm._v("delete")
+                      ]),
+                      _vm._v(" on that level.")
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("v-divider", { staticClass: "my-3" }),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "ml-4", attrs: { id: "table" } },
+                [
+                  _c(
+                    "h6",
+                    { staticClass: "headline font-weight-regular mb-3" },
+                    [_vm._v("Tables/Seats")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "h6",
+                    { staticClass: "title mt-4", attrs: { id: "table-show" } },
+                    [_vm._v("showing an area's seats/tables")]
+                  ),
+                  _vm._v(" "),
+                  _c("p", [
+                    _vm._v(
+                      "To show an area seats/tables you can click on the "
+                    ),
+                    _c("u", { staticClass: "blue--text" }, [_vm._v("seats")]),
+                    _vm._v(
+                      " link on that area.\n                after that you will see the area's page which will show you the tables/seats and their tokens"
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "admin-help-instruction",
+                    {
+                      staticClass: "mt-4",
+                      attrs: {
+                        id: "table-create",
+                        title: "Creating tables/seats"
+                      }
+                    },
+                    [
+                      _c("template", { slot: "instructions" }, [
+                        _c("ol", [
+                          _c(
+                            "li",
+                            [
+                              _vm._v("Click on "),
+                              _c(
+                                "v-btn",
+                                {
+                                  attrs: { color: "green", dark: "", small: "" }
+                                },
+                                [_vm._v("Add new table")]
+                              )
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c("li", [
+                            _vm._v("You will see the seat with its token")
+                          ])
+                        ])
+                      ])
+                    ],
+                    2
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "h6",
+                    {
+                      staticClass: "title mt-4",
+                      attrs: { id: "table-delete" }
+                    },
+                    [_vm._v("Deleting seats/tables :-")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "p",
+                    [
+                      _vm._v("\n                    Click on "),
+                      _c("v-icon", { attrs: { color: "red" } }, [
+                        _vm._v("delete")
+                      ]),
+                      _vm._v(" to delete a seat/table.\n                ")
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("v-divider", { staticClass: "my-3" }),
+                  _vm._v(" "),
+                  _c(
+                    "h3",
+                    {
+                      staticClass: "display-1  font-weight-light mb-4",
+                      attrs: { id: "map" }
+                    },
+                    [_vm._v("# Drawing maps")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "h6",
+                    { staticClass: "title mt-4", attrs: { id: "map-file" } },
+                    [_vm._v("Deleting seats/tables :-")]
+                  ),
+                  _vm._v(" "),
+                  _c("p", [
+                    _vm._v("The level map file uploaded must be in "),
+                    _c("b", { staticClass: "blue--text" }, [_vm._v("SVG")]),
+                    _vm._v(
+                      " format. Many programs can be used to draw these maps on of the softwares that we highly recommend is "
+                    ),
+                    _c(
+                      "a",
+                      {
+                        attrs: {
+                          target: "_blank",
+                          href: "https://inkscape.org/"
+                        }
+                      },
+                      [_vm._v("Inkscape")]
+                    ),
+                    _vm._v(".")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "h6",
+                    {
+                      staticClass: "title mt-4",
+                      attrs: { id: "map-integrate" }
+                    },
+                    [_vm._v("Integrating maps")]
+                  ),
+                  _vm._v(" "),
+                  _c("p", [
+                    _vm._v(
+                      "When drawing a map a set of rules must be followed to ensure that the map will be reactive in the website. \n                    "
+                    ),
+                    _c("ol", [
+                      _c("li", [
+                        _vm._v(
+                          "You need to create the areas of the level you want to show in the map in the "
+                        ),
+                        _c(
+                          "a",
+                          { attrs: { href: "/admin/dashboard" } },
+                          [
+                            _vm._v("dashboard "),
+                            _c("v-icon", { attrs: { color: "blue" } }, [
+                              _vm._v(" dashboard")
+                            ])
+                          ],
+                          1
+                        ),
+                        _vm._v(" before uploading the map.")
+                      ]),
+                      _vm._v(" "),
+                      _c("li", [
+                        _vm._v(
+                          "After creating the areas start assigning the area IDs to the object IDs in your drawing software by giving them an ID of "
+                        ),
+                        _c("span", { staticClass: "grey lighten-2" }, [
+                          _vm._v("area-[Area's shown ID]")
+                        ]),
+                        _vm._v(" .")
+                      ]),
+                      _vm._v(" "),
+                      _c("li", [
+                        _vm._v(
+                          "You can also assign ids to the text to show the area map and the number of seats by giving the test objects an ID of "
+                        ),
+                        _c("span", { staticClass: "grey lighten-2" }, [
+                          _vm._v("text-[Area's shown ID]")
+                        ]),
+                        _vm._v(" .")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "li",
+                        [
+                          _vm._v(
+                            "Uploade the map after that by clicking edit on the level you create and clicking "
+                          ),
+                          _c("v-btn", { attrs: { flat: "", color: "green" } }, [
+                            _vm._v("upload map")
+                          ])
+                        ],
+                        1
+                      )
+                    ])
+                  ])
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("div")
             ],
             1
           )
@@ -41789,6 +42352,34 @@ var render = function() {
     ],
     1
   )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/maps/map-1.vue?vue&type=template&id=5e335f13&":
+/*!*************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/maps/map-1.vue?vue&type=template&id=5e335f13& ***!
+  \*************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("area-map", { attrs: { v: "" } }, [
+    _c("div", { attrs: { slot: "map" }, slot: "map" }, [
+      _c("p", [_vm._v("This map is not available")])
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -79894,7 +80485,8 @@ Vue.component('building-list', __webpack_require__(/*! ./components/BuildingList
 Vue.component('level-list', __webpack_require__(/*! ./components/LevelList.vue */ "./resources/js/components/LevelList.vue").default);
 Vue.component('admin-help-layout', __webpack_require__(/*! ./components/admin/HelpLayout.vue */ "./resources/js/components/admin/HelpLayout.vue").default);
 Vue.component('admin-help', __webpack_require__(/*! ./components/admin/Help.vue */ "./resources/js/components/admin/Help.vue").default);
-Vue.component('admin-help-instruction', __webpack_require__(/*! ./components/admin/HelpInstructionList.vue */ "./resources/js/components/admin/HelpInstructionList.vue").default); //--------------------
+Vue.component('admin-help-instruction', __webpack_require__(/*! ./components/admin/HelpInstructionList.vue */ "./resources/js/components/admin/HelpInstructionList.vue").default);
+Vue.component('map-1', __webpack_require__(/*! ./components/maps/map-1.vue */ "./resources/js/components/maps/map-1.vue").default); //--------------------
 
 var app = new Vue({
   el: '#app'
@@ -81116,6 +81708,59 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_HelpLayout_vue_vue_type_template_id_12306576_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_HelpLayout_vue_vue_type_template_id_12306576_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/maps/map-1.vue":
+/*!************************************************!*\
+  !*** ./resources/js/components/maps/map-1.vue ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _map_1_vue_vue_type_template_id_5e335f13___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./map-1.vue?vue&type=template&id=5e335f13& */ "./resources/js/components/maps/map-1.vue?vue&type=template&id=5e335f13&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+var script = {}
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
+  script,
+  _map_1_vue_vue_type_template_id_5e335f13___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _map_1_vue_vue_type_template_id_5e335f13___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/maps/map-1.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/maps/map-1.vue?vue&type=template&id=5e335f13&":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/components/maps/map-1.vue?vue&type=template&id=5e335f13& ***!
+  \*******************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_map_1_vue_vue_type_template_id_5e335f13___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./map-1.vue?vue&type=template&id=5e335f13& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/maps/map-1.vue?vue&type=template&id=5e335f13&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_map_1_vue_vue_type_template_id_5e335f13___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_map_1_vue_vue_type_template_id_5e335f13___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

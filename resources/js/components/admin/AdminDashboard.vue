@@ -103,7 +103,7 @@
                                     </v-flex>
                                     <v-flex>tables :: {{area.tables}}</v-flex>
                                     <v-flex>
-                                        <a :href="'/admin/area/'+area.id">edit</a>
+                                        <a :href="'/admin/area/'+area.id">seats</a>
                                         <v-icon color="red" @click="deleteArea(index)">delete</v-icon>
                                         <v-icon @click="editArea(index)" >edit</v-icon>
              
