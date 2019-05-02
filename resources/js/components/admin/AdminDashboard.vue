@@ -8,6 +8,8 @@
                 <v-spacer></v-spacer>
                 <v-btn color="grey darken-2" large flat type="submit"><v-icon>exit_to_app</v-icon>log-out</v-btn>
              </form>
+             <v-spacer></v-spacer>
+             <a href="/admin/help" class="mt-3">Help <v-icon color="blue">help</v-icon></a>
         </v-layout>
         <create-building-dialog
             v-on:building_created="getBuildings()"
