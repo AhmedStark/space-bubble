@@ -26,6 +26,15 @@
                 </v-card-text >
             </v-card>
         </v-flex>
+        <v-btn      color="purple"
+                    key="add"
+                    @click="goUp"
+                    dark
+                    fixed
+                    bottom
+                    right
+                    fab
+                ><v-icon>arrow_drop_up</v-icon></v-btn>
     </v-layout>
     </v-container>
 </template>
@@ -66,6 +75,11 @@ export default {
             this.pagesList = !this.pagesList;
         },bigScreen:function(){
             this.big = !this.big;
+        },goUp:function(){
+            window.scrollTo(0,0); 
+        }
+        ,goUpALittle:function(){
+            
         }
     }
 }
