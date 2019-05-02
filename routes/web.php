@@ -60,9 +60,11 @@ Route::group(['middleware' => ['AdminAuth']], function () {
 Route::get('/map/{id}','levelController@getMap');
 
 
+Route::group(['middleware' => ['AlreadyAuth']], function () {
 
+    Route::get('admin/','adminController@login');
 
-Route::get('admin/','adminController@login');
+});
 Route::post('admin/login','adminController@checklogin');
 Route::get('admin/login','adminController@checklogin');
 

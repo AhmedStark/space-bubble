@@ -8006,7 +8006,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.svg-container {\n    display: inline-block;\n    position: relative;\n    width: 100%;\n    padding-bottom: 100%;\n    vertical-align: top;\n    overflow: hidden;\n}\n.svg-content {\n    display: inline-block;\n    position: absolute;\n    top: 0;\n    left: 0;\n}\n", ""]);
+exports.push([module.i, "\n.svg-container {\r\n    display: inline-block;\r\n    position: relative;\r\n    width: 100%;\r\n    padding-bottom: 100%;\r\n    vertical-align: top;\r\n    overflow: hidden;\n}\n.svg-content {\r\n    display: inline-block;\r\n    position: absolute;\r\n    top: 0;\r\n    left: 0;\n}\r\n", ""]);
 
 // exports
 
@@ -8025,7 +8025,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\na[data-v-5dd24bca]{\n    text-decoration: none;\n}\n", ""]);
+exports.push([module.i, "\na[data-v-5dd24bca]{\r\n    text-decoration: none;\n}\r\n", ""]);
 
 // exports
 
@@ -8044,7 +8044,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.building-link:hover{\n        color: rgb(4, 21, 248);\n        background: rgba(205, 205, 205, 0.803)\n}\n.building-link{\n    color: black;\n    text-decoration: none;\n}\n", ""]);
+exports.push([module.i, "\n.building-link:hover{\r\n        color: rgb(4, 21, 248);\r\n        background: rgba(205, 205, 205, 0.803)\n}\n.building-link{\r\n    color: black;\r\n    text-decoration: none;\n}\r\n", ""]);
 
 // exports
 
@@ -8063,7 +8063,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.building-card[data-v-ddddf5a0]{\n    border-radius:50px;\n    cursor: pointer;\n}\n", ""]);
+exports.push([module.i, "\n.building-card[data-v-ddddf5a0]{\r\n    border-radius:50px;\r\n    cursor: pointer;\n}\r\n", ""]);
 
 // exports
 
@@ -8082,7 +8082,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.responsive[data-v-631f16b1]{\n    width: 100%;\n    height: auto;\n}\n", ""]);
+exports.push([module.i, "\n.responsive[data-v-631f16b1]{\r\n    width: 100%;\r\n    height: auto;\n}\r\n", ""]);
 
 // exports
 
@@ -8101,7 +8101,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.link[data-v-362b9ba8]{\n    color:black;\n    text-decoration: none;\n}\n.link[data-v-362b9ba8]:hover{\n    color:blue;\n}\n.list[data-v-362b9ba8]{\n    list-style-type: none;\n}\n.listItem[data-v-362b9ba8]::before{\n    content:\"# \"\n}\ntitle[data-v-362b9ba8]{\n    text-decoration: none\n}\n\n", ""]);
+exports.push([module.i, "\n.link[data-v-362b9ba8]{\r\n    color:black;\r\n    text-decoration: none;\n}\n.link[data-v-362b9ba8]:hover{\r\n    color:blue;\n}\n.list[data-v-362b9ba8]{\r\n    list-style-type: none;\n}\n.listItem[data-v-362b9ba8]::before{\r\n    content:\"# \"\n}\ntitle[data-v-362b9ba8]{\r\n    text-decoration: none\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -8120,7 +8120,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.link[data-v-12306576]{\n    color:black;\n    text-decoration: none;\n}\n.link[data-v-12306576]:hover{\n    color:blue;\n}\nul[data-v-12306576]{\n        \n    list-style-type: none;\n}\nli[data-v-12306576]::before{\n    content:\"# \"\n}\ntitle[data-v-12306576]{\n    text-decoration: none\n}\n", ""]);
+exports.push([module.i, "\n.link[data-v-12306576]{\r\n    color:black;\r\n    text-decoration: none;\n}\n.link[data-v-12306576]:hover{\r\n    color:blue;\n}\nul[data-v-12306576]{\r\n        \r\n    list-style-type: none;\n}\nli[data-v-12306576]::before{\r\n    content:\"# \"\n}\ntitle[data-v-12306576]{\r\n    text-decoration: none\n}\r\n", ""]);
 
 // exports
 
@@ -40546,9 +40546,9 @@ var render = function() {
                                       [
                                         _c("v-flex", [
                                           _vm._v(
-                                            "\n                                        " +
+                                            "\r\n                                        " +
                                               _vm._s(building.name) +
-                                              "\n                                    "
+                                              "\r\n                                    "
                                           )
                                         ]),
                                         _vm._v(" "),
@@ -40556,9 +40556,9 @@ var render = function() {
                                         _vm._v(" "),
                                         _c("v-flex", [
                                           _vm._v(
-                                            "\n                                        ID:" +
+                                            "\r\n                                        ID:" +
                                               _vm._s(building.id) +
-                                              "\n                                    "
+                                              "\r\n                                    "
                                           )
                                         ]),
                                         _vm._v(" "),
@@ -40684,9 +40684,9 @@ var render = function() {
                                       [
                                         _c("v-flex", [
                                           _vm._v(
-                                            "\n                                        " +
+                                            "\r\n                                        " +
                                               _vm._s(level.name) +
-                                              "\n                                    "
+                                              "\r\n                                    "
                                           )
                                         ]),
                                         _vm._v(" "),
@@ -40821,9 +40821,9 @@ var render = function() {
                                       [
                                         _c("v-flex", [
                                           _vm._v(
-                                            "\n                                        " +
+                                            "\r\n                                        " +
                                               _vm._s(area.name) +
-                                              "\n                                    "
+                                              "\r\n                                    "
                                           )
                                         ]),
                                         _vm._v(" "),
@@ -40831,9 +40831,9 @@ var render = function() {
                                         _vm._v(" "),
                                         _c("v-flex", [
                                           _vm._v(
-                                            "\n                                        ID::" +
+                                            "\r\n                                        ID::" +
                                               _vm._s(area.id) +
-                                              "  \n                                    "
+                                              "  \r\n                                    "
                                           )
                                         ]),
                                         _vm._v(" "),
@@ -42050,7 +42050,7 @@ var render = function() {
                     ),
                     _c("u", { staticClass: "blue--text" }, [_vm._v("seats")]),
                     _vm._v(
-                      " link on that area.\n                after that you will see the area's page which will show you the tables/seats and their tokens"
+                      " link on that area.\r\n                after that you will see the area's page which will show you the tables/seats and their tokens"
                     )
                   ]),
                   _vm._v(" "),
@@ -42102,11 +42102,11 @@ var render = function() {
                   _c(
                     "p",
                     [
-                      _vm._v("\n                    Click on "),
+                      _vm._v("\r\n                    Click on "),
                       _c("v-icon", { attrs: { color: "red" } }, [
                         _vm._v("delete")
                       ]),
-                      _vm._v(" to delete a seat/table.\n                ")
+                      _vm._v(" to delete a seat/table.\r\n                ")
                     ],
                     1
                   ),
@@ -42158,7 +42158,7 @@ var render = function() {
                   _vm._v(" "),
                   _c("p", [
                     _vm._v(
-                      "When drawing a map a set of rules must be followed to ensure that the map will be reactive in the website. \n                    "
+                      "When drawing a map a set of rules must be followed to ensure that the map will be reactive in the website. \r\n                    "
                     ),
                     _c("ol", [
                       _c("li", [
@@ -42371,34 +42371,6 @@ var render = function() {
     ],
     1
   )
-}
-var staticRenderFns = []
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/maps/map-1.vue?vue&type=template&id=5e335f13&":
-/*!*************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/maps/map-1.vue?vue&type=template&id=5e335f13& ***!
-  \*************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("area-map", { attrs: { v: "" } }, [
-    _c("div", { attrs: { slot: "map" }, slot: "map" }, [
-      _c("p", [_vm._v("This map is not available")])
-    ])
-  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -80504,8 +80476,7 @@ Vue.component('building-list', __webpack_require__(/*! ./components/BuildingList
 Vue.component('level-list', __webpack_require__(/*! ./components/LevelList.vue */ "./resources/js/components/LevelList.vue").default);
 Vue.component('admin-help-layout', __webpack_require__(/*! ./components/admin/HelpLayout.vue */ "./resources/js/components/admin/HelpLayout.vue").default);
 Vue.component('admin-help', __webpack_require__(/*! ./components/admin/Help.vue */ "./resources/js/components/admin/Help.vue").default);
-Vue.component('admin-help-instruction', __webpack_require__(/*! ./components/admin/HelpInstructionList.vue */ "./resources/js/components/admin/HelpInstructionList.vue").default);
-Vue.component('map-1', __webpack_require__(/*! ./components/maps/map-1.vue */ "./resources/js/components/maps/map-1.vue").default); //--------------------
+Vue.component('admin-help-instruction', __webpack_require__(/*! ./components/admin/HelpInstructionList.vue */ "./resources/js/components/admin/HelpInstructionList.vue").default); //--------------------
 
 var app = new Vue({
   el: '#app'
@@ -81732,59 +81703,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/maps/map-1.vue":
-/*!************************************************!*\
-  !*** ./resources/js/components/maps/map-1.vue ***!
-  \************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _map_1_vue_vue_type_template_id_5e335f13___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./map-1.vue?vue&type=template&id=5e335f13& */ "./resources/js/components/maps/map-1.vue?vue&type=template&id=5e335f13&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-var script = {}
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
-  script,
-  _map_1_vue_vue_type_template_id_5e335f13___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _map_1_vue_vue_type_template_id_5e335f13___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/components/maps/map-1.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/components/maps/map-1.vue?vue&type=template&id=5e335f13&":
-/*!*******************************************************************************!*\
-  !*** ./resources/js/components/maps/map-1.vue?vue&type=template&id=5e335f13& ***!
-  \*******************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_map_1_vue_vue_type_template_id_5e335f13___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./map-1.vue?vue&type=template&id=5e335f13& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/maps/map-1.vue?vue&type=template&id=5e335f13&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_map_1_vue_vue_type_template_id_5e335f13___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_map_1_vue_vue_type_template_id_5e335f13___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
 /***/ "./resources/sass/app.scss":
 /*!*********************************!*\
   !*** ./resources/sass/app.scss ***!
@@ -81803,8 +81721,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/iceghost/space-bubble/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/iceghost/space-bubble/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Ahmed\space-bubble\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Ahmed\space-bubble\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
