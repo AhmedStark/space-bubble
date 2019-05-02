@@ -8019,7 +8019,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.svg-container {\n    display: inline-block;\n    position: relative;\n    width: 100%;\n    padding-bottom: 100%;\n    vertical-align: top;\n    overflow: hidden;\n}\n.svg-content {\n    display: inline-block;\n    position: absolute;\n    top: 0;\n    left: 0;\n}\n", ""]);
+exports.push([module.i, "\n.svg-container {\r\n    display: inline-block;\r\n    position: relative;\r\n    width: 100%;\r\n    padding-bottom: 100%;\r\n    vertical-align: top;\r\n    overflow: hidden;\n}\n.svg-content {\r\n    display: inline-block;\r\n    position: absolute;\r\n    top: 0;\r\n    left: 0;\n}\r\n", ""]);
 
 // exports
 
@@ -8038,7 +8038,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\na[data-v-5dd24bca]{\n    text-decoration: none;\n}\n", ""]);
+exports.push([module.i, "\na[data-v-5dd24bca]{\r\n    text-decoration: none;\n}\r\n", ""]);
 
 // exports
 
@@ -8057,7 +8057,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.building-link:hover{\n        color: rgb(4, 21, 248);\n        background: rgba(205, 205, 205, 0.803)\n}\n.building-link{\n    color: black;\n    text-decoration: none;\n}\n", ""]);
+exports.push([module.i, "\n.building-link:hover{\r\n        color: rgb(4, 21, 248);\r\n        background: rgba(205, 205, 205, 0.803)\n}\n.building-link{\r\n    color: black;\r\n    text-decoration: none;\n}\r\n", ""]);
 
 // exports
 
@@ -8076,7 +8076,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.building-card[data-v-ddddf5a0]{\n    border-radius:50px;\n    cursor: pointer;\n}\n", ""]);
+exports.push([module.i, "\n.building-card[data-v-ddddf5a0]{\r\n    border-radius:50px;\r\n    cursor: pointer;\n}\r\n", ""]);
 
 // exports
 
@@ -8095,7 +8095,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.responsive[data-v-631f16b1]{\n    width: 100%;\n    height: auto;\n}\n", ""]);
+exports.push([module.i, "\n.responsive[data-v-631f16b1]{\r\n    width: 100%;\r\n    height: auto;\n}\r\n", ""]);
 
 // exports
 
@@ -8114,7 +8114,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.link[data-v-362b9ba8]{\n    color:black;\n    text-decoration: none;\n}\n.link[data-v-362b9ba8]:hover{\n    color:blue;\n}\n.list[data-v-362b9ba8]{\n    list-style-type: none;\n}\n.listItem[data-v-362b9ba8]::before{\n    content:\"# \"\n}\ntitle[data-v-362b9ba8]{\n    text-decoration: none\n}\n\n", ""]);
+exports.push([module.i, "\n.link[data-v-362b9ba8]{\r\n    color:black;\r\n    text-decoration: none;\n}\n.link[data-v-362b9ba8]:hover{\r\n    color:blue;\n}\n.list[data-v-362b9ba8]{\r\n    list-style-type: none;\n}\n.listItem[data-v-362b9ba8]::before{\r\n    content:\"# \"\n}\ntitle[data-v-362b9ba8]{\r\n    text-decoration: none\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -8133,7 +8133,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.link[data-v-12306576]{\n    color:black;\n    text-decoration: none;\n}\n.link[data-v-12306576]:hover{\n    color:blue;\n}\nul[data-v-12306576]{\n        \n    list-style-type: none;\n}\nli[data-v-12306576]::before{\n    content:\"# \"\n}\ntitle[data-v-12306576]{\n    text-decoration: none\n}\n", ""]);
+exports.push([module.i, "\n.link[data-v-12306576]{\r\n    color:black;\r\n    text-decoration: none;\n}\n.link[data-v-12306576]:hover{\r\n    color:blue;\n}\nul[data-v-12306576]{\r\n        \r\n    list-style-type: none;\n}\nli[data-v-12306576]::before{\r\n    content:\"# \"\n}\ntitle[data-v-12306576]{\r\n    text-decoration: none\n}\r\n", ""]);
 
 // exports
 
@@ -40559,9 +40559,9 @@ var render = function() {
                                       [
                                         _c("v-flex", [
                                           _vm._v(
-                                            "\n                                        " +
+                                            "\r\n                                        " +
                                               _vm._s(building.name) +
-                                              "\n                                    "
+                                              "\r\n                                    "
                                           )
                                         ]),
                                         _vm._v(" "),
@@ -40569,9 +40569,9 @@ var render = function() {
                                         _vm._v(" "),
                                         _c("v-flex", [
                                           _vm._v(
-                                            "\n                                        ID:" +
+                                            "\r\n                                        ID:" +
                                               _vm._s(building.id) +
-                                              "\n                                    "
+                                              "\r\n                                    "
                                           )
                                         ]),
                                         _vm._v(" "),
@@ -40697,9 +40697,9 @@ var render = function() {
                                       [
                                         _c("v-flex", [
                                           _vm._v(
-                                            "\n                                        " +
+                                            "\r\n                                        " +
                                               _vm._s(level.name) +
-                                              "\n                                    "
+                                              "\r\n                                    "
                                           )
                                         ]),
                                         _vm._v(" "),
@@ -40834,9 +40834,9 @@ var render = function() {
                                       [
                                         _c("v-flex", [
                                           _vm._v(
-                                            "\n                                        " +
+                                            "\r\n                                        " +
                                               _vm._s(area.name) +
-                                              "\n                                    "
+                                              "\r\n                                    "
                                           )
                                         ]),
                                         _vm._v(" "),
@@ -40844,9 +40844,9 @@ var render = function() {
                                         _vm._v(" "),
                                         _c("v-flex", [
                                           _vm._v(
-                                            "\n                                        ID::" +
+                                            "\r\n                                        ID::" +
                                               _vm._s(area.id) +
-                                              "  \n                                    "
+                                              "  \r\n                                    "
                                           )
                                         ]),
                                         _vm._v(" "),
@@ -42063,7 +42063,7 @@ var render = function() {
                     ),
                     _c("u", { staticClass: "blue--text" }, [_vm._v("seats")]),
                     _vm._v(
-                      " link on that area.\n                after that you will see the area's page which will show you the tables/seats and their tokens"
+                      " link on that area.\r\n                after that you will see the area's page which will show you the tables/seats and their tokens"
                     )
                   ]),
                   _vm._v(" "),
@@ -42115,11 +42115,11 @@ var render = function() {
                   _c(
                     "p",
                     [
-                      _vm._v("\n                    Click on "),
+                      _vm._v("\r\n                    Click on "),
                       _c("v-icon", { attrs: { color: "red" } }, [
                         _vm._v("delete")
                       ]),
-                      _vm._v(" to delete a seat/table.\n                ")
+                      _vm._v(" to delete a seat/table.\r\n                ")
                     ],
                     1
                   ),
@@ -42171,7 +42171,7 @@ var render = function() {
                   _vm._v(" "),
                   _c("p", [
                     _vm._v(
-                      "When drawing a map a set of rules must be followed to ensure that the map will be reactive in the website. \n                    "
+                      "When drawing a map a set of rules must be followed to ensure that the map will be reactive in the website. \r\n                    "
                     ),
                     _c("ol", [
                       _c("li", [
@@ -81752,8 +81752,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/iceghost/space-bubble/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/iceghost/space-bubble/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Ahmed\space-bubble\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Ahmed\space-bubble\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
