@@ -3,15 +3,12 @@
     <v-layout row>
         
         <v-flex  :md3="!big" v-if="!big" lg3 class="hidden-sm-and-down" >
-            <slot name="side-nav-up">
-            
-            </slot>
-            <v-card class="mx-2">
+            <v-card>
                 <v-card-text>
-                <div v-if="!big">
-                </div>
+                    <slot name="side-nav-up">
+
+                    </slot>
                 </v-card-text>
-                
             </v-card>
         </v-flex>
         <v-flex :md9="!big" :md12="big" >

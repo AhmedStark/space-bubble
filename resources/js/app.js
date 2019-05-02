@@ -29,6 +29,8 @@ Vue.component('admin-login', require('./components/admin/AdminLogin.vue').defaul
 Vue.component('building-list', require('./components/BuildingList.vue').default);
 Vue.component('level-list', require('./components/LevelList.vue').default);
 Vue.component('admin-help-layout', require('./components/admin/HelpLayout.vue').default);
+Vue.component('admin-help', require('./components/admin/Help.vue').default);
+Vue.component('admin-help-instruction', require('./components/admin/HelpInstructionList.vue').default);
 
 
 //--------------------
