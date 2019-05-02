@@ -33,8 +33,6 @@ Vue.component('admin-help', require('./components/admin/Help.vue').default);
 Vue.component('admin-help-instruction', require('./components/admin/HelpInstructionList.vue').default);
 
 
-
-Vue.component('map-1', require('./components/maps/map-1.vue').default);
 //--------------------
 
 const app = new Vue({
