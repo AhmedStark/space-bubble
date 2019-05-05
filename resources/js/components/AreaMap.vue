@@ -92,7 +92,7 @@ const axios = require('axios');
                     var area = this.areas[i];
                     var el=document.getElementById("area-"+area.id);
                     var elText=document.getElementById("text-"+area.id);
-                    el===null ? console.warn("error id 10 not found in the map"):el.style="fill: "+this.getColorForArea(area.takenTables,area.tables)+"; stroke: rgb(0, 0, 0);";
+                    el===null ? console.warn("error id 10 not found in the map"):el.style.fill=this.getColorForArea(area.takenTables,area.tables);
                     elText===null ? console.warn("error id text-"+area.id+" not found in the map"):null;
                     
                     if(elText===null){
