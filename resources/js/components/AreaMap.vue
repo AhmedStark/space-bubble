@@ -7,11 +7,6 @@
         <v-container>
 
 <v-layout row>
-    <v-flex md4>    
-        <v-card>
-            <v-breadcrumbs :items="nav" large class="subtitle" divider=">" ></v-breadcrumbs>
-        </v-card>
-    </v-flex>
 
 </v-layout>
             <v-layout row wrap>
@@ -92,15 +87,14 @@ const axios = require('axios');
                     var area = this.areas[i];
                     var el=document.getElementById("area-"+area.id);
                     var elText=document.getElementById("text-"+area.id);
-                    el===null ? console.warn("error id 10 not found in the map"):el.style="fill: "+this.getColorForArea(area.takenTables,area.tables)+"; stroke: rgb(0, 0, 0);";
+                    el===null ? console.warn("error id 10 not found in the map"):el.style.fill=this.getColorForArea(area.takenTables,area.tables);
                     elText===null ? console.warn("error id text-"+area.id+" not found in the map"):null;
                     
                     if(elText===null){
                         console.error("Area text not found",area.id);
                         continue;
                     }
-                    elText.style['font-size']="3pt";
-                   
+                   elText.style.fontSize="3pt"
                     
                     if(area.tables==0){
                         elText.innerHTML=area.name+"(No tables)"
