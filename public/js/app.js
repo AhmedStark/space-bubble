@@ -1822,11 +1822,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -1870,7 +1865,7 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
         var area = this.areas[i];
         var el = document.getElementById("area-" + area.id);
         var elText = document.getElementById("text-" + area.id);
-        el === null ? console.warn("error id 10 not found in the map") : el.style = "fill: " + this.getColorForArea(area.takenTables, area.tables) + "; stroke: rgb(0, 0, 0);";
+        el === null ? console.warn("error id 10 not found in the map") : el.style.fill = this.getColorForArea(area.takenTables, area.tables);
         elText === null ? console.warn("error id text-" + area.id + " not found in the map") : null;
 
         if (elText === null) {
@@ -1878,7 +1873,7 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
           continue;
         }
 
-        elText.style['font-size'] = "3pt";
+        elText.style.fontSize = "3pt";
 
         if (area.tables == 0) {
           elText.innerHTML = area.name + "(No tables)";
@@ -8007,6 +8002,25 @@ exports.push([module.i, "/*!\n* Vuetify v1.5.7\n* Forged by John Leider\n* Relea
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/404-map.vue?vue&type=style&index=0&lang=css&":
+/*!*************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/404-map.vue?vue&type=style&index=0&lang=css& ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.responsive{\n    width: 100%;\n    height: 105%;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AreaMap.vue?vue&type=style&index=0&lang=css&":
 /*!*************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/AreaMap.vue?vue&type=style&index=0&lang=css& ***!
@@ -8019,7 +8033,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.svg-container {\r\n    display: inline-block;\r\n    position: relative;\r\n    width: 100%;\r\n    padding-bottom: 100%;\r\n    vertical-align: top;\r\n    overflow: hidden;\n}\n.svg-content {\r\n    display: inline-block;\r\n    position: absolute;\r\n    top: 0;\r\n    left: 0;\n}\r\n", ""]);
+exports.push([module.i, "\n.svg-container {\n    display: inline-block;\n    position: relative;\n    width: 100%;\n    padding-bottom: 100%;\n    vertical-align: top;\n    overflow: hidden;\n}\n.svg-content {\n    display: inline-block;\n    position: absolute;\n    top: 0;\n    left: 0;\n}\n", ""]);
 
 // exports
 
@@ -8038,7 +8052,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\na[data-v-5dd24bca]{\r\n    text-decoration: none;\n}\r\n", ""]);
+exports.push([module.i, "\na[data-v-5dd24bca]{\n    text-decoration: none;\n}\n", ""]);
 
 // exports
 
@@ -8057,7 +8071,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.building-link:hover{\r\n        color: rgb(4, 21, 248);\r\n        background: rgba(205, 205, 205, 0.803)\n}\n.building-link{\r\n    color: black;\r\n    text-decoration: none;\n}\r\n", ""]);
+exports.push([module.i, "\n.building-link:hover{\n        color: rgb(4, 21, 248);\n        background: rgba(205, 205, 205, 0.803)\n}\n.building-link{\n    color: black;\n    text-decoration: none;\n}\n", ""]);
 
 // exports
 
@@ -8076,7 +8090,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.building-card[data-v-ddddf5a0]{\r\n    border-radius:50px;\r\n    cursor: pointer;\n}\r\n", ""]);
+exports.push([module.i, "\n.building-card[data-v-ddddf5a0]{\n    border-radius:50px;\n    cursor: pointer;\n}\n", ""]);
 
 // exports
 
@@ -8095,7 +8109,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.responsive[data-v-631f16b1]{\r\n    width: 100%;\r\n    height: auto;\n}\r\n", ""]);
+exports.push([module.i, "\n.responsive[data-v-631f16b1]{\n    width: 100%;\n    height: auto;\n}\n", ""]);
 
 // exports
 
@@ -8114,7 +8128,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.link[data-v-362b9ba8]{\r\n    color:black;\r\n    text-decoration: none;\n}\n.link[data-v-362b9ba8]:hover{\r\n    color:blue;\n}\n.list[data-v-362b9ba8]{\r\n    list-style-type: none;\n}\n.listItem[data-v-362b9ba8]::before{\r\n    content:\"# \"\n}\ntitle[data-v-362b9ba8]{\r\n    text-decoration: none\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n.link[data-v-362b9ba8]{\n    color:black;\n    text-decoration: none;\n}\n.link[data-v-362b9ba8]:hover{\n    color:blue;\n}\n.list[data-v-362b9ba8]{\n    list-style-type: none;\n}\n.listItem[data-v-362b9ba8]::before{\n    content:\"# \"\n}\ntitle[data-v-362b9ba8]{\n    text-decoration: none\n}\n\n", ""]);
 
 // exports
 
@@ -8133,7 +8147,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.link[data-v-12306576]{\r\n    color:black;\r\n    text-decoration: none;\n}\n.link[data-v-12306576]:hover{\r\n    color:blue;\n}\nul[data-v-12306576]{\r\n        \r\n    list-style-type: none;\n}\nli[data-v-12306576]::before{\r\n    content:\"# \"\n}\ntitle[data-v-12306576]{\r\n    text-decoration: none\n}\r\n", ""]);
+exports.push([module.i, "\n.link[data-v-12306576]{\n    color:black;\n    text-decoration: none;\n}\n.link[data-v-12306576]:hover{\n    color:blue;\n}\nul[data-v-12306576]{\n        \n    list-style-type: none;\n}\nli[data-v-12306576]::before{\n    content:\"# \"\n}\ntitle[data-v-12306576]{\n    text-decoration: none\n}\n", ""]);
 
 // exports
 
@@ -38734,6 +38748,36 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/404-map.vue?vue&type=style&index=0&lang=css&":
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/404-map.vue?vue&type=style&index=0&lang=css& ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./404-map.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/404-map.vue?vue&type=style&index=0&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AreaMap.vue?vue&type=style&index=0&lang=css&":
 /*!*****************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/AreaMap.vue?vue&type=style&index=0&lang=css& ***!
@@ -39528,6 +39572,91 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/404-map.vue?vue&type=template&id=12a80d4c&":
+/*!**********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/404-map.vue?vue&type=template&id=12a80d4c& ***!
+  \**********************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c(
+        "v-layout",
+        [
+          _c(
+            "v-flex",
+            { attrs: { lg3: "", sm12: "" } },
+            [
+              _c(
+                "v-card",
+                { attrs: { height: "105%", elevation: "4" } },
+                [
+                  _c("v-card-title", [
+                    _c("h3", { staticClass: "display-1" }, [
+                      _vm._v("This map wasn't found")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "v-card-text",
+                    [
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: {
+                            round: "",
+                            color: "green",
+                            dark: "",
+                            large: "",
+                            href: "/"
+                          }
+                        },
+                        [
+                          _c("v-icon", [_vm._v("home")]),
+                          _vm._v(" Go back to the main page")
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("v-flex", { attrs: { lg9: "", sm12: "" } }, [
+            _c("img", {
+              staticClass: "responsive",
+              attrs: { src: "/404-map.svg", alt: "" }
+            })
+          ])
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AreaMap.vue?vue&type=template&id=7b433f74&":
 /*!**********************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/AreaMap.vue?vue&type=template&id=7b433f74& ***!
@@ -39551,30 +39680,7 @@ var render = function() {
         _c(
           "v-container",
           [
-            _c(
-              "v-layout",
-              { attrs: { row: "" } },
-              [
-                _c(
-                  "v-flex",
-                  { attrs: { md4: "" } },
-                  [
-                    _c(
-                      "v-card",
-                      [
-                        _c("v-breadcrumbs", {
-                          staticClass: "subtitle",
-                          attrs: { items: _vm.nav, large: "", divider: ">" }
-                        })
-                      ],
-                      1
-                    )
-                  ],
-                  1
-                )
-              ],
-              1
-            ),
+            _c("v-layout", { attrs: { row: "" } }),
             _vm._v(" "),
             _c(
               "v-layout",
@@ -40559,9 +40665,9 @@ var render = function() {
                                       [
                                         _c("v-flex", [
                                           _vm._v(
-                                            "\r\n                                        " +
+                                            "\n                                        " +
                                               _vm._s(building.name) +
-                                              "\r\n                                    "
+                                              "\n                                    "
                                           )
                                         ]),
                                         _vm._v(" "),
@@ -40569,9 +40675,9 @@ var render = function() {
                                         _vm._v(" "),
                                         _c("v-flex", [
                                           _vm._v(
-                                            "\r\n                                        ID:" +
+                                            "\n                                        ID:" +
                                               _vm._s(building.id) +
-                                              "\r\n                                    "
+                                              "\n                                    "
                                           )
                                         ]),
                                         _vm._v(" "),
@@ -40697,9 +40803,9 @@ var render = function() {
                                       [
                                         _c("v-flex", [
                                           _vm._v(
-                                            "\r\n                                        " +
+                                            "\n                                        " +
                                               _vm._s(level.name) +
-                                              "\r\n                                    "
+                                              "\n                                    "
                                           )
                                         ]),
                                         _vm._v(" "),
@@ -40834,9 +40940,9 @@ var render = function() {
                                       [
                                         _c("v-flex", [
                                           _vm._v(
-                                            "\r\n                                        " +
+                                            "\n                                        " +
                                               _vm._s(area.name) +
-                                              "\r\n                                    "
+                                              "\n                                    "
                                           )
                                         ]),
                                         _vm._v(" "),
@@ -40844,9 +40950,9 @@ var render = function() {
                                         _vm._v(" "),
                                         _c("v-flex", [
                                           _vm._v(
-                                            "\r\n                                        ID::" +
+                                            "\n                                        ID::" +
                                               _vm._s(area.id) +
-                                              "  \r\n                                    "
+                                              "  \n                                    "
                                           )
                                         ]),
                                         _vm._v(" "),
@@ -42063,7 +42169,7 @@ var render = function() {
                     ),
                     _c("u", { staticClass: "blue--text" }, [_vm._v("seats")]),
                     _vm._v(
-                      " link on that area.\r\n                after that you will see the area's page which will show you the tables/seats and their tokens"
+                      " link on that area.\n                after that you will see the area's page which will show you the tables/seats and their tokens"
                     )
                   ]),
                   _vm._v(" "),
@@ -42115,11 +42221,11 @@ var render = function() {
                   _c(
                     "p",
                     [
-                      _vm._v("\r\n                    Click on "),
+                      _vm._v("\n                    Click on "),
                       _c("v-icon", { attrs: { color: "red" } }, [
                         _vm._v("delete")
                       ]),
-                      _vm._v(" to delete a seat/table.\r\n                ")
+                      _vm._v(" to delete a seat/table.\n                ")
                     ],
                     1
                   ),
@@ -42171,7 +42277,7 @@ var render = function() {
                   _vm._v(" "),
                   _c("p", [
                     _vm._v(
-                      "When drawing a map a set of rules must be followed to ensure that the map will be reactive in the website. \r\n                    "
+                      "When drawing a map a set of rules must be followed to ensure that the map will be reactive in the website. \n                    "
                     ),
                     _c("ol", [
                       _c("li", [
@@ -80507,7 +80613,8 @@ Vue.component('building-list', __webpack_require__(/*! ./components/BuildingList
 Vue.component('level-list', __webpack_require__(/*! ./components/LevelList.vue */ "./resources/js/components/LevelList.vue").default);
 Vue.component('admin-help-layout', __webpack_require__(/*! ./components/admin/HelpLayout.vue */ "./resources/js/components/admin/HelpLayout.vue").default);
 Vue.component('admin-help', __webpack_require__(/*! ./components/admin/Help.vue */ "./resources/js/components/admin/Help.vue").default);
-Vue.component('admin-help-instruction', __webpack_require__(/*! ./components/admin/HelpInstructionList.vue */ "./resources/js/components/admin/HelpInstructionList.vue").default); //--------------------
+Vue.component('admin-help-instruction', __webpack_require__(/*! ./components/admin/HelpInstructionList.vue */ "./resources/js/components/admin/HelpInstructionList.vue").default);
+Vue.component('map404', __webpack_require__(/*! ./components/404-map.vue */ "./resources/js/components/404-map.vue").default); //--------------------
 
 var app = new Vue({
   el: '#app'
@@ -80570,6 +80677,77 @@ if (token) {
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/components/404-map.vue":
+/*!*********************************************!*\
+  !*** ./resources/js/components/404-map.vue ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _404_map_vue_vue_type_template_id_12a80d4c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./404-map.vue?vue&type=template&id=12a80d4c& */ "./resources/js/components/404-map.vue?vue&type=template&id=12a80d4c&");
+/* harmony import */ var _404_map_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./404-map.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/404-map.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+var script = {}
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  script,
+  _404_map_vue_vue_type_template_id_12a80d4c___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _404_map_vue_vue_type_template_id_12a80d4c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/404-map.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/404-map.vue?vue&type=style&index=0&lang=css&":
+/*!******************************************************************************!*\
+  !*** ./resources/js/components/404-map.vue?vue&type=style&index=0&lang=css& ***!
+  \******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_404_map_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./404-map.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/404-map.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_404_map_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_404_map_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_404_map_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_404_map_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_404_map_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/404-map.vue?vue&type=template&id=12a80d4c&":
+/*!****************************************************************************!*\
+  !*** ./resources/js/components/404-map.vue?vue&type=template&id=12a80d4c& ***!
+  \****************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_404_map_vue_vue_type_template_id_12a80d4c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./404-map.vue?vue&type=template&id=12a80d4c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/404-map.vue?vue&type=template&id=12a80d4c&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_404_map_vue_vue_type_template_id_12a80d4c___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_404_map_vue_vue_type_template_id_12a80d4c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
 
 /***/ }),
 
@@ -81752,8 +81930,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Ahmed\space-bubble\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Ahmed\space-bubble\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/adam/Desktop/space-bubble/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/adam/Desktop/space-bubble/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

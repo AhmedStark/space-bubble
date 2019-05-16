@@ -77,4 +77,8 @@ class areaController extends Controller
             ->update(['name' =>$request->name]);
             return ['status'=>true,'response' => "Area Edited!","data"=>$request->all()];
     }
+
+    public static function record($area){
+        
+    }
 }
