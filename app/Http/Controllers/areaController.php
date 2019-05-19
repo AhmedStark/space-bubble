@@ -51,6 +51,10 @@ class areaController extends Controller
         return view('areas.index');
     }
 
+    public function history(){
+        return view('admin/area-history');
+    }
+
     public function showTables($id){
         $area_id=$id;
         

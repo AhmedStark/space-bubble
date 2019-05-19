@@ -12,9 +12,11 @@ import 'vuetify/dist/vuetify.min.css' ;
 window.Vue = require('vue');
 
 import Vuetify from 'vuetify';
-
 Vue.use(Vuetify);
 
+import VueApexCharts from 'vue-apexcharts'
+
+Vue.component('apexchart', VueApexCharts);
 
 Vue.component('area-map', require('./components/AreaMap.vue').default);
 Vue.component('nav-bar', require('./components/NavBar.vue').default);
@@ -32,6 +34,7 @@ Vue.component('admin-help-layout', require('./components/admin/HelpLayout.vue').
 Vue.component('admin-help', require('./components/admin/Help.vue').default);
 Vue.component('admin-help-instruction', require('./components/admin/HelpInstructionList.vue').default);
 Vue.component('map404', require('./components/404-map.vue').default);
+Vue.component('area-history', require('./components/admin/AreaHistory.vue').default);
 
 
 

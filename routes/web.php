@@ -34,6 +34,7 @@ Route::group(['middleware' => ['AdminAuth']], function () {
 
     Route::get('updateArea','areaController@update');
     Route::get('updateLevel','levelController@update');
+    Route::get('/admin/area-history','areaController@history');
 
     Route::get('moveTable','tableController@moveTo');
     Route::post('moveTable','tableController@moveTo');

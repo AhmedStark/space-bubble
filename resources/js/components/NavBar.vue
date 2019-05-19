@@ -37,6 +37,7 @@ export default {
             adminLinks:[
                 {icon:"map",title:"Maps",link:"/admin/"},
                 {icon:"help",title:"Help",link:"/admin/help"},
+                {icon:"tab",title:"Data",link:"/admin/area-history"},
             ]
         }
     },
