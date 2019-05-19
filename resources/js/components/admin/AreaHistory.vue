@@ -2,9 +2,9 @@
     <div>
         <v-container >
             <v-layout row>
-            <v-flex md3>
-                <v-card >
-                    <v-card-title>Choose a building</v-card-title>
+            <v-flex md3 class="body-2">
+                <v-card class="mx-2">
+                    <v-card-title><h1 class="title">Choose a building</h1></v-card-title>
                     <v-card-text>
                 <v-expansion-panel v-model="buildingPanel" expand>
                     <v-expansion-panel-content key="building-panel">
@@ -55,9 +55,66 @@
 
                     </v-card-text>
                 </v-card>
+                <v-card class="mt-4 mx-2">
+                    <v-card-text>
+
+<v-menu
+        v-model="menu"
+        :close-on-content-click="false"
+        :nudge-right="40"
+        lazy
+        transition="scale-transition"
+        offset-y
+        full-width
+        min-width="290px"
+      >
+        <template v-slot:activator="{ on }">
+          <v-text-field
+            v-model="fromDatePicker"
+            label="Start date"
+            prepend-icon="event"
+            readonly
+            v-on="on"
+          ></v-text-field>
+        </template>
+        <v-date-picker 
+            min="2019-01-01"
+            max="2019-06-02"
+            v-model="fromDatePicker" @input="menu = false"></v-date-picker>
+      </v-menu>
+<v-menu
+        v-model="toDatePickerMenu"
+        :close-on-content-click="false"
+        :nudge-right="40"
+        lazy
+        transition="scale-transition"
+        offset-y
+        full-width
+        min-width="290px"
+      >
+        <template v-slot:activator="{ on }">
+          <v-text-field
+            v-model="toDatePicker"
+            label="End date"
+            prepend-icon="event"
+            readonly
+            v-on="on"
+          ></v-text-field>
+        </template>
+        <v-date-picker 
+            :min="fromDatePicker"
+            max="2019-06-02"
+            v-model="toDatePicker" @input="toDatePickerMenu = false"></v-date-picker>
+      </v-menu>
+<p v-if="fromDatePicker!==null &&toDatePicker !==null" class="body-2">Download data that is recorded from {{fromDatePicker}} to {{toDatePicker}}.</p>
+                        <v-btn color="blue" dark @click="downloadData" :loading="loadingDownload"><span><v-icon>cloud_download</v-icon> Download</span></v-btn>
+                    </v-card-text>
+
+                </v-card>
             </v-flex>
             <v-flex md7>
-                  <apexchart  width="100%" type="line" :options="options" :series="series"></apexchart>
+                    <apexchart class="chart" backgroud="#000"  width="100%" type="line" :options="options" :series="series" ></apexchart>
+                  
             </v-flex>
             </v-layout>
         </v-container>
@@ -68,20 +125,26 @@
 export default {
 data(){
         return{
+            fromDatePicker:null,
+            toDatePicker:null,
+            menu:false,
+            toDatePickerMenu:false,
             selectedBuilding : null,
             selectedLevel : null,
             selectedAreas : [],
             buildingPanel:[],
             levelPanel:[],
             areaPanel:[],
+            loadingDownload:false,
             options: {
+       
                  palette: 'palette2',
                 chart: {
                 id: 'vuechart-example'
                 },
                 xaxis: {
                 categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998]
-                }
+                },
             },
             series: [
                 {
@@ -110,6 +173,11 @@ data(){
 
         }
     },methods:{
+        downloadData:function () {
+          this.loadingDownload = true;
+          document.getElementById('my_iframe').src = "http://localhost:8000/imgs/BS.png";
+          this.loadingDownload = false; 
+        },
         selectBuilding:function (id,index) {
             console.log("You selected this building"+id);
             console.log(this.panels);
@@ -136,3 +204,8 @@ data(){
     }
 }
 </script>
+<style>
+.chart {
+    background: #fff;
+}
+</style>

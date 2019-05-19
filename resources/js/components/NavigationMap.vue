@@ -21,7 +21,7 @@
     </main-map>
 </v-flex>
 <v-spacer></v-spacer>
-<v-flex lg3 sm12>
+<v-flex lg4 sm12>
     <v-card>
         <v-card-title><v-flex class="text-xs-center"><b class="headline">Buildings</b></v-flex></v-card-title>
         <v-card-text>
