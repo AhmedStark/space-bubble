@@ -2098,13 +2098,48 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    admin: {
+      default: false,
+      type: Boolean
+    }
+  },
   data: function data() {
-    return {};
+    return {
+      drawer: false,
+      adminLinks: [{
+        icon: "map",
+        title: "Maps",
+        link: "/admin/"
+      }, {
+        icon: "help",
+        title: "Help",
+        link: "/admin/help"
+      }]
+    };
   },
   methods: {
-    opneNavDrawer: function opneNavDrawer() {
-      console.log('open drawer');
+    opneDrawer: function opneDrawer() {
+      this.drawer = !this.drawer;
     }
   }
 });
@@ -40063,19 +40098,91 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("v-toolbar", { attrs: { color: "blue", dark: "" } }, [
-    _c(
-      "a",
-      { attrs: { href: "/" } },
-      [
-        _c("v-toolbar-title", { staticClass: "white--text text-uppercase" }, [
-          _c("span", { staticClass: "font-weight-light" }, [_vm._v("Space")]),
-          _c("span", [_vm._v(" Bubble")])
-        ])
-      ],
-      1
-    )
-  ])
+  return _c(
+    "nav",
+    [
+      _c(
+        "v-toolbar",
+        { attrs: { color: "blue darken-1", flat: "", dark: "" } },
+        [
+          _vm.admin
+            ? _c("v-toolbar-side-icon", { on: { click: _vm.opneDrawer } })
+            : _vm._e(),
+          _vm._v(" "),
+          _c(
+            "a",
+            { attrs: { href: "/" } },
+            [
+              _c(
+                "v-toolbar-title",
+                { staticClass: "white--text text-uppercase" },
+                [
+                  _c("span", { staticClass: "font-weight-light" }, [
+                    _vm._v("Space")
+                  ]),
+                  _c("span", [_vm._v(" Bubble")])
+                ]
+              )
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _vm.admin
+        ? _c(
+            "v-navigation-drawer",
+            {
+              staticClass: "purple",
+              attrs: { dark: "", temporary: "", app: "" },
+              model: {
+                value: _vm.drawer,
+                callback: function($$v) {
+                  _vm.drawer = $$v
+                },
+                expression: "drawer"
+              }
+            },
+            [
+              _c(
+                "v-list",
+                _vm._l(_vm.adminLinks, function(adminLink, index) {
+                  return _c(
+                    "v-list-tile",
+                    {
+                      key: "admin-link" + index,
+                      attrs: { href: adminLink.link }
+                    },
+                    [
+                      _c(
+                        "v-list-tile-action",
+                        [_c("v-icon", [_vm._v(_vm._s(adminLink.icon))])],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-list-tile-content",
+                        [
+                          _c("v-list-tile-title", [
+                            _vm._v(_vm._s(adminLink.title))
+                          ])
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                }),
+                1
+              )
+            ],
+            1
+          )
+        : _vm._e()
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -81930,8 +82037,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/adam/Desktop/space-bubble/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/adam/Desktop/space-bubble/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/iceghost/Desktop/space-bubble/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/iceghost/Desktop/space-bubble/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
