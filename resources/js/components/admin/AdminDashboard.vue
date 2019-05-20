@@ -2,6 +2,7 @@
 <div>
     <v-container>
         <v-layout row>
+
             <form method="post" action="/logout">
             
                 <input type="hidden" :value="csrf" name="_token" />
@@ -254,7 +255,6 @@ export default {
         }
     },mounted(){
         this.getBuildings();
-
 
     }
 }

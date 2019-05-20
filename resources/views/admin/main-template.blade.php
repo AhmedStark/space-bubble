@@ -13,7 +13,7 @@
 <body>
 
 <div id="app">
-<main-template >
+<main-template admin >
 <div slot="content">
 @yield('content')
 

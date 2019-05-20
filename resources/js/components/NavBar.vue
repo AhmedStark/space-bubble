@@ -23,6 +23,12 @@
       </v-list-tile>
 
     </v-list>
+    <v-divider></v-divider>
+    <v-switch
+      v-model="darkMode"
+      @input="changeMode"
+      label="Dark mode (still in beta)"
+    ></v-switch>
       </v-navigation-drawer>
     </nav>
 </template>
@@ -33,6 +39,7 @@ export default {
     },
     data(){
         return {
+          darkMode:this.$cookies.get("dark_mode")==="on",
             drawer:false,
             adminLinks:[
                 {icon:"map",title:"Maps",link:"/admin/"},
@@ -44,8 +51,18 @@ export default {
     methods:{
         opneDrawer:function () {
             this.drawer=!this.drawer;
+        },
+        changeMode:function(){
+          console.log("Dark mode ::",this.darkMode);
+          this.darkMode ? this.$cookies.set('dark_mode', 'on'):this.$cookies.set("dark_mode","off");
         }
+    },watch: {
+    // whenever question changes, this function will run
+    darkMode: function (newValue, oldValue) {
+      this.darkMode ? this.$cookies.set('dark_mode', 'on'):this.$cookies.set("dark_mode","off"); 
+      this.$emit('changeMode');
     }
+  },
 }
 </script>
 <style scoped>
