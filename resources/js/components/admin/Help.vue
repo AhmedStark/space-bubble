@@ -199,7 +199,8 @@ export default {
     list-style-type: none;
 }
 .listItem::before{
-    content:"# "
+    content:"# ";
+    
 }
 title{
     text-decoration: none

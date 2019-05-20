@@ -14,6 +14,7 @@
 <body>
 
 <div id="app">
+<v-app>
 <nav-bar></nav-bar>
 <navigation-map>
 <div slot="map">
@@ -463,6 +464,7 @@
 </div>
 
 </navigation-map>
+</v-app>
 </div>
 </body>
 

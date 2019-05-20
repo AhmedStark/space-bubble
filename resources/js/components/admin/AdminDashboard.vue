@@ -6,7 +6,7 @@
             
                 <input type="hidden" :value="csrf" name="_token" />
                 <v-spacer></v-spacer>
-                <v-btn color="grey darken-2" large flat type="submit"><v-icon>exit_to_app</v-icon>log-out</v-btn>
+                <v-btn color="grey darken-1" large flat type="submit"><v-icon>exit_to_app</v-icon>log-out</v-btn>
              </form>
              <v-spacer></v-spacer>
              <a href="/admin/help" class="mt-3">Help <v-icon color="blue">help</v-icon></a>
@@ -34,7 +34,7 @@
                             ></v-progress-circular>
                         <v-btn color="green" dark href="#" @click="createBuilding">Create a Building</v-btn>
                         <p v-if="buildings.length===0" >There are no building click on the button to add you first building</p>
-                        <v-card style="border-radius:50px;" class="my-3 building-card" v-for="(building,index) in buildings" :dark="index===selectedBuilding" :key="'b'+building.id" @click="selectBuilding(index)">
+                        <v-card style="border-radius:50px;" :class="index===selectedBuilding?'my-3 building-card  grey lighten-1':'my-3 building-card'" v-for="(building,index) in buildings"  :key="'b'+building.id" @click="selectBuilding(index)">
                             <v-card-text>             
                                 <v-layout row>
                                     <v-flex>
@@ -65,7 +65,7 @@
                             ></v-progress-circular>
                         <h3 class="title" v-if="buildings.length>0" >{{buildings[selectedBuilding].name}} levels</h3>
                          <v-btn v-if="buildings.length>0" dark color="blue" @click="showCreateLevelForm">Add new level to this building</v-btn>
-                         <v-card style="border-radius:50px;" class="my-3 building-card" v-for="(level,index) in levels" :dark="index===selectedLevel" :key="'l'+level.id" @click="selectLevel(index)">
+                         <v-card style="border-radius:50px;" :class="index===selectedLevel?'my-3 building-card grey lighten-1':'my-3 building-card'" v-for="(level,index) in levels"  :key="'l'+level.id" @click="selectLevel(index)">
                         <v-card-text>
                                <v-layout row>
                                     <v-flex>
@@ -185,6 +185,7 @@ export default {
                 this.buildings=response.data;
                 console.log(this.buildings);
                 this.getLevels(this.buildings[this.selectedBuilding].id);
+
             }).catch(function(error){
             }).then((response)=> {
                 this.loadingBuildings = false;
