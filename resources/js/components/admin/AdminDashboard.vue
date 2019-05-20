@@ -93,6 +93,8 @@
                             color="primary"
                             ></v-progress-circular>
                          <v-btn v-if="levels.length>0" dark color="blue" normal @click="showCreateAreaForm">Add new area to this level</v-btn>
+                        <div v-if="levels.length>0">
+                            
                         <v-card  class="my-3" v-for="(area,index) in areas" :key="'a'+area.id" @click="selectArea(index)">
                             <v-card-text>
                                 <v-layout row>
@@ -112,6 +114,13 @@
                                     </v-flex>
                                 </v-layout> 
                         </v-card-text>
+                        </v-card>
+
+                        </div>
+                        <v-card v-if="levels.length===0">
+                            <v-card-text>
+                                <p>No level selected</p>
+                            </v-card-text>
                         </v-card>
                    </v-card-text></v-card>
             </v-flex>
