@@ -1,10 +1,10 @@
-<template>
+<template >
 <admin-help-layout title="Admin help page"> 
     <template slot="side-nav-up">
             <h3 class="title" >Menu</h3>
             <v-divider class=" my-2"></v-divider>
-            <a class="link" href="/admin/dashboard"><v-icon color="yellow darken-1">dashboard</v-icon> Dashboard</a><br>
-            <a class="link" href="/"><v-icon color="blue darken-1">map</v-icon> map</a>
+            <a :class="this.$attrs.dark?'linkDark':'link'" href="/admin/dashboard"><v-icon color="yellow darken-1">dashboard</v-icon> Dashboard</a><br>
+            <a :class="this.$attrs.dark?'linkDark':'link'" href="/"><v-icon color="blue darken-1">map</v-icon> map</a>
     </template>
     <template slot="main" >
 
@@ -180,7 +180,6 @@
 export default {
     data(){
         return{
-
         }
     }
 }
@@ -192,7 +191,7 @@ export default {
     color:black;
     text-decoration: none;
 }
-.link:hover{
+.link:hover ,.linkDark:hover{
     color:blue;        
 }
 .list{
@@ -205,5 +204,10 @@ export default {
 title{
     text-decoration: none
 }
+.linkDark{
+    color:white;
+    text-decoration: none;
+}
+
 
 </style>

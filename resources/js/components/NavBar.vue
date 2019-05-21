@@ -1,17 +1,17 @@
 <template>
     <nav>
     <v-toolbar
-        color="blue darken-1"
+        :color="darkMode ? 'blue darken-4':'blue darken-1'"
          flat
         dark
     >
-         <v-toolbar-side-icon v-if="admin" @click="opneDrawer"></v-toolbar-side-icon>
+         <v-toolbar-side-icon  @click="opneDrawer"></v-toolbar-side-icon>
         <a href="/"><v-toolbar-title class="white--text text-uppercase" ><span class="font-weight-light">Space</span><span> Bubble</span></v-toolbar-title>
                     </a>
 
     </v-toolbar>
-      <v-navigation-drawer  dark class="purple" v-if="admin" temporary  app v-model="drawer">
-    <v-list>
+      <v-navigation-drawer  dark class="purple"  temporary  app v-model="drawer">
+    <v-list v-if="admin">
 
       <v-list-tile :href="adminLink.link" v-for="(adminLink,index) in adminLinks" :key="'admin-link'+index">
         <v-list-tile-action>

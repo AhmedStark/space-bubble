@@ -14,10 +14,10 @@
 
 <div id="app">
 <main-template admin >
-<div slot="content">
+<template slot="content" slot-scope="darkMode">
 @yield('content')
 
-</div>
+</template>
 </main-template>
 </div>
 </body>

@@ -2,7 +2,7 @@
     
 <v-app :dark="darkMode">
 <nav-bar v-on:changeMode="darkMode =!darkMode" :admin="admin"></nav-bar>
-<slot name="content">
+<slot name="content" :dark="darkMode"   >
 
 </slot>
 </v-app>
