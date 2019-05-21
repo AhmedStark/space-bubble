@@ -24,8 +24,22 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        $schedule->call(function () {
+            $buildings=Building::all()->get();
+            foreach ($buildings as $building){
+                $levels=$building->levels()->get();
+                foreach($levels as $level){
+                    $areas=$level->areas()->get();
+                    foreach ($areas as $area){
+                        $area_id=$area->id;
+                        $areaTotalNumbOfTables=areaController::totalTables($area_id);
+                        $areaTotalNumbOfTakenTables=areaController::totalTakenTables($area_id);
+                        
+                    }
+                }
+            }
+
+        })->hourly();
     }
 
     /**
