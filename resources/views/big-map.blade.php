@@ -1,7 +1,7 @@
 @extends('main-template')
 @section('content')
-<navigation-map>
-<div slot="map">
+<navigation-map :dark="darkMode.dark">
+<div slot="map" >
      
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"

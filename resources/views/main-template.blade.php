@@ -13,11 +13,11 @@
 <body>
 
 <div id="app">
-<main-template >
-<div slot="content">
+<main-template>
+<template slot="content" slot-scope="darkMode">
 @yield('content')
 
-</div>
+</template>
 </main-template>
 </div>
 </body>
