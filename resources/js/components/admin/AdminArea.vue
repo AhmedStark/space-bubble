@@ -21,7 +21,7 @@
                         <v-list-tile-action>
                             <v-layout row>
                                 <v-icon color="red" @click="deleteTable(table.id)">delete</v-icon>
-                                <v-icon color="grey" @click="copyTokenToClipBoard(index)">file_copy</v-icon>
+                                <v-icon @click="copyTokenToClipBoard(index)">file_copy</v-icon>
                             </v-layout>
                         </v-list-tile-action>
                     </v-list-tile>
