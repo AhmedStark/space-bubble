@@ -6,9 +6,11 @@
         dark
     >
          <v-toolbar-side-icon  @click="opneDrawer"></v-toolbar-side-icon>
-        <a href="/"><v-toolbar-title class="white--text text-uppercase" ><span class="font-weight-light">Space</span><span> Bubble</span></v-toolbar-title>
+        <a href="/"><v-toolbar-title class="white--text text-uppercase" >
+ 
+          <span class="font-weight-light">Space</span><span> Bubble</span></v-toolbar-title>
                     </a>
-
+         <img src="/imgs/BS.ico" alt="icons" class="responsive mx-2">
     </v-toolbar>
       <v-navigation-drawer  dark class="purple"  temporary  app v-model="drawer">
     <v-list v-if="admin">
@@ -27,7 +29,7 @@
     <v-switch
       v-model="darkMode"
       @input="changeMode"
-      label="Dark mode (still in beta)"
+      label="Dark theme (still in beta)"
     ></v-switch>
       </v-navigation-drawer>
     </nav>
@@ -53,7 +55,6 @@ export default {
             this.drawer=!this.drawer;
         },
         changeMode:function(){
-          console.log("Dark mode ::",this.darkMode);
           this.darkMode ? this.$cookies.set('dark_mode', 'on'):this.$cookies.set("dark_mode","off");
         }
     },watch: {
@@ -68,5 +69,9 @@ export default {
 <style scoped>
 a{
     text-decoration: none;
+}
+.responsive{
+    width: 40px;
+    height: 40px;
 }
 </style>

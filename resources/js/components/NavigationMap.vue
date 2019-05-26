@@ -1,5 +1,6 @@
 <template>
 <v-container>
+
 <building-list ref="levels" v-on:selected-level="selectLevel"></building-list>
 <level-list ref="areas"></level-list>
 <v-layout row>

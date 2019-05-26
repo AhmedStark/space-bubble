@@ -87,14 +87,14 @@ To update the seat status you need to send a json request containing the followi
 to `THE_SITE_DOMAIN/api/table`:-
 
 1. Incase the seat/table is taken
-```
+```json
 {
    "token":"THE_GENERATED_TOKEN",
    "taken":true
 }
 ```
 2. Incase the seat/table is empty
-```
+```json
 {
    "token":"THE_GENERATED_TOKEN",
    "taken":false

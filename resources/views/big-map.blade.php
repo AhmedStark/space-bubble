@@ -1,5 +1,6 @@
 @extends('main-template')
 @section('content')
+<head><title>Space bubble</title></head>
 <navigation-map :dark="darkMode.dark">
 <div slot="map" >
      
