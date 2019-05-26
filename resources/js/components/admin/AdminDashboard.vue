@@ -3,12 +3,8 @@
     <v-container>
         <v-layout row>
 
-            <form method="post" action="/logout">
-            
-                <input type="hidden" :value="csrf" name="_token" />
-                <v-spacer></v-spacer>
-                <v-btn color="grey darken-1" large flat type="submit"><v-icon>exit_to_app</v-icon>log-out</v-btn>
-             </form>
+            <main-map-form ref="change_main_map_form"></main-map-form>
+            <v-btn large color="warning" @click="changeMainMap"><v-icon>map</v-icon>change main map</v-btn>
              <v-spacer></v-spacer>
              <a href="/admin/help" class="mt-3">Help <v-icon color="blue">help</v-icon></a>
         </v-layout>
@@ -252,6 +248,8 @@ export default {
         },editArea(index){
             console.log('hok ::',this.areas[index].id,this.areas[index].name)
          this.$refs.create_area_dialog.edit(this.areas[index].id,this.areas[index].name);   
+        },changeMainMap(){
+            this.$refs.change_main_map_form.openDialog();
         }
     },mounted(){
         this.getBuildings();

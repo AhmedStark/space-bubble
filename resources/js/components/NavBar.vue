@@ -11,6 +11,7 @@
           <span class="font-weight-light">Space</span><span> Bubble</span></v-toolbar-title>
                     </a>
          <img src="/imgs/BS.ico" alt="icons" class="responsive mx-2">
+         
     </v-toolbar>
       <v-navigation-drawer  dark class="purple"  temporary  app v-model="drawer">
     <v-list v-if="admin">
@@ -23,7 +24,13 @@
           <v-list-tile-title>{{adminLink.title}}</v-list-tile-title>
         </v-list-tile-content>
       </v-list-tile>
-
+      <v-list-tile href="#" @click="logOut">
+        <v-list-tile-action>
+          <v-icon>exit_to_app</v-icon>
+        </v-list-tile-action>
+        
+        <v-list-tile-title>Log out </v-list-tile-title>
+      </v-list-tile>
     </v-list>
     <v-divider></v-divider>
     <v-switch
@@ -32,6 +39,10 @@
       label="Dark theme (still in beta)"
     ></v-switch>
       </v-navigation-drawer>
+              <form method="post" action="/logout" ref="logout_form">
+                <input type="hidden" :value="csrf" name="_token" />
+                <v-spacer></v-spacer>
+             </form>
     </nav>
 </template>
 <script>
@@ -43,6 +54,7 @@ export default {
         return {
           darkMode:this.$cookies.get("dark_mode")==="on",
             drawer:false,
+            csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
             adminLinks:[
                 {icon:"map",title:"Maps",link:"/admin/"},
                 {icon:"help",title:"Help",link:"/admin/help"},
@@ -56,6 +68,8 @@ export default {
         },
         changeMode:function(){
           this.darkMode ? this.$cookies.set('dark_mode', 'on'):this.$cookies.set("dark_mode","off");
+        },logOut:function () {
+          this.$refs.logout_form.submit();
         }
     },watch: {
     // whenever question changes, this function will run

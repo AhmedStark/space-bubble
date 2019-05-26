@@ -12,6 +12,7 @@ Route::group(['middleware' => ['AdminAuth']], function () {
 
     Route::post("/level/{id}/edit",'levelController@changeMap');
     Route::post("/area/{id}/edit",'areaController@update');
+    Route::post("/admin/change-main-map",'MainMapController@update');
 
     Route::post('/buildings/create','buildingController@store');
     Route::get('/buildings/create','buildingController@store');

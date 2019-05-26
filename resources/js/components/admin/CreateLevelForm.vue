@@ -110,7 +110,8 @@ export default {
         ,clear:function () {
             this.levelName = "";
             this.response = "";   
-            this.status = 0;   
+            this.status = 0;
+            this.imageUrl = null;
         },fileChange(e){
             this.selectedFile = e.target.files[0];
             this.imageUrl = URL.createObjectURL(this.selectedFile);
