@@ -23,6 +23,7 @@ Route::group(['middleware' => ['AdminAuth']], function () {
     Route::get('/deleteTable','tableController@create');
     Route::post('/deleteTable','tableController@delete');
     
+    Route::get('/area/{id}/data','areaController@getHistory');
     Route::get('/deleteArea','areaController@delete');
     Route::post('/deleteArea','areaController@delete');
     

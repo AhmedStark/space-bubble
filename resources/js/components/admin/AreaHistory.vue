@@ -114,14 +114,23 @@
             </v-flex>
             <v-flex md7>
                     <apexchart class="chart" backgroud="#000"  width="100%" type="line" :options="options" :series="series" ></apexchart>
-                  
+
+                    <v-card class="my-2">
+                        <v-card-title class="title">Areas</v-card-title>
+                        <v-list>
+                            <v-list-tile   v-for="(area,index) in series" :key="index">
+                                <v-list-tile-title>{{area.name}}</v-list-tile-title>
+                                <v-list-tile-action><v-icon @click="deleteArea(area.id)" color="red">delete</v-icon></v-list-tile-action>
+                            </v-list-tile>
+                        </v-list>
+                    </v-card>
             </v-flex>
             </v-layout>
         </v-container>
     </div>
 </template>
 <script>
-
+const axios = require('axios');
 export default {
 data(){
         return{
@@ -143,19 +152,12 @@ data(){
                 id: 'vuechart-example'
                 },
                 xaxis: {
-                categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998]
+                
+                    categories: [ 1992, 1993, 1994, 1995, 1996, 1997, 1998,1999,2000,2001,2002,2003,2004,2005,2006,2007],
                 },
             },
             series: [
-                {
-                    name: 'Lab-2',
-                    data: [30, 10, 15, 50, 49, 70, 70, 91]
-                },
-                {
-                    name: 'Lab-1',
-                    categories: [ 1992, 1993, 1994, 1995, 1996, 1997, 1998],
-                    data: [null,30, 40, 45, 10, 49, 30, 50]
-                },
+                
             ],
             buildings:[
                 {name:"Building A",id:1},
@@ -166,8 +168,8 @@ data(){
                 {name:"level B",id:2},
             ],
             areas:[
-                {name:"area A",id:1},
-                {name:"area B",id:2},
+                {name:"area A",id:0},
+                {name:"area B",id:1},
                 {name:"area C",id:2},
             ],
 
@@ -192,14 +194,32 @@ data(){
             this.selectedLevel = index;
             
         },
+
         selectArea:function (id,index) {
+            
             if(this.selectedAreas.indexOf(index)===-1){
+                this.getAreaData(id);
                 this.selectedAreas.push(index)
                 return;
             }
+            this.deleteArea(id);
             this.selectedAreas.splice(this.selectedAreas.indexOf(index), 1);
             
             
+        },getAreaData(id){
+            
+
+            axios.get('/area/'+id+'/data').then((response)=> {
+                this.series.push(response.data);
+
+            }).catch(function(error){
+            }).then((response)=> {
+                this.loadingAreas = false;
+            });;
+        },deleteArea(id){
+            var areaHistoryObj = this.series.find(o => o.id===id);
+            this.series.splice(this.series.indexOf(areaHistoryObj), 1);
+
         }
     }
 }
