@@ -1,7 +1,9 @@
 record_command="php artisan make:area-record"
+period=60
 while [ 1 == 1 ]; do
-    echo "hello cunt";
+    now=$(date +"%T")
+    echo "updated at $now";
     $record_command;
-    sleep 60;
+    sleep $period;
 done
 
