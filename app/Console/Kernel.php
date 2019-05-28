@@ -25,10 +25,8 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->call(function () {
-            $buildings=Building::all()->get();
-            foreach ($buildings as $building){
-                buildingController::makeRecord($building);
-            }
+            
+           areaController::makeRecord(); 
 
         })->hourly();
     }

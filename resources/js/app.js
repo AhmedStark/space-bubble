@@ -8,22 +8,18 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
-import VueCookies from 'vue-cookies';
 import 'vuetify/dist/vuetify.min.css' ;
 window.Vue = require('vue');
 
 import Vuetify from 'vuetify';
-Vue.use(Vuetify);
-Vue.use(VueCookies);
-import VueApexCharts from 'vue-apexcharts'
 
-Vue.component('apexchart', VueApexCharts);
+Vue.use(Vuetify);
+
 
 Vue.component('area-map', require('./components/AreaMap.vue').default);
 Vue.component('nav-bar', require('./components/NavBar.vue').default);
 Vue.component('navigation-map', require('./components/NavigationMap.vue').default);
 Vue.component('main-map', require('./components/MainMap.vue').default);
-Vue.component('main-template', require('./components/MainTemplate.vue').default);
 Vue.component('admin-dashboard', require('./components/admin/AdminDashboard.vue').default);
 Vue.component('admin-area', require('./components/admin/AdminArea.vue').default);
 Vue.component('create-building-dialog', require('./components/admin/CreateBuildingForm.vue').default);
@@ -38,6 +34,7 @@ Vue.component('admin-help-instruction', require('./components/admin/HelpInstruct
 Vue.component('map404', require('./components/404-map.vue').default);
 Vue.component('area-history', require('./components/admin/AreaHistory.vue').default);
 Vue.component('main-map-form', require('./components/admin/ChangeMainMapForm.vue').default);
+
 
 
 //--------------------

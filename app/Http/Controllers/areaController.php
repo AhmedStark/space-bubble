@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Area;
+use App\Record;
 use DB;
 class areaController extends Controller
 {
@@ -103,7 +104,20 @@ class areaController extends Controller
             return ['status'=>true,'response' => "Area Edited!","data"=>$request->all()];
     }
 
-    public static function record($area){
-        
+    public static function makeRecord(){
+
+        $areas=Area::all();
+        foreach ($areas as $area){
+            $area_id=$area->id;
+            $areaTotalNumbOfTables=areaController::totalTables($area_id);
+            $areaTotalNumbOfTakenTables=areaController::totalTakenTables($area_id);
+
+            $record= new Record;
+            $record->area_name=$area->name;
+            $record->area_id=$area_id;
+            $record->total_tables=$areaTotalNumbOfTables;
+            $record->total_taken_tables=$areaTotalNumbOfTakenTables;
+            $record->save();
+        }
     }
 }
