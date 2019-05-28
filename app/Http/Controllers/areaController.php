@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Response;
 use Illuminate\Http\Request;
 use App\Area;
 use App\Record;
