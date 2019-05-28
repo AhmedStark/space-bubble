@@ -67,7 +67,26 @@ class buildingController extends Controller
         return ['status'=>true,'response' => "Building Created!","data"=>$request->all()];
     }
 
-   
+    public static function makeRecord($building){
+            
+        $levels=$building->levels()->get();
+        foreach($levels as $level){
+            $areas=$level->areas()->get();
+            foreach ($areas as $area){
+                $area_id=$area->id;
+                $areaTotalNumbOfTables=areaController::totalTables($area_id);
+                $areaTotalNumbOfTakenTables=areaController::totalTakenTables($area_id);
+
+                $record= new Record;
+                $record->area_id=$area_id;
+                $record->totealTables=$areaTotalNumbOfTables;
+                $record->totalTakenTables=$areaTotalNumbOfTakenTables;
+                $record-save();
+            }
+        }
+        
+        return ['status'=>true,'response' => "Building recorded!"];
+    }
     public function update(Request $request,$id){
         DB::table('buildings')
             ->where('id', $id)
