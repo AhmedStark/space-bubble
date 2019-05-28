@@ -120,4 +120,26 @@ class areaController extends Controller
             $record->save();
         }
     }
+
+    public static function downloadRecords(){
+
+        $table = Record::all();
+        $filename = "record.csv";
+        $handle = fopen($filename, 'w+');
+        fputcsv($handle, array('Area ID','Area name', 'Total tables', 'Total taken tables', 'created at'));
+    
+        foreach($table as $row) {
+            fputcsv($handle, array($row['area_id'],$row['area_name'], $row['total_tables'], $row['total_taken_tables'], $row['created_at']));
+        }
+    
+        fclose($handle);
+    
+        $headers = array(
+            'Content-Type' => 'text/csv',
+        );
+    
+        return Response::download($filename, 'records.csv', $headers);
+    }
+
+
 }
