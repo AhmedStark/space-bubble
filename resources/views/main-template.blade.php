@@ -9,13 +9,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <link rel="icon" href="{{asset('imgs/bs.png') }}">
 </head>
 <body>
 
 <div id="app">
-<v-app>
+<main-template>
+<template slot="content" slot-scope="darkMode">
 @yield('content')
-</v-app>
+
+</template>
+</main-template>
 </div>
 </body>
 

@@ -89,11 +89,16 @@ export default {
     color:black;
     text-decoration: none;
 }
+.linkDark{
+    color:white;
+    
+    text-decoration: none;
+}
 .link:hover{
     color:blue;        
 }
 ul{
-        
+      
     list-style-type: none;
 }
 li::before{

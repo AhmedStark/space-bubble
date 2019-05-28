@@ -12,6 +12,7 @@ Route::group(['middleware' => ['AdminAuth']], function () {
 
     Route::post("/level/{id}/edit",'levelController@changeMap');
     Route::post("/area/{id}/edit",'areaController@update');
+    Route::post("/admin/change-main-map",'MainMapController@update');
 
     Route::post('/buildings/create','buildingController@store');
     Route::get('/buildings/create','buildingController@store');
@@ -22,6 +23,7 @@ Route::group(['middleware' => ['AdminAuth']], function () {
     Route::get('/deleteTable','tableController@create');
     Route::post('/deleteTable','tableController@delete');
     
+    Route::get('/area/{id}/data','areaController@getHistory');
     Route::get('/deleteArea','areaController@delete');
     Route::post('/deleteArea','areaController@delete');
     
@@ -34,6 +36,7 @@ Route::group(['middleware' => ['AdminAuth']], function () {
 
     Route::get('updateArea','areaController@update');
     Route::get('updateLevel','levelController@update');
+    Route::get('/admin/area-history','areaController@history');
 
     Route::get('moveTable','tableController@moveTo');
     Route::post('moveTable','tableController@moveTo');

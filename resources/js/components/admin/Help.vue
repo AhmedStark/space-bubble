@@ -1,47 +1,47 @@
-<template>
+<template >
 <admin-help-layout title="Admin help page"> 
     <template slot="side-nav-up">
             <h3 class="title" >Menu</h3>
             <v-divider class=" my-2"></v-divider>
-            <a class="link" href="/admin/dashboard"><v-icon color="yellow darken-1">dashboard</v-icon> Dashboard</a><br>
-            <a class="link" href="/"><v-icon color="blue darken-1">map</v-icon> map</a>
+            <a :class="this.$attrs.dark?'linkDark':'link'" href="/admin/dashboard"><v-icon color="yellow darken-1">dashboard</v-icon> Dashboard</a><br>
+            <a :class="this.$attrs.dark?'linkDark':'link'" href="/"><v-icon color="blue darken-1">map</v-icon> map</a>
     </template>
     <template slot="main" >
 
         <div class="py-3">
             <ul class="list">
-                <li><a href="#1" class="linkHash"><b>Creating map layout</b></a>
+                <li><a href="#1" :class="this.$attrs.dark?'white--text' :''" class="linkHash"><b>Creating map layout</b></a>
                     <ul class="list" >
-                        <li class="listItem"><a href="#building" class="linkHash">Buildings</a></li>
+                        <li class="listItem"><a href="#building" :class="this.$attrs.dark?'white--text' :''">Buildings</a></li>
                         <ul class="list">
-                            <li class="listItem"><a href="#building-create">Creating buildings</a></li>
-                            <li class="listItem"><a href="#building-edit">Editing buildings</a></li>
-                            <li class="listItem"><a href="#building-delete">Deleting buildings</a></li>
+                            <li class="listItem"><a href="#building-create" :class="this.$attrs.dark?'white--text' :''">Creating buildings</a></li>
+                            <li class="listItem"><a href="#building-edit" :class="this.$attrs.dark?'white--text' :''">Editing buildings</a></li>
+                            <li class="listItem"><a href="#building-delete" :class="this.$attrs.dark?'white--text' :''">Deleting buildings</a></li>
                         </ul>
-                        <li class="listItem"><a href="#level" class="linkHash">Levels</a></li>
+                        <li class="listItem"><a href="#level" :class="this.$attrs.dark?'white--text' :''">Levels</a></li>
                         <ul class="list">
-                            <li class="listItem"><a href="#level-create">Creating levels</a></li>
-                            <li class="listItem"><a href="#level-edit">Editing levels</a></li>
-                            <li class="listItem"><a href="#level-delete">Deleting levels</a></li>
+                            <li class="listItem"><a :class="this.$attrs.dark?'white--text' :''" href="#level-create">Creating levels</a></li>
+                            <li class="listItem"><a :class="this.$attrs.dark?'white--text' :''" href="#level-edit">Editing levels</a></li>
+                            <li class="listItem"><a :class="this.$attrs.dark?'white--text' :''" href="#level-delete">Deleting levels</a></li>
                         </ul>
-                        <li><a href="#area" class="linkHash">Area</a></li>
+                        <li class="listItem"><a href="#area" :class="this.$attrs.dark?'white--text' :''">Area</a></li>
                         <ul class="list">
-                            <li class="listItem"><a href="#area-create">Creating areas</a></li>
-                            <li class="listItem"><a href="#area-edit">Editing areas</a></li>
-                            <li class="listItem"><a href="#area-delete">Deleting areas</a></li>
+                            <li class="listItem"><a :class="this.$attrs.dark?'white--text' :''" href="#area-create">Creating areas</a></li>
+                            <li class="listItem"><a :class="this.$attrs.dark?'white--text' :''" href="#area-edit">Editing areas</a></li>
+                            <li class="listItem"><a :class="this.$attrs.dark?'white--text' :''" href="#area-delete">Deleting areas</a></li>
                         </ul>
-                        <li><a href="#table" class="linkHash">Tables/Seats</a></li>
-                        <ul class="list">
-                            <li class="listItem"><a href="#table-show">Show area tables/seats</a></li>
-                            <li class="listItem"><a href="#table-create">Creating tables/seats</a></li>
-                            <li class="listItem"><a href="#table-delete">Deleting tables/seats</a></li>
+                        <li class="listItem" ><a href="#table" :class="this.$attrs.dark?'white--text' :''">Tables/Seats</a></li>
+                        <ul class="list" >
+                            <li class="listItem"><a :class="this.$attrs.dark?'white--text' :''" href="#table-show">Show area tables/seats</a></li>
+                            <li class="listItem"><a :class="this.$attrs.dark?'white--text' :''" href="#table-create">Creating tables/seats</a></li>
+                            <li class="listItem"><a :class="this.$attrs.dark?'white--text' :''" href="#table-delete">Deleting tables/seats</a></li>
                         </ul>
                     </ul>
                 </li>
-                <li><a href="#map" class="linkHash" ><b>Drawing maps</b></a>
+                <li><a href="#map" :class="this.$attrs.dark?'white--text' :''" ><b>Drawing maps</b></a>
                     <ul class="list">
-                        <li class="listItem"><a href="#map-file" class="linkHash">File format</a></li>
-                        <li class="listItem"><a href="#map-integrate" class="linkHash">Integrating maps</a></li>
+                        <li class="listItem"><a :class="this.$attrs.dark?'white--text' :''" href="#map-file" >File format</a></li>
+                        <li class="listItem"><a href="#map-integrate" :class="this.$attrs.dark?'white--text' :''">Integrating maps</a></li>
                     </ul>
                 </li>
             </ul>                        
@@ -52,7 +52,7 @@
             <h3 class="display-1  font-weight-light mb-4"># Creating map layout</h3>
             <div class="mx-4" id="2">
                 <h6 class="headline font-weight-regular mb-3" id="building">Buildings</h6>
-                    <admin-help-instruction title="Creating a building" id="building-create" >
+                    <admin-help-instruction title="Creating a building" id="building-create" v-bind:dark="this.$attrs.dark">
                         <template slot="instructions">
                             <ol>
                                 <li>Click on the add Building button <v-btn color="green" dark>CREATE A BUILDING</v-btn> on the top left of the page</li>
@@ -63,7 +63,7 @@
                         </template>
                     </admin-help-instruction>
 
-                    <admin-help-instruction title="Editing buildings' details" id="building-edit" class="mt-4">
+                    <admin-help-instruction title="Editing buildings' details" id="building-edit" class="mt-4" v-bind:dark="this.$attrs.dark">
                         <template slot="instructions">
                             <ol>
                                 <li>Click on the the edit icon <v-icon>edit</v-icon> on the building you want to edit</li>
@@ -82,7 +82,7 @@
             <v-divider class="my-3"></v-divider>
             <div class="ml-4" id="level">
                 <h6 class="headline font-weight-regular mb-3">Levels</h6>
-                <admin-help-instruction title="Creating a Level" id="level-create" >
+                <admin-help-instruction title="Creating a Level" id="level-create" v-bind:dark="this.$attrs.dark">
                     <template slot="instructions">
                         <ol>
                             <li>Click on the add new level to this building button <v-btn color="blue" dark>ADD NEW LEVEL TO THIS BUILDING</v-btn></li>
@@ -92,7 +92,7 @@
                         
                     </template>
                 </admin-help-instruction>
-                <admin-help-instruction title="Editing a Level" id="level-edit" class="mt-4" >
+                <admin-help-instruction title="Editing a Level" id="level-edit" class="mt-4" v-bind:dark="this.$attrs.dark">
                     <template slot="instructions">
                         <ol>
                             <li>Click on the edit icon edit a level <v-icon>edit</v-icon>.</li>
@@ -111,7 +111,7 @@
 
             <div class="ml-4" id="area">
                 <h6 class="headline font-weight-regular mb-3">Areas</h6>
-                <admin-help-instruction title="Creating an Area" id="area-create">
+                <admin-help-instruction title="Creating an Area" id="area-create" v-bind:dark="this.$attrs.dark">
                     <template slot="instructions">
                         <ol>
                             <li>Click on add new area button <v-btn color="blue" dark>ADD NEW AREA TO THIS LEVEL</v-btn></li>
@@ -120,7 +120,7 @@
                         </ol>
                     </template>
                 </admin-help-instruction>
-                <admin-help-instruction id="area-edit" class="mt-4" title="Creating an Area">
+                <admin-help-instruction id="area-edit" class="mt-4" title="Creating an Area" v-bind:dark="this.$attrs.dark">
                     <template slot="instructions">
                         <ol>
                             <li>Click on the edit icon edit an area <v-icon>edit</v-icon>.</li>
@@ -142,7 +142,7 @@
                 <p>To show an area seats/tables you can click on the <u class="blue--text">seats</u> link on that area.
                 after that you will see the area's page which will show you the tables/seats and their tokens</p>
 
-                <admin-help-instruction id="table-create" class="mt-4" title="Creating tables/seats">
+                <admin-help-instruction id="table-create" class="mt-4" title="Creating tables/seats" v-bind:dark="this.$attrs.dark">
                     <template slot="instructions">
                         <ol>
                             <li>Click on <v-btn color="green" dark small>Add new table</v-btn></li>
@@ -163,8 +163,8 @@
                 <p>When drawing a map a set of rules must be followed to ensure that the map will be reactive in the website. 
                     <ol>
                         <li>You need to create the areas of the level you want to show in the map in the <a href="/admin/dashboard">dashboard <v-icon color="blue"> dashboard</v-icon></a> before uploading the map.</li>
-                        <li>After creating the areas start assigning the area IDs to the object IDs in your drawing software by giving them an ID of <span class="grey lighten-2">area-[Area's shown ID]</span> .</li>
-                        <li>You can also assign ids to the text to show the area map and the number of seats by giving the test objects an ID of <span class="grey lighten-2">text-[Area's shown ID]</span> .</li>
+                        <li>After creating the areas start assigning the area IDs to the object IDs in your drawing software by giving them an ID of <span :class="this.$attrs.dark?'blue darken-4':'grey lighten-2'">area-[Area's shown ID]</span> .</li>
+                        <li>You can also assign ids to the text to show the area map and the number of seats by giving the test objects an ID of <span :class="this.$attrs.dark?'blue darken-4':'grey lighten-2'">text-[Area's shown ID]</span> .</li>
                         <li>Uploade the map after that by clicking edit on the level you create and clicking <v-btn flat color="green">upload map</v-btn></li>
                     </ol>          
                 </p>
@@ -180,7 +180,6 @@
 export default {
     data(){
         return{
-
         }
     }
 }
@@ -192,17 +191,26 @@ export default {
     color:black;
     text-decoration: none;
 }
-.link:hover{
+.link:hover ,.linkDark:hover{
     color:blue;        
 }
 .list{
     list-style-type: none;
 }
-.listItem::before{
-    content:"# "
+.listItem::before, .listItemDark{
+    content:"# ";
+    
 }
 title{
     text-decoration: none
 }
+.linkDark{
+    color:white;
+    text-decoration: none;
+}
+.listItemDark{
+    color:white;
+}
+
 
 </style>

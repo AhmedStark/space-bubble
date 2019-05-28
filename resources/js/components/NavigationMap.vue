@@ -1,5 +1,6 @@
 <template>
 <v-container>
+
 <building-list ref="levels" v-on:selected-level="selectLevel"></building-list>
 <level-list ref="areas"></level-list>
 <v-layout row>
@@ -21,11 +22,11 @@
     </main-map>
 </v-flex>
 <v-spacer></v-spacer>
-<v-flex lg3 sm12>
+<v-flex lg4 sm12>
     <v-card>
         <v-card-title><v-flex class="text-xs-center"><b class="headline">Buildings</b></v-flex></v-card-title>
         <v-card-text>
-            <v-flex class="text-xs-center my-2" v-for="(building,index) in buildings" :key="index"><a href="#" @click="showLevels(building.name,building.id)" class="building-link title">{{building.name}}</a></v-flex>
+            <v-flex class="text-xs-center my-2" v-for="(building,index) in buildings" :key="index"><a href="#" @click="showLevels(building.name,building.id)" v-bind:class=" $attrs.dark ? 'building-link-dark title':'building-link title'">{{building.name}}</a></v-flex>
         </v-card-text>
     </v-card>
 </v-flex>
@@ -115,12 +116,16 @@ export default {
 </script>
 
 <style>
-.building-link:hover{
+.building-link:hover ,.building-link-dark:hover{
         color: rgb(4, 21, 248);
         background: rgba(205, 205, 205, 0.803)
 }
 .building-link{
     color: black;
+    text-decoration: none;
+}
+.building-link-dark{
+    color: white;
     text-decoration: none;
 }
 </style>

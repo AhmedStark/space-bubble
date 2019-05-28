@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Area;
+use App\Record;
 use DB;
 class areaController extends Controller
 {
@@ -51,6 +52,31 @@ class areaController extends Controller
         return view('areas.index');
     }
 
+    public function history(){
+        return view('admin/area-history');
+    }
+
+    public function getHistory($id){
+        $data= [
+            [   'id'=>0,
+                'name'=> 'Lab-1',
+                'categories'=> [ 1992, 1993, 1994, 1995, 1996, 1997, 1998,1999,2000,2001,2002,2003,2004,2005,2006,2007],
+                'data'=> [null,30, 40, 45, 10, 49, 30, 50,20,30, 40, 45, 10, 49, 30, 50]
+            ],[
+                'id'=>1,
+                'name'=> 'Lab-2',
+                'categories'=> [ 1992, 1993, 1994, 1995, 1996, 1997, 1998,1999,2000,2001,2002,2003,2004,2005,2006,2007],
+                'data'=> [null,70, 10, 55, 50, 30, 65, 50,20,10, 70, 85, 50, 39, 36, 56]
+            ],[
+                'id'=>2,
+                'name'=> 'Lab-3',
+                'categories'=> [ 1992, 1993, 1994, 1995, 1996, 1997, 1998,1999,2000,2001,2002,2003,2004,2005,2006,2007],
+                'data'=> [null,70, 40, 55, 10, 49, 65, 56,0,30, 70, 05, 10, 79, 36, 56]
+            ]
+        ];
+        return $data[$id];
+    }
+
     public function showTables($id){
         $area_id=$id;
         
@@ -76,5 +102,22 @@ class areaController extends Controller
             ->where('id', $id)
             ->update(['name' =>$request->name]);
             return ['status'=>true,'response' => "Area Edited!","data"=>$request->all()];
+    }
+
+    public static function makeRecord(){
+
+        $areas=Area::all();
+        foreach ($areas as $area){
+            $area_id=$area->id;
+            $areaTotalNumbOfTables=areaController::totalTables($area_id);
+            $areaTotalNumbOfTakenTables=areaController::totalTakenTables($area_id);
+
+            $record= new Record;
+            $record->area_name=$area->name;
+            $record->area_id=$area_id;
+            $record->total_tables=$areaTotalNumbOfTables;
+            $record->total_taken_tables=$areaTotalNumbOfTakenTables;
+            $record->save();
+        }
     }
 }

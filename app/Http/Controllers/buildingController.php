@@ -67,7 +67,16 @@ class buildingController extends Controller
         return ['status'=>true,'response' => "Building Created!","data"=>$request->all()];
     }
 
-   
+    public static function makeRecord($building){
+            
+        $levels=$building->levels()->get();
+        foreach($levels as $level){
+            $areas=$level->areas()->get();
+            
+        }
+        
+        return ['status'=>true,'response' => "Building recorded!"];
+    }
     public function update(Request $request,$id){
         DB::table('buildings')
             ->where('id', $id)
