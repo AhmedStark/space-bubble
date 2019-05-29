@@ -101,7 +101,7 @@ class areaController extends Controller
         if ($totalTables==0){
             return 0;
         }
-        return $totalTakenTables/$totalTables;
+        return $totalTakenTables*100/$totalTables;
     }
 
     public function update($id,Request $request){
