@@ -12,7 +12,9 @@ import 'vuetify/dist/vuetify.min.css' ;
 window.Vue = require('vue');
 var VueCookie = require('vue-cookie');
 import Vuetify from 'vuetify';
+import VueApexCharts from 'vue-apexcharts'
 
+Vue.component('apexchart', VueApexCharts)
 Vue.use(Vuetify);
 Vue.use(VueCookie);
 

@@ -147,13 +147,7 @@ data(){
             loadingDownload:false,
             options: {
        
-                 palette: 'palette2',
-                chart: {
-                id: 'vuechart-example'
-                },
-                xaxis: {
-                
-                },
+                 
             },
             series: [
                 
@@ -199,6 +193,7 @@ data(){
             if(this.selectedAreas.indexOf(index)===-1){
                 this.getAreaData(id);
                 this.selectedAreas.push(index)
+                
                 return;
             }
             this.deleteArea(id);
@@ -210,7 +205,7 @@ data(){
 
             axios.get('/area/'+id+'/data').then((response)=> {
                 this.series.push(response.data);
-
+                this.options.xaxis.categories = response.data.categories;
             }).catch(function(error){
             }).then((response)=> {
                 this.loadingAreas = false;
