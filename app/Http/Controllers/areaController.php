@@ -57,24 +57,25 @@ class areaController extends Controller
     }
 
     public function getHistory($id){
-        $data= [
-            [   'id'=>0,
-                'name'=> 'Lab-1',
-                'categories'=> [ 1992, 1993, 1994, 1995, 1996, 1997, 1998,1999,2000,2001,2002,2003,2004,2005,2006,2007],
-                'data'=> [null,30, 40, 45, 10, 49, 30, 50,20,30, 40, 45, 10, 49, 30, 50]
-            ],[
-                'id'=>1,
-                'name'=> 'Lab-2',
-                'categories'=> [ 1992, 1993, 1994, 1995, 1996, 1997, 1998,1999,2000,2001,2002,2003,2004,2005,2006,2007],
-                'data'=> [null,70, 10, 55, 50, 30, 65, 50,20,10, 70, 85, 50, 39, 36, 56]
-            ],[
-                'id'=>2,
-                'name'=> 'Lab-3',
-                'categories'=> [ 1992, 1993, 1994, 1995, 1996, 1997, 1998,1999,2000,2001,2002,2003,2004,2005,2006,2007],
-                'data'=> [null,70, 40, 55, 10, 49, 65, 56,0,30, 70, 05, 10, 79, 36, 56]
-            ]
-        ];
-        return $data[$id];
+
+        $records=Record::where('area_id','=',$id)->get();
+        $time= [];
+        $precentage=[];
+        $data=[];
+        $area=Area::find($id)->first();
+        foreach ($records as $record){
+            array_push($time,$record->created_at);
+            array_push($precentage,$this->tablePrecentage($record->total_taken_tables,$record->total_tables));
+
+        }
+        $data['id']=$id;
+        $data['name']=$area->name;
+        $data['categories']=$time;
+        $data['data']=$precentage;
+
+        return $data;
+
+
     }
 
     public function showTables($id){
@@ -96,6 +97,12 @@ class areaController extends Controller
         return $count;
     }
 
+    public static function tablePrecentage($totalTakenTables,$totalTables){
+        if ($totalTables==0){
+            return 0;
+        }
+        return $totalTakenTables/$totalTables;
+    }
 
     public function update($id,Request $request){
         DB::table('areas')
