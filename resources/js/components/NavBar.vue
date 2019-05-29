@@ -46,13 +46,14 @@
     </nav>
 </template>
 <script>
+var VueCookie = require('vue-cookie');
 export default {
     props:{
         admin:{default:false,type:Boolean}
     },
     data(){
         return {
-          darkMode:this.$cookies.get("dark_mode")==="on",
+          darkMode:VueCookie.get("dark_mode")==="on",
             drawer:false,
             csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
             adminLinks:[
@@ -74,7 +75,7 @@ export default {
     },watch: {
     // whenever question changes, this function will run
     darkMode: function (newValue, oldValue) {
-      this.darkMode ? this.$cookies.set('dark_mode', 'on'):this.$cookies.set("dark_mode","off"); 
+      this.darkMode ? VueCookie.set('dark_mode', 'on'):VueCookie.set("dark_mode","off"); 
       this.$emit('changeMode');
     }
   },
