@@ -18,6 +18,8 @@ Vue.component('apexchart', VueApexCharts)
 Vue.use(Vuetify);
 Vue.use(VueCookie);
 
+
+Vue.component('line-chart',require('./components/LineChart.vue').default);
 Vue.component('area-map', require('./components/AreaMap.vue').default);
 Vue.component('nav-bar', require('./components/NavBar.vue').default);
 Vue.component('navigation-map', require('./components/NavigationMap.vue').default);

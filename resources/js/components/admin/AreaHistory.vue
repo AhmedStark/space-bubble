@@ -113,8 +113,14 @@
                 </v-card>
             </v-flex>
             <v-flex md7>
-                    <apexchart class="chart" backgroud="#000"  width="100%" type="line" :options="options" :series="series" ></apexchart>
-
+                    <!--<apexchart class="chart" backgroud="#000"  width="100%" type="line" :options="options" :series="series" ></apexchart>-->
+                <line-chart
+                    :width="500"
+                    :height="300"
+                    :labels="labels"
+                    :datasets="chartData.dataset"
+                    :options="chartOptions"
+                    ></line-chart>
                     <v-card class="my-2">
                         <v-card-title class="title">Areas</v-card-title>
                         <v-list>
@@ -134,6 +140,12 @@ const axios = require('axios');
 export default {
 data(){
         return{
+
+                labels:[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],
+            chartData:{
+                dataset:[]
+            },
+            chartOptions:{},
             fromDatePicker:null,
             toDatePicker:null,
             menu:false,
@@ -147,10 +159,28 @@ data(){
             loadingDownload:false,
             options: {
        
-                 
+                 palette: 'palette2',
+                chart: {
+                id: 'vuechart-example'
+                },
+                xaxis: {
+                
+                    categories: [ 2002,2003,2004,2005,2006,2007],
+                },
             },
             series: [
-                
+             {label: "Stock A",
+      fill: false,
+      lineTension: 0.1,
+      borderColor: "red", // The main line color
+       // try [5, 15] for instance
+      borderDashOffset: 0.0,
+      pointBackgroundColor: "white",
+      pointBorderWidth: 1,
+      pointHoverRadius: 8,
+      // notice the gap in the data and the spanGaps: true
+      data: [65, 59, 80, 81, 56, 55, 40, ,60,55,30,78],
+      spanGaps: true,}   
             ],
             buildings:[
                 {name:"Building A",id:1},
@@ -204,8 +234,8 @@ data(){
             
 
             axios.get('/area/'+id+'/data').then((response)=> {
-                this.series.push(response.data);
-                this.options.xaxis.categories = response.data.categories;
+                this.chartData.dataset.push(response.data);
+                this.labels = response.data.categories;
             }).catch(function(error){
             }).then((response)=> {
                 this.loadingAreas = false;

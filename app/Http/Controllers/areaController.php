@@ -58,7 +58,7 @@ class areaController extends Controller
 
     public function getHistory($id){
 
-        $records=Record::where('area_id','=',$id)->get();
+        $records=Record::where('area_id','=',$id)->limit(15)->get();
         $time= [];
         $precentage=[];
         $data=[];
@@ -69,7 +69,7 @@ class areaController extends Controller
 
         }
         $data['id']=$id;
-        $data['name']=$area->name;
+        $data['label']=$area->name;
         $data['categories']=$time;
         $data['data']=$precentage;
 
