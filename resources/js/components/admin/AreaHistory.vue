@@ -164,12 +164,8 @@ data(){
                 {name:"Building B",id:2},
             ],
             levels:[
-                {name:"level A",id:1},
-                {name:"level B",id:2},
             ],
             areas:[
-                {name:"area A",id:1},
-                {name:"area B",id:2},
             ],
             lineOptions:{
                 lineTension: 0.1,
@@ -189,22 +185,44 @@ data(){
           this.loadingDownload = false; 
         },
         selectBuilding:function (id,index) {
-            console.log("You selected this building"+id);
-            console.log(this.panels);
             this.buildingPanel= [];
             this.selectedBuilding = index;
             this.levelPanel =  [...Array(this.items).keys()].map(_ => true);
-            
+            this.getLevels(id);
+        },getLevels:function(id){
+            axios.get('/buildings/'+this.buildings[this.selectedBuilding].id+"/levels").then((response)=> {
+                this.levels=response.data;
+            }).catch(function(error){
+            }).then((response)=> {
+            });;
+        },getBuildings:function(){
+            axios.get('/buildings').then((response)=> {
+                this.buildings=response.data;
+                
+            }).catch(function(error){
+            }).then((response)=> {
+            });;
+        },
+        getAreas:function(id){
+            if(this.levels[this.selectedLevel].length<0){
+                return;
+            }
+            axios.get('/levels/'+this.levels[this.selectedLevel].id+"/areas").then((response)=> {
+                this.areas=response.data;
+            }).catch(function(error){
+            }).then((response)=> {
+                this.loadingAreas = false;
+            });;
         },
         selectLevel:function (id,index) {
             this.areaPanel = [...Array(this.items).keys()].map(_ => true);
             this.levelPanel= [];
             this.selectedLevel = index;
-            
+            this.getAreas(id);
         },
 
         selectArea:function (id,index) {
-            
+            console.log({id})
             if(this.selectedAreas.indexOf(index)===-1){
                 this.getAreaData(id);
                 this.selectedAreas.push(index)
@@ -212,7 +230,7 @@ data(){
                 return;
             }
             this.deleteArea(id);
-            this.selectedAreas.splice(this.selectedAreas.indexOf(index), 1);
+            this.selectedAreas.splice(index, 1);
             
             
         },getAreaData(id){
@@ -220,7 +238,6 @@ data(){
 
             axios.get('/area/'+id+'/data').then((response)=> {
                 this.lineOptions.borderColor=this.getColor();
-                console.log(this.getColor());
                 this.chartData.dataset.push({...response.data,...this.lineOptions});
                 this.labels = response.data.categories;
             }).catch(function(error){
@@ -228,9 +245,14 @@ data(){
                 this.loadingAreas = false;
             });;
         },deleteArea(id){
-            var index= this.chartData.dataset.findIndex(x => x.id === id); 
+            var index= this.chartData.dataset.findIndex(x => x.id == id);
+            if(index==-1){
+                return;
+            }
             this.chartData.dataset.splice(index,1);
         }
+    },mounted(){
+        this.getBuildings();
     }
 }
 </script>

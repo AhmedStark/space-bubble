@@ -62,7 +62,7 @@ class areaController extends Controller
         $time= [];
         $precentage=[];
         $data=[];
-        $area=Area::find($id)->first();
+        $area=Area::find($id);
         foreach ($records as $record){
             array_push($time,$record->created_at);
             array_push($precentage,$this->tablePrecentage($record->total_taken_tables,$record->total_tables));
