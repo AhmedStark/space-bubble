@@ -42,6 +42,8 @@ Vue.component('main-map-form', require('./components/admin/ChangeMainMapForm.vue
 
 
 
+
+Vue.component('map-1', require('./components/maps/map-1.vue').default);
 //--------------------
 
 const app = new Vue({

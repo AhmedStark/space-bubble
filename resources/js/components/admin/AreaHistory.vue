@@ -124,8 +124,8 @@
                     <v-card class="my-2">
                         <v-card-title class="title">Areas</v-card-title>
                         <v-list>
-                            <v-list-tile   v-for="(area,index) in series" :key="index">
-                                <v-list-tile-title>{{area.name}}</v-list-tile-title>
+                            <v-list-tile   v-for="(area,index) in chartData.dataset" :key="index">
+                                <v-list-tile-title>{{area.label}}</v-list-tile-title>
                                 <v-list-tile-action><v-icon @click="deleteArea(area.id)" color="red">delete</v-icon></v-list-tile-action>
                             </v-list-tile>
                         </v-list>
@@ -140,7 +140,7 @@ const axios = require('axios');
 export default {
 data(){
         return{
-
+            colors:['red','green','tile','orange','yellow'],
                 labels:[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],
             chartData:{
                 dataset:[]
@@ -157,31 +157,8 @@ data(){
             levelPanel:[],
             areaPanel:[],
             loadingDownload:false,
-            options: {
        
-                 palette: 'palette2',
-                chart: {
-                id: 'vuechart-example'
-                },
-                xaxis: {
-                
-                    categories: [ 2002,2003,2004,2005,2006,2007],
-                },
-            },
-            series: [
-             {label: "Stock A",
-      fill: false,
-      lineTension: 0.1,
-      borderColor: "red", // The main line color
-       // try [5, 15] for instance
-      borderDashOffset: 0.0,
-      pointBackgroundColor: "white",
-      pointBorderWidth: 1,
-      pointHoverRadius: 8,
-      // notice the gap in the data and the spanGaps: true
-      data: [65, 59, 80, 81, 56, 55, 40, ,60,55,30,78],
-      spanGaps: true,}   
-            ],
+            
             buildings:[
                 {name:"Building A",id:1},
                 {name:"Building B",id:2},
@@ -191,13 +168,21 @@ data(){
                 {name:"level B",id:2},
             ],
             areas:[
-                {name:"area A",id:0},
-                {name:"area B",id:1},
-                {name:"area C",id:2},
+                {name:"area A",id:1},
+                {name:"area B",id:2},
             ],
-
+            lineOptions:{
+                lineTension: 0.1,
+              borderDashOffset: 0.0,
+            pointBackgroundColor: "white",
+        pointBorderWidth: 1,
+                pointHoverRadius: 8,
+            }
         }
     },methods:{
+        getColor:function () {
+            return this.colors[Math.floor(Math.random()*this.colors.length)];
+        },
         downloadData:function () {
           this.loadingDownload = true;
           document.getElementById('my_iframe').src = "http://localhost:8000/imgs/BS.png";
@@ -234,16 +219,17 @@ data(){
             
 
             axios.get('/area/'+id+'/data').then((response)=> {
-                this.chartData.dataset.push(response.data);
+                this.lineOptions.borderColor=this.getColor();
+                console.log(this.getColor());
+                this.chartData.dataset.push({...response.data,...this.lineOptions});
                 this.labels = response.data.categories;
             }).catch(function(error){
             }).then((response)=> {
                 this.loadingAreas = false;
             });;
         },deleteArea(id){
-            var areaHistoryObj = this.series.find(o => o.id===id);
-            this.series.splice(this.series.indexOf(areaHistoryObj), 1);
-
+            var index= this.chartData.dataset.findIndex(x => x.id === id); 
+            this.chartData.dataset.splice(index,1);
         }
     }
 }

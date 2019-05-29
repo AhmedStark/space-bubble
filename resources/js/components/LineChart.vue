@@ -44,8 +44,6 @@ export default {
       this.chart.data.datasets = newDatasets;
       this.chart.update();
     },labels(newLabels){
-        console.log("EED");
-        console.log(this.chart);
         this.chart.data.labels = newLabels;
         this.chart.update();
     }
