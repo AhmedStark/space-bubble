@@ -34,14 +34,14 @@ class AreaHistoryTest extends TestCase
             $createTable = $this->json('POST', '/table',$tableData);
         }
         
-        $response=areaController::record($area);
+        $response=areaController::makeRecord();
 
-        $areaHistory=DB::table('areasHistory')->where('area_id','=',$area->id)->first();
-        $this->assertTrue($areaHistory);
-        $this->assertTrue($areaHistory->area_id==$area->id);
-        $this->assertTrue($areaHistory->name==$area->name);
-        $this->assertTrue($areaHistory->taken==Area::totalTakenTables($area->id));
-        $this->assertTrue($areaHistory->total==Area::totalTables($area->id));
+        $record=DB::table('records')->where('area_id','=',$area->id)->first();
+        $this->assertTrue($record);
+        $this->assertTrue($record->area_id==$area->id);
+        $this->assertTrue($record->area_name==$area->name);
+        $this->assertTrue($record->total_taken_tables==Area::totalTakenTables($area->id));
+        $this->assertTrue($record->total_tables==Area::totalTables($area->id));
         
     }
 }
