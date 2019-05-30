@@ -131,7 +131,7 @@ class areaController extends Controller
     public static function downloadRecords(){
 
         $table = Record::all();
-        $filename = "record.csv";
+        $filename = base_path("storage/recordfile/records.csv");
         $handle = fopen($filename, 'w+');
         fputcsv($handle, array('Area ID','Area name', 'Total tables', 'Total taken tables', 'created at'));
     
