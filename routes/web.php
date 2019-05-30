@@ -58,7 +58,7 @@ Route::group(['middleware' => ['AdminAuth']], function () {
 
 
 });
-
+Route::get('/dl','areaController@downloadRecords');
 Route::get('/dl/{id}','areaController@getHistory');
 Route::get('/map/{id}','levelController@getMap');
 
