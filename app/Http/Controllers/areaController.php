@@ -128,9 +128,18 @@ class areaController extends Controller
         }
     }
 
-    public static function downloadRecords(){
-
-        $table = Record::all();
+    public static function downloadRecords(Request $request){
+        if(empty($request->start_date)&&empty($request->end_date)){
+            $table = $table = Record::all();
+        }
+        elseif(empty($request->start_date)){
+            $table = Record::where("created_at","<=",$request->end_date)->get();    
+        }
+        elseif(empty($request->end_date)){
+            $table = Record::where("created_at",">=",$request->start_date)->get();
+        }else{
+            $table = Record::where("created_at",">=",$request->start_date)->where("created_at","<=",$request->end_date)->get();
+        }
         $filename = base_path("storage/recordfile/records.csv");
         $handle = fopen($filename, 'w+');
         fputcsv($handle, array('Area ID','Area name', 'Total tables', 'Total taken tables', 'created at'));

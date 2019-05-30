@@ -57,8 +57,8 @@ Route::group(['middleware' => ['AdminAuth']], function () {
     Route::post('/logout','adminController@logout');
 
 
+    Route::get('/admin/download-data','areaController@downloadRecords');
 });
-Route::get('/dl','areaController@downloadRecords');
 Route::get('/dl/{id}','areaController@getHistory');
 Route::get('/map/{id}','levelController@getMap');
 

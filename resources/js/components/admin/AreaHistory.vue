@@ -2,6 +2,7 @@
     <div>
         <v-container >
             <v-layout row>
+            <iframe hidden src="" id="my_iframe" />
             <v-flex md3 class="body-2">
                 <v-card class="mx-2">
                     <v-card-title><h1 class="title">Choose a building</h1></v-card-title>
@@ -179,7 +180,14 @@ data(){
         },
         downloadData:function () {
           this.loadingDownload = true;
-          document.getElementById('my_iframe').src = "http://localhost:8000/imgs/BS.png";
+          var requestParams = "?"
+          if(this.fromDatePicker !==null){
+              requestParams = requestParams+"start_date="+ this.fromDatePicker+"&&";
+          }
+          if(this.toDatePicker !==null){
+              requestParams = requestParams+"end_date="+ this.toDatePicker;
+          }
+          document.getElementById('my_iframe').src = "http://localhost:8000/admin/download-data"+requestParams;
           this.loadingDownload = false; 
         },
         selectBuilding:function (id,index) {
