@@ -28,7 +28,7 @@
                         </template>
                     <v-card>
                         <v-list>
-                            <v-list-tile :class="selectedLevel === index ? 'indigo white--text':''"  @click="selectLevel(level.id,index)" v-for="(level,index) in levels" :key="index">
+                            <v-list-tile :class="selectedLevel===level.id ? 'indigo white--text':''"  @click="selectLevel(level.id,index)" v-for="(level,index) in levels" :key="index">
                                 <v-list-tile-title>{{level.name}}</v-list-tile-title>
                             </v-list-tile>
                         </v-list>
@@ -44,7 +44,7 @@
                         </template>
                     <v-card>
                         <v-list>
-                            <v-list-tile  :class="selectedAreas.indexOf(index) !== -1 ? 'indigo white--text':''"  @click="selectArea(area.id,index)" v-for="(area,index) in areas" :key="index">
+                            <v-list-tile  :class="selectedAreas.indexOf(area.id) !== -1 ? 'indigo white--text':''"  @click="selectArea(area.id,index)" v-for="(area,index) in areas" :key="index">
                                 <v-list-tile-title>{{area.name}}</v-list-tile-title>
                             </v-list-tile>
                         </v-list>
@@ -160,8 +160,6 @@ data(){
        
             
             buildings:[
-                {name:"Building A",id:1},
-                {name:"Building B",id:2},
             ],
             levels:[
             ],
@@ -204,32 +202,31 @@ data(){
             });;
         },
         getAreas:function(id){
-            if(this.levels[this.selectedLevel].length<0){
-                return;
-            }
-            axios.get('/levels/'+this.levels[this.selectedLevel].id+"/areas").then((response)=> {
+            
+            axios.get('/levels/'+id+"/areas").then((response)=> {
                 this.areas=response.data;
             }).catch(function(error){
             }).then((response)=> {
                 this.loadingAreas = false;
             });;
         },
-        selectLevel:function (id,index) {
+        selectLevel:function (id) {
             this.areaPanel = [...Array(this.items).keys()].map(_ => true);
             this.levelPanel= [];
-            this.selectedLevel = index;
+            this.selectedLevel = id;
             this.getAreas(id);
         },
 
-        selectArea:function (id,index) {
+        selectArea:function (id) {
             console.log({id})
-            if(this.selectedAreas.indexOf(index)===-1){
+            if(this.selectedAreas.indexOf(id)===-1){
                 this.getAreaData(id);
-                this.selectedAreas.push(index)
+                this.selectedAreas.push(id);
                 
                 return;
             }
             this.deleteArea(id);
+            var index = this.selectedAreas.indexOf(id)
             this.selectedAreas.splice(index, 1);
             
             
