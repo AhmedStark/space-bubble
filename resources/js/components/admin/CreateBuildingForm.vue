@@ -29,7 +29,7 @@
           <v-btn
             color="error"
             flat
-            @click="createBuilding"
+            @click="openDialog"
           >Discard</v-btn><v-btn
             color="success"
             flat

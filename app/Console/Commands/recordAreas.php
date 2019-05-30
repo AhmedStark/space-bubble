@@ -19,7 +19,7 @@ class recordAreas extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Creates a record of the current areas states';
 
     /**
      * Create a new command instance.
