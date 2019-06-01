@@ -55,6 +55,29 @@ class tableController extends Controller
         return ['status'=>true,'response' => "Table created!","data"=>$request->all(),'id'=>$ID];
     }
 
+    public function storeMany(Request $request){
+        for ($i=0;$i<$request->quantity;$i++){
+            $this->store($request);
+        }
+    }
+
+    public function makeTablesTaken($id,$number){
+        $tables=Area::find($id)->tables()->get();
+        $reach = 0;
+        foreach ($tables as $table) {
+            if($reach==$number){
+                $table->taken = 0;
+
+            }else{
+                $reach++;
+                $table->taken = 1;
+            }
+            $table->save();
+            
+        }
+        
+    }
+
     public function moveTo(Request $request){
         
         if(Area::where('id', '=', $request->area_id)->count() == 0){

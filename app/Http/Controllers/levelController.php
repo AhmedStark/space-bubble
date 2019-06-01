@@ -107,7 +107,13 @@ export default {
 
     public function saveMapFile(Request $request){
         $file = $request->file('map'); // get the file user sent via POST
-        return str_replace('<?xml version="1.0" encoding="UTF-8" standalone="no"?>','',file_get_contents($file)) ;
+        $svgFile = str_replace('<?xml version="1.0" encoding="UTF-8" standalone="no"?>','',file_get_contents($file));
+
+        $heightPattren = "/\sheight=\"[0-9a-z]*\"/";
+        $widthPattren = "/\swidth=\"[0-9a-z]*\"/";
+        $svgFile = preg_replace($heightPattren, "", $svgFile);
+        $svgFile = preg_replace($widthPattren, "", $svgFile);
+        return $svgFile;
     }
 
     public function registerComponent($mapID){

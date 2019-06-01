@@ -11,12 +11,10 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="201mm"
-   height="201mm"
    viewBox="0 0 201 201"
    version="1.1"
    id="svg2547"
-   sodipodi:docname="level-2.svg"
+   sodipodi:docname="b_1_level_3.svg"
    inkscape:version="0.92.4 (33fec40, 2019-01-16)">
   <defs
      id="defs2541">
@@ -29,7 +27,7 @@
        x2="157.44711"
        y2="251.96667"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(0.35129779,0,0,0.35129779,5.3170229,108.52586)" />
+       gradientTransform="matrix(0.35129779,0,0,0.35129779,147.8097,-141.96561)" />
     <linearGradient
        id="linearGradient939"
        osb:paint="solid">
@@ -38,16 +36,6 @@
          offset="0"
          id="stop937" />
     </linearGradient>
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient939"
-       id="linearGradient951"
-       x1="361.41034"
-       y1="228.33678"
-       x2="529.30688"
-       y2="228.33678"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(0.35129779,0,0,0.35129779,8.6331119,111.48161)" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -57,14 +45,14 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.98994949"
-     inkscape:cx="382.84495"
-     inkscape:cy="502.4672"
+     inkscape:cx="366.17744"
+     inkscape:cy="340.84279"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1853"
+     inkscape:window-width="1858"
      inkscape:window-height="1016"
-     inkscape:window-x="67"
+     inkscape:window-x="62"
      inkscape:window-y="27"
      inkscape:window-maximized="1" />
   <metadata
@@ -75,7 +63,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -85,15 +73,15 @@
      id="layer1"
      transform="translate(0,-96)">
     <rect
-       style="fill:#647687;fill-opacity:1;stroke:#946712;stroke-width:0.065;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:#647687;fill-opacity:1;stroke:#946712;stroke-width:0.06617761;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect2549"
-       width="197.30357"
-       height="197.30357"
-       x="2.2678571"
-       y="98.184532" />
+       width="197.3024"
+       height="204.51868"
+       x="2.268446"
+       y="96.068451" />
     <rect
        style="fill:#eff7fe;fill-opacity:1;stroke:#946712;stroke-width:0.065;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       id="area-20"
+       id="ss"
        width="69.757347"
        height="37.952274"
        x="6.8153729"
@@ -101,7 +89,7 @@
        inkscape:label="#rect3637" />
     <rect
        style="fill:#eff7fe;fill-opacity:1;stroke:#946712;stroke-width:0.05479369;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       id="area-18"
+       id="area-36"
        width="52.395035"
        height="55.06773"
        x="142.71683"
@@ -111,50 +99,36 @@
        d="m 178.83153,219.59889 h 17.56488 v 73.77253 h -28.10382 v -63.2336 z"
        stroke-miterlimit="10"
        pointer-events="none"
-       id="area-16"
+       id="area-37"
        inkscape:connector-curvature="0"
        style="fill:#ffffff;stroke:#000000;stroke-width:0.3512978;stroke-miterlimit:10"
        inkscape:label="#path92" />
     <path
-       d="m 79.417616,264.77376 h 73.772674 l 7.02595,5.62077 v 22.48305 H 72.391661 v -22.48305 z"
+       d="m 79.952155,259.46467 c 19.248193,-17.6309 40.448005,-28.82147 73.772675,0 l 7.02595,6.78949 v 27.15796 H 72.9262 v -27.15796 z"
        stroke-miterlimit="10"
        pointer-events="none"
-       id="area-17"
+       id="area-38"
        inkscape:connector-curvature="0"
-       style="fill:#ffffff;stroke:#000000;stroke-width:0.3512978;stroke-miterlimit:10"
-       inkscape:label="#path108" />
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.38609692;stroke-miterlimit:10"
+       inkscape:label="#path108"
+       sodipodi:nodetypes="ccccccc" />
     <path
-       d="M 8.2602232,250.27499 H 50.41597 l 10.538933,42.15574 H 8.2602232 Z"
+       d="M 8.2602232,206.86719 H 50.41597 l 10.538933,85.56354 H 8.2602232 Z"
        stroke-miterlimit="10"
        pointer-events="none"
-       id="area-15"
+       id="area-39"
        inkscape:connector-curvature="0"
-       style="fill:#ffffff;stroke:#000000;stroke-width:0.3512978;stroke-miterlimit:10"
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.50048542;stroke-miterlimit:10"
        inkscape:label="#path114" />
     <rect
        style="fill:#ffffff;fill-opacity:1;stroke:url(#linearGradient941);stroke-width:0.43736064;stroke-miterlimit:4;stroke-dasharray:none"
-       id="area-14"
+       id="area-35"
        width="51.991268"
        height="91.312393"
-       x="8.6365843"
-       y="151.38499"
-       inkscape:label="#rect128" />
-    <rect
-       x="78.054848"
-       y="223.54039"
-       width="49.153301"
-       height="31.458796"
-       pointer-events="none"
-       id="area-21"
-       style="fill:#ffffff;stroke:#000000;stroke-width:0.49153835"
-       inkscape:label="#rect94" />
-    <path
-       style="fill:#ffffff;stroke:#000000;stroke-width:0.35977858px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 81.864393,102.29415 0.222816,31.22377 h 10.026954 l 6.01617,-2.69558 4.456427,-5.61578 3.34233,-7.18821 2.45104,-8.76062 -0.89129,24.03555 h 7.35309 l -0.22282,-31.22377 z"
-       id="area-22"
-       inkscape:connector-curvature="0"
-       sodipodi:nodetypes="ccccccccccc"
-       inkscape:label="#path130" />
+       x="151.12924"
+       y="-99.106461"
+       inkscape:label="#rect128"
+       transform="rotate(89.862356)" />
     <path
        d="m 129.46794,171.01833 v -62.91284 h 7.27366 v 55.37837 h 53.82504 v 7.53447 z"
        stroke-miterlimit="10"
@@ -162,122 +136,85 @@
        id="path112"
        inkscape:connector-curvature="0"
        style="fill:#ffffff;stroke:#000000;stroke-width:0.37014571;stroke-miterlimit:10" />
-    <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:url(#linearGradient951);stroke-width:0.35185099;stroke-miterlimit:4;stroke-dasharray:none"
-       id="area-19"
-       width="58.981686"
-       height="26.650984"
-       x="135.59566"
-       y="178.37032"
-       inkscape:label="#rect945" />
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
        x="145.39462"
        y="125.41296"
-       id="text-18"
+       id="text-36"
        inkscape:label="#text3788"><tspan
          sodipodi:role="line"
          id="tspan3786"
          x="145.39462"
          y="125.41296"
-         style="stroke-width:0.26458332">Area -18</tspan></text>
+         style="stroke-width:0.26458332">Area -36</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="91.406174"
-       y="282.0329"
-       id="text-17"
+       x="82.853546"
+       y="275.61844"
+       id="text-38"
        inkscape:label="#text3792"><tspan
          sodipodi:role="line"
          id="tspan3790"
-         x="91.406174"
-         y="282.0329"
-         style="stroke-width:0.26458332">Area-17</tspan></text>
+         x="82.853546"
+         y="275.61844"
+         style="stroke-width:0.26458332">Area-38</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
        x="12.294398"
        y="271.87668"
-       id="text-15"
+       id="text-39"
        inkscape:label="#text3796"><tspan
          sodipodi:role="line"
          id="tspan3794"
          x="12.294398"
          y="271.87668"
-         style="stroke-width:0.26458332">Area-15</tspan></text>
+         style="stroke-width:0.26458332">Area-39</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="12.294398"
-       y="179.93596"
-       id="text-14"
+       x="40.892239"
+       y="168.97791"
+       id="text-35"
        inkscape:label="#text3800"><tspan
          sodipodi:role="line"
-         id="tspan3798"
-         x="12.294398"
-         y="179.93596"
-         style="stroke-width:0.26458332">Area-14</tspan></text>
+         x="40.892239"
+         y="168.97791"
+         style="stroke-width:0.26458332"
+         id="tspan4545">Area-35</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
        x="12.294398"
        y="118.46396"
-       id="text-20"
+       id="bathroom"
        inkscape:label="#text3804"><tspan
          sodipodi:role="line"
-         id="tspan3802"
          x="12.294398"
          y="118.46396"
-         style="stroke-width:0.26458332">Area-20</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="81.249931"
-       y="236.06256"
-       id="text-21"
-       inkscape:label="#text3808"><tspan
-         sodipodi:role="line"
-         id="tspan3806"
-         x="81.249931"
-         y="236.06256"
-         style="stroke-width:0.26458332">Area-21</tspan></text>
+         style="stroke-width:0.26458332"
+         id="tspan1129">Bathroom</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
        x="-287.68289"
        y="190.45436"
-       id="text-16"
+       id="text-37"
        transform="rotate(-90)"
        inkscape:label="#text3812"><tspan
          sodipodi:role="line"
          id="tspan3810"
          x="-287.68289"
          y="190.45436"
-         style="stroke-width:0.26458332">Area-16</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="142.18738"
-       y="191.16127"
-       id="text-19"
-       inkscape:label="#text3816"><tspan
-         sodipodi:role="line"
-         id="tspan3814"
-         x="142.18738"
-         y="191.16127"
-         style="stroke-width:0.26458332">Area19</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="85.039391"
-       y="108.11497"
-       id="text-22"
-       inkscape:label="#text3820"><tspan
-         sodipodi:role="line"
-         id="tspan3818"
-         x="85.039391"
-         y="108.11497"
-         style="stroke-width:0.26458332">Area-22</tspan></text>
+         style="stroke-width:0.26458332">Area-37</tspan></text>
+    <ellipse
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="path1133"
+       cx="144.05826"
+       cy="203.9902"
+       rx="20.312483"
+       ry="21.648832" />
   </g>
 </svg>

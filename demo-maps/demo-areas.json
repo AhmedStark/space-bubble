@@ -1,0 +1,327 @@
+[
+    {
+        "levelID":1,
+        "id":1,"name":"Reading room",
+        "totalTables":25,"takenTables":14
+    }
+    ,{
+        "levelID":1,
+        "id":2,"name":"Auditorium",
+        "totalTables":35,"takenTables":30
+    }
+    ,{
+        "levelID":1,
+        "id":3,"name":"class room",
+        "totalTables":10,"takenTables":3
+    }
+    ,{
+        "levelID":1,
+        "id":4,"name":"Electric engineer lab",
+        "totalTables":20,"takenTables":13
+    },{
+        "levelID":1,
+        "id":5,"name":"Meeting room 1",
+        "totalTables":10,"takenTables":7
+    },
+    {
+        "levelID":1,
+        "id":6,"name":"Meeting room 2",
+        "totalTables":10,"takenTables":8
+    },
+    {
+        "levelID":1,
+        "id":7,"name":"Kitchen",
+        "totalTables":12,"takenTables":9
+    },
+    {
+        "levelID":1,
+        "id":8,"name":"Coffee table",
+        "totalTables":30,"takenTables":19
+    },
+    {
+        "levelID":1,
+        "id":9,"name":"Room 9",
+        "totalTables":7,"takenTables":1
+    },
+    {
+        "levelID":1,
+        "id":10,"name":"class 10",
+        "totalTables":20,"takenTables":11
+    },
+    {
+        "levelID":1,
+        "id":11,"name":"IOT Lab",
+        "totalTables":12,"takenTables":5
+    },
+    {
+        "levelID":1,
+        "id":12,"name":"Coffee table",
+        "totalTables":15,"takenTables":15
+    },
+    {
+        "levelID":1,
+        "id":13,"name":"Chemistry Lab",
+        "totalTables":25,"takenTables":15
+    },
+
+
+
+    {
+        "levelID":2,
+        "id":14,"name":"Nuclear Lab",
+        "totalTables":30,"takenTables":20
+    },
+    {
+        "levelID":2,
+        "id":15,"name":"Library",
+        "totalTables":20,"takenTables":10
+    },
+    {
+        "levelID":2,
+        "id":16,"name":"Classroom",
+        "totalTables":25,"takenTables":2
+    },
+    {
+        "levelID":2,
+        "id":17,"name":"Auditorium",
+        "totalTables":24,"takenTables":9
+    },
+    {
+        "levelID":2,
+        "id":18,"name":"Reading room",
+        "totalTables":17,"takenTables":13
+    },
+    {
+        "levelID":2,
+        "id":19,"name":"Coffee store",
+        "totalTables":17,"takenTables":11
+    },
+    {
+        "levelID":2,
+        "id":20,"name":"Room 20",
+        "totalTables":24,"takenTables":20
+    },
+    {
+        "levelID":2,
+        "id":21,"name":"Kitchen",
+        "totalTables":12,"takenTables":9
+    },
+    {
+        "levelID":2,
+        "id":22,"name":"Meeting room",
+        "totalTables":7,"takenTables":2
+    },
+    
+    
+    
+    {
+        "levelID":3,
+        "id":23,"name":"Auditorium",
+        "totalTables":35,"takenTables":35
+    },
+    {
+        "levelID":3,
+        "id":24,"name":"Library",
+        "totalTables":50,"takenTables":35
+    },{
+        "levelID":3,
+        "id":25,"name":"Room 25",
+        "totalTables":20,"takenTables":0
+    },{
+        "levelID":3,
+        "id":26,"name":"Rest room",
+        "totalTables":28,"takenTables":10
+    },
+    {
+        "levelID":3,
+        "id":27,"name":"Reading room",
+        "totalTables":15,"takenTables":3
+    },
+    {
+        "levelID":3,
+        "id":28,"name":"Guest room",
+        "totalTables":30,"takenTables":11
+    }
+    
+
+
+    ,
+    {
+        "levelID":4,
+        "id":29,"name":"War room",
+        "totalTables":20,"takenTables":11
+    }
+    ,
+    {
+        "levelID":4,
+        "id":30,"name":"Nuclear reactor",
+        "totalTables":30,"takenTables":21
+    }
+    ,
+    {
+        "levelID":4,
+        "id":31,"name":"Lab 69",
+        "totalTables":25,"takenTables":13
+    }
+    ,
+    {
+        "levelID":4,
+        "id":32,"name":"HQ",
+        "totalTables":24,"takenTables":3
+    }
+    ,
+    {
+        "levelID":4,
+        "id":33,"name":"Coffee room",
+        "totalTables":24,"takenTables":0
+    }
+    ,
+    {
+        "levelID":4,
+        "id":34,"name":"Nuclear bunker",
+        "totalTables":24,"takenTables":23
+    }
+    
+
+
+
+    ,
+    {
+        "levelID":5,
+        "id":35,"name":"GYM",
+        "totalTables":7,"takenTables":7
+    }
+    ,
+    {
+        "levelID":5,
+        "id":36,"name":"Classroom",
+        "totalTables":20,"takenTables":20
+    }
+    ,
+    {
+        "levelID":5,
+        "id":37,"name":"Convenience store",
+        "totalTables":6,"takenTables":1
+    }
+    ,
+    {
+        "levelID":5,
+        "id":38,"name":"Food court",
+        "totalTables":25,"takenTables":20
+    }
+    ,
+    {
+        "levelID":5,
+        "id":39,"name":"Reading room",
+        "totalTables":30,"takenTables":20
+    }
+
+
+
+    ,
+    {
+        "levelID":6,
+        "id":40,"name":"Library",
+        "totalTables":50,"takenTables":49
+    }
+    ,
+    {
+        "levelID":6,
+        "id":41,"name":"Book store",
+        "totalTables":20,"takenTables":9
+    }
+    ,
+    {
+        "levelID":6,
+        "id":42,"name":"Room 627",
+        "totalTables":30,"takenTables":15
+    }
+    ,
+    {
+        "levelID":6,
+        "id":43,"name":"Court yard",
+        "totalTables":37,"takenTables":11
+    }
+
+
+
+
+    ,
+    {
+        "levelID":7,
+        "id":44,"name":"Room :-)",
+        "totalTables":30,"takenTables":15
+    }
+    ,
+    {
+        "levelID":7,
+        "id":45,"name":"Room :-)",
+        "totalTables":30,"takenTables":15
+    }
+    ,
+    {
+        "levelID":7,
+        "id":46,"name":"Room 11",
+        "totalTables":30,"takenTables":0
+    }
+
+
+
+
+
+
+
+
+    ,
+    {
+        "levelID":8,
+        "id":47,"name":"Welcoming room",
+        "totalTables":50,"takenTables":35
+    }
+    ,
+    {
+        "levelID":8,
+        "id":48,"name":"Room 7",
+        "totalTables":30,"takenTables":15
+    }
+    ,
+    {
+        "levelID":8,
+        "id":49,"name":"GYM",
+        "totalTables":20,"takenTables":15
+    }
+    ,
+    {
+        "levelID":8,
+        "id":50,"name":"Library",
+        "totalTables":40,"takenTables":35
+    }
+
+
+
+
+    ,
+    {
+        "levelID":9,
+        "id":51,"name":"Reading room",
+        "totalTables":40,"takenTables":35
+    }
+    ,
+    {
+        "levelID":9,
+        "id":52,"name":"Library",
+        "totalTables":30,"takenTables":30
+    }
+    ,
+    {
+        "levelID":9,
+        "id":53,"name":"Auditorium",
+        "totalTables":60,"takenTables":35
+    }
+    ,
+    {
+        "levelID":9,
+        "id":54,"name":"Nuclear reactor",
+        "totalTables":55,"takenTables":15
+    }
+]

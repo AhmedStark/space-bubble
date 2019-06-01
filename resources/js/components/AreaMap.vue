@@ -10,7 +10,7 @@
 
 </v-layout>
             <v-layout row wrap>
-                <v-flex xs12 lg9 md8>
+                <v-flex xs12 lg8 sm7>
                     <v-container>
                         <slot name="map" class="svg-container"></slot>
                         </v-container>
@@ -27,15 +27,15 @@
                 
                </v-flex>
                 <v-spacer></v-spacer>
-                <v-flex xs12 lg3 md6>
-                    <v-card>
+                <v-flex xs12 lg3 sm5>
+                    <v-card class="my-2">
                         <v-card-title><h3 class="title">Areas :-</h3></v-card-title>
                         <v-card-text >
                             <v-card v-for="area in areas" :key="area.id" @click="selectArea(area.id)">
                                 <v-card-text>
                                     <v-layout row>
                                         <v-flex xs4>
-                                            Area-{{area.id}} {{area.takenTables}}/{{area.tables}} 
+                                            {{area.name}} {{area.takenTables}}/{{area.tables}} 
                                         </v-flex>
                                         <v-spacer></v-spacer>
                                         <v-flex xs3>

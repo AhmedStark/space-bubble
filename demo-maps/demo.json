@@ -1,0 +1,76 @@
+{
+    "buildings":[
+        {
+            "id":1,"name":"Building A",
+            "levels":[
+                {
+                    "id":1,
+                    "name":"Basement",
+                    "map_file":"b_1_level_1.svg"
+                },
+                {
+                    "id":2,
+                    "name":"Level 1",
+                    "map_file":"b_1_level_2.svg"
+
+                },
+                {
+                    "id":3,
+                    "name":"Level 2",
+                    "map_file":"b_1_level_3.svg"
+
+                }
+            ]
+            
+        },
+        {
+            "id":2,"name":"Building B",
+            "levels":[
+                {
+                    "id":4,
+                    "name":"Level 1",
+                    "map_file":"b_2_level_1.svg"
+                },
+                {
+                    "id":5,
+                    "name":"level 2",
+                    "map_file":"b_2_level_2.svg"
+                }
+            ]
+        },
+        {
+            "id":3,"name":"Building C",
+            "levels":[
+                {
+                    "id":6,
+                    "name":"Level 1",
+                    "map_file":"b_3_level_1.svg"
+                },
+                {
+                    "id":7,
+                    "name":"Level 2 labs",
+                    "map_file":"b_3_level_2.svg"
+                
+                }
+            ]
+        
+        },
+        {
+            "id":4,"name":"Building D",
+            "levels":[
+                {
+                    "id":8,
+                    "name":"Ground Level",
+                    "map_file":"b_4_level_1.svg"
+                },
+                {
+                    "id":9,
+                    "name":"Level 2 (ES106)",
+                    "map_file":"b_4_level_2.svg"
+                
+                }
+            ]
+        
+        }
+    ]
+}

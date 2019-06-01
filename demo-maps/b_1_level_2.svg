@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:osb="http://www.openswatchbook.org/uri/2009/osb"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   viewBox="0 0 201 201"
+   version="1.1"
+   id="svg2547"
+   sodipodi:docname="level-2.svg"
+   inkscape:version="0.92.4 (33fec40, 2019-01-16)">
+  <defs
+     id="defs2541">
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient939"
+       id="linearGradient941"
+       x1="9.4494257"
+       y1="251.96667"
+       x2="157.44711"
+       y2="251.96667"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.35129779,0,0,0.35129779,5.3170229,108.52586)" />
+    <linearGradient
+       id="linearGradient939"
+       osb:paint="solid">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop937" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient939"
+       id="linearGradient951"
+       x1="361.41034"
+       y1="228.33678"
+       x2="529.30688"
+       y2="228.33678"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.35129779,0,0,0.35129779,8.6331119,111.48161)" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="382.84495"
+     inkscape:cy="502.4672"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1853"
+     inkscape:window-height="1016"
+     inkscape:window-x="67"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata2544">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-96)">
+    <rect
+       style="fill:#647687;fill-opacity:1;stroke:#946712;stroke-width:0.065;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect2549"
+       width="197.30357"
+       height="197.30357"
+       x="2.2678571"
+       y="98.184532" />
+    <rect
+       style="fill:#eff7fe;fill-opacity:1;stroke:#946712;stroke-width:0.065;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="area-20"
+       width="69.757347"
+       height="37.952274"
+       x="6.8153729"
+       y="102.29415"
+       inkscape:label="#rect3637" />
+    <rect
+       style="fill:#eff7fe;fill-opacity:1;stroke:#946712;stroke-width:0.05479369;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="area-18"
+       width="52.395035"
+       height="55.06773"
+       x="142.71683"
+       y="102.42268"
+       inkscape:label="#rect3639" />
+    <path
+       d="m 178.83153,219.59889 h 17.56488 v 73.77253 h -28.10382 v -63.2336 z"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="area-16"
+       inkscape:connector-curvature="0"
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.3512978;stroke-miterlimit:10"
+       inkscape:label="#path92" />
+    <path
+       d="m 79.417616,264.77376 h 73.772674 l 7.02595,5.62077 v 22.48305 H 72.391661 v -22.48305 z"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="area-17"
+       inkscape:connector-curvature="0"
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.3512978;stroke-miterlimit:10"
+       inkscape:label="#path108" />
+    <path
+       d="M 8.2602232,250.27499 H 50.41597 l 10.538933,42.15574 H 8.2602232 Z"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="area-15"
+       inkscape:connector-curvature="0"
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.3512978;stroke-miterlimit:10"
+       inkscape:label="#path114" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:url(#linearGradient941);stroke-width:0.43736064;stroke-miterlimit:4;stroke-dasharray:none"
+       id="area-14"
+       width="51.991268"
+       height="91.312393"
+       x="8.6365843"
+       y="151.38499"
+       inkscape:label="#rect128" />
+    <rect
+       x="78.054848"
+       y="223.54039"
+       width="49.153301"
+       height="31.458796"
+       pointer-events="none"
+       id="area-21"
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.49153835"
+       inkscape:label="#rect94" />
+    <path
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.35977858px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 81.864393,102.29415 0.222816,31.22377 h 10.026954 l 6.01617,-2.69558 4.456427,-5.61578 3.34233,-7.18821 2.45104,-8.76062 -0.89129,24.03555 h 7.35309 l -0.22282,-31.22377 z"
+       id="area-22"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccccccc"
+       inkscape:label="#path130" />
+    <path
+       d="m 129.46794,171.01833 v -62.91284 h 7.27366 v 55.37837 h 53.82504 v 7.53447 z"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path112"
+       inkscape:connector-curvature="0"
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.37014571;stroke-miterlimit:10" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:url(#linearGradient951);stroke-width:0.35185099;stroke-miterlimit:4;stroke-dasharray:none"
+       id="area-19"
+       width="58.981686"
+       height="26.650984"
+       x="135.59566"
+       y="178.37032"
+       inkscape:label="#rect945" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="145.39462"
+       y="125.41296"
+       id="text-18"
+       inkscape:label="#text3788"><tspan
+         sodipodi:role="line"
+         id="tspan3786"
+         x="145.39462"
+         y="125.41296"
+         style="stroke-width:0.26458332">Area -18</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="91.406174"
+       y="282.0329"
+       id="text-17"
+       inkscape:label="#text3792"><tspan
+         sodipodi:role="line"
+         id="tspan3790"
+         x="91.406174"
+         y="282.0329"
+         style="stroke-width:0.26458332">Area-17</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="12.294398"
+       y="271.87668"
+       id="text-15"
+       inkscape:label="#text3796"><tspan
+         sodipodi:role="line"
+         id="tspan3794"
+         x="12.294398"
+         y="271.87668"
+         style="stroke-width:0.26458332">Area-15</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="12.294398"
+       y="179.93596"
+       id="text-14"
+       inkscape:label="#text3800"><tspan
+         sodipodi:role="line"
+         id="tspan3798"
+         x="12.294398"
+         y="179.93596"
+         style="stroke-width:0.26458332">Area-14</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="12.294398"
+       y="118.46396"
+       id="text-20"
+       inkscape:label="#text3804"><tspan
+         sodipodi:role="line"
+         id="tspan3802"
+         x="12.294398"
+         y="118.46396"
+         style="stroke-width:0.26458332">Area-20</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="81.249931"
+       y="236.06256"
+       id="text-21"
+       inkscape:label="#text3808"><tspan
+         sodipodi:role="line"
+         id="tspan3806"
+         x="81.249931"
+         y="236.06256"
+         style="stroke-width:0.26458332">Area-21</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="-287.68289"
+       y="190.45436"
+       id="text-16"
+       transform="rotate(-90)"
+       inkscape:label="#text3812"><tspan
+         sodipodi:role="line"
+         id="tspan3810"
+         x="-287.68289"
+         y="190.45436"
+         style="stroke-width:0.26458332">Area-16</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="142.18738"
+       y="191.16127"
+       id="text-19"
+       inkscape:label="#text3816"><tspan
+         sodipodi:role="line"
+         id="tspan3814"
+         x="142.18738"
+         y="191.16127"
+         style="stroke-width:0.26458332">Area19</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="85.039391"
+       y="108.11497"
+       id="text-22"
+       inkscape:label="#text3820"><tspan
+         sodipodi:role="line"
+         id="tspan3818"
+         x="85.039391"
+         y="108.11497"
+         style="stroke-width:0.26458332">Area-22</tspan></text>
+  </g>
+</svg>
