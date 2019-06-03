@@ -4,19 +4,19 @@ import json
 import time
 import os
 from dotenv import load_dotenv
-mydb = mysql.connector.connect(
-  host="localhost",
-  user="phpmyadmin",
-  passwd="rootroot",
-  database="space_bubble"
-)
 print("Creating demo database")
 mapStartString = "<template><area-map :id=\"id\" v><div slot=\"map\">"
 mapEndString = "</div></area-map></template><script>export default {\nprops:{\nid:{type:String},\nnav:{type:Array}\n}\n}\n</script>"
 
-mycursor = mydb.cursor()
 load_dotenv("../.env")
 print(os.environ.get("DB_DATABASE"))
+mydb = mysql.connector.connect(
+  host="localhost",
+  user="phpmyadmin",
+  passwd="rootroot",
+  database=os.environ.get("DB_DATABASE")
+)
+mycursor = mydb.cursor()
 def file_get_contents(filename):
     with open(filename) as f:
         return f.read()

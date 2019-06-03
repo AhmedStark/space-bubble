@@ -114,7 +114,6 @@
                 </v-card>
             </v-flex>
             <v-flex md7>
-                    <!--<apexchart class="chart" backgroud="#000"  width="100%" type="line" :options="options" :series="series" ></apexchart>-->
                 <line-chart
                     :width="500"
                     :height="300"
@@ -126,7 +125,7 @@
                         <v-card-title class="title">Areas</v-card-title>
                         <v-list>
                             <v-list-tile   v-for="(area,index) in chartData.dataset" :key="index">
-                                <v-list-tile-title>{{area.label}}</v-list-tile-title>
+                                <v-list-tile-title class="my-2">{{area.label}} <v-icon :color="area.borderColor">star</v-icon> </v-list-tile-title>
                                 <v-list-tile-action><v-icon @click="deleteArea(area.id)" color="red">delete</v-icon></v-list-tile-action>
                             </v-list-tile>
                         </v-list>
@@ -141,7 +140,8 @@ const axios = require('axios');
 export default {
 data(){
         return{
-            colors:['red','green','tile','orange','yellow'],
+            colors:['red','green','teal','orange','yellow',"pink","purple","deep-purple","indigo"
+            ,"blue","cyan","light-green","lime","blue-grey","brown"],
                 labels:[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],
             chartData:{
                 dataset:[]
