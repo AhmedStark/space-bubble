@@ -11,7 +11,9 @@
 </v-layout>
             <v-layout row wrap>
                 <v-flex xs12 lg8 sm7>
+                    
                     <v-container>
+                    <h3 class="display-1">{{name}}</h3>
                         <slot name="map" class="svg-container"></slot>
                         </v-container>
                  <v-card>
@@ -61,6 +63,7 @@
 const axios = require('axios');
     export default {
         props:{
+            name:{default:""},
             v:{type:Boolean,default:false}
             ,id:{type:String},
             nav:{type:Array,default:function () {

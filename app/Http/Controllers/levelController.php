@@ -42,7 +42,7 @@ class levelController extends Controller
         $nav=[["text"=>'Buildings',"href"=>"/","disabled"=>false]];
         array_push($nav,['text'=>$building->name,"href"=>"/","disabled"=>true]);
         array_push($nav,['text'=>$building->name,"href"=>"/map/".$id,"disabled"=>false]);
-        return view('map')->with(["id"=>$id,"nav"=>$nav]);
+        return view('map')->with(["id"=>$id,"nav"=>$nav,"level_name"=>$level->name]);
     }
     public function store(Request $request)
     {
@@ -69,9 +69,10 @@ class levelController extends Controller
         if($checkMapID){
             $compenet = fopen(base_path("resources/js/components/maps/")."map-".$mapID.".vue", "w"); 
             fwrite($compenet, 
-"<template>\n<area-map :id=\"id\" v>\n    <div slot=\"map\">\n\n         ".$this->saveMapFile($request)." \n\n   </div>\n</area-map></template><script>
+"<template>\n<area-map :id=\"id\" :name=\"name\" v>\n    <div slot=\"map\">\n\n         ".$this->saveMapFile($request)." \n\n   </div>\n</area-map></template><script>
 export default {
    props:{
+       name:{type:String},
       id:{type:String},
       nav:{type:Array}
    }
