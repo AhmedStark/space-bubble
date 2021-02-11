@@ -10,7 +10,7 @@
     "watch-poll": "npm run watch -- --watch-poll"
   },
   "dependencies": {
-    "apexcharts": "^3.6.11",
+    "apexcharts": "^3.24.0",
     "chart.js": "^2.8.0",
     "npm": "^6.9.0",
     "vue": "^2.6.8",
